@@ -27,7 +27,7 @@ public class ApplicationsView extends JFrame {
                 // only display if there are more results to paginate through
             }
         });
-    }
+    }t
     public static void main(String[] args)
     {
         ApplicationsView a = new ApplicationsView();
