@@ -2,14 +2,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HomePage {
+public class HomePageJobSeekerView {
     private JButton searchJobsButton;
     private JPanel panelMain;
     private JButton viewApplicationsButton;
     private JButton viewInterviewInvitationsButton;
     private JButton editProfileButton;
 
-    public HomePage() {
+    public HomePageJobSeekerView() {
         searchJobsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
