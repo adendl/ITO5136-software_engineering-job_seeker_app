@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="HomePageRecruiterView">
+  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="9" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="50" left="50" bottom="50" right="50"/>
+    <constraints>
+      <xy x="20" y="20" width="1097" height="417"/>
+    </constraints>
+    <properties>
+      <background color="-1843492"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="a287d" class="javax.swing.JButton" binding="createNewJobButton">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14114329"/>
+          <foreground color="-1"/>
+          <text value="Create New Job"/>
+        </properties>
+      </component>
+      <component id="5e14d" class="javax.swing.JButton" binding="manageListedJobsButton">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14114329"/>
+          <foreground color="-1"/>
+          <text value="Manage Listed Jobs"/>
+        </properties>
+      </component>
+      <component id="d89f5" class="javax.swing.JButton" binding="editCategoriesButton">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14114329"/>
+          <foreground color="-1"/>
+          <text value="Edit Categories"/>
+        </properties>
+      </component>
+      <component id="10db5" class="javax.swing.JButton" binding="editProfileButton" default-binding="true">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14114329"/>
+          <foreground color="-1"/>
+          <text value="Edit Profile"/>
+        </properties>
+      </component>
+      <component id="851c8" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-15856114"/>
+          <text value="View and edit your currently listed jobs and get recommendations for candidates"/>
+        </properties>
+      </component>
+      <component id="b236f" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-15856114"/>
+          <text value="View and edit your job categories"/>
+        </properties>
+      </component>
+      <component id="3203b" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-15856114"/>
+          <horizontalTextPosition value="10"/>
+          <text value="View and edit your recruiter profile"/>
+        </properties>
+      </component>
+      <component id="66255" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="1" row-span="5" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="28"/>
+          <foreground color="-15856114"/>
+          <text value="Monash Job Search - Recruiter View"/>
+        </properties>
+      </component>
+      <hspacer id="f7c6b">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="dae38">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="1e5b">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="a4197">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="bc47f" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-15856114"/>
+          <text value="Create a new job"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
