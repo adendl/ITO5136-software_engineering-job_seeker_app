@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class HomePage {
     private JButton searchJobsButton;
-    private JPanel panel1;
+    private JPanel panelMain;
     private JButton viewApplicationsButton;
     private JButton viewInterviewInvitationsButton;
     private JButton editProfileButton;
