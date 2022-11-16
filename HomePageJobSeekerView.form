@@ -50,15 +50,6 @@
           <text value="Edit Profile"/>
         </properties>
       </component>
-      <component id="bc47f" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="4" column="2" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <foreground color="-15856114"/>
-          <text value="Click Search your current vacancies and find your next role."/>
-        </properties>
-      </component>
       <component id="851c8" class="javax.swing.JLabel">
         <constraints>
           <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -122,6 +113,15 @@
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
+      <component id="bc47f" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-15856114"/>
+          <text value="Search your current vacancies and find your next role."/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
