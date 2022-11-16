@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HomePageJobSeekerView {
+public class HomePageJobSeekerView extends JFrame{
     private JButton searchJobsButton;
     private JPanel panelMain;
     private JButton viewApplicationsButton;
@@ -34,5 +34,15 @@ public class HomePageJobSeekerView {
 
             }
         });
+
+    }
+
+    public static void main(String[] args)
+    {
+        HomePageJobSeekerView h = new HomePageJobSeekerView();
+        h.setContentPane(h.panelMain);
+        h.setSize(800,600);
+        h.setVisible(true);
+
     }
 }
