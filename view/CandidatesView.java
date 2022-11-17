@@ -1,8 +1,10 @@
+package view;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InvitationsView extends JFrame {
+public class CandidatesView extends JFrame {
     private JPanel panelMain;
     private JTable table1;
     private JButton searchButton;
@@ -11,7 +13,7 @@ public class InvitationsView extends JFrame {
     private JButton previousButton;
     private JLabel headingText;
 
-    public InvitationsView() {
+    public CandidatesView() {
 
         previousButton.addActionListener(new ActionListener() {
             @Override
@@ -29,10 +31,10 @@ public class InvitationsView extends JFrame {
     }
     public static void main(String[] args)
     {
-        InvitationsView i = new InvitationsView();
-        i.setContentPane(i.panelMain);
-        i.setSize(800, 600);
-        i.setVisible(true);
+        CandidatesView c = new CandidatesView();
+        c.setContentPane(c.panelMain);
+        c.setSize(800, 600);
+        c.setVisible(true);
     }
 
 }

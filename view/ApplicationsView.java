@@ -1,8 +1,10 @@
+package view;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class JobListingsView extends JFrame {
+public class ApplicationsView extends JFrame {
     private JPanel panelMain;
     private JTable table1;
     private JButton searchButton;
@@ -11,7 +13,7 @@ public class JobListingsView extends JFrame {
     private JButton previousButton;
     private JLabel headingText;
 
-    public JobListingsView() {
+    public ApplicationsView() {
 
         previousButton.addActionListener(new ActionListener() {
             @Override
@@ -29,10 +31,10 @@ public class JobListingsView extends JFrame {
     }
     public static void main(String[] args)
     {
-        JobListingsView j = new JobListingsView();
-        j.setContentPane(j.panelMain);
-        j.setSize(800, 600);
-        j.setVisible(true);
+        ApplicationsView a = new ApplicationsView();
+        a.setContentPane(a.panelMain);
+        a.setSize(800, 600);
+        a.setVisible(true);
     }
 
 }

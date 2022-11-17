@@ -1,9 +1,12 @@
+package view;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CandidatesView extends JFrame {
+public class SearchResultsView extends JFrame {
     private JPanel panelMain;
+    private JTextField searchTextField;
     private JTable table1;
     private JButton searchButton;
     private JButton sortByButton;
@@ -11,8 +14,13 @@ public class CandidatesView extends JFrame {
     private JButton previousButton;
     private JLabel headingText;
 
-    public CandidatesView() {
-
+    public SearchResultsView() {
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // move to search jobs view, with the search text preloaded
+            }
+        });
         previousButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -29,10 +37,10 @@ public class CandidatesView extends JFrame {
     }
     public static void main(String[] args)
     {
-        CandidatesView c = new CandidatesView();
-        c.setContentPane(c.panelMain);
-        c.setSize(800, 600);
-        c.setVisible(true);
+        SearchResultsView j = new SearchResultsView();
+        j.setContentPane(j.panelMain);
+        j.setSize(800, 600);
+        j.setVisible(true);
     }
 
 }
