@@ -130,6 +130,7 @@
         <properties>
           <editable value="true"/>
           <model>
+            <item value=""/>
             <item value="Job Seeker"/>
             <item value="Recruiter"/>
           </model>
