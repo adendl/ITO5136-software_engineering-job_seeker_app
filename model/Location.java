@@ -1,11 +1,11 @@
+package model;
+
 public class Location {
     private int locationID;
     private String suburb;
     private String state;
     private String country;
-    private int number;
-    private String streetName;
-    private String postcode;
+
 
     public Location(){
     }
@@ -46,27 +46,4 @@ public class Location {
         this.country = country;
     }
 
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public String getStreetName() {
-        return streetName;
-    }
-
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
 }
