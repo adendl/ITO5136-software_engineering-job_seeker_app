@@ -1,8 +1,10 @@
+package view;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class JobDetailsView extends JFrame {
-    private JPanel JobDetailsPanel;
+    public JPanel JobDetailsPanel;
     private JLabel lbJobTitle;
     private JLabel lbJobDescription;
     private JTextArea txtDescription;
@@ -22,10 +24,10 @@ public class JobDetailsView extends JFrame {
 
     public JobDetailsView() {
         setContentPane(JobDetailsPanel);
-        setTitle("Job Details");
+        setTitle("model.Job Details");
         setSize(900, 600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
+        setVisible(false);
     }
 
     public static void main(String[] args) {
@@ -50,18 +52,18 @@ public class JobDetailsView extends JFrame {
         JobDetailsPanel = new JPanel();
         JobDetailsPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(14, 2, new Insets(0, 0, 0, 0), -1, -1));
         lbJobTitle = new JLabel();
-        lbJobTitle.setText("Job Title");
+        lbJobTitle.setText("model.Job Title");
         JobDetailsPanel.add(lbJobTitle, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 2, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         lbJobDescription = new JLabel();
-        lbJobDescription.setText("Job Description");
+        lbJobDescription.setText("model.Job Description");
         JobDetailsPanel.add(lbJobDescription, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         txtDescription = new JTextArea();
         JobDetailsPanel.add(txtDescription, new com.intellij.uiDesigner.core.GridConstraints(2, 1, 9, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         lbJobType = new JLabel();
-        lbJobType.setText("Job Type");
+        lbJobType.setText("model.Job Type");
         JobDetailsPanel.add(lbJobType, new com.intellij.uiDesigner.core.GridConstraints(8, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         lbJobCategory = new JLabel();
-        lbJobCategory.setText("Job Category");
+        lbJobCategory.setText("model.Job Category");
         JobDetailsPanel.add(lbJobCategory, new com.intellij.uiDesigner.core.GridConstraints(10, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         lbCompany = new JLabel();
         lbCompany.setText("Company");
@@ -88,7 +90,7 @@ public class JobDetailsView extends JFrame {
         txtJobTitle = new JTextArea();
         JobDetailsPanel.add(txtJobTitle, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         lbJobDetails = new JLabel();
-        lbJobDetails.setText("Job Details");
+        lbJobDetails.setText("model.Job Details");
         JobDetailsPanel.add(lbJobDetails, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 

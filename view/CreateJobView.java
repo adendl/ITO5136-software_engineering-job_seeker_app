@@ -1,3 +1,5 @@
+package view;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -50,7 +52,7 @@ public class CreateJobView extends JFrame {
         CreateJobPanel = new JPanel();
         CreateJobPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(14, 2, new Insets(0, 0, 0, 0), -1, -1));
         lbJobTitle = new JLabel();
-        lbJobTitle.setText("Job Title");
+        lbJobTitle.setText("model.Job Title");
         CreateJobPanel.add(lbJobTitle, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 2, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         lbJobDescription = new JLabel();
         lbJobDescription.setText("JobDescription");
@@ -58,10 +60,10 @@ public class CreateJobView extends JFrame {
         textArea1 = new JTextArea();
         CreateJobPanel.add(textArea1, new com.intellij.uiDesigner.core.GridConstraints(2, 1, 9, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         lbJobType = new JLabel();
-        lbJobType.setText("Job Type");
+        lbJobType.setText("model.Job Type");
         CreateJobPanel.add(lbJobType, new com.intellij.uiDesigner.core.GridConstraints(8, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         lbJobCategory = new JLabel();
-        lbJobCategory.setText("Job Category");
+        lbJobCategory.setText("model.Job Category");
         CreateJobPanel.add(lbJobCategory, new com.intellij.uiDesigner.core.GridConstraints(10, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         lbCompany = new JLabel();
         lbCompany.setText("Company");
@@ -70,13 +72,13 @@ public class CreateJobView extends JFrame {
         lbLocation.setText("Location");
         CreateJobPanel.add(lbLocation, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         btnCreateJob = new JButton();
-        btnCreateJob.setText("Create Job Listing");
+        btnCreateJob.setText("Create model.Job Listing");
         CreateJobPanel.add(btnCreateJob, new com.intellij.uiDesigner.core.GridConstraints(12, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         lbSalaryRange = new JLabel();
         lbSalaryRange.setText("Salary Range");
         CreateJobPanel.add(lbSalaryRange, new com.intellij.uiDesigner.core.GridConstraints(12, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         lbCreateJob = new JLabel();
-        lbCreateJob.setText("Create Job Listing");
+        lbCreateJob.setText("Create model.Job Listing");
         CreateJobPanel.add(lbCreateJob, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         textArea2 = new JTextArea();
         CreateJobPanel.add(textArea2, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));

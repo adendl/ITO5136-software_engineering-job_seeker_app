@@ -1,3 +1,5 @@
+package model;
+
 public class Invitation{
     private String invitationMessageText;
     private int jobId;
