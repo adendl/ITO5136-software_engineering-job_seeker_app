@@ -19,6 +19,24 @@ public class JobSearchController {
         boundary.addSearchButtonActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //get field attributes (these really need to be int)
+                boundary.getCbxLocation();
+                boundary.getCbxCategory();
+                boundary.getTxtSearchBar();
+                boundary.getCbxSalary();
+
+                //send to searchActionController
+
+                //bring search results into frame
+                boundary2.setVisible(true);
+            }
+        });
+
+        boundary.addSearchOnProfileButtonActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //get field attributes and send to searchActionController
+                //bring search results into frame
                 boundary2.setVisible(true);
             }
         });

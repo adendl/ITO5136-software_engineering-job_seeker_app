@@ -27,16 +27,28 @@ public class JobSearchView extends JFrame {
         setVisible(false);
     }
 
-    public String getLbSearch(){
-        return lbSearch.getText();
+    public String getTxtSearchBar(){
+        return txtSearchBar.getText();
     }
 
-    public void setLbSearch(String str){
-        lbSearch.setText(str);
+    public String getCbxLocation(){
+        return cbxLocation.getName();
+    }
+
+    public String getCbxCategory(){
+        return cbxCategory.getName();
+    }
+
+    public String getCbxSalary() {
+        return cbxSalary.getName();
     }
 
     public void addSearchButtonActionListener(ActionListener searchButtonListener){
         btnSearch.addActionListener(searchButtonListener);
+    }
+
+    public void addSearchOnProfileButtonActionListener(ActionListener searchOnProfileButtonListener){
+        btnSearchOnProfile.addActionListener(searchOnProfileButtonListener);
     }
 
 //    public static void main(String[] args) {
