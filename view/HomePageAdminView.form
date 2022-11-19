@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.HomePageJobSeekerView">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.HomePageAdminView">
   <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="9" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="50" left="50" bottom="50" right="50"/>
     <constraints>
-      <xy x="20" y="20" width="1024" height="417"/>
+      <xy x="20" y="20" width="972" height="579"/>
     </constraints>
     <properties>
       <background color="-1843492"/>
     </properties>
     <border type="none"/>
     <children>
-      <component id="a287d" class="javax.swing.JButton" binding="manageUsersButton" default-binding="true">
+      <component id="a287d" class="javax.swing.JButton" binding="manageUsersButton">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-14114329"/>
           <foreground color="-1"/>
-          <text value="Search Jobs"/>
+          <text value="Manage Users"/>
         </properties>
       </component>
-      <component id="5e14d" class="javax.swing.JButton" binding="manageCategoriesButton" default-binding="true">
+      <component id="5e14d" class="javax.swing.JButton" binding="manageCategoriesButton">
         <constraints>
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-14114329"/>
           <foreground color="-1"/>
-          <text value="View Applications"/>
+          <text value="Manage Categories"/>
         </properties>
       </component>
-      <component id="d89f5" class="javax.swing.JButton" binding="manageSkillsButton" default-binding="true">
+      <component id="d89f5" class="javax.swing.JButton" binding="manageSkillsButton">
         <constraints>
           <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-14114329"/>
           <foreground color="-1"/>
-          <text value="View Interview Invitations"/>
+          <text value="Manage Skills"/>
         </properties>
       </component>
-      <component id="10db5" class="javax.swing.JButton" binding="manageLocationsButton" default-binding="true">
+      <component id="10db5" class="javax.swing.JButton" binding="manageLocationsButton">
         <constraints>
           <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-14114329"/>
           <foreground color="-1"/>
-          <text value="Edit Profile"/>
+          <text value="Manage Locations"/>
         </properties>
       </component>
       <component id="851c8" class="javax.swing.JLabel">
@@ -56,7 +56,7 @@
         </constraints>
         <properties>
           <foreground color="-15856114"/>
-          <text value="View the status of your recent job applications"/>
+          <text value="Manage Categories"/>
         </properties>
       </component>
       <component id="b236f" class="javax.swing.JLabel">
@@ -65,7 +65,7 @@
         </constraints>
         <properties>
           <foreground color="-15856114"/>
-          <text value="View interview invitations from recruiters"/>
+          <text value="Manage Skills"/>
         </properties>
       </component>
       <component id="3203b" class="javax.swing.JLabel">
@@ -75,7 +75,7 @@
         <properties>
           <foreground color="-15856114"/>
           <horizontalTextPosition value="10"/>
-          <text value="Edit your profile to make yourself stand &#10;out to potential employers"/>
+          <text value="Manage Locations"/>
         </properties>
       </component>
       <component id="66255" class="javax.swing.JLabel">
@@ -85,7 +85,7 @@
         <properties>
           <font size="28"/>
           <foreground color="-15856114"/>
-          <text value="Monash Job Search - Job Seeker View"/>
+          <text value="Monash Job Search - Admin View"/>
         </properties>
       </component>
       <vspacer id="f0fa5">
@@ -119,7 +119,7 @@
         </constraints>
         <properties>
           <foreground color="-15856114"/>
-          <text value="Search your current vacancies and find your next role."/>
+          <text value="Manage Users"/>
         </properties>
       </component>
     </children>

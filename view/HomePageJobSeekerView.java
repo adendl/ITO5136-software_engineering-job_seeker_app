@@ -1,34 +1,36 @@
+package view;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HomePageJobSeekerView extends JFrame{
-    private JButton searchJobsButton;
+    private JButton manageUsersButton;
     private JPanel panelMain;
-    private JButton viewApplicationsButton;
-    private JButton viewInterviewInvitationsButton;
-    private JButton editProfileButton;
+    private JButton manageCategoriesButton;
+    private JButton manageSkillsButton;
+    private JButton manageLocationsButton;
 
     public HomePageJobSeekerView() {
-        searchJobsButton.addActionListener(new ActionListener() {
+        manageUsersButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        viewApplicationsButton.addActionListener(new ActionListener() {
+        manageCategoriesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        viewInterviewInvitationsButton.addActionListener(new ActionListener() {
+        manageSkillsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        editProfileButton.addActionListener(new ActionListener() {
+        manageLocationsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 

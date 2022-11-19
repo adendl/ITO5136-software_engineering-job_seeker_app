@@ -4,33 +4,33 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HomePageRecruiterView extends JFrame{
-    private JButton createNewJobButton;
+public class HomePageAdminView extends JFrame{
+    private JButton manageUsersButton;
     private JPanel panelMain;
-    private JButton manageListedJobsButton;
-    private JButton editCategoriesButton;
-    private JButton editProfileButton;
+    private JButton manageCategoriesButton;
+    private JButton manageSkillsButton;
+    private JButton manageLocationsButton;
 
-    public HomePageRecruiterView() {
-        createNewJobButton.addActionListener(new ActionListener() {
+    public HomePageAdminView() {
+        manageUsersButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        manageListedJobsButton.addActionListener(new ActionListener() {
+        manageCategoriesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        editCategoriesButton.addActionListener(new ActionListener() {
+        manageSkillsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        editProfileButton.addActionListener(new ActionListener() {
+        manageLocationsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -41,7 +41,7 @@ public class HomePageRecruiterView extends JFrame{
 
     public static void main(String[] args)
     {
-        HomePageRecruiterView h = new HomePageRecruiterView();
+        HomePageAdminView h = new HomePageAdminView();
         h.setContentPane(h.panelMain);
         h.setSize(800,600);
         h.setVisible(true);
