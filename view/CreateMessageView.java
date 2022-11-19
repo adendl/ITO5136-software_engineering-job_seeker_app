@@ -12,6 +12,7 @@ public class CreateMessageView {
     private JLabel toLabel;
     private JLabel subjectLabel;
     private JTextField textField1;
+    private JLabel newInvitationMessageLabel;
 
     public CreateMessageView() {
         sendInvitationButton.addActionListener(new ActionListener() {
@@ -20,5 +21,9 @@ public class CreateMessageView {
 
             }
         });
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
