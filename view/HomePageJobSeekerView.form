@@ -10,7 +10,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="a287d" class="javax.swing.JButton" binding="manageUsersButton" default-binding="true">
+      <component id="a287d" class="javax.swing.JButton" binding="searchJobsButton">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -20,7 +20,7 @@
           <text value="Search Jobs"/>
         </properties>
       </component>
-      <component id="5e14d" class="javax.swing.JButton" binding="manageCategoriesButton" default-binding="true">
+      <component id="5e14d" class="javax.swing.JButton" binding="viewApplicationsButton">
         <constraints>
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -30,7 +30,7 @@
           <text value="View Applications"/>
         </properties>
       </component>
-      <component id="d89f5" class="javax.swing.JButton" binding="manageSkillsButton" default-binding="true">
+      <component id="d89f5" class="javax.swing.JButton" binding="viewInvitationsButton">
         <constraints>
           <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -40,7 +40,7 @@
           <text value="View Interview Invitations"/>
         </properties>
       </component>
-      <component id="10db5" class="javax.swing.JButton" binding="manageLocationsButton" default-binding="true">
+      <component id="10db5" class="javax.swing.JButton" binding="editProfileButton">
         <constraints>
           <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

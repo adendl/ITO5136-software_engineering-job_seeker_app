@@ -5,32 +5,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HomePageJobSeekerView extends JFrame{
-    private JButton manageUsersButton;
+    private JButton searchJobsButton;
     private JPanel panelMain;
-    private JButton manageCategoriesButton;
-    private JButton manageSkillsButton;
-    private JButton manageLocationsButton;
+    private JButton viewApplicationsButton;
+    private JButton viewInvitationsButton;
+    private JButton editProfileButton;
 
     public HomePageJobSeekerView() {
-        manageUsersButton.addActionListener(new ActionListener() {
+        searchJobsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+        viewApplicationsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        manageCategoriesButton.addActionListener(new ActionListener() {
+        viewInvitationsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        manageSkillsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        manageLocationsButton.addActionListener(new ActionListener() {
+        editProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
