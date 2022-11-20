@@ -1,6 +1,8 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import controller.NavigationController;
+import view.HomePageRecruiterView;
 import view.NavigationBar;
 import view.ViewHelper;
 
@@ -32,7 +34,7 @@ public class MainWindow {
         navPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, NAV_HEIGHT));
         navPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE, NAV_HEIGHT));
 
-        contentPanel = new JPanel();
+        contentPanel = new JPanel(new BorderLayout());
         contentPanel.setBackground(Color.BLUE);
 
         navigationController = new NavigationController();
@@ -47,6 +49,11 @@ public class MainWindow {
     void run(int width, int height) {
         mainWindow.setSize(width, height);
         mainWindow.setLocationRelativeTo(null);
+
+        // initial view is going to be recruiter hub, for now
+        HomePageRecruiterView recruiterView = new HomePageRecruiterView();
+        navigationController.pushView(recruiterView);
+
         mainWindow.setVisible(true);
     }
 
