@@ -2,6 +2,7 @@ import javax.swing.*;
 
 import controller.NavigationController;
 import view.NavigationBar;
+import view.ViewHelper;
 
 import java.awt.*;
 
@@ -13,8 +14,6 @@ public class MainWindow {
     NavigationController navigationController;
     NavigationBar navigationBar;
 
-    final static int CONTENT_WIDTH = 800;
-    final static int CONTENT_HEIGHT = 600;
     final static int NAV_HEIGHT = 32;
 
     MainWindow() {
@@ -53,6 +52,6 @@ public class MainWindow {
 
     public static void main(String[] args) {
         MainWindow mainWindow = new MainWindow();
-        mainWindow.run(CONTENT_WIDTH, CONTENT_HEIGHT+NAV_HEIGHT);
+        mainWindow.run(ViewHelper.CONTENT_WIDTH, ViewHelper.CONTENT_HEIGHT + NAV_HEIGHT);
     }
 }
