@@ -15,6 +15,7 @@ public class NavigationBar {
 
     public NavigationBar(NavigationController controller) {
         this.controller = controller;
+        controller.setNavigationBar(this);
         backButton.addActionListener((ActionEvent e) -> {
             controller.doBack();
         });
@@ -25,5 +26,9 @@ public class NavigationBar {
 
     public JComponent getUIComponent() {
         return mainPanel;
+    }
+
+    public void setBackButtonEnabled(boolean enable) {
+        backButton.setEnabled(enable);
     }
 }
