@@ -56,7 +56,7 @@
         </constraints>
         <properties>
           <foreground color="-15856114"/>
-          <text value="Manage Categories"/>
+          <text value="Manage the central list of categories"/>
         </properties>
       </component>
       <component id="b236f" class="javax.swing.JLabel">
@@ -65,7 +65,7 @@
         </constraints>
         <properties>
           <foreground color="-15856114"/>
-          <text value="Manage Skills"/>
+          <text value="Manage the central list of skills"/>
         </properties>
       </component>
       <component id="3203b" class="javax.swing.JLabel">
@@ -75,7 +75,7 @@
         <properties>
           <foreground color="-15856114"/>
           <horizontalTextPosition value="10"/>
-          <text value="Manage Locations"/>
+          <text value="Manage the central list of Locations"/>
         </properties>
       </component>
       <component id="66255" class="javax.swing.JLabel">
@@ -119,7 +119,7 @@
         </constraints>
         <properties>
           <foreground color="-15856114"/>
-          <text value="Manage Users"/>
+          <text value="Manage and lock existing users"/>
         </properties>
       </component>
     </children>
