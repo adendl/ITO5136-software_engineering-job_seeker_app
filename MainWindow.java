@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 import controller.NavigationController;
+import view.CreateJobView;
 import view.HomePageRecruiterView;
 import view.NavigationBar;
 import view.ViewHelper;
@@ -51,7 +52,7 @@ public class MainWindow {
         mainWindow.setLocationRelativeTo(null);
 
         // initial view is going to be recruiter hub, for now
-        HomePageRecruiterView recruiterView = new HomePageRecruiterView();
+        HomePageRecruiterView recruiterView = new HomePageRecruiterView(navigationController);
         navigationController.pushView(recruiterView);
 
         mainWindow.setVisible(true);
