@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 public class JobSeeker extends User{
     private ArrayList<Integer> skillIDs;

@@ -1,3 +1,5 @@
+package model;
+
 public class JobCategory {
     private int categoryID;
     private String name;
