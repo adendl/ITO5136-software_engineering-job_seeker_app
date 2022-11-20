@@ -6,11 +6,12 @@ import java.awt.event.ActionListener;
 
 public class ManageCategoriesView extends JFrame {
     private JPanel panelMain;
-    private JList list1;
+    private JList categoryList;
     private JTextField addBox;
     private JButton addButton;
     private JButton deleteButton;
     private JLabel deleteText;
+
     private JLabel addText;
     private JTextField deleteBox;
 
@@ -28,7 +29,7 @@ public class ManageCategoriesView extends JFrame {
                 else
                 {
                     dlm.addElement(addBox.getText());
-                    list1.setModel(dlm);
+                    categoryList.setModel(dlm);
                 }
             }
         });
@@ -50,5 +51,9 @@ public class ManageCategoriesView extends JFrame {
         m.setSize(800, 600);
         m.setVisible(true);
 
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
