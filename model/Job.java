@@ -17,6 +17,8 @@ public class Job {
     private LocalDateTime timeCreated;
     private String title;
 
+    STATIC String csv = "../testData/job.csv";
+
     public Job() {
     }
 
