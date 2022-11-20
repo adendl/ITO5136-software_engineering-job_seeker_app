@@ -4,32 +4,33 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HomePageJobSeekerView extends JFrame{
-    private JButton searchJobsButton;
+public class HomePageAdminView extends JFrame{
+    private JButton manageUsersButton;
     private JPanel panelMain;
-    private JButton viewApplicationsButton;
-    private JButton viewInvitationsButton;
-    private JButton editProfileButton;
+    private JButton manageCategoriesButton;
+    private JButton manageSkillsButton;
+    private JButton manageLocationsButton;
 
-    public HomePageJobSeekerView() {
-        searchJobsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
-        viewApplicationsButton.addActionListener(new ActionListener() {
+    public HomePageAdminView() {
+        manageUsersButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        viewInvitationsButton.addActionListener(new ActionListener() {
+        manageCategoriesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        editProfileButton.addActionListener(new ActionListener() {
+        manageSkillsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        manageLocationsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -40,7 +41,7 @@ public class HomePageJobSeekerView extends JFrame{
 
     public static void main(String[] args)
     {
-        HomePageJobSeekerView h = new HomePageJobSeekerView();
+        HomePageAdminView h = new HomePageAdminView();
         h.setContentPane(h.panelMain);
         h.setSize(800,600);
         h.setVisible(true);

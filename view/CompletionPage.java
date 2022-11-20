@@ -12,7 +12,7 @@ public class CompletionPage extends JFrame {
         continueButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+
             }
         });
     }

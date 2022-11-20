@@ -21,13 +21,20 @@
           <text value="View Job Listings"/>
         </properties>
       </component>
-      <component id="38fc" class="javax.swing.JTable" binding="table1" default-binding="true">
+      <component id="38fc" class="javax.swing.JTable" binding="jobListingsTable">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="1" column="0" row-span="1" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="1" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <autoCreateRowSorter value="true"/>
+          <background color="-1"/>
+          <foreground color="-15856114"/>
+          <gridColor color="-15856114"/>
+          <intercellSpacing width="50" height="20"/>
+          <selectionForeground color="-15856114"/>
+        </properties>
       </component>
       <component id="ef022" class="javax.swing.JButton" binding="sortByButton" default-binding="true">
         <constraints>

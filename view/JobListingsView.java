@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class JobListingsView extends JFrame {
     private JPanel panelMain;
-    private JTable table1;
+    private JTable jobListingsTable;
     private JButton searchButton;
     private JButton sortByButton;
     private JButton nextButton;
@@ -14,7 +14,6 @@ public class JobListingsView extends JFrame {
     private JLabel headingText;
 
     public JobListingsView() {
-
         previousButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -29,8 +28,8 @@ public class JobListingsView extends JFrame {
             }
         });
     }
-    public static void main(String[] args)
-    {
+
+    public static void main(String[] args) {
         JobListingsView j = new JobListingsView();
         j.setContentPane(j.panelMain);
         j.setSize(800, 600);
