@@ -1,3 +1,5 @@
+package model;
+
 public class CoverLetter {
     private int coverLetterID;
     private String name;

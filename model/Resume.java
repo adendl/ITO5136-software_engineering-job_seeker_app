@@ -1,3 +1,5 @@
+package model;
+
 public class Resume {
     private String name;
     private String path;

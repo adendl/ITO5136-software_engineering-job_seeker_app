@@ -1,3 +1,5 @@
+package model;
+
 public class Skill {
     private String description;
     private int jobseekerID;
