@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class JobListingsView extends JFrame {
+public class JobListingsView extends JPanel{
     private JPanel panelMain;
     private JTable jobListingsTable;
     private JButton searchButton;
@@ -27,13 +27,6 @@ public class JobListingsView extends JFrame {
                 // only display if there are more results to paginate through
             }
         });
-    }
-
-    public static void main(String[] args) {
-        JobListingsView j = new JobListingsView();
-        j.setContentPane(j.panelMain);
-        j.setSize(800, 600);
-        j.setVisible(true);
     }
 
 }

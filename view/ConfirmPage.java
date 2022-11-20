@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ConfirmPage extends JFrame {
+public class ConfirmPage extends JPanel {
     private JButton yesButton;
     private JButton noButton;
     private JPanel panelMain;
@@ -13,7 +13,7 @@ public class ConfirmPage extends JFrame {
         yesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+
             }
         });
 
@@ -21,7 +21,6 @@ public class ConfirmPage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("no");
-                dispose();
             }
         });
     }
@@ -29,9 +28,7 @@ public class ConfirmPage extends JFrame {
     public static void main(String[] args)
     {
         ConfirmPage c = new ConfirmPage();
-        c.setContentPane(c.panelMain);
         c.setSize(800, 600);
         c.setVisible(true);
-        c.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CandidatesView extends JFrame {
+public class CandidatesView extends JPanel {
     private JPanel panelMain;
     private JTable table1;
     private JButton searchButton;
@@ -32,7 +32,6 @@ public class CandidatesView extends JFrame {
     public static void main(String[] args)
     {
         CandidatesView c = new CandidatesView();
-        c.setContentPane(c.panelMain);
         c.setSize(800, 600);
         c.setVisible(true);
     }

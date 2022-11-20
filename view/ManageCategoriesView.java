@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ManageCategoriesView extends JFrame {
+public class ManageCategoriesView extends JPanel{
     private JPanel panelMain;
     private JList categoryList;
     private JTextField addBox;
@@ -46,11 +46,6 @@ public class ManageCategoriesView extends JFrame {
 
     public static void main(String[] args)
     {
-        ManageCategoriesView m = new ManageCategoriesView();
-        m.setContentPane(m.panelMain);
-        m.setSize(800, 600);
-        m.setVisible(true);
-
     }
 
     private void createUIComponents() {

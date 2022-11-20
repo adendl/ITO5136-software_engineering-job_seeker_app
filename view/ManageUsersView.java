@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ManageUsersView extends JFrame {
+public class ManageUsersView extends JPanel {
     private JPanel panelMain;
     private JList userList;
     private JTextField manageUsersBox;
@@ -35,7 +35,6 @@ public class ManageUsersView extends JFrame {
     public static void main(String[] args)
     {
         ManageUsersView m = new ManageUsersView();
-        m.setContentPane(m.panelMain);
         m.setSize(800, 600);
         m.setVisible(true);
 

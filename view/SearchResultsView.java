@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SearchResultsView extends JFrame {
+public class SearchResultsView extends JPanel {
     private JPanel panelMain;
     private JTextField searchTextField;
     private JTable table1;
@@ -38,7 +38,6 @@ public class SearchResultsView extends JFrame {
     public static void main(String[] args)
     {
         SearchResultsView j = new SearchResultsView();
-        j.setContentPane(j.panelMain);
         j.setSize(800, 600);
         j.setVisible(true);
     }

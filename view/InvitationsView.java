@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InvitationsView extends JFrame {
+public class InvitationsView extends JPanel{
     private JPanel panelMain;
     private JTable table1;
     private JButton searchButton;
@@ -29,12 +29,4 @@ public class InvitationsView extends JFrame {
             }
         });
     }
-    public static void main(String[] args)
-    {
-        InvitationsView i = new InvitationsView();
-        i.setContentPane(i.panelMain);
-        i.setSize(800, 600);
-        i.setVisible(true);
-    }
-
 }

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class searchCandidatesView extends JFrame{
+public class SearchCandidatesView extends JPanel{
     private JPanel panelMain;
     private JTextField enterKeywordsTextField;
     private JButton searchButton;
@@ -15,7 +15,7 @@ public class searchCandidatesView extends JFrame{
     private JScrollPane scrollPane;
 
 
-    public searchCandidatesView() {
+    public SearchCandidatesView() {
         selectCategoriesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -39,8 +39,7 @@ public class searchCandidatesView extends JFrame{
 
     public static void main(String[] args)
     {
-        searchCandidatesView s = new searchCandidatesView();
-        s.setContentPane(s.panelMain);
+        SearchCandidatesView s = new SearchCandidatesView();
         s.setSize(800, 600);
         DefaultListModel dlm = new DefaultListModel<String>();
         for (int x = 0; x < 1000; x++)

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MailboxView extends JFrame {
+public class MailboxView extends JPanel{
     private JTable table1;
     private JPanel panelmain;
     private JComboBox sortByBox;

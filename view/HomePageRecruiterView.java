@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HomePageRecruiterView extends JFrame{
+public class HomePageRecruiterView extends JPanel{
     private JButton createNewJobButton;
     private JPanel panelMain;
     private JButton manageListedJobsButton;
@@ -36,15 +36,6 @@ public class HomePageRecruiterView extends JFrame{
 
             }
         });
-
-    }
-
-    public static void main(String[] args)
-    {
-        HomePageRecruiterView h = new HomePageRecruiterView();
-        h.setContentPane(h.panelMain);
-        h.setSize(800,600);
-        h.setVisible(true);
 
     }
 }
