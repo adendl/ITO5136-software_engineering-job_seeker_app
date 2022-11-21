@@ -2,8 +2,8 @@ package model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 public class Job {
+
     private String company;
     private String description;
     private LocalDateTime expiriyDate;
@@ -17,7 +17,6 @@ public class Job {
     private LocalDateTime timeCreated;
     private String title;
 
-    STATIC String csv = "../testData/job.csv";
 
     public Job() {
     }
