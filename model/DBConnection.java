@@ -11,7 +11,7 @@ import java.sql.ResultSetMetaData;
 
 public class DBConnection {
 
-    STATIC String connectionPath = "jdbc:sqlite:test.db";
+    STATIC String CONNECTION_PATH = "jdbc:sqlite:test.db";
 
 
     public static Connection connectDb()
@@ -19,7 +19,7 @@ public class DBConnection {
         Connection connection = null;
         try {
             // create a database connection
-            connection = DriverManager.getConnection(connectionPath);
+            connection = DriverManager.getConnection(CONNECTION_PATH);
             System.out.println("Connected");
             return connection;
         }
