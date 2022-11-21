@@ -11,13 +11,15 @@ import java.sql.ResultSetMetaData;
 
 public class DBConnection {
 
+    STATIC String connectionPath = "jdbc:sqlite:test.db";
+
 
     public static Connection connectDb()
     {
         Connection connection = null;
         try {
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:test.db");
+            connection = DriverManager.getConnection(connectionPath);
             System.out.println("Connected");
             return connection;
         }
