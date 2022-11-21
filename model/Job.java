@@ -6,7 +6,7 @@ public class Job {
 
     private String company;
     private String description;
-    private LocalDateTime expiriyDate;
+    private LocalDateTime expiryDate;
     private int jobId;
     private ArrayList<String> keywords;
     private int locationId;
@@ -38,11 +38,11 @@ public class Job {
     }
 
     public LocalDateTime getExpiriyDate() {
-        return expiriyDate;
+        return expiryDate;
     }
 
     public void setExpiriyDate(LocalDateTime expiriyDate) {
-        this.expiriyDate = expiriyDate;
+        this.expiryDate = expiriyDate;
     }
 
     public int getJobId() {
