@@ -1,15 +1,15 @@
 package model;
 
 import java.util.ArrayList;
-public class JobSeeker extends User{
+public class JobSeeker extends User {
     private ArrayList<Integer> skillIDs;
     private int desiredSalaryMin;
     private int desiredSalaryMax;
 
-    public JobSeeker (){
+    public JobSeeker() {
     }
 
-    public JobSeeker(int jobSeekerID){
+    public JobSeeker(int jobSeekerID) {
         this.userID = jobSeekerID;
     }
 
@@ -36,12 +36,6 @@ public class JobSeeker extends User{
     public void setDesiredSalaryMax(int desiredSalaryMax) {
         this.desiredSalaryMax = desiredSalaryMax;
     }
-
-    public int getResumeID() {
-        return resumeID;
-    }
-
-    public void setResumeID(int resumeID) {
-        this.resumeID = resumeID;
-    }
 }
+
+

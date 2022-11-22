@@ -11,7 +11,7 @@ import java.sql.ResultSetMetaData;
 
 public class DBConnection {
 
-    STATIC String CONNECTION_PATH = "jdbc:sqlite:test.db"; 
+    static String CONNECTION_PATH = "jdbc:sqlite:test.db";
 
 
     public static Connection connectDb()

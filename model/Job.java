@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,6 +27,23 @@ public class Job {
     public Job() {
     }
 
+    public Job(int jobId, int categoryId, String company, String description, LocalDate expiryDate, boolean isAdvertised, ArrayList<String> keywords, int locationId, int recruiterId, int salaryMax, int salaryMin, String status, String title) {
+        this.jobId = jobId;
+        this.categoryId = categoryId;
+        this.company = company;
+        this.description = description;
+        this.expiryDate = expiryDate;
+        this.isAdvertised = isAdvertised;
+        this.keywords = keywords;
+        this.locationId = locationId;
+        this.recruiterId = recruiterId;
+        this.salaryMax = salaryMax;
+        this.salaryMin = salaryMin;
+        this.status = status;
+        this.dateCreated = LocalDate.now();
+        this.title = title;
+    }
+
     public String getCompany() {
         return company;
     }
@@ -42,12 +60,12 @@ public class Job {
         this.description = description;
     }
 
-    public LocalDateTime getExpiriyDate() {
+    public LocalDate getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiriyDate(LocalDateTime expiriyDate) {
-        this.expiryDate = expiriyDate;
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
     }
 
     public int getJobId() {
@@ -122,38 +140,30 @@ public class Job {
         this.title = title;
     }
 
+    public ResultSet getJob(int jobId)
+    {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job where jobId=" + jobId);
+        return rs;
+    }
+
     public void createJob()
     {
-       DBConnection.queryDatabase(DBConnection.connectDb(), "INSERT INTO Job (" +
-                        "keyword, " +
-                        "title, " +
-                        "dateCreated, " +
-                        "status, " +
-                        "salaryMin, " +
-                        "salaryMax, " +
-                        "locationId, " +
-                        "recruiterId, " +
-                        "expiryDate, " +
-                        "description, " +
-                        "company, " +
-                        "categoryId, " +
-                        "jobId" +
-               ")" +
-                " VALUES (" +
-                        keywords + ", " +
-                        title + ", " +
-                        dateCreated + ", " +
-                        status + ", " +
-                        salaryMin + ", " +
-                        salaryMax + ", " +
-                        locationId + ", " +
-                        recruiterId + ", " +
-                        expiryDate + ", " +
-                        description + ", " +
-                        company + ", " +
-                        categoryId + ", " +
-                        jobId + ")"
-        );
+        String sql = "INSERT INTO Job (keyword, title, dateCreated, status, salaryMin, salaryMax, locationId, recruiterId, expiryDate, description, company, categoryId, jobId) VALUES (" +
+               '"' + keywords + '"' + ", " +
+                '"' +    title + '"' + ", " +
+                '"' +  dateCreated + '"' + ", " +
+                '"' +   status + '"' + ", " +
+                salaryMin + ", " +
+                salaryMax + ", " +
+                locationId + ", " +
+                recruiterId + ", " +
+                '"' +   expiryDate + '"' + ", " +
+                '"' +   description + '"' + ", " +
+                '"' +  company + '"' + ", " +
+                categoryId + ", " +
+                jobId + ")";
+        System.out.println(sql);
+       DBConnection.queryDatabase(DBConnection.connectDb(), sql);
     }
 
     public void deleteJob(int jobId)
@@ -163,7 +173,8 @@ public class Job {
 
     public void updateJob(int jobId, String fieldName, String value)
     {
-        DBConnection.queryDatabase(DBConnection.connectDb(), "update Job \nset " + fieldName + " = " + value "\nwhere jobId=" + jobId);
+        DBConnection.queryDatabase(DBConnection.connectDb(), "update Job \nset " + fieldName + " = " + value + "\nwhere jobId=" + jobId);
     }
+
 
 }
