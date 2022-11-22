@@ -106,12 +106,12 @@ public class Job {
         this.status = status;
     }
 
-    public LocalDateTime getTimeCreated() {
-        return timeCreated;
+    public LocalDate getDateCreated() {
+        return dateCreated;
     }
 
-    public void setTimeCreated(LocalDateTime timeCreated) {
-        this.timeCreated = timeCreated;
+    public void setDateCreated(LocalDate timeCreated) {
+        this.dateCreated = dateCreated;
     }
 
     public String getTitle() {
