@@ -5,7 +5,6 @@ public class JobSeeker extends User{
     private ArrayList<Integer> skillIDs;
     private int desiredSalaryMin;
     private int desiredSalaryMax;
-    private int resumeID;
 
     public JobSeeker (){
     }
