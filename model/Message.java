@@ -89,3 +89,4 @@ public class Message {
     public void setRecipientUserId(int recipientUserId) {
         this.recipientUserId = recipientUserId;
     }
+}
