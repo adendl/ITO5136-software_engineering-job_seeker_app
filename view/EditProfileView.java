@@ -30,6 +30,10 @@ public class EditProfileView implements UIView {
 
     }
 
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
     public void addSubmitButtonListener(ActionListener submitButtonListener) {
         submitButton.addActionListener(submitButtonListener);
 

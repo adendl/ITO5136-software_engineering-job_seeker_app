@@ -16,10 +16,6 @@ public class JobSearchController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //get field attributes (these really need to be int)
-                jobSearchView.getCbxLocation();
-                jobSearchView.getCbxCategory();
-                jobSearchView.getTxtSearchBar();
-                jobSearchView.getCbxSalary();
 
                 //send to searchActionController
 

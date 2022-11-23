@@ -18,6 +18,10 @@ public class HomePageJobSeekerView implements UIView {
 
     }
 
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
     public JButton getSearchJobsButton() {
         return searchJobsButton;
     }
