@@ -9,8 +9,8 @@ public class JobSeeker extends User {
     public JobSeeker() {
     }
 
-    public JobSeeker(int jobSeekerID) {
-        this.userID = jobSeekerID;
+    public JobSeeker(String userId) {
+        this.userId = userId;
     }
 
     public ArrayList<Integer> getSkillIDs() {

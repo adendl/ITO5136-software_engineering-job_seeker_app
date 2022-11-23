@@ -8,8 +8,10 @@ public class Recruiter extends User{
 
     public Recruiter(){
     }
-    public Recruiter(int recruiterID){
-        this.userID = recruiterID;
+
+    public Recruiter(String userId)
+    {
+        this.userId = userId;
     }
 
     public String getCompany() {

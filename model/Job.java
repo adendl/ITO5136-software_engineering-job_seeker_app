@@ -149,6 +149,7 @@ public class Job {
     public ResultSet listJobs()
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job");
+        return rs;
     }
 
     public void createJob()

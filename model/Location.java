@@ -11,16 +11,16 @@ public class Location {
     public Location(){
     }
 
-    public Location(int locationID){
-        this.locationID = locationID;
+    public Location(int locationId){
+        this.locationId = locationId;
     }
 
-    public int getLocationID() {
-        return locationID;
+    public int getLocationId() {
+        return locationId;
     }
 
-    public void setLocationID(int locationID) {
-        this.locationID = locationID;
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
     }
 
     public String getState() {
@@ -48,6 +48,7 @@ public class Location {
     public ResultSet listLocations()
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Location");
+        return rs;
     }
 
     public void deleteJob(int locationId)

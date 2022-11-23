@@ -4,13 +4,13 @@ import java.sql.ResultSet;
 import java.time.LocalDate;
 
 public class User {
-    private String userId;
-    private String firstName;
-    private String lastName;
-    private String password;
-    private String userType;
-    private LocalDate dateCreated;
-    private String status;
+    protected String userId;
+    protected String firstName;
+    protected String lastName;
+    protected String password;
+    protected String userType;
+    protected LocalDate dateCreated;
+    protected String status;
 
     public User() {
     }
@@ -102,7 +102,7 @@ public class User {
                 '"' + lastName + '"' + ", " +
                 '"' + firstName + '"' + ", " +
                 '"' + userType + '"' + ", " +
-                '"' + userId + ")";
+                '"' + userId + '"' + ")";
         System.out.println(sql);
         DBConnection.queryDatabase(DBConnection.connectDb(), sql);
     }
