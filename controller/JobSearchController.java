@@ -9,35 +9,31 @@ import java.util.ArrayList;
 
 public class JobSearchController {
 
-    private JobSearchView boundary;
-    private JobDetailsView boundary2;
+    //this needs to take all of the views and models the controller handles and the navigation controller
+    public JobSearchController(JobSearchView jobSearchView, JobDetailsView jobDetailsView, NavigationController navigationController){
 
-    public JobSearchController(JobSearchView jobSearchView, JobDetailsView jobDetailsView){
-        this.boundary = jobSearchView;
-        this.boundary2 = jobDetailsView;
-
-        boundary.addSearchButtonActionListener(new ActionListener() {
+        jobSearchView.addSearchButtonActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //get field attributes (these really need to be int)
-                boundary.getCbxLocation();
-                boundary.getCbxCategory();
-                boundary.getTxtSearchBar();
-                boundary.getCbxSalary();
+                jobSearchView.getCbxLocation();
+                jobSearchView.getCbxCategory();
+                jobSearchView.getTxtSearchBar();
+                jobSearchView.getCbxSalary();
 
                 //send to searchActionController
 
-                //bring search results into frame
-                //boundary2.setVisible(true);
+                //pass the job details panel to the navigation controller
+                navigationController.setContentArea(jobDetailsView.getJobDetailsPanel());
             }
         });
 
-        boundary.addSearchOnProfileButtonActionListener(new ActionListener() {
+        jobSearchView.addSearchOnProfileButtonActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //get field attributes and send to searchActionController
                 //bring search results into frame
-                //boundary2.setVisible(true);
+                navigationController.setContentArea(jobDetailsView.getJobDetailsPanel());
             }
         });
 

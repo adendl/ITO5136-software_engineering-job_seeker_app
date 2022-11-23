@@ -4,26 +4,43 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+public class CreateMessageView {
+    private JTextField subjectText;
 import view.UIView;
 import view.ViewHelper;
 
 public class CreateMessageView implements UIView {
     private JTextField subjectTextField;
     private JTextPane invitationMessageTextPane;
-    private JButton sendInvitationButton;
-    private JPanel panelMain;
+    private JButton sendMessageButton;
+    private JPanel mainPanel;
     private JLabel toLabel;
     private JLabel subjectLabel;
-    private JTextField textField1;
+    private JTextField toText;
     private JLabel newInvitationMessageLabel;
 
     public CreateMessageView() {
-        sendInvitationButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
+    }
+
+    public JTextField getSubjectText() {
+        return subjectText;
+    }
+
+    public JTextPane getInvitationMessageTextPane() {
+        return invitationMessageTextPane;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public JTextField getToText() {
+        return toText;
+    }
+
+    public void addSendMessageButtonListener(ActionListener sendMessageButtonListener) {
+        sendMessageButton.addActionListener(sendMessageButtonListener);
     }
 
     @Override

@@ -10,20 +10,29 @@ public class MailboxView implements UIView {
     private JComboBox sortByBox;
     private JButton previousButton;
     private JButton nextButton;
+    private JLabel titleLabel;
 
     public MailboxView() {
-        previousButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
-        nextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    }
 
-            }
-        });
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public JComboBox getSortByBox() {
+        return sortByBox;
+    }
+
+    public void setSortByBox(JComboBox sortByBox) {
+        this.sortByBox = sortByBox;
+    }
+
+    public void addNextButtonListener(ActionListener buttonListener) {
+        nextButton.addActionListener(buttonListener);
+    }
+    public void addPreviousButtonListener(ActionListener buttonListener) {
+        previousButton.addActionListener(buttonListener);
     }
 
     @Override

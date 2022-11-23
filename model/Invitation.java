@@ -3,7 +3,7 @@ package model;
 public class Invitation{
     private String invitationMessageText;
     private int jobId;
-    private int jobSeeekerId;
+    private int jobSeekerId;
     private float matchScore;
     private int recruiterId;
 
@@ -18,8 +18,8 @@ public class Invitation{
         return jobId;
     }
 
-    public int getJobSeeekerId() {
-        return jobSeeekerId;
+    public int getJobSeekerId() {
+        return jobSeekerId;
     }
 
     public float getMatchScore() {
@@ -38,8 +38,8 @@ public class Invitation{
         this.jobId = jobId;
     }
 
-    public void setJobSeeekerId(int jobSeeekerId) {
-        this.jobSeeekerId = jobSeeekerId;
+    public void setJobSeekerId(int jobSeekerId) {
+        this.jobSeekerId = jobSeekerId;
     }
 
     public void setMatchScore(float matchScore) {

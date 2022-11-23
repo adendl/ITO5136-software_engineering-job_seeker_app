@@ -38,6 +38,30 @@ public class SearchResultsView implements UIView {
         });
     }
 
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public JTextField getSearchTextField() {
+        return searchTextField;
+    }
+
+    public JTable getTable1() {
+        return table1;
+    }
+
+    public void addSearchButtonListener(ActionListener buttonListener) {
+        searchButton.addActionListener(buttonListener);
+    }
+
+    public void addNextButtonListener(ActionListener buttonListener) {
+        nextButton.addActionListener(buttonListener);
+    }
+
+    public void addPreviousButtonListener(ActionListener buttonListener) {
+        previousButton.addActionListener(buttonListener);
+    }
+
     @Override
     public JComponent getUIView() {
         return panelMain;

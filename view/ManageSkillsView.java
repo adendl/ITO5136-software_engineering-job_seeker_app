@@ -9,14 +9,14 @@ import view.ViewHelper;
 public class ManageSkillsView implements UIView {
     private JPanel panelMain;
     private JList skillsList;
-    private JTextField addBox;
+    private JTextField addText;
     private JButton addButton;
     private JButton deleteButton;
-    private JLabel deleteText;
-
-    private JLabel addText;
-    private JTextField deleteBox;
+    private JLabel deleteLabel;
+    private JLabel addLabel;
+    private JTextField deleteText;
     private JScrollPane scrollPane;
+    private JLabel titleLabel;
 
     private DefaultListModel<String> dlm = new DefaultListModel<String>();
 
@@ -24,14 +24,14 @@ public class ManageSkillsView implements UIView {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(addBox.getText());
-                if (dlm.contains(addBox.getText()))
+                System.out.println(addText.getText());
+                if (dlm.contains(addText.getText()))
                 {
                     System.out.println("NOT ALLOWED");
                 }
                 else
                 {
-                    dlm.addElement(addBox.getText());
+                    dlm.addElement(addText.getText());
                     skillsList.setModel(dlm);
                 }
             }
@@ -39,12 +39,36 @@ public class ManageSkillsView implements UIView {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (dlm.contains(deleteBox.getText()))
+                if (dlm.contains(deleteText.getText()))
                 {
-                    dlm.remove(dlm.indexOf(deleteBox.getText()));
+                    dlm.remove(dlm.indexOf(deleteText.getText()));
                 }
             }
         });
+    }
+
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public JTextField getAddText() {
+        return addText;
+    }
+
+    public JTextField getDeleteText() {
+        return deleteText;
+    }
+
+    public JList getSkillsList()
+        return skillsList;
+    }
+
+    public void addAddButtonListener(ActionListener buttonListener) {
+        addButton.addActionListener(buttonListener);
+    }
+
+    public void addDeleteButtonListener(ActionListener buttonListener) {
+        deleteButton.addActionListener(buttonListener);
     }
 
     @Override

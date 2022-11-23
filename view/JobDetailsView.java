@@ -24,6 +24,10 @@ public class JobDetailsView implements UIView {
     private JTextArea txtJobTitle;
     private JLabel lbJobDetails;
 
+    public JPanel getJobDetailsPanel() {
+        return JobDetailsPanel;
+    }
+
     public JobDetailsView() {
 
     }

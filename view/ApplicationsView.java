@@ -33,6 +33,31 @@ public class ApplicationsView implements UIView {
         });
     }
 
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public JTable getTable1() {
+        return table1;
+    }
+
+    public void setTable1(JTable table1) {
+        this.table1 = table1;
+    }
+
+    public void addPreviousButtonListener(ActionListener previousButtonListener) {
+        previousButton.addActionListener(previousButtonListener);
+    }
+
+    public void addNextButtonListener(ActionListener nextButtonListener) {
+        nextButton.addActionListener(nextButtonListener);
+    }
+
+    public void addSortByButtonListener(ActionListener sortByButtonListener) {
+        sortByButton.addActionListener(sortByButtonListener);
+    }
+
+
     @Override
     public JComponent getUIView() {
         return panelMain;

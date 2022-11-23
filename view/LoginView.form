@@ -47,7 +47,7 @@
           <text value="Password"/>
         </properties>
       </component>
-      <component id="3e5e8" class="javax.swing.JTextField" binding="emailTextField">
+      <component id="3e5e8" class="javax.swing.JTextField" binding="emailText">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="20"/>
@@ -57,7 +57,7 @@
           <margin top="2" left="6" bottom="2" right="6"/>
         </properties>
       </component>
-      <component id="b4bc0" class="javax.swing.JPasswordField" binding="passwordField">
+      <component id="b4bc0" class="javax.swing.JPasswordField" binding="passwordText">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="20"/>
@@ -97,7 +97,7 @@
           <text value="Login"/>
         </properties>
       </component>
-      <component id="7fed" class="javax.swing.JLabel" binding="sloganlabel">
+      <component id="7fed" class="javax.swing.JLabel" binding="sloganLabel">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>

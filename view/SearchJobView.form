@@ -10,7 +10,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="a2489" class="javax.swing.JTextField" binding="enterKeywordsTextField" default-binding="true">
+      <component id="a2489" class="javax.swing.JTextField" binding="enterKeywordsText">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -31,7 +31,7 @@
           <text value="Search"/>
         </properties>
       </component>
-      <component id="6ee8" class="javax.swing.JLabel">
+      <component id="6ee8" class="javax.swing.JLabel" binding="searchJobsLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -41,7 +41,7 @@
           <text value="Search Jobs"/>
         </properties>
       </component>
-      <component id="a0bc8" class="javax.swing.JComboBox" binding="locationBox">
+      <component id="a0bc8" class="javax.swing.JComboBox" binding="locationComboBox">
         <constraints>
           <grid row="3" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="2" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -49,7 +49,7 @@
           <model/>
         </properties>
       </component>
-      <component id="e8c16" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="e8c16" class="javax.swing.JComboBox" binding="salaryComboBox">
         <constraints>
           <grid row="3" column="2" row-span="2" col-span="1" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -60,7 +60,7 @@
           </model>
         </properties>
       </component>
-      <component id="e9a6e" class="javax.swing.JLabel">
+      <component id="e9a6e" class="javax.swing.JLabel" binding="salaryRangeLabel">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -71,7 +71,7 @@
           <text value="Salary  Range"/>
         </properties>
       </component>
-      <component id="e51be" class="javax.swing.JLabel">
+      <component id="e51be" class="javax.swing.JLabel" binding="categoriesLabel">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -80,7 +80,7 @@
           <text value="Categories"/>
         </properties>
       </component>
-      <component id="a9155" class="javax.swing.JLabel">
+      <component id="a9155" class="javax.swing.JLabel" binding="locationLabel">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -105,7 +105,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="43c0f" class="javax.swing.JList" binding="list1" default-binding="true">
+          <component id="43c0f" class="javax.swing.JList" binding="resultsList">
             <constraints/>
             <properties>
               <model/>

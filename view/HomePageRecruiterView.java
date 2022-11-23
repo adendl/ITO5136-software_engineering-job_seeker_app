@@ -15,34 +15,42 @@ public class HomePageRecruiterView implements UIView {
     private JButton editCategoriesButton;
     private JButton editProfileButton;
 
-    // temporary! we'll do this in the controller later
-    NavigationController navController;
+    public HomePageRecruiterView() {
 
-    public HomePageRecruiterView(NavigationController controller) {
-        navController = controller;
-
-        createNewJobButton.addActionListener((ActionEvent e) -> {
-            //JOptionPane.showMessageDialog(null, "create new job");
-            CreateJobView jobView = new CreateJobView();
-            navController.pushView(jobView);
-        });
-
-        manageListedJobsButton.addActionListener((ActionEvent e) -> {
-            JOptionPane.showMessageDialog(null, "manage listed jobs");
-        });
-
-        editCategoriesButton.addActionListener((ActionEvent e) -> {
-            JOptionPane.showMessageDialog(null, "edit categories");
-        });
-
-        editProfileButton.addActionListener((ActionEvent e) -> {
-            JOptionPane.showMessageDialog(null, "edit profile");
-        });
+    }
 
     }
 
     @Override
     public JComponent getUIView() {
         return panelMain;
+    }
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public void addCreateNewJobButtonListener(ActionListener buttonListener) {
+        createNewJobButton.addActionListener(buttonListener);
+    }
+
+    public void addEditProfileButtonListener(ActionListener buttonListener) {
+        editProfileButton.addActionListener(buttonListener);
+    }
+
+    public void addEditCategoriesButtonListener(ActionListener buttonListener) {
+        editCategoriesButton.addActionListener(buttonListener);
+    }
+
+    public void addManageListedJobsButtonListener(ActionListener buttonListener) {
+        manageListedJobsButton.addActionListener(buttonListener);
+    }
+
+    public static void main(String[] args)
+    {
+        HomePageRecruiterView h = new HomePageRecruiterView();
+        h.setContentPane(h.panelMain);
+        h.setSize(800,600);
+        h.setVisible(true);
+
     }
 }

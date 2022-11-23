@@ -42,7 +42,7 @@
           <text value="First Name"/>
         </properties>
       </component>
-      <component id="80ce2" class="javax.swing.JTextField" binding="firstNameTextField">
+      <component id="80ce2" class="javax.swing.JTextField" binding="firstNameText">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -68,7 +68,7 @@
           <text value="Email"/>
         </properties>
       </component>
-      <component id="cd8d2" class="javax.swing.JTextField" binding="emailTextField">
+      <component id="cd8d2" class="javax.swing.JTextField" binding="emailText">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -85,7 +85,7 @@
           <text value="Enter Password"/>
         </properties>
       </component>
-      <component id="1e18a" class="javax.swing.JPasswordField" binding="enterPasswordField">
+      <component id="1e18a" class="javax.swing.JPasswordField" binding="enterPasswordText">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -102,7 +102,7 @@
           <text value="Confirm Password"/>
         </properties>
       </component>
-      <component id="36396" class="javax.swing.JPasswordField" binding="confirmPasswordField">
+      <component id="36396" class="javax.swing.JPasswordField" binding="confirmPasswordText">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -133,7 +133,7 @@
           <name value=""/>
         </properties>
       </component>
-      <component id="6b66" class="javax.swing.JTextField" binding="lastNameTextField">
+      <component id="6b66" class="javax.swing.JTextField" binding="lastNameText">
         <constraints>
           <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>

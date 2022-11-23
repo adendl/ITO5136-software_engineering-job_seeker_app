@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.CreateJobView">
-  <grid id="27dc6" binding="CreateJobPanel" layout-manager="GridLayoutManager" row-count="14" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="14" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="500" height="539"/>
@@ -8,15 +8,15 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="15ae8" class="javax.swing.JLabel" binding="lbJobTitle">
+      <component id="15ae8" class="javax.swing.JLabel" binding="jobTitleLabel">
         <constraints>
           <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="model.Job Title"/>
+          <text value="Job Title"/>
         </properties>
       </component>
-      <component id="d02fa" class="javax.swing.JLabel" binding="lbJobDescription">
+      <component id="d02fa" class="javax.swing.JLabel" binding="jobDescriptionLabel">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -24,7 +24,7 @@
           <text value="JobDescription"/>
         </properties>
       </component>
-      <component id="7148" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
+      <component id="7148" class="javax.swing.JTextArea" binding="jobDescriptionText">
         <constraints>
           <grid row="2" column="1" row-span="9" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
@@ -32,23 +32,23 @@
         </constraints>
         <properties/>
       </component>
-      <component id="b37dd" class="javax.swing.JLabel" binding="lbJobType">
+      <component id="b37dd" class="javax.swing.JLabel" binding="jobTypeLabel">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="model.Job Type"/>
+          <text value="Job Type"/>
         </properties>
       </component>
-      <component id="512a3" class="javax.swing.JLabel" binding="lbJobCategory">
+      <component id="512a3" class="javax.swing.JLabel" binding="jobCategoryLabel">
         <constraints>
           <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="model.Job Category"/>
+          <text value="Job Category"/>
         </properties>
       </component>
-      <component id="723b5" class="javax.swing.JLabel" binding="lbCompany">
+      <component id="723b5" class="javax.swing.JLabel" binding="companyLabel">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -56,7 +56,7 @@
           <text value="Company"/>
         </properties>
       </component>
-      <component id="99ecb" class="javax.swing.JLabel" binding="lbLocation">
+      <component id="99ecb" class="javax.swing.JLabel" binding="locationLabel">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -64,15 +64,15 @@
           <text value="Location"/>
         </properties>
       </component>
-      <component id="8b122" class="javax.swing.JButton" binding="btnCreateJob">
+      <component id="8b122" class="javax.swing.JButton" binding="createJobButton">
         <constraints>
           <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Create model.Job Listing"/>
+          <text value="Create Job Listing"/>
         </properties>
       </component>
-      <component id="8f9f7" class="javax.swing.JLabel" binding="lbSalaryRange">
+      <component id="8f9f7" class="javax.swing.JLabel" binding="salaryRangeLabel">
         <constraints>
           <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -80,15 +80,15 @@
           <text value="Salary Range"/>
         </properties>
       </component>
-      <component id="99b42" class="javax.swing.JLabel" binding="lbCreateJob">
+      <component id="99b42" class="javax.swing.JLabel" binding="createJobLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Create model.Job Listing"/>
+          <text value="Create Job Listing"/>
         </properties>
       </component>
-      <component id="1035b" class="javax.swing.JTextArea" binding="textArea2" default-binding="true">
+      <component id="1035b" class="javax.swing.JTextArea" binding="jobTitleText">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
@@ -96,7 +96,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="fcdfd" class="javax.swing.JTextArea" binding="textArea3" default-binding="true">
+      <component id="fcdfd" class="javax.swing.JTextArea" binding="locationText">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
@@ -104,7 +104,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="51a95" class="javax.swing.JTextArea" binding="textArea4" default-binding="true">
+      <component id="51a95" class="javax.swing.JTextArea" binding="companyText">
         <constraints>
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
@@ -112,7 +112,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="8e76e" class="javax.swing.JTextArea" binding="textArea5" default-binding="true">
+      <component id="8e76e" class="javax.swing.JTextArea" binding="jobTypeText">
         <constraints>
           <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
@@ -120,7 +120,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="10b3c" class="javax.swing.JTextArea" binding="textArea6" default-binding="true">
+      <component id="10b3c" class="javax.swing.JTextArea" binding="jobCategoryText">
         <constraints>
           <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
@@ -128,7 +128,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="f4730" class="javax.swing.JTextArea" binding="textArea7" default-binding="true">
+      <component id="f4730" class="javax.swing.JTextArea" binding="salaryRangeText">
         <constraints>
           <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>

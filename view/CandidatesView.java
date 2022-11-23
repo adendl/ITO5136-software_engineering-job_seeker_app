@@ -37,6 +37,26 @@ public class CandidatesView implements UIView {
     public JComponent getUIView() {
         return panelMain;
     }
+
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public JTable getTable1() {
+        return table1;
+    }
+
+    public void setTable1(JTable table1) {
+        this.table1 = table1;
+    }
+
+    public void addPreviousButtonListener(ActionListener previousButtonListener) {
+        previousButton.addActionListener(previousButtonListener);
+    }
+
+    public void addNextButtonListener(ActionListener nextButtonListener) {
+        nextButton.addActionListener(nextButtonListener);
+    }
     public static void main(String[] args)
     {
         CandidatesView c = new CandidatesView();

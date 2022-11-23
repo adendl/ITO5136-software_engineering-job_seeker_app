@@ -13,19 +13,19 @@ public class ConfirmPage implements UIView {
     private JPanel panelMain;
 
     public ConfirmPage() {
-        yesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
+    }
 
-        noButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("no");
-            }
-        });
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public void addYesButtonListener(ActionListener yesButtonListener) {
+        yesButton.addActionListener(yesButtonListener);
+    }
+
+    public void addNoButtonListener(ActionListener noButtonListener) {
+        noButton.addActionListener(noButtonListener);
     }
 
     @Override

@@ -8,6 +8,6 @@ public class Driver {
         JobSearchView myJobSearchView = new JobSearchView();
         //myJobSearchView.setVisible(true);
         JobDetailsView myJobDetailsView = new JobDetailsView();
-        JobSearchController myJobSearchController = new JobSearchController(myJobSearchView, myJobDetailsView);
+        //JobSearchController myJobSearchController = new JobSearchController(myJobSearchView, myJobDetailsView);
     }
 }

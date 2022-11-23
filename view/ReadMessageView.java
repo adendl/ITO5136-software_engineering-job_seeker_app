@@ -15,21 +15,31 @@ public class ReadMessageView implements UIView {
     private JPanel optionsPanel;
     private JButton replyButton;
     private JButton deleteButton;
-    private JTextField textField1;
+    private JTextField fromText;
+    private JLabel titleLabel;
 
     public ReadMessageView() {
-        replyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    }
 
-            }
-        });
+    public JTextField getSubjectText() {
+        return subjectText;
+    }
+
+    public JTextPane getInvitationMessageTextPane() {
+        return invitationMessageTextPane;
+    }
+
+    public JTextField getFromText() {
+        return fromText;
+    }
+
+    public void addDeleteButtonListener(ActionListener buttonListener) {
+        deleteButton.addActionListener(buttonListener);
+    }
+
+    public void addReplyButtonListener(ActionListener buttonListener) {
+        replyButton.addActionListener(buttonListener);
     }
 
     @Override

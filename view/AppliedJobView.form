@@ -23,7 +23,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="252a9" class="javax.swing.JLabel" binding="firstNameField">
+          <component id="252a9" class="javax.swing.JLabel" binding="firstNameLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -32,7 +32,7 @@
               <text value="First Name"/>
             </properties>
           </component>
-          <component id="60961" class="javax.swing.JLabel" binding="emailField">
+          <component id="60961" class="javax.swing.JLabel" binding="emailLabel">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -50,7 +50,7 @@
               <text value="Phone"/>
             </properties>
           </component>
-          <component id="3eb34" class="javax.swing.JTextField" binding="firstNameTextField">
+          <component id="3eb34" class="javax.swing.JTextField" binding="firstNameText">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="30"/>
@@ -58,7 +58,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="a2aad" class="javax.swing.JTextField" binding="phoneTextField">
+          <component id="a2aad" class="javax.swing.JTextField" binding="phoneText">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="30"/>
@@ -106,7 +106,7 @@
               <text value="Optional: PDF or DOCX files only"/>
             </properties>
           </component>
-          <component id="41ada" class="javax.swing.JTextField" binding="basket_weaver_2022PdfTextField" default-binding="true">
+          <component id="41ada" class="javax.swing.JTextField" binding="basket_weaver_2022PdfText">
             <constraints>
               <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="30"/>
@@ -118,7 +118,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="a1f51" class="javax.swing.JTextField" binding="lastNameTextField">
+          <component id="a1f51" class="javax.swing.JTextField" binding="lastNameText">
             <constraints>
               <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="55" height="30"/>
@@ -128,7 +128,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="a85ab" class="javax.swing.JLabel" binding="lastNameField">
+          <component id="a85ab" class="javax.swing.JLabel" binding="lastNameLabel">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -137,7 +137,7 @@
               <text value="Last Name"/>
             </properties>
           </component>
-          <component id="acf41" class="javax.swing.JTextField" binding="emailTextField">
+          <component id="acf41" class="javax.swing.JTextField" binding="emailText">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="30"/>
@@ -147,7 +147,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="98432" class="javax.swing.JTextField" binding="my_Resume_2022PdfTextField" default-binding="true">
+          <component id="98432" class="javax.swing.JTextField" binding="my_Resume_2022PdfText">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="30"/>
@@ -159,7 +159,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="6377d" class="javax.swing.JButton" binding="viewCoverLetterBtn">
+          <component id="6377d" class="javax.swing.JButton" binding="viewCoverLetterButton">
             <constraints>
               <grid row="7" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="175" height="30"/>
@@ -171,7 +171,7 @@
               <text value="View"/>
             </properties>
           </component>
-          <component id="b28a3" class="javax.swing.JButton" binding="viewResumeBtn">
+          <component id="b28a3" class="javax.swing.JButton" binding="viewResumeButton">
             <constraints>
               <grid row="4" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="30"/>
