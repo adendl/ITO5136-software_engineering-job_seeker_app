@@ -92,6 +92,7 @@ public abstract class User {
 
     public ResultSet listUsers() {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from User");
+        return rs;
     }
 
     public void createUser() {
