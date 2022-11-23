@@ -25,7 +25,7 @@ public class HomeRecruiterController {
         homePageRecruiterView.addEditProfileButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                navigationController.setContentArea();
+                //navigationController.setContentArea();
             }
         });
 
