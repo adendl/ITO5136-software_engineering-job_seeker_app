@@ -146,6 +146,11 @@ public class Job {
         return rs;
     }
 
+    public ResultSet listJobs()
+    {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job");
+    }
+
     public void createJob()
     {
         String sql = "INSERT INTO Job (keyword, title, dateCreated, status, salaryMin, salaryMax, locationId, recruiterId, expiryDate, description, company, categoryId, jobId) VALUES (" +
@@ -173,7 +178,9 @@ public class Job {
 
     public void updateJob(int jobId, String fieldName, String value)
     {
-        DBConnection.queryDatabase(DBConnection.connectDb(), "update Job \nset " + fieldName + " = " + value + "\nwhere jobId=" + jobId);
+        String sql = "update Job \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere jobId=" + jobId;
+        System.out.println(sql);
+        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
     }
 
 
