@@ -1,14 +1,21 @@
 package model;
 
 import java.sql.ResultSet;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
-public abstract class User {
+public class User {
+    private String userId;
+    private String firstName;
+    private String lastName;
+    private String password;
+    private String userType;
+    private LocalDate dateCreated;
+    private String status;
 
     public User() {
     }
 
-    public User(String userId, String firstName, String lastName, String password, UserType userType, Timestamp dateCreated, String status) {
+    public User(String userId, String firstName, String lastName, String password, String userType, LocalDate dateCreated, String status) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -50,19 +57,19 @@ public abstract class User {
         this.password = password;
     }
 
-    public UserType getUserType() {
+    public String getUserType() {
         return userType;
     }
 
-    public void setUserType(UserType userType) {
+    public void setUserType(String userType) {
         this.userType = userType;
     }
 
-    public Timestamp getDateCreated() {
+    public LocalDate getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Timestamp dateCreated) {
+    public void setDateCreated(LocalDate dateCreated) {
         this.dateCreated = dateCreated;
     }
 
@@ -76,14 +83,6 @@ public abstract class User {
 
     public enum UserType {JOBSEEKER, RECRUITER, ADMIN}
 
-    ;
-    protected String userId;
-    protected String firstName;
-    protected String lastName;
-    protected String password;
-    protected UserType userType;
-    protected Timestamp dateCreated;
-    protected String status;
 
     public ResultSet getUser(String userId) {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from User where userId='" + userId + "'");
