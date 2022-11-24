@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HomePageAdminView extends JPanel{
+import view.UIView;
+import view.ViewHelper;
+
+public class HomePageAdminView implements UIView {
     private JButton manageUsersButton;
     private JPanel panelMain;
     private JButton manageCategoriesButton;
@@ -39,4 +42,13 @@ public class HomePageAdminView extends JPanel{
 
     }
 
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
+
+    public static void main(String[] args) {
+        HomePageAdminView view = new HomePageAdminView();
+        ViewHelper.showStandaloneFrame(view);
+    }
 }
