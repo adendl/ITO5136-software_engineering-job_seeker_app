@@ -3,8 +3,10 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.UIView;
+import view.ViewHelper;
 
-public class JobApplicationView {
+public class JobApplicationView implements UIView {
     private JLabel titleLabel;
     private JTextField firstNameTextField;
     private JTextField lastNameTextField;
@@ -24,6 +26,7 @@ public class JobApplicationView {
     private JLabel jobDescriptionLabel;
     private JTextField basket_weaver_2022PdfTextField;
     private JTextField my_Resume_2022PdfTextField;
+    private JPanel panelMain;
 
     public JobApplicationView() {
         browseResumeBtn.addActionListener(new ActionListener() {
@@ -44,5 +47,15 @@ public class JobApplicationView {
 
             }
         });
+    }
+
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
+
+    public static void main(String[] args) {
+        JobApplicationView view = new JobApplicationView();
+        ViewHelper.showStandaloneFrame(view);
     }
 }
