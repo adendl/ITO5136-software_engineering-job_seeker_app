@@ -17,7 +17,7 @@ public class CreateJobController {
                 String company = createJobView.getCompanyText().getText();
                 String salaryRange = createJobView.getSalaryRangeText().getText();
 
-                //need to cinstruct properly.
+                //need to construct properly.
                 Job newJob = new Job();
             }
         });
