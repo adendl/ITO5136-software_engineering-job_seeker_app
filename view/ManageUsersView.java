@@ -3,8 +3,10 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.UIView;
+import view.ViewHelper;
 
-public class ManageUsersView extends JPanel {
+public class ManageUsersView implements UIView {
     private JPanel panelMain;
     private JList userList;
     private JTextField manageUsersBox;
@@ -32,11 +34,14 @@ public class ManageUsersView extends JPanel {
         });
     }
 
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
+
     public static void main(String[] args)
     {
         ManageUsersView m = new ManageUsersView();
-        m.setSize(800, 600);
-        m.setVisible(true);
-
+        ViewHelper.showStandaloneFrame(m);
     }
 }
