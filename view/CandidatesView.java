@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CandidatesView extends JPanel {
+import view.UIView;
+import view.ViewHelper;
+
+public class CandidatesView implements UIView {
     private JPanel panelMain;
     private JTable table1;
     private JButton searchButton;
@@ -29,11 +32,15 @@ public class CandidatesView extends JPanel {
             }
         });
     }
+
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
     public static void main(String[] args)
     {
         CandidatesView c = new CandidatesView();
-        c.setSize(800, 600);
-        c.setVisible(true);
+        ViewHelper.showStandaloneFrame(c);
     }
 
 }
