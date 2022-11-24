@@ -1,23 +1,25 @@
 package model;
 
 public class JobCategory {
-    private int categoryID;
+    private int categoryId;
     private String name;
-    private String recruiterID;
+    private String recruiterId;
 
-    public JobCategory(){
+    public JobCategory() {
     }
 
-    public JobCategory(int categoryID){
-        this.categoryID = categoryID;
+    public JobCategory(int categoryId, String name, String recruiterId) {
+        this.categoryId = categoryId;
+        this.name = name;
+        this.recruiterId = recruiterId;
     }
 
-    public int getCategoryID() {
-        return categoryID;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryID(int categoryID) {
-        this.categoryID = categoryID;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {
@@ -28,11 +30,13 @@ public class JobCategory {
         this.name = name;
     }
 
-    public String getRecruiterID() {
-        return recruiterID;
+    public String getRecruiterId() {
+        return recruiterId;
     }
 
-    public void setRecruiterID(String recruiterID) {
-        this.recruiterID = recruiterID;
+    public void setRecruiterId(String recruiterId) {
+        this.recruiterId = recruiterId;
     }
 }
+
+

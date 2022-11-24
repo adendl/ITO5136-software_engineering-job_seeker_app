@@ -1,23 +1,23 @@
 package model;
 
 public class CoverLetter {
-    private int coverLetterID;
+    private int coverLetterId;
     private String name;
     private String path;
 
     public CoverLetter(){
     }
 
-    public CoverLetter(int coverLetterID){
-        this.coverLetterID = coverLetterID;
+    public CoverLetter(int coverLetterId){
+        this.coverLetterId = coverLetterId;
     }
 
-    public int getCoverLetterID() {
-        return coverLetterID;
+    public int getCoverLetterId() {
+        return coverLetterId;
     }
 
-    public void setCoverLetterID(int coverLetterID) {
-        this.coverLetterID = coverLetterID;
+    public void setCoverLetterId(int coverLetterId) {
+        this.coverLetterId = coverLetterId;
     }
 
     public String getName() {

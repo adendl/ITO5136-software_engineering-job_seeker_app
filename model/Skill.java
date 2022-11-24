@@ -1,31 +1,18 @@
 package model;
 
 public class Skill {
-    private String description;
-    private int jobseekerID;
+    private String name;
     private int skillID;
 
     public Skill(){
     }
 
-    public Skill(int skillID){
-        this.skillID = skillID;
+    public String getName() {
+        return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getJobseekerID() {
-        return jobseekerID;
-    }
-
-    public void setJobseekerID(int jobseekerID) {
-        this.jobseekerID = jobseekerID;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getSkillID() {
@@ -33,6 +20,11 @@ public class Skill {
     }
 
     public void setSkillID(int skillID) {
+        this.skillID = skillID;
+    }
+
+    public Skill(String name, int skillID) {
+        this.name = name;
         this.skillID = skillID;
     }
 }

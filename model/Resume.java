@@ -4,8 +4,16 @@ public class Resume {
     private String name;
     private String path;
     private int resumeID;
+    private int userId;
 
-    public Resume(){
+    public Resume() {
+    }
+
+    public Resume(String name, String path, int resumeID, int userId) {
+        this.name = name;
+        this.path = path;
+        this.resumeID = resumeID;
+        this.userId = userId;
     }
 
     public String getName() {
@@ -31,4 +39,13 @@ public class Resume {
     public void setResumeID(int resumeID) {
         this.resumeID = resumeID;
     }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }
+
