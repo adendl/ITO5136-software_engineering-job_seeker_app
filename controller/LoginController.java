@@ -10,16 +10,27 @@ import java.awt.event.ActionListener;
 
 public class LoginController {
 
-    public LoginController(NavigationController navigationController , LoginView loginView, CreateUserView createUserView,
+    public LoginController(NavigationController navigationController , LoginView loginView, CreateUserView createUserView, User user,
                            HomePageAdminView homePageAdminView, HomePageRecruiterView homePageRecruiterView, HomePageJobSeekerView homePageJobSeekerView){
 
         loginView.addLoginButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //find out if the email entered matches the db. (findUserIDByEmail method in model)
+                //find out if the email entered matches the db. (findUserIDByEmail method in model) load into user object
+                loginView.getEmailText().getText();
                 //check if the password matches the email. (verifyUser method in model)
                 //send to home page depending on the type of user.
-                navigationController.setContentArea(homePageJobSeekerView.getPanelMain());
+                switch(user.getUserType()) {
+                    case JOBSEEKER:
+                        navigationController.setContentArea(homePageJobSeekerView.getPanelMain());
+                        break;
+                    case RECRUITER:
+                        navigationController.setContentArea(homePageRecruiterView.getPanelMain());
+                        break;
+                    case ADMIN:
+                        navigationController.setContentArea(homePageAdminView.getPanelMain());
+                        break;
+                }
             }
         });
 

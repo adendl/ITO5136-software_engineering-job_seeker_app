@@ -3,7 +3,7 @@ package model;
 import java.sql.Timestamp;
 
 public abstract class User {
-    public enum UserType {JOBSEEKER, RECRUITER};
+    public enum UserType {JOBSEEKER, RECRUITER, ADMIN};
     protected int userID;
     protected String firstName;
     protected String lastName;
