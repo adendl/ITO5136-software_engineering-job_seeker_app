@@ -2,8 +2,10 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import view.UIView;
+import view.ViewHelper;
 
-public class ProfileView extends JFrame {
+public class ProfileView implements UIView {
     private JPanel ProfilePanel;
     private JTextArea txtSkills;
     private JButton btnResume;
@@ -16,15 +18,17 @@ public class ProfileView extends JFrame {
     private JLabel lbCandidateName;
 
     public ProfileView() {
-        setContentPane(ProfilePanel);
-        setTitle("Profile");
-        setSize(900, 600);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
+
+    }
+
+    @Override
+    public JComponent getUIView() {
+        return ProfilePanel;
     }
 
     public static void main(String[] args) {
         ProfileView myProfileView = new ProfileView();
+        ViewHelper.showStandaloneFrame(myProfileView);
     }
 
     {
