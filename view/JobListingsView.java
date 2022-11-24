@@ -4,7 +4,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class JobListingsView extends JPanel{
+import model.Job;
+import view.UIView;
+import view.ViewHelper;
+
+public class JobListingsView implements UIView {
     private JPanel panelMain;
     private JTable jobListingsTable;
     private JButton searchButton;
@@ -29,4 +33,13 @@ public class JobListingsView extends JPanel{
         });
     }
 
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
+
+    public static void main(String[] args) {
+        JobListingsView view = new JobListingsView();
+        ViewHelper.showStandaloneFrame(view);
+    }
 }
