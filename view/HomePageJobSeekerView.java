@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HomePageJobSeekerView extends JPanel{
+import view.UIView;
+import view.ViewHelper;
+
+public class HomePageJobSeekerView implements UIView {
     private JButton searchJobsButton;
     private JPanel panelMain;
     private JButton viewApplicationsButton;
@@ -35,6 +38,15 @@ public class HomePageJobSeekerView extends JPanel{
 
             }
         });
+    }
 
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
+
+    public static void main(String[] args) {
+        HomePageJobSeekerView view = new HomePageJobSeekerView();
+        ViewHelper.showStandaloneFrame(view);
     }
 }
