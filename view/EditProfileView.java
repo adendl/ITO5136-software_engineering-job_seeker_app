@@ -30,6 +30,30 @@ public class EditProfileView implements UIView {
 
     }
 
+    public JTextArea getSkillsText() {
+        return skillsText;
+    }
+
+    public JTextField getFirstNameText() {
+        return firstNameText;
+    }
+
+    public JTextField getLastNameText() {
+        return lastNameText;
+    }
+
+    public JTextField getEmailText() {
+        return emailText;
+    }
+
+    public JTextField getPhoneNumberText() {
+        return phoneNumberText;
+    }
+
+    public JTextField getAddressText() {
+        return addressText;
+    }
+
     public JPanel getPanelMain() {
         return panelMain;
     }

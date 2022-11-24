@@ -1,8 +1,10 @@
 package controller;
 
+import model.JobSeeker;
 import view.*;
 import model.User;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,6 +35,14 @@ public class LoginController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //add user to the db.
+                String userEmailInput = createUserView.getEmailText().getText();
+                String userPasswordInput = createUserView.getConfirmPasswordText().getText();
+                String userFirstNameInput = createUserView.getFirstNameText().getText();
+                String userLastNameInput = createUserView.getLastNameText().getText();
+                JComboBox userTypeInput = createUserView.getSelectUserTypeComboBox();
+                //pass in values
+                JobSeeker myNewJobSeekerUser = new JobSeeker();
+                //myNewJobSeekerUser.createJobSeeker;
             }
         });
     }
