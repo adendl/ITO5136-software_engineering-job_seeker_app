@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ConfirmPage extends JPanel {
+import view.UIView;
+import view.ViewHelper;
+
+public class ConfirmPage implements UIView {
     private JButton yesButton;
     private JButton noButton;
     private JPanel panelMain;
@@ -25,10 +28,14 @@ public class ConfirmPage extends JPanel {
         });
     }
 
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
+
     public static void main(String[] args)
     {
         ConfirmPage c = new ConfirmPage();
-        c.setSize(800, 600);
-        c.setVisible(true);
+        ViewHelper.showStandaloneFrame(c);
     }
 }
