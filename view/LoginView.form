@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.LoginView">
-  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="50" left="50" bottom="50" right="50"/>
     <constraints>
       <xy x="20" y="20" width="800" height="600"/>
@@ -73,7 +73,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="Or to create a new accoutn click below"/>
+          <text value="Or to create a new account click below"/>
         </properties>
       </component>
       <component id="fcff1" class="javax.swing.JButton" binding="createNewAccountButton" default-binding="true">
