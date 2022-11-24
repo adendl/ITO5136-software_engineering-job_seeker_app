@@ -1,6 +1,8 @@
 package controller;
 
+import model.Administrator;
 import model.JobSeeker;
+import model.Recruiter;
 import view.*;
 import model.User;
 
@@ -45,15 +47,29 @@ public class LoginController {
         createUserView.addCreateAccountButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //add user to the db.
+
+                //hold input
                 String userEmailInput = createUserView.getEmailText().getText();
                 String userPasswordInput = createUserView.getConfirmPasswordText().getText();
                 String userFirstNameInput = createUserView.getFirstNameText().getText();
                 String userLastNameInput = createUserView.getLastNameText().getText();
                 JComboBox userTypeInput = createUserView.getSelectUserTypeComboBox();
-                //pass in values
-                JobSeeker myNewJobSeekerUser = new JobSeeker();
-                //myNewJobSeekerUser.createJobSeeker;
+
+                //create object, add to constructor and call method to add to db
+                switch (createUserView.getSelectUserTypeComboBox().getSelectedIndex()){
+                    //job seeker selection
+                    case 1:
+                        JobSeeker newJobSeeker = new JobSeeker();
+                        break;
+                    //recruiter selection
+                    case 2:
+                        Recruiter newRecruiter = new Recruiter();
+                        break;
+                    //admin selection
+                    case 3:
+                        Administrator newAdmin = new Administrator();
+                        break;
+                }
             }
         });
     }
