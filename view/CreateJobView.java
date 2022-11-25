@@ -35,7 +35,7 @@ public class CreateJobView implements UIView {
 
     @Override
     public JComponent getUIView() {
-        return CreateJobPanel;
+        return panelMain;
     }
 
     public JTextArea getJobDescriptionText() {

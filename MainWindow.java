@@ -52,7 +52,7 @@ public class MainWindow {
         mainWindow.setLocationRelativeTo(null);
 
         // initial view is going to be recruiter hub, for now
-        HomePageRecruiterView recruiterView = new HomePageRecruiterView(navigationController);
+        HomePageRecruiterView recruiterView = new HomePageRecruiterView();
         navigationController.pushView(recruiterView);
 
         mainWindow.setVisible(true);

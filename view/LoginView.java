@@ -6,10 +6,7 @@ import java.awt.event.ActionListener;
 import view.UIView;
 import view.ViewHelper;
 
-public class LoginView implements UIView {
-    private JTextField emailTextField;
-    private JPasswordField passwordField;
-public class LoginView {
+public class LoginView implements UIView{
     private JTextField emailText;
     private JPasswordField passwordText;
     private JButton createNewAccountButton;
@@ -51,6 +48,6 @@ public class LoginView {
 
     public static void main(String[] args) {
         LoginView view = new LoginView();
-        ViewHelper.showStandaloneFrame(view);
+        ViewHelper.showStandaloneFrame((UIView) view);
     }
 }

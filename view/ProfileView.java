@@ -24,7 +24,7 @@ public class ProfileView implements UIView {
 
     @Override
     public JComponent getUIView() {
-        return ProfilePanel;
+        return panelMain;
     }
 
     public static void main(String[] args) {

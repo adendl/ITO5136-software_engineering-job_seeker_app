@@ -72,7 +72,7 @@ public class SearchCandidatesView implements UIView {
         {
             dlm.add(x, x);
         }
-        s.list1.setModel(dlm);
+        s.resultsList.setModel(dlm);
         ViewHelper.showStandaloneFrame(s);
     }
 }

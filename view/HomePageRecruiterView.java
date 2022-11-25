@@ -19,7 +19,6 @@ public class HomePageRecruiterView implements UIView {
 
     }
 
-    }
 
     @Override
     public JComponent getUIView() {
@@ -48,9 +47,6 @@ public class HomePageRecruiterView implements UIView {
     public static void main(String[] args)
     {
         HomePageRecruiterView h = new HomePageRecruiterView();
-        h.setContentPane(h.panelMain);
-        h.setSize(800,600);
-        h.setVisible(true);
 
     }
 }

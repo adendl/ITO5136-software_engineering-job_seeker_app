@@ -7,7 +7,7 @@ import view.UIView;
 import view.ViewHelper;
 
 public class ReadMessageView implements UIView {
-    private JTextField subjectTextField;
+    private JTextField subjectText;
     private JTextPane invitationMessageTextPane;
     private JPanel mainPanel;
     private JLabel fromLabel;

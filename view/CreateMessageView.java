@@ -1,19 +1,16 @@
 package view;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-public class CreateMessageView {
-    private JTextField subjectText;
 import view.UIView;
 import view.ViewHelper;
 
+
 public class CreateMessageView implements UIView {
-    private JTextField subjectTextField;
+    private JTextField subjectText;
     private JTextPane invitationMessageTextPane;
     private JButton sendMessageButton;
-    private JPanel mainPanel;
+    private JPanel panelMain;
     private JLabel toLabel;
     private JLabel subjectLabel;
     private JTextField toText;
@@ -32,7 +29,7 @@ public class CreateMessageView implements UIView {
     }
 
     public JPanel getMainPanel() {
-        return mainPanel;
+        return panelMain;
     }
 
     public JTextField getToText() {

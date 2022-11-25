@@ -59,7 +59,7 @@ public class ManageSkillsView implements UIView {
         return deleteText;
     }
 
-    public JList getSkillsList()
+    public JList getSkillsList(){
         return skillsList;
     }
 

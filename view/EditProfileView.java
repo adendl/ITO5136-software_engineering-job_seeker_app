@@ -65,7 +65,7 @@ public class EditProfileView implements UIView {
 
     @Override
     public JComponent getUIView() {
-        return EditProfileView;
+        return panelMain;
     }
 
     public void addUploadCoverLetterButtonListener(ActionListener uploadCoverLetterButtonListener) {
