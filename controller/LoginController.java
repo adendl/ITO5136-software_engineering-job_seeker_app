@@ -12,27 +12,31 @@ import java.awt.event.ActionListener;
 
 public class LoginController {
 
-    public LoginController(NavigationController navigationController , LoginView loginView, CreateUserView createUserView, User user,
+    public LoginController(NavigationController navigationController , LoginView loginView, CreateUserView createUserView,
                            HomePageAdminView homePageAdminView, HomePageRecruiterView homePageRecruiterView, HomePageJobSeekerView homePageJobSeekerView){
 
         loginView.addLoginButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                /**
                 //find out if the email entered matches the db. (findUserIDByEmail method in model) load into user object
-                loginView.getEmailText().getText();
+                JobSeeker jobSeeker = new JobSeeker();
+                //user = loginView.getEmailText().getText();
                 //check if the password matches the email. (verifyUser method in model)
                 //send to home page depending on the type of user.
-                switch(user.getUserType()) {
+                switch(jobSeeker.getUserType()) {
                     case JOBSEEKER:
-                        navigationController.setContentArea(homePageJobSeekerView.getPanelMain());
+                        navigationController.pushView(homePageJobSeekerView);
                         break;
                     case RECRUITER:
-                        navigationController.setContentArea(homePageRecruiterView.getPanelMain());
+                        navigationController.pushView(homePageRecruiterView);
                         break;
                     case ADMIN:
-                        navigationController.setContentArea(homePageAdminView.getPanelMain());
+                        navigationController.pushView(homePageAdminView);
                         break;
                 }
+                 */
+                navigationController.pushView(homePageAdminView);
             }
         });
 
@@ -40,7 +44,7 @@ public class LoginController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //send to the create user view
-                navigationController.setContentArea(createUserView.getMainPanel());
+                navigationController.pushView(createUserView);
             }
         });
 

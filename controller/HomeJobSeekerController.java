@@ -13,7 +13,7 @@ public class HomeJobSeekerController {
         homePageJobSeekerView.addSearchJobsButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                navigationController.setContentArea(searchJobView.getPanelMain());
+                navigationController.pushView(searchJobView);
             }
         });
 
@@ -21,7 +21,7 @@ public class HomeJobSeekerController {
         homePageJobSeekerView.addViewInvitationsButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                navigationController.setContentArea(mailboxView.getPanelMain());
+                navigationController.pushView(mailboxView);
             }
         });
 
@@ -29,7 +29,7 @@ public class HomeJobSeekerController {
         homePageJobSeekerView.addEditProfileButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                navigationController.setContentArea(editProfileView.getPanelMain());
+                navigationController.pushView(editProfileView);
             }
         });
 
@@ -37,7 +37,7 @@ public class HomeJobSeekerController {
         homePageJobSeekerView.addViewApplicationsButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                navigationController.setContentArea(applicationsView.getPanelMain());
+                navigationController.pushView(applicationsView);
             }
         });
     }

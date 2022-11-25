@@ -24,7 +24,7 @@ public class HomeAdminController {
         homePageAdminView.addManageCategoriesButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                navigationController.setContentArea(manageCategoriesView.getPanelMain());
+                navigationController.pushView(manageCategoriesView);
             }
         });
 
@@ -32,7 +32,7 @@ public class HomeAdminController {
         homePageAdminView.addManageSkillsButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                navigationController.setContentArea(manageSkillsView.getPanelMain());
+                navigationController.pushView(manageSkillsView);
             }
         });
 
@@ -40,7 +40,7 @@ public class HomeAdminController {
         homePageAdminView.addManageUsersButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                navigationController.setContentArea(manageSkillsView.getPanelMain());
+                navigationController.pushView(manageUsersView);
             }
         });
     }

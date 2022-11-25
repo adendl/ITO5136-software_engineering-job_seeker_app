@@ -1,9 +1,6 @@
 package controller;
 
-import view.CreateJobView;
-import view.HomePageRecruiterView;
-import view.JobListingsView;
-import view.MailboxView;
+import view.*;
 import model.User;
 import model.Recruiter;
 
@@ -11,13 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HomeRecruiterController {
-    public HomeRecruiterController(NavigationController navigationController, HomePageRecruiterView homePageRecruiterView, CreateJobView createJobView, JobListingsView jobListingsView, MailboxView mailboxView, User user){
+    public HomeRecruiterController(NavigationController navigationController, HomePageRecruiterView homePageRecruiterView, CreateJobView createJobView, JobListingsView jobListingsView, MailboxView mailboxView){
 
         //sends to createJobView
         homePageRecruiterView.addCreateNewJobButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                navigationController.setContentArea(createJobView.getPanelMain());
+                navigationController.pushView(createJobView);
             }
         });
 
@@ -33,7 +30,7 @@ public class HomeRecruiterController {
         homePageRecruiterView.addManageListedJobsButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                navigationController.setContentArea(jobListingsView.getPanelMain());
+                navigationController.pushView(jobListingsView);
             }
         });
 
