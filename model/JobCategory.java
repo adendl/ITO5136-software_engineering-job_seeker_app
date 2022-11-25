@@ -1,17 +1,17 @@
 package model;
 
+import java.sql.ResultSet;
+
 public class JobCategory {
     private int categoryId;
     private String name;
-    private String recruiterId;
 
     public JobCategory() {
     }
 
-    public JobCategory(int categoryId, String name, String recruiterId) {
+    public JobCategory(int categoryId, String name) {
         this.categoryId = categoryId;
         this.name = name;
-        this.recruiterId = recruiterId;
     }
 
     public int getCategoryId() {
@@ -30,12 +30,32 @@ public class JobCategory {
         this.name = name;
     }
 
-    public String getRecruiterId() {
-        return recruiterId;
+
+
+    public ResultSet getJobCategory(int categoryId) {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobCategory where categoryId =" + categoryId);
+        return rs;
     }
 
-    public void setRecruiterId(String recruiterId) {
-        this.recruiterId = recruiterId;
+    public ResultSet listJobCategories() {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobCategory");
+        return rs;
+    }
+
+    public void createJobCategory() {
+        String sql = "INSERT INTO JobCategory (categoryId, name) VALUES (null, " + name + '"' + ")";
+        System.out.println(sql);
+        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+    }
+
+    public void deleteJobCategory(int categoryId) {
+        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from JobCategory where categoryId=" + categoryId);
+    }
+
+    public void updateJobCategory(int categoryId, String fieldName, String value) {
+        String sql = "update JobCategory \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere categoryId=" + categoryId;
+        System.out.println(sql);
+        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
     }
 }
 

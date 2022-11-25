@@ -79,8 +79,6 @@ public class JobApplication {
     }
 
 
-    }
-
     public ResultSet listJobApplicationsJobSeeker(int applicantId) {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication where applicantId =" + applicantId);
         return rs;
