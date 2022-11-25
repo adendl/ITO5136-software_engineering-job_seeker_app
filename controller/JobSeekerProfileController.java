@@ -6,8 +6,8 @@ import model.User;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class EditProfileController {
-    public EditProfileController(NavigationController navigationController, EditProfileView editProfileView, User user){
+public class JobSeekerProfileController {
+    public JobSeekerProfileController(NavigationController navigationController, EditProfileView editProfileView, User user){
         //prepopulate with current user info
         editProfileView.getEmailText().setText(user.getEmail());
         editProfileView.getAddressText().setText(user.getAddress());

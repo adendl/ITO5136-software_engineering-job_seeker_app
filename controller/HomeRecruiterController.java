@@ -36,5 +36,7 @@ public class HomeRecruiterController {
                 navigationController.setContentArea(jobListingsView.getPanelMain());
             }
         });
+
+
     }
 }

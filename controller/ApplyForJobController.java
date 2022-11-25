@@ -1,15 +1,15 @@
 package controller;
 
 import model.JobApplication;
+import view.AppliedJobView;
 import view.JobApplicationView;
-import model.Job;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class JobApplyController {
+public class ApplyForJobController {
     //takes in the jobDetailView, jobApplyView, confirmApplyView .
-    public JobApplyController(JobApplicationView jobApplicationView){
+    public ApplyForJobController(JobApplicationView jobApplicationView, AppliedJobView appliedJobView){
 
         jobApplicationView.addSubmitButtonListener(new ActionListener() {
             @Override

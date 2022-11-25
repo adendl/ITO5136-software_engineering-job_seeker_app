@@ -60,14 +60,20 @@ public class LoginController {
                     //job seeker selection
                     case 1:
                         JobSeeker newJobSeeker = new JobSeeker();
+                        //adds to db.
+                        //set to logged in and sends to homepage
                         break;
                     //recruiter selection
                     case 2:
                         Recruiter newRecruiter = new Recruiter();
+                        //adds to db.
+                        //set to logged in and sends to homepage
                         break;
                     //admin selection
                     case 3:
                         Administrator newAdmin = new Administrator();
+                        //adds to db.
+                        //set to logged in and sends to homepage
                         break;
                 }
             }
