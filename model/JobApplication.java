@@ -78,8 +78,43 @@ public class JobApplication {
         this.messageId = messageId;
     }
 
-    public void createJobApplication()
+
+    }
+
+    public ResultSet listJobApplicationsJobSeeker(int applicantId) {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication where applicantId =" + applicantId);
+        return rs;
+    }
+
+    public ResultSet listJobApplicationsRecruiter(int jobId)
     {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication where jobId =" + jobId);
+        return rs;
+    }
+
+    public ResultSet getJobApplication(int applicationId)
+    {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication where applicationId =" + applicationId);
+        return rs;
+    }
+
+    public ResultSet listJobApplications() {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication");
+        return rs;
+    }
+
+    public void updateJobApplication(String applicationId, String fieldName, String value) {
+        String sql = "update JobApplication \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere applicationId='" + applicationId + "'";
+        System.out.println(sql);
+        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+    }
+
+    public void deleteJobApplication(String applicationId) {
+        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from JobApplication where applicationId='" + applicationId + "'");
+    }
+
+
+    public void createJobApplication() {
         Connection conn = DBConnection.connectDb();
         String sql = "INSERT INTO JobApplication (messageId, resumeId, jobId, dateApplied, applicantId, applicationId) VALUES (" + +
                 messageId + ", " +
@@ -90,13 +125,11 @@ public class JobApplication {
                 null + ")";
         System.out.println(sql);
         DBConnection.queryDatabase(conn, sql);
-        try
-        {
+        try {
             setApplicationId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM JobApplication").getInt("last_insert_rowid()"));
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
     }
+}
 
