@@ -43,7 +43,7 @@ public class JobCategory {
     }
 
     public void createJobCategory() {
-        String sql = "INSERT INTO JobCategory (categoryId, name) VALUES (null, " + name + '"' + ")";
+        String sql = "INSERT INTO JobCategory (categoryId, name) VALUES (null, " + '"' + name + '"' + ")";
         System.out.println(sql);
         DBConnection.queryDatabase(DBConnection.connectDb(), sql);
     }
