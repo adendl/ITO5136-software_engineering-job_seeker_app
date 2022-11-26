@@ -13,6 +13,7 @@ public class Resume {
         this.name = name;
         this.path = path;
         this.resumeID = resumeID;
+        this.dateUploaded = dateUploaded;
         this.userId = userId;
     }
 
