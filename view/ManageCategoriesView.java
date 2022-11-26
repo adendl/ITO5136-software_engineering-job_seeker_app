@@ -3,8 +3,10 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.UIView;
+import view.ViewHelper;
 
-public class ManageCategoriesView extends JFrame {
+public class ManageCategoriesView implements UIView {
     private JPanel panelMain;
     private JList categoryList;
     private JTextField addBox;
@@ -44,13 +46,15 @@ public class ManageCategoriesView extends JFrame {
         });
     }
 
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
+
     public static void main(String[] args)
     {
-        ManageCategoriesView m = new ManageCategoriesView();
-        m.setContentPane(m.panelMain);
-        m.setSize(800, 600);
-        m.setVisible(true);
-
+        ManageCategoriesView view = new ManageCategoriesView();
+        ViewHelper.showStandaloneFrame(view);
     }
 
     private void createUIComponents() {

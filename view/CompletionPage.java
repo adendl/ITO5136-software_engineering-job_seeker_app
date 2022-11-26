@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CompletionPage extends JFrame {
+import view.UIView;
+import view.ViewHelper;
+
+public class CompletionPage implements UIView {
     private JButton continueButton;
     private JPanel panelMain;
 
@@ -17,11 +20,14 @@ public class CompletionPage extends JFrame {
         });
     }
 
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
+
     public static void  main(String[] args)
     {
         CompletionPage c = new CompletionPage();
-        c.setContentPane(c.panelMain);
-        c.setSize(800, 600);
-        c.setVisible(true);
+        ViewHelper.showStandaloneFrame(c);
     }
 }

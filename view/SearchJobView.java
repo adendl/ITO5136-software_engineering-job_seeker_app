@@ -3,8 +3,10 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.UIView;
+import view.ViewHelper;
 
-public class SearchJobView extends JFrame{
+public class SearchJobView implements UIView {
     private JPanel panelMain;
     private JTextField enterKeywordsTextField;
     private JButton searchButton;
@@ -38,17 +40,20 @@ public class SearchJobView extends JFrame{
         });
     }
 
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
+
     public static void main(String[] args)
     {
         SearchJobView s = new SearchJobView();
-        s.setContentPane(s.panelMain);
-        s.setSize(800, 600);
         DefaultListModel dlm = new DefaultListModel<String>();
         for (int x = 0; x < 1000; x++)
         {
             dlm.add(x, x);
         }
         s.list1.setModel(dlm);
-        s.setVisible(true);
+        ViewHelper.showStandaloneFrame(s);
     }
 }

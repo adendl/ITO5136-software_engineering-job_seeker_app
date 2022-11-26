@@ -3,8 +3,10 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.UIView;
+import view.ViewHelper;
 
-public class searchCandidatesView extends JFrame{
+public class SearchCandidatesView implements UIView {
     private JPanel panelMain;
     private JTextField enterKeywordsTextField;
     private JButton searchButton;
@@ -15,7 +17,7 @@ public class searchCandidatesView extends JFrame{
     private JScrollPane scrollPane;
 
 
-    public searchCandidatesView() {
+    public SearchCandidatesView() {
         selectCategoriesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,17 +39,20 @@ public class searchCandidatesView extends JFrame{
         });
     }
 
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
+
     public static void main(String[] args)
     {
-        searchCandidatesView s = new searchCandidatesView();
-        s.setContentPane(s.panelMain);
-        s.setSize(800, 600);
+        SearchCandidatesView s = new SearchCandidatesView();
         DefaultListModel dlm = new DefaultListModel<String>();
         for (int x = 0; x < 1000; x++)
         {
             dlm.add(x, x);
         }
         s.list1.setModel(dlm);
-        s.setVisible(true);
+        ViewHelper.showStandaloneFrame(s);
     }
 }

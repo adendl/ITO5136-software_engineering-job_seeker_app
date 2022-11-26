@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ApplicationsView extends JFrame {
+import view.UIView;
+import view.ViewHelper;
+
+public class ApplicationsView implements UIView {
     private JPanel panelMain;
     private JTable table1;
     private JButton searchButton;
@@ -29,12 +32,16 @@ public class ApplicationsView extends JFrame {
             }
         });
     }
+
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
+
     public static void main(String[] args)
     {
         ApplicationsView a = new ApplicationsView();
-        a.setContentPane(a.panelMain);
-        a.setSize(800, 600);
-        a.setVisible(true);
+        ViewHelper.showStandaloneFrame(a);
     }
 
 }

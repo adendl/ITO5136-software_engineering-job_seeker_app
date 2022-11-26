@@ -3,7 +3,9 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
-public class CreateJobView extends JFrame {
+import view.UIView;
+
+public class CreateJobView implements UIView {
     private JPanel CreateJobPanel;
     private JTextArea textArea1;
     private JButton btnCreateJob;
@@ -23,15 +25,16 @@ public class CreateJobView extends JFrame {
     private JTextArea textArea7;
 
     public CreateJobView() {
-        setContentPane(CreateJobPanel);
-        setTitle("Edit Your Profile");
-        setSize(900, 600);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
+    }
+
+    @Override
+    public JComponent getUIView() {
+        return CreateJobPanel;
     }
 
     public static void main(String[] args) {
         CreateJobView myCreateJobView = new CreateJobView();
+        ViewHelper.showStandaloneFrame(myCreateJobView);
     }
 
     {

@@ -3,8 +3,10 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.UIView;
+import view.ViewHelper;
 
-public class ManageSkillsView extends JFrame {
+public class ManageSkillsView implements UIView {
     private JPanel panelMain;
     private JList skillsList;
     private JTextField addBox;
@@ -45,13 +47,15 @@ public class ManageSkillsView extends JFrame {
         });
     }
 
+    @Override
+    public JComponent getUIView() {
+        return panelMain;
+    }
+
     public static void main(String[] args)
     {
         ManageSkillsView m = new ManageSkillsView();
-        m.setContentPane(m.panelMain);
-        m.setSize(800, 600);
-        m.setVisible(true);
-
+        ViewHelper.showStandaloneFrame(m);
     }
 
 }

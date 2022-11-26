@@ -28,7 +28,7 @@ public class JobSearchController {
                 //send to searchActionController
 
                 //bring search results into frame
-                boundary2.setVisible(true);
+                //boundary2.setVisible(true);
             }
         });
 
@@ -37,7 +37,7 @@ public class JobSearchController {
             public void actionPerformed(ActionEvent e) {
                 //get field attributes and send to searchActionController
                 //bring search results into frame
-                boundary2.setVisible(true);
+                //boundary2.setVisible(true);
             }
         });
 

@@ -2,8 +2,10 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import view.UIView;
+import view.ViewHelper;
 
-public class JobDetailsView extends JFrame {
+public class JobDetailsView implements UIView {
     public JPanel JobDetailsPanel;
     private JLabel lbJobTitle;
     private JLabel lbJobDescription;
@@ -23,15 +25,17 @@ public class JobDetailsView extends JFrame {
     private JLabel lbJobDetails;
 
     public JobDetailsView() {
-        setContentPane(JobDetailsPanel);
-        setTitle("model.Job Details");
-        setSize(900, 600);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(false);
+
+    }
+
+    @Override
+    public JComponent getUIView() {
+        return JobDetailsPanel;
     }
 
     public static void main(String[] args) {
         JobDetailsView myJobDetailsView = new JobDetailsView();
+        ViewHelper.showStandaloneFrame(myJobDetailsView);
     }
 
     {

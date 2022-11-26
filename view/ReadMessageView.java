@@ -3,11 +3,13 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.UIView;
+import view.ViewHelper;
 
-public class ReadMessageView {
+public class ReadMessageView implements UIView {
     private JTextField subjectTextField;
     private JTextPane invitationMessageTextPane;
-    private JPanel mainLabel;
+    private JPanel mainPanel;
     private JLabel fromLabel;
     private JLabel subjectLabel;
     private JPanel optionsPanel;
@@ -28,5 +30,15 @@ public class ReadMessageView {
 
             }
         });
+    }
+
+    @Override
+    public JComponent getUIView() {
+        return mainPanel;
+    }
+
+    public static void main(String[] args) {
+        ReadMessageView view = new ReadMessageView();
+        ViewHelper.showStandaloneFrame(view);
     }
 }
