@@ -9,6 +9,10 @@ public class HomeJobSeekerController {
     public HomeJobSeekerController(NavigationController navigationController, HomePageJobSeekerView homePageJobSeekerView, SearchJobView searchJobView,
                                    MailboxView mailboxView, EditProfileView editProfileView, ApplicationsView applicationsView){
 
+        //initialise JobSearchController
+        JobDetailsView jobDetailsView = new JobDetailsView();
+        SearchResultsView searchResultsView = new SearchResultsView();
+        JobSearchController jobSearchController = new JobSearchController(navigationController, searchJobView, jobDetailsView, searchResultsView);
         //send to searchJobView
         homePageJobSeekerView.addSearchJobsButtonListener(new ActionListener() {
             @Override

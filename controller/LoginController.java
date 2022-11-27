@@ -36,7 +36,7 @@ public class LoginController {
                         break;
                 }
                  */
-                navigationController.pushView(homePageAdminView);
+                navigationController.pushView(homePageJobSeekerView);
             }
         });
 

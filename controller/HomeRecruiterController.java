@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 public class HomeRecruiterController {
     public HomeRecruiterController(NavigationController navigationController, HomePageRecruiterView homePageRecruiterView, CreateJobView createJobView, JobListingsView jobListingsView, MailboxView mailboxView){
 
+        //initialise CreateJobController
+        CreateJobController createJobController = new CreateJobController(createJobView);
+
         //sends to createJobView
         homePageRecruiterView.addCreateNewJobButtonListener(new ActionListener() {
             @Override

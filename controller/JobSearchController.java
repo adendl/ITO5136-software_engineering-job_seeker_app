@@ -14,7 +14,7 @@ public class JobSearchController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //get all field attributes and search term and run through matching algorithm
-                navigationController.setContentArea(searchResultsView.getPanelMain());
+                SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, searchJobView, searchResultsView);
             }
         });
 
