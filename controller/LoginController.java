@@ -31,29 +31,34 @@ public class LoginController {
     }
 
     // create a new account when the view's button is clicked
-    public void doCreateAccount(String firstName, String lastName, String email, String password, int userType) {
+    // TODO: it should send us the correct args instead of making us grab everything from it
+    public void doCreateAccount(CreateUserView createUserView) {
+        //hold input
+        String userEmailInput = createUserView.getEmailText().getText();
+        String userPasswordInput = createUserView.getConfirmPasswordText().getText();
+        String userFirstNameInput = createUserView.getFirstNameText().getText();
+        String userLastNameInput = createUserView.getLastNameText().getText();
+        JComboBox userTypeInput = createUserView.getSelectUserTypeComboBox();
+
         //create object, add to constructor and call method to add to db
-        switch (userType) {
+        switch (createUserView.getSelectUserTypeComboBox().getSelectedIndex()){
             //job seeker selection
-            case 0:
+            case 1:
                 JobSeeker newJobSeeker = new JobSeeker();
                 //adds to db.
                 //set to logged in and sends to homepage
-                showSeekerHub();
                 break;
             //recruiter selection
-            case 1:
+            case 2:
                 Recruiter newRecruiter = new Recruiter();
                 //adds to db.
                 //set to logged in and sends to homepage
-                showRecruiterHub();
                 break;
             //admin selection
-            case 2:
+            case 3:
                 Administrator newAdmin = new Administrator();
                 //adds to db.
                 //set to logged in and sends to homepage
-                showAdminHub();
                 break;
         }
     }
@@ -78,19 +83,6 @@ public class LoginController {
         }
         */
         //navigationController.pushView(homePageJobSeekerView);
-        showSeekerHub();
-    }
-    public void showAdminHub() {
-        HomeAdminController controller = new HomeAdminController(navigationController);
-        controller.showHub();
-    }
-
-    public void showRecruiterHub() {
-        HomeRecruiterController controller = new HomeRecruiterController(navigationController);
-        controller.showHub();
-    }
-
-    public void showSeekerHub() {
         HomeJobSeekerController controller = new HomeJobSeekerController(navigationController);
         controller.showHub();
     }

@@ -5,8 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.UIView;
 import view.ViewHelper;
+import controller.LoginController;
 
-public class LoginView implements UIView{
+public class LoginView implements UIView {
     private JTextField emailText;
     private JPasswordField passwordText;
     private JButton createNewAccountButton;
@@ -18,10 +19,18 @@ public class LoginView implements UIView{
     private JLabel emailLabel;
     private JLabel passwordLabel;
     private JPanel panelMain;
-    private JButton forgotPasswordButton;
+    private LoginController controller;
 
-    public LoginView() {
-
+    public LoginView(LoginController controller) {
+        this.controller = controller;
+        loginButton.addActionListener((e) -> {
+            // note: getText() is deprecated on JPasswordField, getPassword() replaces it
+            String password = String.valueOf(passwordText.getPassword());
+            controller.doLogin(emailText.getText(), password);
+        });
+        createNewAccountButton.addActionListener((e) -> {
+            controller.showCreateAccount();
+        });
     }
 
     public JTextField getEmailText() {
@@ -36,19 +45,13 @@ public class LoginView implements UIView{
         return panelMain;
     }
 
-    public void addLoginButtonListener(ActionListener buttonListener) {
-        loginButton.addActionListener(buttonListener);
-    }
-    public void addCreateNewAccountButtonListener(ActionListener buttonListener) {
-        createNewAccountButton.addActionListener(buttonListener);
-    }
     @Override
     public JComponent getUIView() {
         return panelMain;
     }
 
     public static void main(String[] args) {
-        LoginView view = new LoginView();
+        LoginView view = new LoginView(null);
         ViewHelper.showStandaloneFrame((UIView) view);
     }
 }

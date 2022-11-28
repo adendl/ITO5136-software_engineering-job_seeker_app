@@ -50,6 +50,29 @@ public class MainWindow {
 
         // initialising loginController
         LoginController loginController = new LoginController(navigationController);
+
+        // TODO: this should be done elsewhere
+        /*
+        //initialising homeRecruiter Controller
+        CreateJobView createJobView = new CreateJobView();
+        JobListingsView jobListingsView = new JobListingsView();
+        MailboxView mailboxView = new MailboxView();
+        HomeRecruiterController recruiterController = new HomeRecruiterController(navigationController, homePageRecruiterView, createJobView, jobListingsView, mailboxView);
+
+        //initialising homeJobSeekerController
+        SearchJobView searchJobView = new SearchJobView();
+        EditProfileView editProfileView = new EditProfileView();
+        ApplicationsView applicationsView = new ApplicationsView();
+        HomeJobSeekerController homeJobSeekerController = new HomeJobSeekerController(navigationController, homePageJobSeekerView, searchJobView, mailboxView, editProfileView, applicationsView);
+
+        //initialising HomeAdminController
+        ManageCategoriesView manageCategoriesView = new ManageCategoriesView();
+        ManageSkillsView manageSkillsView = new ManageSkillsView();
+        ManageUsersView manageUsersView = new ManageUsersView();
+        HomeAdminController homeAdminController = new HomeAdminController(navigationController, homePageAdminView, manageCategoriesView, manageSkillsView, manageUsersView);
+
+        navigationController.pushView(loginView);
+        */
         loginController.showLogin();
 
         mainWindow.setVisible(true);
