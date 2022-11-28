@@ -6,9 +6,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HomeJobSeekerController {
-    public HomeJobSeekerController(NavigationController navigationController, HomePageJobSeekerView homePageJobSeekerView, SearchJobView searchJobView,
-                                   MailboxView mailboxView, EditProfileView editProfileView, ApplicationsView applicationsView){
+    NavigationController navigationController;
+    // HomePageJobSeekerView homePageJobSeekerView, SearchJobView searchJobView,
+    // MailboxView mailboxView, EditProfileView editProfileView, ApplicationsView applicationsView
+    public HomeJobSeekerController(NavigationController navigationController) {
+        this.navigationController = navigationController;
 
+        /*
         //initialise JobSearchController
         JobDetailsView jobDetailsView = new JobDetailsView();
         SearchResultsView searchResultsView = new SearchResultsView();
@@ -44,5 +48,11 @@ public class HomeJobSeekerController {
                 navigationController.pushView(applicationsView);
             }
         });
+        */
+    }
+
+    public void showHub() {
+        HomePageJobSeekerView view = new HomePageJobSeekerView(this);
+        navigationController.pushView(view);
     }
 }
