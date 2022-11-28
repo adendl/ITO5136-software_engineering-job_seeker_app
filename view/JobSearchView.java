@@ -20,9 +20,16 @@ public class JobSearchView implements UIView {
     private JLabel categoryLabel;
     private JLabel salaryLabel;
     private JTextField searchText;
+    private JobSearchController controller;
 
-    public JobSearchView() {
-
+    public JobSearchView(JobSearchController controller) {
+        this.controller = controller;
+        searchButton.addActionListener((e) -> {
+            controller.doSearch();
+        });
+        searchOnProfileButton.addActionListener((e) -> {
+            controller.doProfileSearch();
+        });
     }
 
     public JPanel getPanelMain() {
@@ -46,21 +53,13 @@ public class JobSearchView implements UIView {
         return searchText;
     }
 
-    public void addSearchButtonActionListener(ActionListener searchButtonListener){
-        searchButton.addActionListener(searchButtonListener);
-    }
-
-    public void addSearchOnProfileButtonActionListener(ActionListener searchOnProfileButtonListener){
-        searchOnProfileButton.addActionListener(searchOnProfileButtonListener);
-    }
-
     @Override
     public JComponent getUIView() {
         return panelMain;
     }
 
     public static void main(String[] args) {
-        JobSearchView myJobSearchView = new JobSearchView();
+        JobSearchView myJobSearchView = new JobSearchView(null);
         ViewHelper.showStandaloneFrame(myJobSearchView);
     }
 

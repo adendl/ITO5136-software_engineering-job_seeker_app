@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.UIView;
 import view.ViewHelper;
+import controller.SearchAlgorithmController;
 
 public class SearchResultsView implements UIView {
     private JPanel panelMain;
@@ -15,9 +16,14 @@ public class SearchResultsView implements UIView {
     private JButton nextButton;
     private JButton previousButton;
     private JLabel headingText;
+    private SearchAlgorithmController controller;
 
-    public SearchResultsView() {
-
+    public SearchResultsView(SearchAlgorithmController controller) {
+        this.controller = controller;
+        searchButton.addActionListener((e) -> {
+            controller.backToSearch(searchTextField.getText());
+        });
+        // TODO: more button listeners? table can sort and scroll so the buttons for sorting and pagination are probably useless
     }
 
     public JPanel getPanelMain() {
@@ -32,18 +38,6 @@ public class SearchResultsView implements UIView {
         return table1;
     }
 
-    public void addSearchButtonListener(ActionListener buttonListener) {
-        searchButton.addActionListener(buttonListener);
-    }
-
-    public void addNextButtonListener(ActionListener buttonListener) {
-        nextButton.addActionListener(buttonListener);
-    }
-
-    public void addPreviousButtonListener(ActionListener buttonListener) {
-        previousButton.addActionListener(buttonListener);
-    }
-
     @Override
     public JComponent getUIView() {
         return panelMain;
@@ -51,7 +45,7 @@ public class SearchResultsView implements UIView {
 
     public static void main(String[] args)
     {
-        SearchResultsView j = new SearchResultsView();
+        SearchResultsView j = new SearchResultsView(null);
         ViewHelper.showStandaloneFrame(j);
     }
 

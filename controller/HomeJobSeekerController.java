@@ -10,18 +10,6 @@ public class HomeJobSeekerController {
     public HomeJobSeekerController(NavigationController navigationController) {
         this.navigationController = navigationController;
         /*
-        //initialise JobSearchController
-        JobDetailsView jobDetailsView = new JobDetailsView();
-        SearchResultsView searchResultsView = new SearchResultsView();
-        JobSearchController jobSearchController = new JobSearchController(navigationController, searchJobView, jobDetailsView, searchResultsView);
-        //send to searchJobView
-        homePageJobSeekerView.addSearchJobsButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                navigationController.pushView(searchJobView);
-            }
-        });
-
         //send to mailboxView
         homePageJobSeekerView.addViewInvitationsButtonListener(new ActionListener() {
             @Override
@@ -46,7 +34,8 @@ public class HomeJobSeekerController {
     }
 
     public void showJobSearch() {
-        //SearchJobView searchJobView = new SearchJobView();
+        JobSearchController jobSearchController = new JobSearchController(navigationController);
+        jobSearchController.showSearch();
     }
 
     public void showJobApplications() {

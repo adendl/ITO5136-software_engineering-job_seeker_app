@@ -8,8 +8,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class JobSearchController {
-    public JobSearchController(NavigationController navigationController, SearchJobView searchJobView, JobDetailsView jobDetailsView, SearchResultsView searchResultsView){
-
+    private NavigationController navigationController;
+    public JobSearchController(NavigationController navigationController){
+        this.navigationController = navigationController;
+        /*
         searchJobView.addSearchJobButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,7 +44,27 @@ public class JobSearchController {
                 navigationController.doBack();
             }
         });
+
+         */
     }
 
+    public void doSearch() {
+        //get all field attributes and search term and run through matching algorithm
+        // TODO: JobSearchView passes in parameters here, we have SearchAlgorithmController do the work, then call showResults
+        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController);
+        searchAlgorithmController.performSearch(/*search params go here*/);
+    }
 
+    public void doProfileSearch() {
+        // TODO: similar to the above, but we're just using the user profile data?
+        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController);
+        // not sure if we'd use the same performSearch or if we need something different for profile-based search
+        // end result should be the same though, it's only the search inputs that change
+        searchAlgorithmController.performSearch(/*search params go here*/);
+    }
+
+    public void showSearch() {
+        JobSearchView jobSearchView = new JobSearchView(this);
+        navigationController.pushView(jobSearchView);
+    }
 }
