@@ -48,15 +48,11 @@ public class MainWindow {
         mainWindow.setSize(width, height);
         mainWindow.setLocationRelativeTo(null);
 
-        //not sure if this all should be done here
         // initialising loginController
-        LoginView loginView = new LoginView();
-        CreateUserView createUserView = new CreateUserView();
-        HomePageAdminView homePageAdminView = new HomePageAdminView();
-        HomePageJobSeekerView homePageJobSeekerView = new HomePageJobSeekerView();
-        HomePageRecruiterView homePageRecruiterView = new HomePageRecruiterView();
-        LoginController loginController = new LoginController(navigationController, loginView, createUserView, homePageAdminView, homePageRecruiterView, homePageJobSeekerView);
+        LoginController loginController = new LoginController(navigationController);
 
+        // TODO: this should be done elsewhere
+        /*
         //initialising homeRecruiter Controller
         CreateJobView createJobView = new CreateJobView();
         JobListingsView jobListingsView = new JobListingsView();
@@ -76,6 +72,8 @@ public class MainWindow {
         HomeAdminController homeAdminController = new HomeAdminController(navigationController, homePageAdminView, manageCategoriesView, manageSkillsView, manageUsersView);
 
         navigationController.pushView(loginView);
+        */
+        loginController.showLogin();
 
         mainWindow.setVisible(true);
     }

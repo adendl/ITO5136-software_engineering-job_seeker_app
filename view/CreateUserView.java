@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import view.UIView;
 import view.ViewHelper;
+import controller.LoginController;
 
 public class CreateUserView implements UIView {
     private JPanel mainPanel;
@@ -21,9 +22,14 @@ public class CreateUserView implements UIView {
     private JLabel passwordLabel;
     private JLabel confirmPasswordLabel;
     private JLabel selectUserLabel;
+    private LoginController controller;
 
-    public CreateUserView(){
-
+    public CreateUserView(LoginController controller) {
+        this.controller = controller;
+        createAccountButton.addActionListener((e) -> {
+            // TODO: pass in the values rather than having the controller mess with our components
+            controller.doCreateAccount(this);
+        });
     }
 
     public JPanel getMainPanel() {
@@ -54,10 +60,6 @@ public class CreateUserView implements UIView {
         return lastNameText;
     }
 
-    public void addCreateAccountButtonListener(ActionListener createAccountButtonListener) {
-        createAccountButton.addActionListener(createAccountButtonListener);
-    }
-
 
     @Override
     public JComponent getUIView() {
@@ -65,7 +67,7 @@ public class CreateUserView implements UIView {
     }
 
     public static void main(String[] args) {
-        CreateUserView view = new CreateUserView();
+        CreateUserView view = new CreateUserView(null);
         ViewHelper.showStandaloneFrame(view);
     }
 }
