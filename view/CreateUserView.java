@@ -27,9 +27,23 @@ public class CreateUserView implements UIView {
     public CreateUserView(LoginController controller) {
         this.controller = controller;
         createAccountButton.addActionListener((e) -> {
-            // TODO: pass in the values rather than having the controller mess with our components
-            controller.doCreateAccount(this);
+            createAccount();
         });
+    }
+    private void createAccount() {
+        String email  = emailText.getText();
+        String password = String.valueOf(enterPasswordText.getPassword());
+        String passwordConfirm = String.valueOf(confirmPasswordText.getPassword());
+        String firstName = firstNameText.getText();
+        String lastName = lastNameText.getText();
+        int userType = selectUserTypeComboBox.getSelectedIndex();
+
+        if (!password.equals(passwordConfirm)) {
+            JOptionPane.showMessageDialog(null, "Passwords do not match!", "Password mismatch", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        controller.doCreateAccount(firstName, lastName, email, password, userType);
     }
 
     public JPanel getMainPanel() {
