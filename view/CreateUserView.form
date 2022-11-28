@@ -126,9 +126,9 @@
         </constraints>
         <properties>
           <model>
-            <item value=""/>
             <item value="Job Seeker"/>
             <item value="Recruiter"/>
+            <item value="Admin"/>
           </model>
           <name value=""/>
         </properties>
