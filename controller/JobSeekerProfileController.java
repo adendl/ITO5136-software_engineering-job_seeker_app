@@ -5,29 +5,28 @@ import model.User;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.User;
 
 public class JobSeekerProfileController {
-    public JobSeekerProfileController(NavigationController navigationController, EditProfileView editProfileView, User user){
-        //prepopulate with current user info
-        editProfileView.getEmailText().setText(user.getEmail());
-        editProfileView.getAddressText().setText(user.getAddress());
-        editProfileView.getPhoneNumberText().setText(user.getPhoneNumber());
-        editProfileView.getFirstNameText().setText(user.getFirstName());
-        editProfileView.getLastNameText().setText(user.getLastName());
+    private NavigationController navigationController;
+    User user;
+    public JobSeekerProfileController(NavigationController navigationController, User user) {
+        this.navigationController = navigationController;
+        this.user = user;
+    }
 
-        editProfileView.addSubmitButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //set to entered values
-                //need to add password and skills
-                user.setAddress(editProfileView.getAddressText().getText());
-                user.setEmail(editProfileView.getEmailText().getText());
-                user.setFirstName(editProfileView.getFirstNameText().getText());
-                user.setLastName(editProfileView.getLastNameText().getText());
-                user.setPhoneNumber(editProfileView.getPhoneNumberText().getText());
-                //updated in db
-            }
-        });
+    public void showEditProfile() {
+        EditProfileView editProfileView = new EditProfileView(this);
+        editProfileView.populateForUser(user);
+        navigationController.pushView(editProfileView);
+    }
 
+    public void updateProfile(String firstName, String lastName, String email, String phoneNumber, String address) {
+        user.setAddress(address);
+        user.setEmail(email);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setPhoneNumber(phoneNumber);
+        // TODO: update the db
     }
 }
