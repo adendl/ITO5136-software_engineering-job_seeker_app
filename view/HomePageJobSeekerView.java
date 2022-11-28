@@ -18,18 +18,18 @@ public class HomePageJobSeekerView implements UIView {
 
     public HomePageJobSeekerView(HomeJobSeekerController controller) {
         this.controller = controller;
-        // search view invitation edit
+
         searchJobsButton.addActionListener((e) -> {
-            //controller.showJobSearch();
+            controller.showJobSearch();
         });
         viewApplicationsButton.addActionListener((e) -> {
-            //controller.showJobApplications();
+            controller.showJobApplications();
         });
         viewInvitationsButton.addActionListener((e) -> {
-            //controller.showInvitations();
+            controller.showInvitations();
         });
         editProfileButton.addActionListener((e) -> {
-            //controller.showEditProfile();
+            controller.showEditProfile();
         });
     }
 
