@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import view.UIView;
 import view.ViewHelper;
+import controller.HomeJobSeekerController;
 
 public class ApplicationsView implements UIView {
     private JPanel panelMain;
@@ -15,21 +16,19 @@ public class ApplicationsView implements UIView {
     private JButton nextButton;
     private JButton previousButton;
     private JLabel headingText;
+    private HomeJobSeekerController controller;
 
-    public ApplicationsView() {
-
-        previousButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // only display if not on first page
-
-            }
+    public ApplicationsView(HomeJobSeekerController controller) {
+        this.controller = controller;
+        // TODO: we might not need these buttons? the table can probably handle everything
+        previousButton.addActionListener((e) -> {
+            // only display if not on first page
         });
-        nextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // only display if there are more results to paginate through
-            }
+        nextButton.addActionListener((e) -> {
+            // only display if there are more results to paginate through
+        });
+        sortByButton.addActionListener((e) -> {
+            // sort the list, if there's items in it
         });
     }
 
@@ -45,19 +44,6 @@ public class ApplicationsView implements UIView {
         this.table1 = table1;
     }
 
-    public void addPreviousButtonListener(ActionListener previousButtonListener) {
-        previousButton.addActionListener(previousButtonListener);
-    }
-
-    public void addNextButtonListener(ActionListener nextButtonListener) {
-        nextButton.addActionListener(nextButtonListener);
-    }
-
-    public void addSortByButtonListener(ActionListener sortByButtonListener) {
-        sortByButton.addActionListener(sortByButtonListener);
-    }
-
-
     @Override
     public JComponent getUIView() {
         return panelMain;
@@ -65,7 +51,7 @@ public class ApplicationsView implements UIView {
 
     public static void main(String[] args)
     {
-        ApplicationsView a = new ApplicationsView();
+        ApplicationsView a = new ApplicationsView(null);
         ViewHelper.showStandaloneFrame(a);
     }
 
