@@ -17,14 +17,6 @@ public class HomeJobSeekerController {
                 navigationController.pushView(mailboxView);
             }
         });
-
-        //send to applicationsView
-        homePageJobSeekerView.addViewApplicationsButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                navigationController.pushView(applicationsView);
-            }
-        });
         */
     }
 
@@ -39,7 +31,8 @@ public class HomeJobSeekerController {
     }
 
     public void showJobApplications() {
-        //ApplicationsView applicationsView = new ApplicationsView();
+        ApplicationsView applicationsView = new ApplicationsView(this);
+        navigationController.pushView(applicationsView);
     }
 
     public void showInvitations() {
