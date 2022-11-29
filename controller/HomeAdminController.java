@@ -20,18 +20,15 @@ public class HomeAdminController {
     }
 
     public void showManageCategories() {
-        ManageCategoriesController manageCategoriesController = new ManageCategoriesController(navigationController);
-        manageCategoriesController.showManageCategories();
+        //
     }
     public void showManageLocations() {
         //
     }
     public void showManageSkills() {
-        ManageSkillsView manageSkillsView = new ManageSkillsView(this);
-        navigationController.pushView(manageSkillsView);
+        //
     }
     public void showManageUsers() {
-        ManageUsersView manageUsersView = new ManageUsersView(this);
-        navigationController.pushView(manageUsersView);
+        //
     }
 }
