@@ -32,6 +32,7 @@ public class HomeRecruiterController {
     }
 
     public void showManageListedJobs() {
-        // TODO: show something here
+        JobListingsView jobListingsView = new JobListingsView(this);
+        navigationController.pushView(jobListingsView);
     }
 }
