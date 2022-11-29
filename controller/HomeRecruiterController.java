@@ -24,9 +24,8 @@ public class HomeRecruiterController {
     }
 
     public void showEditCategories() {
-        // this might get a dedicated controller if we need to share it between recruiter and admin users?
-        ManageCategoriesView manageCategoriesView = new ManageCategoriesView(this);
-        navigationController.pushView(manageCategoriesView);
+        ManageCategoriesController manageCategoriesController = new ManageCategoriesController(navigationController);
+        manageCategoriesController.showManageCategories();
     }
 
     public void showEditProfile() {
