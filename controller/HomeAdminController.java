@@ -20,7 +20,8 @@ public class HomeAdminController {
     }
 
     public void showManageCategories() {
-        //
+        ManageCategoriesController manageCategoriesController = new ManageCategoriesController(navigationController);
+        manageCategoriesController.showManageCategories();
     }
     public void showManageLocations() {
         //
