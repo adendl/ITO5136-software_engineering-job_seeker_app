@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controller.HomeRecruiterController;
+import controller.ManageCategoriesController;
 import view.UIView;
 import view.ViewHelper;
 
@@ -18,11 +19,11 @@ public class ManageCategoriesView implements UIView {
     private JLabel addText;
     private JTextField deleteText;
     private JLabel titleLabel;
-    private HomeRecruiterController controller;
+    private ManageCategoriesController controller;
 
     private DefaultListModel<String> dlm = new DefaultListModel<String>();
 
-    public ManageCategoriesView(HomeRecruiterController controller) {
+    public ManageCategoriesView(ManageCategoriesController controller) {
         this.controller = controller;
         addButton.addActionListener((e) ->{
             System.out.println(addBox.getText());
