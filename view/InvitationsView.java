@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.UIView;
 import view.ViewHelper;
+import controller.HomeJobSeekerController;
 
 public class InvitationsView implements UIView {
     private JPanel panelMain;
@@ -13,8 +14,10 @@ public class InvitationsView implements UIView {
     private JButton nextButton;
     private JButton previousButton;
     private JLabel headingText;
+    private HomeJobSeekerController controller;
 
-    public InvitationsView() {
+    public InvitationsView(HomeJobSeekerController controller) {
+        this.controller = controller;
     }
 
     public JPanel getPanelMain() {
@@ -38,7 +41,7 @@ public class InvitationsView implements UIView {
     }
 
     public static void main(String[] args) {
-        InvitationsView view = new InvitationsView();
+        InvitationsView view = new InvitationsView(null);
         ViewHelper.showStandaloneFrame(view);
     }
 }
