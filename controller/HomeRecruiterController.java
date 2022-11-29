@@ -24,8 +24,7 @@ public class HomeRecruiterController {
     }
 
     public void showEditCategories() {
-        ManageCategoriesController manageCategoriesController = new ManageCategoriesController(navigationController);
-        manageCategoriesController.showManageCategories();
+        // TODO: show something here
     }
 
     public void showEditProfile() {
@@ -33,7 +32,6 @@ public class HomeRecruiterController {
     }
 
     public void showManageListedJobs() {
-        JobListingsView jobListingsView = new JobListingsView(this);
-        navigationController.pushView(jobListingsView);
+        // TODO: show something here
     }
 }

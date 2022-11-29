@@ -59,12 +59,6 @@ public class MainWindow {
         MailboxView mailboxView = new MailboxView();
         HomeRecruiterController recruiterController = new HomeRecruiterController(navigationController, homePageRecruiterView, createJobView, jobListingsView, mailboxView);
 
-        //initialising homeJobSeekerController
-        SearchJobView searchJobView = new SearchJobView();
-        EditProfileView editProfileView = new EditProfileView();
-        ApplicationsView applicationsView = new ApplicationsView();
-        HomeJobSeekerController homeJobSeekerController = new HomeJobSeekerController(navigationController, homePageJobSeekerView, searchJobView, mailboxView, editProfileView, applicationsView);
-
         //initialising HomeAdminController
         ManageCategoriesView manageCategoriesView = new ManageCategoriesView();
         ManageSkillsView manageSkillsView = new ManageSkillsView();
