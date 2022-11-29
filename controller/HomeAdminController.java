@@ -27,7 +27,8 @@ public class HomeAdminController {
         //
     }
     public void showManageSkills() {
-        //
+        ManageSkillsView manageSkillsView = new ManageSkillsView(this);
+        navigationController.pushView(manageSkillsView);
     }
     public void showManageUsers() {
         //
