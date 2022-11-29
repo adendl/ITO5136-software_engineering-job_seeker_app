@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+import controller.CreateJobController;
 import view.UIView;
 
 public class CreateJobView implements UIView {
@@ -24,9 +25,22 @@ public class CreateJobView implements UIView {
     private JTextArea jobTypeText;
     private JTextArea jobCategoryText;
     private JTextArea salaryRangeText;
+    private CreateJobController controller;
 
-    public CreateJobView() {
+    public CreateJobView(CreateJobController controller) {
+        this.controller = controller;
+        createJobButton.addActionListener((e) -> {
+            doCreateJob();
+        });
+    }
 
+    private void doCreateJob() {
+        String description = jobDescriptionText.getText();
+        String title = jobTitleText.getText();
+        String jobType = jobTypeText.getText();
+        String company = companyText.getText();
+        String salaryRange = salaryRangeText.getText();
+        controller.doCreateJob(title, description, jobType, company, salaryRange);
     }
 
     public JPanel getPanelMain() {
@@ -66,13 +80,8 @@ public class CreateJobView implements UIView {
         return salaryRangeText;
     }
 
-    public void addCreateJobButtonListener(ActionListener createJobButtonListener) {
-        createJobButton.addActionListener(createJobButtonListener);
-    }
-
-
     public static void main(String[] args) {
-        CreateJobView myCreateJobView = new CreateJobView();
+        CreateJobView myCreateJobView = new CreateJobView(null);
         ViewHelper.showStandaloneFrame(myCreateJobView);
     }
 

@@ -8,35 +8,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HomeRecruiterController {
-    public HomeRecruiterController(NavigationController navigationController, HomePageRecruiterView homePageRecruiterView, CreateJobView createJobView, JobListingsView jobListingsView, MailboxView mailboxView){
+    NavigationController navigationController;
+    public HomeRecruiterController(NavigationController navigationController){
+        this.navigationController = navigationController;
+    }
 
-        //initialise CreateJobController
-        CreateJobController createJobController = new CreateJobController(createJobView);
+    public void showHub() {
+        HomePageRecruiterView view = new HomePageRecruiterView(this);
+        navigationController.pushView(view);
+    }
 
-        //sends to createJobView
-        homePageRecruiterView.addCreateNewJobButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                navigationController.pushView(createJobView);
-            }
-        });
+    public void showCreateJob() {
+        CreateJobController createJobController = new CreateJobController(navigationController);
+        createJobController.showCreateJob();
+    }
 
-        //sends to recruiterProfileEditView which currently does not exist.
-        homePageRecruiterView.addEditProfileButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //navigationController.setContentArea();
-            }
-        });
+    public void showEditCategories() {
+        // TODO: show something here
+    }
 
-        //sends to jobListingsView
-        homePageRecruiterView.addManageListedJobsButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                navigationController.pushView(jobListingsView);
-            }
-        });
+    public void showEditProfile() {
+        // TODO: create a view for this and show it here
+    }
 
-
+    public void showManageListedJobs() {
+        // TODO: show something here
     }
 }
