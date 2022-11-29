@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import controller.HomeRecruiterController;
 import model.Job;
 import view.UIView;
 import view.ViewHelper;
@@ -15,9 +16,10 @@ public class JobListingsView implements UIView {
     private JButton nextButton;
     private JButton previousButton;
     private JLabel headingText;
+    private HomeRecruiterController controller;
 
-    public JobListingsView() {
-
+    public JobListingsView(HomeRecruiterController controller) {
+        this.controller = controller;
     }
 
     public JPanel getPanelMain() {
@@ -46,7 +48,7 @@ public class JobListingsView implements UIView {
     }
 
     public static void main(String[] args) {
-        JobListingsView view = new JobListingsView();
+        JobListingsView view = new JobListingsView(null);
         ViewHelper.showStandaloneFrame(view);
     }
 }
