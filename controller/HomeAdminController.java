@@ -31,6 +31,7 @@ public class HomeAdminController {
         navigationController.pushView(manageSkillsView);
     }
     public void showManageUsers() {
-        //
+        ManageUsersView manageUsersView = new ManageUsersView(this);
+        navigationController.pushView(manageUsersView);
     }
 }
