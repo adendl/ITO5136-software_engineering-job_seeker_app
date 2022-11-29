@@ -3,6 +3,8 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import controller.HomeAdminController;
 import view.UIView;
 import view.ViewHelper;
 
@@ -17,32 +19,29 @@ public class ManageSkillsView implements UIView {
     private JTextField deleteText;
     private JScrollPane scrollPane;
     private JLabel titleLabel;
+    private HomeAdminController controller;
 
     private DefaultListModel<String> dlm = new DefaultListModel<String>();
 
-    public ManageSkillsView() {
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println(addText.getText());
-                if (dlm.contains(addText.getText()))
-                {
-                    System.out.println("NOT ALLOWED");
-                }
-                else
-                {
-                    dlm.addElement(addText.getText());
-                    skillsList.setModel(dlm);
-                }
+    public ManageSkillsView(HomeAdminController controller) {
+        this.controller = controller;
+
+        addButton.addActionListener((e) -> {
+            System.out.println(addText.getText());
+            if (dlm.contains(addText.getText()))
+            {
+                System.out.println("NOT ALLOWED");
+            }
+            else
+            {
+                dlm.addElement(addText.getText());
+                skillsList.setModel(dlm);
             }
         });
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (dlm.contains(deleteText.getText()))
-                {
-                    dlm.remove(dlm.indexOf(deleteText.getText()));
-                }
+        deleteButton.addActionListener((e) -> {
+            if (dlm.contains(deleteText.getText()))
+            {
+                dlm.remove(dlm.indexOf(deleteText.getText()));
             }
         });
     }
@@ -63,14 +62,6 @@ public class ManageSkillsView implements UIView {
         return skillsList;
     }
 
-    public void addAddButtonListener(ActionListener buttonListener) {
-        addButton.addActionListener(buttonListener);
-    }
-
-    public void addDeleteButtonListener(ActionListener buttonListener) {
-        deleteButton.addActionListener(buttonListener);
-    }
-
     @Override
     public JComponent getUIView() {
         return panelMain;
@@ -78,7 +69,7 @@ public class ManageSkillsView implements UIView {
 
     public static void main(String[] args)
     {
-        ManageSkillsView m = new ManageSkillsView();
+        ManageSkillsView m = new ManageSkillsView(null);
         ViewHelper.showStandaloneFrame(m);
     }
 
