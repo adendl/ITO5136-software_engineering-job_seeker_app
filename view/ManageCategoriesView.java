@@ -3,6 +3,8 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import controller.HomeRecruiterController;
 import view.UIView;
 import view.ViewHelper;
 
@@ -16,32 +18,27 @@ public class ManageCategoriesView implements UIView {
     private JLabel addText;
     private JTextField deleteText;
     private JLabel titleLabel;
+    private HomeRecruiterController controller;
 
     private DefaultListModel<String> dlm = new DefaultListModel<String>();
 
-    public ManageCategoriesView() {
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println(addBox.getText());
-                if (dlm.contains(addBox.getText()))
-                {
-                    System.out.println("NOT ALLOWED");
-                }
-                else
-                {
-                    dlm.addElement(addBox.getText());
-                    categoryList.setModel(dlm);
-                }
+    public ManageCategoriesView(HomeRecruiterController controller) {
+        this.controller = controller;
+        addButton.addActionListener((e) ->{
+            System.out.println(addBox.getText());
+            if (dlm.contains(addBox.getText()))
+            {
+                System.out.println("NOT ALLOWED");
+            }
+            else
+            {
+                dlm.addElement(addBox.getText());
+                categoryList.setModel(dlm);
             }
         });
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (dlm.contains(deleteText.getText()))
-                {
-                    dlm.remove(dlm.indexOf(deleteText.getText()));
-                }
+        deleteButton.addActionListener((e) -> {
+            if (dlm.contains(deleteText.getText())) {
+                dlm.remove(dlm.indexOf(deleteText.getText()));
             }
         });
     }
@@ -63,14 +60,6 @@ public class ManageCategoriesView implements UIView {
         return categoryList;
     }
 
-    public void addAddButtonListener(ActionListener buttonListener) {
-        addButton.addActionListener(buttonListener);
-    }
-
-    public void addDeleteButtonListener(ActionListener buttonListener) {
-        deleteButton.addActionListener(buttonListener);
-    }
-
     @Override
     public JComponent getUIView() {
         return panelMain;
@@ -78,7 +67,7 @@ public class ManageCategoriesView implements UIView {
 
     public static void main(String[] args)
     {
-        ManageCategoriesView view = new ManageCategoriesView();
+        ManageCategoriesView view = new ManageCategoriesView(null);
         ViewHelper.showStandaloneFrame(view);
     }
 
