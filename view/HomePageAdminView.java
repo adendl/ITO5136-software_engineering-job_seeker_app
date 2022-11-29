@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import controller.HomeAdminController;
 import view.UIView;
 import view.ViewHelper;
 
@@ -13,31 +14,27 @@ public class HomePageAdminView implements UIView {
     private JButton manageCategoriesButton;
     private JButton manageSkillsButton;
     private JButton manageLocationsButton;
+    private HomeAdminController controller;
 
-    public HomePageAdminView() {
-
+    public HomePageAdminView(HomeAdminController controller) {
+        this.controller = controller;
+        manageUsersButton.addActionListener((e) -> {
+            controller.showManageUsers();
+        });
+        manageCategoriesButton.addActionListener((e) -> {
+            controller.showManageCategories();
+        });
+        manageSkillsButton.addActionListener((e) -> {
+            controller.showManageSkills();
+        });
+        manageLocationsButton.addActionListener((e) -> {
+            controller.showManageLocations();
+        });
     }
 
     public JPanel getPanelMain() {
         return panelMain;
     }
-
-    public void addManageUsersButtonListener(ActionListener manageUsersButtonListener) {
-        manageUsersButton.addActionListener(manageUsersButtonListener);
-    }
-
-    public void addManageCategoriesButtonListener(ActionListener manageCategoriesButtonListener) {
-        manageCategoriesButton.addActionListener(manageCategoriesButtonListener);
-    }
-
-    public void addManageSkillsButtonListener(ActionListener manageSkillsButtonListener) {
-        manageSkillsButton.addActionListener(manageSkillsButtonListener);
-    }
-
-    public void addManageLocationButtonListener(ActionListener manageLocationButtonListener) {
-        manageLocationsButton.addActionListener(manageLocationButtonListener);
-    }
-
 
     @Override
     public JComponent getUIView() {
@@ -45,7 +42,7 @@ public class HomePageAdminView implements UIView {
     }
 
     public static void main(String[] args) {
-        HomePageAdminView view = new HomePageAdminView();
+        HomePageAdminView view = new HomePageAdminView(null);
         ViewHelper.showStandaloneFrame(view);
     }
 }
