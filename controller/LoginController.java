@@ -86,8 +86,8 @@ public class LoginController {
     }
 
     public void showRecruiterHub() {
-        //HomeRecruiterController controller = new HomeRecruiterController(navigationController);
-        //controller.showHub();
+        HomeRecruiterController controller = new HomeRecruiterController(navigationController);
+        controller.showHub();
     }
 
     public void showSeekerHub() {
