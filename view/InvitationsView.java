@@ -9,27 +9,27 @@ import view.ViewHelper;
 public class InvitationsView implements UIView {
     private JPanel panelMain;
     private JTable table1;
-    private JButton searchButton;
     private JButton sortByButton;
     private JButton nextButton;
     private JButton previousButton;
     private JLabel headingText;
 
     public InvitationsView() {
+    }
 
-        previousButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // only display if not on first page
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
 
-            }
-        });
-        nextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // only display if there are more results to paginate through
-            }
-        });
+    public void setTable1(JTable table1) {
+        this.table1 = table1;
+    }
+
+    public void addNextButtonListener(ActionListener buttonListener) {
+        nextButton.addActionListener(buttonListener);
+    }
+    public void addPreviousButtonListener(ActionListener buttonListener) {
+        previousButton.addActionListener(buttonListener);
     }
 
     @Override

@@ -15,32 +15,29 @@ public class HomePageAdminView implements UIView {
     private JButton manageLocationsButton;
 
     public HomePageAdminView() {
-        manageUsersButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        manageCategoriesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        manageSkillsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        manageLocationsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
 
     }
+
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public void addManageUsersButtonListener(ActionListener manageUsersButtonListener) {
+        manageUsersButton.addActionListener(manageUsersButtonListener);
+    }
+
+    public void addManageCategoriesButtonListener(ActionListener manageCategoriesButtonListener) {
+        manageCategoriesButton.addActionListener(manageCategoriesButtonListener);
+    }
+
+    public void addManageSkillsButtonListener(ActionListener manageSkillsButtonListener) {
+        manageSkillsButton.addActionListener(manageSkillsButtonListener);
+    }
+
+    public void addManageLocationButtonListener(ActionListener manageLocationButtonListener) {
+        manageLocationsButton.addActionListener(manageLocationButtonListener);
+    }
+
 
     @Override
     public JComponent getUIView() {

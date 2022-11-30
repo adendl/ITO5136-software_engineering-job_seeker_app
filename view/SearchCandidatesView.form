@@ -31,7 +31,7 @@
           <text value="Search"/>
         </properties>
       </component>
-      <component id="6ee8" class="javax.swing.JLabel">
+      <component id="6ee8" class="javax.swing.JLabel" binding="searchCandidatesLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -49,7 +49,7 @@
           <model/>
         </properties>
       </component>
-      <component id="e51be" class="javax.swing.JLabel">
+      <component id="e51be" class="javax.swing.JLabel" binding="categoriesLabel">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -58,7 +58,7 @@
           <text value="Categories"/>
         </properties>
       </component>
-      <component id="a9155" class="javax.swing.JLabel">
+      <component id="a9155" class="javax.swing.JLabel" binding="locationLabel">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -83,7 +83,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="43c0f" class="javax.swing.JList" binding="list1" default-binding="true">
+          <component id="43c0f" class="javax.swing.JList" binding="resultsList">
             <constraints/>
             <properties>
               <model/>

@@ -11,26 +11,33 @@ import view.ViewHelper;
 public class JobListingsView implements UIView {
     private JPanel panelMain;
     private JTable jobListingsTable;
-    private JButton searchButton;
     private JButton sortByButton;
     private JButton nextButton;
     private JButton previousButton;
     private JLabel headingText;
 
     public JobListingsView() {
-        previousButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // only display if not on first page
 
-            }
-        });
-        nextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // only display if there are more results to paginate through
-            }
-        });
+    }
+
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public void setJobListingsTable(JTable jobListingsTable) {
+        this.jobListingsTable = jobListingsTable;
+    }
+
+    public void addPreviousButtonListener(ActionListener buttonListener) {
+        previousButton.addActionListener(buttonListener);
+    }
+
+    public void addNextButtonListener(ActionListener buttonListener) {
+        nextButton.addActionListener(buttonListener);
+    }
+
+    public void addSortByButtonListener(ActionListener buttonListener) {
+        sortByButton.addActionListener(buttonListener);
     }
 
     @Override

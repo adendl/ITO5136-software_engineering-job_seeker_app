@@ -1,11 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import controller.NavigationController;
-import view.CreateJobView;
-import view.HomePageRecruiterView;
-import view.NavigationBar;
-import view.ViewHelper;
+import controller.*;
+import view.*;
 
 import java.awt.*;
 
@@ -51,9 +48,34 @@ public class MainWindow {
         mainWindow.setSize(width, height);
         mainWindow.setLocationRelativeTo(null);
 
-        // initial view is going to be recruiter hub, for now
-        HomePageRecruiterView recruiterView = new HomePageRecruiterView(navigationController);
-        navigationController.pushView(recruiterView);
+        //not sure if this all should be done here
+        // initialising loginController
+        LoginView loginView = new LoginView();
+        CreateUserView createUserView = new CreateUserView();
+        HomePageAdminView homePageAdminView = new HomePageAdminView();
+        HomePageJobSeekerView homePageJobSeekerView = new HomePageJobSeekerView();
+        HomePageRecruiterView homePageRecruiterView = new HomePageRecruiterView();
+        LoginController loginController = new LoginController(navigationController, loginView, createUserView, homePageAdminView, homePageRecruiterView, homePageJobSeekerView);
+
+        //initialising homeRecruiter Controller
+        CreateJobView createJobView = new CreateJobView();
+        JobListingsView jobListingsView = new JobListingsView();
+        MailboxView mailboxView = new MailboxView();
+        HomeRecruiterController recruiterController = new HomeRecruiterController(navigationController, homePageRecruiterView, createJobView, jobListingsView, mailboxView);
+
+        //initialising homeJobSeekerController
+        SearchJobView searchJobView = new SearchJobView();
+        EditProfileView editProfileView = new EditProfileView();
+        ApplicationsView applicationsView = new ApplicationsView();
+        HomeJobSeekerController homeJobSeekerController = new HomeJobSeekerController(navigationController, homePageJobSeekerView, searchJobView, mailboxView, editProfileView, applicationsView);
+
+        //initialising HomeAdminController
+        ManageCategoriesView manageCategoriesView = new ManageCategoriesView();
+        ManageSkillsView manageSkillsView = new ManageSkillsView();
+        ManageUsersView manageUsersView = new ManageUsersView();
+        HomeAdminController homeAdminController = new HomeAdminController(navigationController, homePageAdminView, manageCategoriesView, manageSkillsView, manageUsersView);
+
+        navigationController.pushView(loginView);
 
         mainWindow.setVisible(true);
     }

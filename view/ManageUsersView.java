@@ -34,6 +34,18 @@ public class ManageUsersView implements UIView {
         });
     }
 
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public JTextField getManageUsersBox() {
+        return manageUsersBox;
+    }
+
+    public JList getUserList() {
+        return userList;
+    }
+
     @Override
     public JComponent getUIView() {
         return panelMain;

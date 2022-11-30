@@ -17,25 +17,31 @@ public class SearchResultsView implements UIView {
     private JLabel headingText;
 
     public SearchResultsView() {
-        searchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // move to search jobs view, with the search text preloaded
-            }
-        });
-        previousButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // only display if not on first page
 
-            }
-        });
-        nextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // only display if there are more results to paginate through
-            }
-        });
+    }
+
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public JTextField getSearchTextField() {
+        return searchTextField;
+    }
+
+    public JTable getTable1() {
+        return table1;
+    }
+
+    public void addSearchButtonListener(ActionListener buttonListener) {
+        searchButton.addActionListener(buttonListener);
+    }
+
+    public void addNextButtonListener(ActionListener buttonListener) {
+        nextButton.addActionListener(buttonListener);
+    }
+
+    public void addPreviousButtonListener(ActionListener buttonListener) {
+        previousButton.addActionListener(buttonListener);
     }
 
     @Override

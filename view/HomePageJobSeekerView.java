@@ -15,29 +15,31 @@ public class HomePageJobSeekerView implements UIView {
     private JButton editProfileButton;
 
     public HomePageJobSeekerView() {
-        searchJobsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
-        viewApplicationsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
-        viewInvitationsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    }
 
-            }
-        });
-        editProfileButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
 
-            }
-        });
+    public JButton getSearchJobsButton() {
+        return searchJobsButton;
+    }
+
+    public void addSearchJobsButtonListener(ActionListener buttonListener) {
+        searchJobsButton.addActionListener(buttonListener);
+    }
+
+    public void addViewApplicationsButtonListener(ActionListener buttonListener) {
+        viewApplicationsButton.addActionListener(buttonListener);
+    }
+
+    public void addViewInvitationsButtonListener(ActionListener buttonListener) {
+        viewInvitationsButton.addActionListener(buttonListener);
+    }
+
+    public void addEditProfileButtonListener(ActionListener buttonListener) {
+        editProfileButton.addActionListener(buttonListener);
     }
 
     @Override

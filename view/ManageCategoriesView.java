@@ -12,10 +12,10 @@ public class ManageCategoriesView implements UIView {
     private JTextField addBox;
     private JButton addButton;
     private JButton deleteButton;
-    private JLabel deleteText;
-
+    private JLabel deleteLabel;
     private JLabel addText;
-    private JTextField deleteBox;
+    private JTextField deleteText;
+    private JLabel titleLabel;
 
     private DefaultListModel<String> dlm = new DefaultListModel<String>();
 
@@ -38,12 +38,37 @@ public class ManageCategoriesView implements UIView {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (dlm.contains(deleteBox.getText()))
+                if (dlm.contains(deleteText.getText()))
                 {
-                    dlm.remove(dlm.indexOf(deleteBox.getText()));
+                    dlm.remove(dlm.indexOf(deleteText.getText()));
                 }
             }
         });
+    }
+
+
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public JTextField getAddBox() {
+        return addBox;
+    }
+
+    public JTextField getDeleteText() {
+        return deleteText;
+    }
+
+    public JList getCategoryList() {
+        return categoryList;
+    }
+
+    public void addAddButtonListener(ActionListener buttonListener) {
+        addButton.addActionListener(buttonListener);
+    }
+
+    public void addDeleteButtonListener(ActionListener buttonListener) {
+        deleteButton.addActionListener(buttonListener);
     }
 
     @Override

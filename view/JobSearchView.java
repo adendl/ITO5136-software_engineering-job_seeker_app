@@ -9,49 +9,54 @@ import view.UIView;
 import view.ViewHelper;
 
 public class JobSearchView implements UIView {
-    private JPanel JobSearchPanel;
-    private JTextField txtSearchBar;
-    private JComboBox cbxLocation;
-    private JComboBox cbxCategory;
-    private JComboBox cbxSalary;
-    private JButton btnSearchOnProfile;
-    private JButton btnSearch;
-    private JLabel lbSearch;
-    private JLabel Location;
-    private JLabel lbCategory;
-    private JLabel lbSalary;
+    private JPanel panelMain;
+    private JComboBox locationComboBox;
+    private JComboBox categoryComboBox;
+    private JComboBox salaryComboBox;
+    private JButton searchOnProfileButton;
+    private JButton searchButton;
+    private JLabel jobSearchLabel;
+    private JLabel locationLabel;
+    private JLabel categoryLabel;
+    private JLabel salaryLabel;
+    private JTextField searchText;
 
     public JobSearchView() {
 
     }
 
-    public String getTxtSearchBar(){
-        return txtSearchBar.getText();
+    public JPanel getPanelMain() {
+        return panelMain;
     }
 
-    public String getCbxLocation(){
-        return cbxLocation.getName();
+
+    public JComboBox getLocationComboBox() {
+        return locationComboBox;
     }
 
-    public String getCbxCategory(){
-        return cbxCategory.getName();
+    public JComboBox getCategoryComboBox() {
+        return categoryComboBox;
     }
 
-    public String getCbxSalary() {
-        return cbxSalary.getName();
+    public JComboBox getSalaryComboBox() {
+        return salaryComboBox;
+    }
+
+    public JTextField getSearchText() {
+        return searchText;
     }
 
     public void addSearchButtonActionListener(ActionListener searchButtonListener){
-        btnSearch.addActionListener(searchButtonListener);
+        searchButton.addActionListener(searchButtonListener);
     }
 
     public void addSearchOnProfileButtonActionListener(ActionListener searchOnProfileButtonListener){
-        btnSearchOnProfile.addActionListener(searchOnProfileButtonListener);
+        searchOnProfileButton.addActionListener(searchOnProfileButtonListener);
     }
 
     @Override
     public JComponent getUIView() {
-        return JobSearchPanel;
+        return panelMain;
     }
 
     public static void main(String[] args) {
@@ -74,41 +79,41 @@ public class JobSearchView implements UIView {
      * @noinspection ALL
      */
     private void $$$setupUI$$$() {
-        JobSearchPanel = new JPanel();
-        JobSearchPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(9, 2, new Insets(0, 0, 0, 0), -1, -1));
-        lbSearch = new JLabel();
-        lbSearch.setText("model.Job Search");
-        JobSearchPanel.add(lbSearch, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        txtSearchBar = new JTextField();
-        JobSearchPanel.add(txtSearchBar, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
-        Location = new JLabel();
-        Location.setText("Location");
-        JobSearchPanel.add(Location, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        cbxLocation = new JComboBox();
-        JobSearchPanel.add(cbxLocation, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        lbCategory = new JLabel();
-        lbCategory.setText("Category");
-        JobSearchPanel.add(lbCategory, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        cbxCategory = new JComboBox();
-        JobSearchPanel.add(cbxCategory, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        lbSalary = new JLabel();
-        lbSalary.setText("Salary");
-        JobSearchPanel.add(lbSalary, new com.intellij.uiDesigner.core.GridConstraints(6, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        cbxSalary = new JComboBox();
-        JobSearchPanel.add(cbxSalary, new com.intellij.uiDesigner.core.GridConstraints(7, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        btnSearchOnProfile = new JButton();
-        btnSearchOnProfile.setText("Search Based on My Profile");
-        JobSearchPanel.add(btnSearchOnProfile, new com.intellij.uiDesigner.core.GridConstraints(8, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        btnSearch = new JButton();
-        btnSearch.setText("Search");
-        JobSearchPanel.add(btnSearch, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        panelMain = new JPanel();
+        panelMain.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(9, 2, new Insets(0, 0, 0, 0), -1, -1));
+        jobSearchLabel = new JLabel();
+        jobSearchLabel.setText("model.Job Search");
+        panelMain.add(jobSearchLabel, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        searchText = new JTextField();
+        panelMain.add(searchText, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        locationLabel = new JLabel();
+        locationLabel.setText("Location");
+        panelMain.add(locationLabel, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        locationComboBox = new JComboBox();
+        panelMain.add(locationComboBox, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        categoryLabel = new JLabel();
+        categoryLabel.setText("Category");
+        panelMain.add(categoryLabel, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        categoryComboBox = new JComboBox();
+        panelMain.add(categoryComboBox, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        salaryLabel = new JLabel();
+        salaryLabel.setText("Salary");
+        panelMain.add(salaryLabel, new com.intellij.uiDesigner.core.GridConstraints(6, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        salaryComboBox = new JComboBox();
+        panelMain.add(salaryComboBox, new com.intellij.uiDesigner.core.GridConstraints(7, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        searchOnProfileButton = new JButton();
+        searchOnProfileButton.setText("Search Based on My Profile");
+        panelMain.add(searchOnProfileButton, new com.intellij.uiDesigner.core.GridConstraints(8, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        searchButton = new JButton();
+        searchButton.setText("Search");
+        panelMain.add(searchButton, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
      * @noinspection ALL
      */
     public JComponent $$$getRootComponent$$$() {
-        return JobSearchPanel;
+        return panelMain;
     }
 
 }

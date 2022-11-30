@@ -8,39 +8,40 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class JobSearchController {
+    public JobSearchController(NavigationController navigationController, SearchJobView searchJobView, JobDetailsView jobDetailsView, SearchResultsView searchResultsView){
 
-    private JobSearchView boundary;
-    private JobDetailsView boundary2;
-
-    public JobSearchController(JobSearchView jobSearchView, JobDetailsView jobDetailsView){
-        this.boundary = jobSearchView;
-        this.boundary2 = jobDetailsView;
-
-        boundary.addSearchButtonActionListener(new ActionListener() {
+        searchJobView.addSearchJobButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //get field attributes (these really need to be int)
-                boundary.getCbxLocation();
-                boundary.getCbxCategory();
-                boundary.getTxtSearchBar();
-                boundary.getCbxSalary();
-
-                //send to searchActionController
-
-                //bring search results into frame
-                //boundary2.setVisible(true);
+                //get all field attributes and search term and run through matching algorithm
+                SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, searchJobView, searchResultsView);
             }
         });
 
-        boundary.addSearchOnProfileButtonActionListener(new ActionListener() {
+        //add event listeners for the search results page
+        //we may need a searchResultsController to add the action listeners for the job details, maybe this can be done in the view.
+        searchResultsView.addNextButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //get field attributes and send to searchActionController
-                //bring search results into frame
-                //boundary2.setVisible(true);
+                // only display if there are more results to paginate through
             }
         });
 
+        searchResultsView.addPreviousButtonListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // only display if not on first page
+            }
+        });
+
+        searchResultsView.addSearchButtonListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                searchResultsView.getSearchTextField().toString();
+                //pass search term back to searchJobView
+                navigationController.doBack();
+            }
+        });
     }
 
 

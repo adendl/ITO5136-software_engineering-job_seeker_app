@@ -11,10 +11,12 @@ public class SearchCandidatesView implements UIView {
     private JTextField enterKeywordsTextField;
     private JButton searchButton;
     private JComboBox locationBox;
-    private JComboBox comboBox2;
-    private JList list1;
+    private JList resultsList;
     private JButton selectCategoriesButton;
     private JScrollPane scrollPane;
+    private JLabel searchCandidatesLabel;
+    private JLabel categoriesLabel;
+    private JLabel locationLabel;
 
 
     public SearchCandidatesView() {
@@ -34,9 +36,27 @@ public class SearchCandidatesView implements UIView {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(list1.getSelectedValuesList().toString());
+                System.out.println(resultsList.getSelectedValuesList().toString());
             }
         });
+    }
+
+
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public JTextField getEnterKeywordsTextField() {
+        return enterKeywordsTextField;
+    }
+
+    public JComboBox getLocationBox() {
+        return locationBox;
+    }
+
+
+    public JList getResultsList() {
+        return resultsList;
     }
 
     @Override
@@ -52,7 +72,7 @@ public class SearchCandidatesView implements UIView {
         {
             dlm.add(x, x);
         }
-        s.list1.setModel(dlm);
+        s.resultsList.setModel(dlm);
         ViewHelper.showStandaloneFrame(s);
     }
 }

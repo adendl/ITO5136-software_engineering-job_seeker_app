@@ -8,14 +8,17 @@ import view.ViewHelper;
 
 public class SearchJobView implements UIView {
     private JPanel panelMain;
-    private JTextField enterKeywordsTextField;
+    private JTextField enterKeywordsText;
     private JButton searchButton;
-    private JComboBox locationBox;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
-    private JList list1;
+    private JComboBox locationComboBox;
+    private JList resultsList;
     private JButton selectCategoriesButton;
     private JScrollPane scrollPane;
+    private JComboBox salaryComboBox;
+    private JLabel searchJobsLabel;
+    private JLabel salaryRangeLabel;
+    private JLabel categoriesLabel;
+    private JLabel locationLabel;
 
 
     public SearchJobView() {
@@ -35,9 +38,34 @@ public class SearchJobView implements UIView {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(list1.getSelectedValuesList().toString());
+                System.out.println(resultsList.getSelectedValuesList().toString());
             }
         });
+    }
+
+
+    public JPanel getPanelMain() {
+        return panelMain;
+    }
+
+    public JTextField getEnterKeywordsText() {
+        return enterKeywordsText;
+    }
+
+    public JComboBox getLocationComboBox() {
+        return locationComboBox;
+    }
+
+    public JList getResultsList() {
+        return resultsList;
+    }
+
+    public JComboBox getSalaryComboBox() {
+        return salaryComboBox;
+    }
+
+    public void addSearchJobButtonListener(ActionListener buttonListener) {
+        searchButton.addActionListener(buttonListener);
     }
 
     @Override
@@ -53,7 +81,7 @@ public class SearchJobView implements UIView {
         {
             dlm.add(x, x);
         }
-        s.list1.setModel(dlm);
+        s.resultsList.setModel(dlm);
         ViewHelper.showStandaloneFrame(s);
     }
 }
