@@ -10,37 +10,7 @@ public class JobApplication {
     private int applicantId;
     private LocalDate dateApplied;
     private int jobId;
-    private int resumeId;
-
-    private int messageId;
-
-    public JobApplication() {
-    }
-
-
-    public JobApplication(int applicationId) {
-        this.applicationId = applicationId;
-    }
-
-    public JobApplication(int applicantId, LocalDate dateApplied, int jobId, int resumeId, int messageId) {
-        this.applicantId = applicantId;
-        this.dateApplied = dateApplied;
-        this.jobId = jobId;
-        this.resumeId = resumeId;
-        this.messageId = messageId;
-    }
-
-    public int getApplicationId() {
-        return applicationId;
-    }
-
-    public void setApplicationId(int applicationId) {
-        this.applicationId = applicationId;
-    }
-
-    public int getApplicantId() {
-        return applicantId;
-    }
+    private int resumeId;gi
 
     public void setApplicantId(int applicantId) {
         this.applicantId = applicantId;
