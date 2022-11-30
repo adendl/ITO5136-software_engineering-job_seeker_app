@@ -17,7 +17,9 @@ public class CreateMessageView implements UIView {
     private JLabel newInvitationMessageLabel;
 
     public CreateMessageView() {
+        sendMessageButton.addActionListener((e -> {
 
+        }));
     }
 
     public JTextField getSubjectText() {
@@ -36,9 +38,6 @@ public class CreateMessageView implements UIView {
         return toText;
     }
 
-    public void addSendMessageButtonListener(ActionListener sendMessageButtonListener) {
-        sendMessageButton.addActionListener(sendMessageButtonListener);
-    }
 
     @Override
     public JComponent getUIView() {

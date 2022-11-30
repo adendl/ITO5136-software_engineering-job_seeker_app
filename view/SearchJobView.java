@@ -22,6 +22,7 @@ public class SearchJobView implements UIView {
 
 
     public SearchJobView() {
+        /*
         selectCategoriesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,11 +42,7 @@ public class SearchJobView implements UIView {
                 System.out.println(resultsList.getSelectedValuesList().toString());
             }
         });
-    }
-
-
-    public JPanel getPanelMain() {
-        return panelMain;
+         */
     }
 
     public JTextField getEnterKeywordsText() {
