@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import controller.MailboxController;
-import model.Mailbox;
+import model.Message;
 
 public class MailboxView implements UIView {
     private JTable table1;

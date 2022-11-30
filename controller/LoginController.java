@@ -1,6 +1,5 @@
 package controller;
 
-import model.Administrator;
 import model.JobSeeker;
 import model.Recruiter;
 import view.*;
@@ -50,7 +49,7 @@ public class LoginController {
                 break;
             //admin selection
             case 2:
-                Administrator newAdmin = new Administrator();
+                //Administrator newAdmin = new Administrator();
                 //adds to db.
                 //set to logged in and sends to homepage
                 showAdminHub();

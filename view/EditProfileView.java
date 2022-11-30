@@ -79,22 +79,22 @@ public class EditProfileView implements UIView {
     public void submitUpdate() {
         // things like skills and location might need special handling (they should come from database)
         //need to add password and skills
-        String address = addressText.getText();
-        String email = emailText.getText();
+        //String address = addressText.getText();
+        //String email = emailText.getText();
         String firstName = firstNameText.getText();
         String lastName = lastNameText.getText();
-        String phoneNumber = phoneNumberText.getText();
+        //String phoneNumber = phoneNumberText.getText();
 
         // TODO: validate this data before calling controller.updateProfile
 
-        controller.updateProfile(firstName, lastName, email, phoneNumber, address);
+        controller.updateProfile(firstName, lastName/*, email, phoneNumber, address*/);
     }
 
     // populate the UI fields with user data
     public void populateForUser(User user) {
-        emailText.setText(user.getEmail());
-        addressText.setText(user.getAddress());
-        phoneNumberText.setText(user.getPhoneNumber());
+        //emailText.setText(user.getEmail());
+        //addressText.setText(user.getAddress());
+        //phoneNumberText.setText(user.getPhoneNumber());
         firstNameText.setText(user.getFirstName());
         lastNameText.setText(user.getLastName());
     }
