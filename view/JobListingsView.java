@@ -18,9 +18,7 @@ import view.ViewHelper;
 public class JobListingsView implements UIView {
     private JPanel panelMain;
     private JTable jobListingsTable;
-    private JButton sortByButton;
-    private JButton nextButton;
-    private JButton previousButton;
+    private JButton populateTable;
     private JLabel headingText;
     private HomeRecruiterController controller;
 
@@ -77,18 +75,6 @@ public class JobListingsView implements UIView {
 
     public void setJobListingsTable(JTable jobListingsTable) {
         this.jobListingsTable = jobListingsTable;
-    }
-
-    public void addPreviousButtonListener(ActionListener buttonListener) {
-        previousButton.addActionListener(buttonListener);
-    }
-
-    public void addNextButtonListener(ActionListener buttonListener) {
-        nextButton.addActionListener(buttonListener);
-    }
-
-    public void addSortByButtonListener(ActionListener buttonListener) {
-        sortByButton.addActionListener(buttonListener);
     }
 
     @Override
