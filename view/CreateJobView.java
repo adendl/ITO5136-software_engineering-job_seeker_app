@@ -42,11 +42,6 @@ public class CreateJobView implements UIView {
         String salaryRange = salaryRangeText.getText();
         controller.doCreateJob(title, description, jobType, company, salaryRange);
     }
-
-    public JPanel getPanelMain() {
-        return panelMain;
-    }
-
     @Override
     public JComponent getUIView() {
         return panelMain;
