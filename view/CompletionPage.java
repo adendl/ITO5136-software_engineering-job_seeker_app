@@ -12,16 +12,16 @@ public class CompletionPage implements UIView {
     private JPanel panelMain;
 
     public CompletionPage() {
+        continueButton.addActionListener((e -> {
 
+        }));
     }
 
     public JPanel getPanelMain() {
         return panelMain;
     }
 
-    public void addContinueButtonListener(ActionListener continueButtonListener) {
-        continueButton.addActionListener(continueButtonListener);
-    }
+
 
     @Override
     public JComponent getUIView() {

@@ -36,15 +36,19 @@ public class JobApplicationView implements UIView {
 
     public JobApplicationView(ApplyForJobController controller) {
         this.controller = controller;
-        submitButton.addActionListener((e) -> {
-            controller.submitApplication(getFirstName(), getLastName(), getEmail(), getPhone());
-        });
+        submitButton.addActionListener((e -> {
+            doJobApply();
+        }));
         browseResumeButton.addActionListener((e -> {
             //upload resume
         }));
         browseCoverLetterButton.addActionListener((e -> {
             //upload cover letter
         }));
+    }
+
+    public void doJobApply(){
+        controller.submitApplication(getFirstName(), getLastName(), getEmail(), getPhone());
     }
 
     public String getFirstName() {

@@ -40,7 +40,7 @@ public class AppliedJobView implements UIView {
     }
 
     public static void main(String[] args) {
-        AppliedJobView view = new AppliedJobView();
+        AppliedJobView view = new AppliedJobView(null);
         ViewHelper.showStandaloneFrame(view);
     }
 
