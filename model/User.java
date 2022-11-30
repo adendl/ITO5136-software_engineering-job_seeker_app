@@ -85,12 +85,12 @@ public class User {
 
 
     public ResultSet getUser(String userId) {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from User where userId='" + userId + "'");
+        ResultSet rs = DBConnection.queryDatabase("select * from User where userId='" + userId + "'");
         return rs;
     }
 
     public ResultSet listUsers() {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from User");
+        ResultSet rs = DBConnection.queryDatabase("select * from User");
         return rs;
     }
 
@@ -104,17 +104,17 @@ public class User {
                 '"' + userType + '"' + ", " +
                 '"' + userId + '"' + ")";
         System.out.println(sql);
-        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        DBConnection.queryDatabase(sql);
     }
 
     public void deleteUser(String userId) {
-        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from User where userId='" + userId + "'");
+        DBConnection.queryDatabase("delete from User where userId='" + userId + "'");
     }
 
     public void updateUser(String userId, String fieldName, String value) {
         String sql = "update User \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere userId='" + userId + "'";
         System.out.println(sql);
-        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        DBConnection.queryDatabase(sql);
     }
 }
 

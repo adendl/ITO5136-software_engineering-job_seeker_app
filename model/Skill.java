@@ -33,7 +33,7 @@ public class Skill {
     }
 
     public static ResultSet getSkill(int skillId) {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Skill where skillId =" + skillId);
+        ResultSet rs = DBConnection.queryDatabase("select * from Skill where skillId =" + skillId);
         return rs;
     }
 
@@ -48,34 +48,34 @@ public class Skill {
         }
         sql += ")";
         System.out.println(sql);
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        ResultSet rs = DBConnection.queryDatabase(sql);
         return rs;
     }
 
     public ResultSet listSkills() {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Skill");
+        ResultSet rs = DBConnection.queryDatabase( "select * from Skill");
         return rs;
     }
 
     public void createSkill() {
-        Connection conn = DBConnection.connectDb();
+        DBConnection conn = DBConnection.get();
         String sql = "INSERT INTO Skill (skillId, name) VALUES (null, " + '"' + name + '"' + ")";
-        DBConnection.queryDatabase(conn, sql);
+        conn.executeQuery(sql);
         try {
-            setSkillId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM Skill").getInt("last_insert_rowid()"));
+            setSkillId(conn.getLatestItemId("Skill"));
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println("createSkill failed: " + e);
         }
     }
 
     public void deleteSkill(int skillId) {
-        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Skill where skillId=" + skillId);
+        DBConnection.queryDatabase("delete from Skill where skillId=" + skillId);
     }
 
     public void updateSkill(int skillId, String fieldName, String value) {
         String sql = "update Skill \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere skillId=" + skillId;
         System.out.println(sql);
-        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        DBConnection.queryDatabase(sql);
     }
 
     public static void main(String[] args) {

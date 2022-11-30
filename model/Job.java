@@ -143,19 +143,19 @@ public class Job {
 
     public ResultSet getJob(int jobId)
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job where jobId=" + jobId);
+        ResultSet rs = DBConnection.queryDatabase("select * from Job where jobId=" + jobId);
         return rs;
     }
 
     public ResultSet listJobs()
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job");
+        ResultSet rs = DBConnection.queryDatabase("select * from Job");
         return rs;
     }
 
     public void createJob()
     {
-        Connection conn = DBConnection.connectDb();
+        DBConnection db = DBConnection.get();
         String sql = "INSERT INTO Job (keyword, title, dateCreated, status, salaryMin, salaryMax, locationId, recruiterId, expiryDate, description, company, categoryId, jobId) VALUES (" +
                '"' + keywords + '"' + ", " +
                 '"' +    title + '"' + ", " +
@@ -171,24 +171,24 @@ public class Job {
                 categoryId + ", " +
                 jobId + ")";
         System.out.println(sql);
-       DBConnection.queryDatabase(conn, sql);
+        db.executeQuery(sql);
         try {
-            setJobId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM Job").getInt("last_insert_rowid()"));
+            setJobId(db.getLatestItemId("Job"));
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println("createJob failed:" + e);
         }
     }
 
     public void deleteJob(int jobId)
     {
-        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Job where jobId=" + jobId);
+        DBConnection.queryDatabase("delete from Job where jobId=" + jobId);
     }
 
     public void updateJob(int jobId, String fieldName, String value)
     {
         String sql = "update Job \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere jobId=" + jobId;
         System.out.println(sql);
-        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        DBConnection.queryDatabase(sql);
     }
 
 

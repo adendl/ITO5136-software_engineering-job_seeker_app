@@ -34,35 +34,35 @@ public class JobCategory {
 
 
     public ResultSet getJobCategory(int categoryId) {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobCategory where categoryId =" + categoryId);
+        ResultSet rs = DBConnection.queryDatabase("select * from JobCategory where categoryId =" + categoryId);
         return rs;
     }
 
     public ResultSet listJobCategories() {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobCategory");
+        ResultSet rs = DBConnection.queryDatabase("select * from JobCategory");
         return rs;
     }
 
     public void createJobCategory() {
-        Connection conn = DBConnection.connectDb();
+        DBConnection conn = DBConnection.get();
         String sql = "INSERT INTO JobCategory (categoryId, name) VALUES (null, " + '"' + name + '"' + ")";
         System.out.println(sql);
-        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        conn.executeQuery(sql);
         try {
-            setCategoryId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM JobCategory").getInt("last_insert_rowid()"));
+            setCategoryId(conn.getLatestItemId("JobCategory"));
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println("createJobCategory failed: " + e);
         }
     }
 
     public void deleteJobCategory(int categoryId) {
-        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from JobCategory where categoryId=" + categoryId);
+        DBConnection.queryDatabase("delete from JobCategory where categoryId=" + categoryId);
     }
 
     public void updateJobCategory(int categoryId, String fieldName, String value) {
         String sql = "update JobCategory \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere categoryId=" + categoryId;
         System.out.println(sql);
-        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        DBConnection.queryDatabase(sql);
     }
 }
 
