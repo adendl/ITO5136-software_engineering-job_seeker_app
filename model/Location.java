@@ -44,7 +44,7 @@ public class Location {
 
     public static ResultSet getLocation(int locationId)
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Location where locationId=" + locationId);
+        ResultSet rs = DBConnection.queryDatabase("select * from Location where locationId=" + locationId);
         return rs;
     }
 
@@ -56,13 +56,13 @@ public class Location {
 
     public static ResultSet listLocations()
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Location");
+        ResultSet rs = DBConnection.queryDatabase("select * from Location");
         return rs;
     }
 
     public void deleteJob(int locationId)
     {
-        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Location where locationId=" + locationId);
+        DBConnection.queryDatabase("delete from Location where locationId=" + locationId);
     }
 
 

@@ -163,26 +163,29 @@ public class Job {
 
     public static ResultSet getJob(int jobId)
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job where jobId=" + jobId);
-        return rs;
+        DBConnection db = DBConnection.get();
+        return db.executeQuery("select * from Job where jobId=" + jobId);
+
     }
 
     public static ResultSet listJobs()
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select jobId, dateCreated, title, company, Location.city from Job\nJoin Location on Job.locationId = Location.locationId");
-        return rs;
+        DBConnection db = DBConnection.get();
+        return db.executeQuery("select jobId, dateCreated, title, company, Location.city from Job\nJoin Location on Job.locationId = Location.locationId");
+
     }
 
 
 
     public static ResultSet listJobsOneStringFilter(String key, String value)
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job where " + key + '=' + '"' + value + '"');
-        return rs;
+        DBConnection db = DBConnection.get();
+        return db.executeQuery("select * from Job where " + key + '=' + '"' + value + '"');
     }
 
     public static ResultSet listJobsCategoriesFilter(ArrayList<Keyword> keywords)
     {
+        DBConnection db = DBConnection.get();
         String sql = "select * from Job where";
         for (int i = 0; i < keywords.size(); i++) {
             if (i == 0) {
@@ -192,12 +195,12 @@ public class Job {
             }
         }
         System.out.println(sql);
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), sql);
-        return rs;
+        return db.executeQuery(sql);
     }
 
     public static ResultSet listJobsCategoriesOneStringFilter(ArrayList<Keyword> keywords, String key, String value)
     {
+        DBConnection db = DBConnection.get();
         String sql = "select * from Job where " + key + '=' + '"' + value + '"' + " AND (";
         for (int i = 0; i < keywords.size(); i++) {
             if (i == 0) {
@@ -208,14 +211,12 @@ public class Job {
         }
         sql += ')';
         System.out.println(sql);
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), sql);
-        return rs;
+        return db.executeQuery(sql);
     }
-
 
     public void createJob()
     {
-        Connection conn = DBConnection.connectDb();
+        DBConnection db = DBConnection.get();
         String sql = "INSERT INTO Job (keyword, title, dateCreated, status, salaryMin, salaryMax, locationId, recruiterId, expiryDate, description, company, jobId) VALUES (" + '"';
                for (int i = 0; i < keyword.size(); i++)
                {
@@ -243,38 +244,26 @@ public class Job {
                 '"' +  company + '"' + ", " +
                 null + ")";
         System.out.println(sql);
-       DBConnection.queryDatabase(conn, sql);
+        db.executeQuery(sql);
         try {
-            setJobId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM Job").getInt("last_insert_rowid()"));
+            setJobId(db.getLatestItemId("Job"));
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println("createJob failed:" + e);
         }
     }
 
     public void deleteJob(int jobId)
     {
-        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Job where jobId=" + jobId);
+        DBConnection db = DBConnection.get();
+        db.executeQuery("delete from Job where jobId=" + jobId);
     }
 
     public void updateJob(int jobId, String fieldName, String value)
     {
+        DBConnection db = DBConnection.get();
         String sql = "update Job \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere jobId=" + jobId;
         System.out.println(sql);
-        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
-    }
-
-    public static void main(String[] args)
-    {
-        /** ArrayList<Keyword> al1 = new ArrayList<Keyword>();
-        Keyword kw1 = new Keyword(1, "category", "Accounting");
-        Keyword kw2 = new Keyword(2, "category", "Administration");
-        Keyword kw3 = new Keyword(3, "category", "Advertising");
-        al1.add(kw1);
-        al1.add(kw2);
-        al1.add(kw3);
-        Job job = new Job("ACME", "A really awesome job that you should apply for.", LocalDate.now(), true, al1, 1, 1, 80000, 100000, null, "Ass Kicker" );
-        job.createJob();
-        listJobsCategoriesOneStringFilter(al1, "locationId", "3"); **/
+        db.executeQuery(sql);
     }
 
 

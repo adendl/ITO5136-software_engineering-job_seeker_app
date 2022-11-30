@@ -9,11 +9,11 @@ public class JobApplication {
     private String applicationId;
     private String applicantId;
     private LocalDate dateApplied;
-    private String jobId;
-    private String resumeId;
-    private String messageId;
+    private int jobId;
+    private int resumeId;
+    private int messageId;
 
-    public JobApplication(String applicationId, String applicantId, LocalDate dateApplied, String jobId, String resumeId, String messageId) {
+    public JobApplication(String applicationId, String applicantId, LocalDate dateApplied, int jobId, int resumeId, int messageId) {
         this.applicationId = applicationId;
         this.applicantId = applicantId;
         this.dateApplied = dateApplied;
@@ -75,41 +75,40 @@ public class JobApplication {
         this.messageId = messageId;
     }
 
+
     public ResultSet listJobApplicationsJobSeeker(int applicantId) {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication where applicantId =" + applicantId);
-        return rs;
+        return DBConnection.queryDatabase("select * from JobApplication where applicantId =" + applicantId);
     }
 
     public static ResultSet listJobApplicationsRecruiter(int jobId)
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication where jobId =" + jobId);
+        ResultSet rs = DBConnection.queryDatabase("select * from JobApplication where jobId =" + jobId);
         return rs;
     }
 
     public static ResultSet getJobApplication(int applicationId)
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication where applicationId =" + applicationId);
+        ResultSet rs = DBConnection.queryDatabase("select * from JobApplication where applicationId =" + applicationId);
         return rs;
     }
-
-    public static ResultSet listJobApplications() {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication");
+    public ResultSet listJobApplications() {
+        ResultSet rs = DBConnection.queryDatabase("select * from JobApplication");
         return rs;
     }
 
     public void updateJobApplication(String applicationId, String fieldName, String value) {
         String sql = "update JobApplication \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere applicationId='" + applicationId + "'";
         System.out.println(sql);
-        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        DBConnection.queryDatabase(sql);
     }
 
     public void deleteJobApplication(String applicationId) {
-        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from JobApplication where applicationId='" + applicationId + "'");
+        DBConnection.queryDatabase("delete from JobApplication where applicationId='" + applicationId + "'");
     }
 
 
     public void createJobApplication() {
-        Connection conn = DBConnection.connectDb();
+        DBConnection conn = DBConnection.get();
         String sql = "INSERT INTO JobApplication (messageId, resumeId, jobId, dateApplied, applicantId, applicationId) VALUES (" +
                 messageId + ", " +
                 resumeId + ", " +
@@ -118,14 +117,12 @@ public class JobApplication {
                 applicantId + ", " +
                 null + ")";
         System.out.println(sql);
-        DBConnection.queryDatabase(conn, sql);
+        conn.executeQuery(sql);
         try {
-            setApplicationId(String.valueOf(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM JobApplication").getInt("last_insert_rowid()")));
+            setApplicationId(conn.getLatestItemId("JobApplication"));
         } catch (Exception e) {
-
+            System.err.println("createJobApplication failed:" + e);
         }
     }
-
-
 }
 
