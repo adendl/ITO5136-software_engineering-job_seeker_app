@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 
 public class Message {
@@ -9,13 +11,13 @@ public class Message {
     private LocalDate sendDate;
     private int jobId;
     private String messageType;
-    private int senderUserId;
-    private int recipientUserId;
+    private String senderUserId;
+    private String recipientUserId;
 
     public Message() {
     }
 
-    public Message(int messageId, String subject, String contents, LocalDate sendDate, int jobId, String messageType, int senderUserId, int recipientUserId) {
+    public Message(int messageId, String subject, String contents, LocalDate sendDate, int jobId, String messageType, String senderUserId, String recipientUserId) {
         this.messageId = messageId;
         this.subject = subject;
         this.contents = contents;
@@ -74,19 +76,59 @@ public class Message {
         this.messageType = messageType;
     }
 
-    public int getSenderUserId() {
+    public String getSenderUserId() {
         return senderUserId;
     }
 
-    public void setSenderUserId(int senderUserId) {
+    public void setSenderUserId(String senderUserId) {
         this.senderUserId = senderUserId;
     }
 
-    public int getRecipientUserId() {
+    public String getRecipientUserId() {
         return recipientUserId;
     }
 
-    public void setRecipientUserId(int recipientUserId) {
+    public void setRecipientUserId(String recipientUserId) {
         this.recipientUserId = recipientUserId;
     }
+    public ResultSet getMessage(int messageId)
+    {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Message where messageId=" + messageId);
+        return rs;
+    }
+
+    public ResultSet listMessages(String recipientUserId)
+    {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Message where recipientUserId='" + recipientUserId + "'" );
+        return rs;
+    }
+
+    public void createJob()
+    {
+        Connection conn = DBConnection.connectDb();
+        String sql = "INSERT INTO Message (recipientUserId, senderUserId, messageType, jobId, sendDate, contents, subject, messageId) VALUES (" +
+                '"' + recipientUserId + '"' + ", " +
+                '"' + senderUserId + '"' + ", " +
+                '"' +  messageType + '"' + ", " +
+                jobId + ", " +
+                '"' +   LocalDate.now() + '"' + ", " +
+                '"' +   contents + '"' + ", " +
+                '"' +  subject + '"' + ", " +
+                null + ")";
+        System.out.println(sql);
+        DBConnection.queryDatabase(conn, sql);
+        try {
+            setJobId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM Message").getInt("last_insert_rowid()"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void deleteMessage(int messageId)
+    {
+        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Message where messageId=" + messageId);
+    }
+
+
+
 }
