@@ -4,12 +4,12 @@ import controller.NavigationController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class NavigationBar {
     private JButton backButton;
     private JButton logoutButton;
     private JPanel mainPanel;
+    private JButton homeButton;
 
     NavigationController controller;
 
@@ -18,6 +18,9 @@ public class NavigationBar {
         controller.setNavigationBar(this);
         backButton.addActionListener((ActionEvent e) -> {
             controller.doBack();
+        });
+        homeButton.addActionListener((e) -> {
+            controller.doHome();
         });
         logoutButton.addActionListener((ActionEvent e) -> {
             controller.doLogout();

@@ -19,6 +19,10 @@ public class NavigationController {
         popView();
     }
 
+    public void doHome() {
+        popUntilLast();
+    }
+
     public void doLogout() {
         // TODO: blow away the navigationStack and probably even the main window, return to login view
         JOptionPane.showMessageDialog(null, "logout clicked");
@@ -40,6 +44,28 @@ public class NavigationController {
         }
         UIView view = navigationStack.pop();
         System.out.println("popping view " + view.getClass().getCanonicalName());
+        updateNavBar();
+
+        contentArea.removeAll();
+        contentArea.add(navigationStack.getFirst().getUIView());
+
+        contentArea.revalidate();
+        contentArea.repaint();
+    }
+
+    // pop views until only one remains, as a way to return home
+    public void popUntilLast() {
+        if (navigationStack.size() == 1) {
+            // can't pop
+            System.out.println("can't pop - only one item on stack");
+            return;
+        }
+        UIView view = navigationStack.pop();
+        System.out.println("popping view " + view.getClass().getCanonicalName());
+        while (navigationStack.size() > 1) {
+            view = navigationStack.pop();
+            System.out.println("popping view " + view.getClass().getCanonicalName());
+        }
         updateNavBar();
 
         contentArea.removeAll();
