@@ -20,7 +20,6 @@ public class Recruiter extends User {
         this.company = company;
         this.categoryIdList = categoryIdList;
 
-
     }
 
     public String getCompany() {

@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -57,8 +58,14 @@ public class Skill {
     }
 
     public void createSkill() {
+        Connection conn = DBConnection.connectDb();
         String sql = "INSERT INTO Skill (skillId, name) VALUES (null, " + '"' + name + '"' + ")";
-        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        DBConnection.queryDatabase(conn, sql);
+        try {
+            setSkillId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM Skill").getInt("last_insert_rowid()"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public void deleteSkill(int skillId) {

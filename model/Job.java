@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -154,6 +155,7 @@ public class Job {
 
     public void createJob()
     {
+        Connection conn = DBConnection.connectDb();
         String sql = "INSERT INTO Job (keyword, title, dateCreated, status, salaryMin, salaryMax, locationId, recruiterId, expiryDate, description, company, categoryId, jobId) VALUES (" +
                '"' + keywords + '"' + ", " +
                 '"' +    title + '"' + ", " +
@@ -169,7 +171,12 @@ public class Job {
                 categoryId + ", " +
                 jobId + ")";
         System.out.println(sql);
-       DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+       DBConnection.queryDatabase(conn, sql);
+        try {
+            setJobId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM Job").getInt("last_insert_rowid()"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public void deleteJob(int jobId)

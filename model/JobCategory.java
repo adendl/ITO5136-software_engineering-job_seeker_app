@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 
 public class JobCategory {
@@ -43,9 +44,15 @@ public class JobCategory {
     }
 
     public void createJobCategory() {
+        Connection conn = DBConnection.connectDb();
         String sql = "INSERT INTO JobCategory (categoryId, name) VALUES (null, " + '"' + name + '"' + ")";
         System.out.println(sql);
         DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        try {
+            setCategoryId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM JobCategory").getInt("last_insert_rowid()"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public void deleteJobCategory(int categoryId) {
