@@ -1,7 +1,12 @@
 package view;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import controller.ApplyForJobController;
+import controller.HomeJobSeekerController;
+import controller.NavigationController;
 import view.UIView;
 import view.ViewHelper;
 
@@ -27,54 +32,44 @@ public class JobApplicationView implements UIView {
     private JTextField my_Resume_2022PdfText;
     private JPanel panelMain;
     private JLabel phoneLabel;
+    private ApplyForJobController controller;
 
-    public JobApplicationView() {
-    }
-
-    public JTextField getFirstNameTextField() {
-        return firstNameText;
-    }
-
-    public JTextField getLastNameTextField() {
-        return lastNameText;
-    }
-
-    public JTextField getEmailTextField() {
-        return emailTextLabel;
-    }
-
-    public JTextField getPhoneTextField() {
-        return phoneText;
+    public JobApplicationView(ApplyForJobController controller) {
+        this.controller = controller;
+        submitButton.addActionListener((e) -> {
+            controller.submitApplication(getFirstName(), getLastName(), getEmail(), getPhone());
+        });
+        browseResumeButton.addActionListener((e -> {
+            //upload resume
+        }));
+        browseCoverLetterButton.addActionListener((e -> {
+            //upload cover letter
+        }));
     }
 
-    public JPanel getPanelMain() {
-        return panelMain;
+    public String getFirstName() {
+        return firstNameText.getText();
     }
 
-    public void setTitleLabel(JLabel titleLabel) {
-        this.titleLabel = titleLabel;
+    public String getLastName() {
+        return lastNameText.getText();
     }
 
-    public void setJobDescriptionTextPane(JTextPane jobDescriptionTextPane) {
-        this.jobDescriptionTextPane = jobDescriptionTextPane;
+    public String getEmail() {
+        return emailTextLabel.getText();
     }
 
-    public void addBrowseResumeButtonListener(ActionListener buttonListener) {
-        browseResumeButton.addActionListener(buttonListener);
+    public String getPhone() {
+        return phoneText.getText();
     }
-    public void addBrowseCoverLetterButtonListener(ActionListener buttonListener) {
-        browseCoverLetterButton.addActionListener(buttonListener);
-    }
-    public void addSubmitButtonListener(ActionListener buttonListener) {
-        submitButton.addActionListener(buttonListener);
-    }
+
     @Override
     public JComponent getUIView() {
         return panelMain;
     }
 
     public static void main(String[] args) {
-        JobApplicationView view = new JobApplicationView();
+        JobApplicationView view = new JobApplicationView(null);
         ViewHelper.showStandaloneFrame(view);
     }
 }
