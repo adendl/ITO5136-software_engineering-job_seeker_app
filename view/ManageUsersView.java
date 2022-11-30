@@ -3,6 +3,8 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import controller.HomeAdminController;
 import view.UIView;
 import view.ViewHelper;
 
@@ -11,25 +13,23 @@ public class ManageUsersView implements UIView {
     private JList userList;
     private JTextField manageUsersBox;
     private JButton manageUsersButton;
-
     private JLabel manageUsersText;
+    private HomeAdminController controller;
 
     private DefaultListModel<String> dlm = new DefaultListModel<String>();
 
-    public ManageUsersView() {
-        manageUsersButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println(manageUsersBox.getText());
-                if (dlm.contains(manageUsersBox.getText()))
-                {
-                    System.out.println("NOT ALLOWED");
-                }
-                else
-                {
-                    dlm.addElement(manageUsersBox.getText());
-                    userList.setModel(dlm);
-                }
+    public ManageUsersView(HomeAdminController controller) {
+        this.controller = controller;
+        manageUsersButton.addActionListener((e) -> {
+            System.out.println(manageUsersBox.getText());
+            if (dlm.contains(manageUsersBox.getText()))
+            {
+                System.out.println("NOT ALLOWED");
+            }
+            else
+            {
+                dlm.addElement(manageUsersBox.getText());
+                userList.setModel(dlm);
             }
         });
     }
@@ -53,7 +53,7 @@ public class ManageUsersView implements UIView {
 
     public static void main(String[] args)
     {
-        ManageUsersView m = new ManageUsersView();
+        ManageUsersView m = new ManageUsersView(null);
         ViewHelper.showStandaloneFrame(m);
     }
 }

@@ -3,6 +3,8 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import controller.MailboxController;
+import model.Mailbox;
 
 public class MailboxView implements UIView {
     private JTable table1;
@@ -11,9 +13,10 @@ public class MailboxView implements UIView {
     private JButton previousButton;
     private JButton nextButton;
     private JLabel titleLabel;
+    private MailboxController controller;
 
-    public MailboxView() {
-
+    public MailboxView(MailboxController controller) {
+        this.controller = controller;
     }
 
     public JPanel getPanelMain() {
@@ -41,7 +44,7 @@ public class MailboxView implements UIView {
     }
 
     public static void main(String[] args) {
-        MailboxView view = new MailboxView();
+        MailboxView view = new MailboxView(null);
         ViewHelper.showStandaloneFrame(view);
     }
 }

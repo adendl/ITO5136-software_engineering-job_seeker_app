@@ -9,39 +9,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HomeAdminController {
-    public HomeAdminController(NavigationController navigationController, HomePageAdminView homePageAdminView, ManageCategoriesView manageCategoriesView,
-                                   ManageSkillsView manageSkillsView, ManageUsersView manageUsersView){
+    NavigationController navigationController;
+    public HomeAdminController(NavigationController navigationController){
+        this.navigationController = navigationController;
+    }
 
-        //sends to ManageLocation View (not currently a view).
-        homePageAdminView.addManageLocationButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    public void showHub() {
+        HomePageAdminView view = new HomePageAdminView(this);
+        navigationController.pushView(view);
+    }
 
-            }
-        });
-
-        //sends to ManageCategoriesView
-        homePageAdminView.addManageCategoriesButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                navigationController.pushView(manageCategoriesView);
-            }
-        });
-
-        //sends to ManageSkillsView
-        homePageAdminView.addManageSkillsButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                navigationController.pushView(manageSkillsView);
-            }
-        });
-
-        //sends to manageUser view
-        homePageAdminView.addManageUsersButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                navigationController.pushView(manageUsersView);
-            }
-        });
+    public void showManageCategories() {
+        ManageCategoriesController manageCategoriesController = new ManageCategoriesController(navigationController);
+        manageCategoriesController.showManageCategories();
+    }
+    public void showManageLocations() {
+        //
+    }
+    public void showManageSkills() {
+        ManageSkillsView manageSkillsView = new ManageSkillsView(this);
+        navigationController.pushView(manageSkillsView);
+    }
+    public void showManageUsers() {
+        ManageUsersView manageUsersView = new ManageUsersView(this);
+        navigationController.pushView(manageUsersView);
     }
 }

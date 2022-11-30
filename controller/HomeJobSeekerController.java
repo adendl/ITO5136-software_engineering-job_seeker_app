@@ -1,48 +1,48 @@
 package controller;
 
 import view.*;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import model.JobSeeker;
 
 public class HomeJobSeekerController {
-    public HomeJobSeekerController(NavigationController navigationController, HomePageJobSeekerView homePageJobSeekerView, SearchJobView searchJobView,
-                                   MailboxView mailboxView, EditProfileView editProfileView, ApplicationsView applicationsView){
+    NavigationController navigationController;
 
-        //initialise JobSearchController
-        JobDetailsView jobDetailsView = new JobDetailsView();
-        SearchResultsView searchResultsView = new SearchResultsView();
-        JobSearchController jobSearchController = new JobSearchController(navigationController, searchJobView, jobDetailsView, searchResultsView);
-        //send to searchJobView
-        homePageJobSeekerView.addSearchJobsButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                navigationController.pushView(searchJobView);
-            }
-        });
+    // TODO: we should probably have a User passed in here as well so we can pass it along as needed
+    public HomeJobSeekerController(NavigationController navigationController) {
+        this.navigationController = navigationController;
+    }
 
-        //send to mailboxView
-        homePageJobSeekerView.addViewInvitationsButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                navigationController.pushView(mailboxView);
-            }
-        });
+    public void showHub() {
+        HomePageJobSeekerView view = new HomePageJobSeekerView(this);
+        navigationController.pushView(view);
+    }
 
-        //send to editProfile
-        homePageJobSeekerView.addEditProfileButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                navigationController.pushView(editProfileView);
-            }
-        });
+    public void showJobSearch() {
+        JobSearchController jobSearchController = new JobSearchController(navigationController);
+        jobSearchController.showSearch();
+    }
 
-        //send to applicationsView
-        homePageJobSeekerView.addViewApplicationsButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                navigationController.pushView(applicationsView);
-            }
-        });
+    public void showJobApplications() {
+        ApplicationsView applicationsView = new ApplicationsView(this);
+        navigationController.pushView(applicationsView);
+    }
+
+    public void showInvitations() {
+        // this could probably use MailboxController/View instead?
+        InvitationsView invitationsView = new InvitationsView(this);
+        navigationController.pushView(invitationsView);
+    }
+
+    public void showEditProfile() {
+        // TODO: we should have a legit user object already, instead of this placeholder
+        // this placeholder user just gives us something to fill the form fields
+        JobSeeker user = new JobSeeker();
+        user.setFirstName("Test");
+        user.setLastName("User");
+        user.setPhoneNumber("123456789");
+        user.setEmail("test@user.org");
+        user.setAddress("somewhere");
+
+        JobSeekerProfileController controller = new JobSeekerProfileController(navigationController, user);
+        controller.showEditProfile();
     }
 }

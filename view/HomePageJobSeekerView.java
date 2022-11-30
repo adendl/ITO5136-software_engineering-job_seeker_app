@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import controller.HomeJobSeekerController;
 import view.UIView;
 import view.ViewHelper;
 
@@ -13,33 +14,27 @@ public class HomePageJobSeekerView implements UIView {
     private JButton viewApplicationsButton;
     private JButton viewInvitationsButton;
     private JButton editProfileButton;
+    private HomeJobSeekerController controller;
 
-    public HomePageJobSeekerView() {
+    public HomePageJobSeekerView(HomeJobSeekerController controller) {
+        this.controller = controller;
 
+        searchJobsButton.addActionListener((e) -> {
+            controller.showJobSearch();
+        });
+        viewApplicationsButton.addActionListener((e) -> {
+            controller.showJobApplications();
+        });
+        viewInvitationsButton.addActionListener((e) -> {
+            controller.showInvitations();
+        });
+        editProfileButton.addActionListener((e) -> {
+            controller.showEditProfile();
+        });
     }
 
     public JPanel getPanelMain() {
         return panelMain;
-    }
-
-    public JButton getSearchJobsButton() {
-        return searchJobsButton;
-    }
-
-    public void addSearchJobsButtonListener(ActionListener buttonListener) {
-        searchJobsButton.addActionListener(buttonListener);
-    }
-
-    public void addViewApplicationsButtonListener(ActionListener buttonListener) {
-        viewApplicationsButton.addActionListener(buttonListener);
-    }
-
-    public void addViewInvitationsButtonListener(ActionListener buttonListener) {
-        viewInvitationsButton.addActionListener(buttonListener);
-    }
-
-    public void addEditProfileButtonListener(ActionListener buttonListener) {
-        editProfileButton.addActionListener(buttonListener);
     }
 
     @Override
@@ -48,7 +43,7 @@ public class HomePageJobSeekerView implements UIView {
     }
 
     public static void main(String[] args) {
-        HomePageJobSeekerView view = new HomePageJobSeekerView();
+        HomePageJobSeekerView view = new HomePageJobSeekerView(null);
         ViewHelper.showStandaloneFrame(view);
     }
 }

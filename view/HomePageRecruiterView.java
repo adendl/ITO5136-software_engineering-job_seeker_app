@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import controller.HomeRecruiterController;
 import controller.NavigationController;
 import view.UIView;
 import view.CreateJobView;
@@ -14,11 +15,23 @@ public class HomePageRecruiterView implements UIView {
     private JButton manageListedJobsButton;
     private JButton editCategoriesButton;
     private JButton editProfileButton;
+    private HomeRecruiterController controller;
 
-    public HomePageRecruiterView() {
-
+    public HomePageRecruiterView(HomeRecruiterController controller) {
+        this.controller = controller;
+        createNewJobButton.addActionListener((e) -> {
+            controller.showCreateJob();
+        });
+        manageListedJobsButton.addActionListener((e) -> {
+            controller.showManageListedJobs();
+        });
+        editCategoriesButton.addActionListener((e) -> {
+            controller.showEditCategories();
+        });
+        editProfileButton.addActionListener((e) -> {
+            controller.showEditProfile();
+        });
     }
-
 
     @Override
     public JComponent getUIView() {
@@ -28,25 +41,9 @@ public class HomePageRecruiterView implements UIView {
         return panelMain;
     }
 
-    public void addCreateNewJobButtonListener(ActionListener buttonListener) {
-        createNewJobButton.addActionListener(buttonListener);
-    }
-
-    public void addEditProfileButtonListener(ActionListener buttonListener) {
-        editProfileButton.addActionListener(buttonListener);
-    }
-
-    public void addEditCategoriesButtonListener(ActionListener buttonListener) {
-        editCategoriesButton.addActionListener(buttonListener);
-    }
-
-    public void addManageListedJobsButtonListener(ActionListener buttonListener) {
-        manageListedJobsButton.addActionListener(buttonListener);
-    }
-
     public static void main(String[] args)
     {
-        HomePageRecruiterView h = new HomePageRecruiterView();
-
+        HomePageRecruiterView h = new HomePageRecruiterView(null);
+        ViewHelper.showStandaloneFrame(h);
     }
 }

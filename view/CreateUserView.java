@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import view.UIView;
 import view.ViewHelper;
+import controller.LoginController;
 
 public class CreateUserView implements UIView {
     private JPanel mainPanel;
@@ -21,9 +22,28 @@ public class CreateUserView implements UIView {
     private JLabel passwordLabel;
     private JLabel confirmPasswordLabel;
     private JLabel selectUserLabel;
+    private LoginController controller;
 
-    public CreateUserView(){
+    public CreateUserView(LoginController controller) {
+        this.controller = controller;
+        createAccountButton.addActionListener((e) -> {
+            createAccount();
+        });
+    }
+    private void createAccount() {
+        String email  = emailText.getText();
+        String password = String.valueOf(enterPasswordText.getPassword());
+        String passwordConfirm = String.valueOf(confirmPasswordText.getPassword());
+        String firstName = firstNameText.getText();
+        String lastName = lastNameText.getText();
+        int userType = selectUserTypeComboBox.getSelectedIndex();
 
+        if (!password.equals(passwordConfirm)) {
+            JOptionPane.showMessageDialog(null, "Passwords do not match!", "Password mismatch", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        controller.doCreateAccount(firstName, lastName, email, password, userType);
     }
 
     public JPanel getMainPanel() {
@@ -54,10 +74,6 @@ public class CreateUserView implements UIView {
         return lastNameText;
     }
 
-    public void addCreateAccountButtonListener(ActionListener createAccountButtonListener) {
-        createAccountButton.addActionListener(createAccountButtonListener);
-    }
-
 
     @Override
     public JComponent getUIView() {
@@ -65,7 +81,7 @@ public class CreateUserView implements UIView {
     }
 
     public static void main(String[] args) {
-        CreateUserView view = new CreateUserView();
+        CreateUserView view = new CreateUserView(null);
         ViewHelper.showStandaloneFrame(view);
     }
 }
