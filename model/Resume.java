@@ -3,16 +3,16 @@ package model;
 public class Resume {
     private String name;
     private String path;
-    private int resumeID;
+    private int resumeId;
     private int userId;
 
     public Resume() {
     }
 
-    public Resume(String name, String path, int resumeID, int userId) {
+    public Resume(String name, String path, int resumeId, int userId) {
         this.name = name;
         this.path = path;
-        this.resumeID = resumeID;
+        this.resumeId = resumeId;
         this.userId = userId;
     }
 
@@ -32,12 +32,12 @@ public class Resume {
         this.path = path;
     }
 
-    public int getResumeID() {
-        return resumeID;
+    public int getResumeId() {
+        return resumeId;
     }
 
-    public void setResumeID(int resumeID) {
-        this.resumeID = resumeID;
+    public void setResumeId(int resumeId) {
+        this.resumeId = resumeId;
     }
 
     public int getUserId() {
