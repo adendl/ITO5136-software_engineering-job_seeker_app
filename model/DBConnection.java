@@ -10,28 +10,31 @@ import java.util.*;
 import java.sql.ResultSetMetaData;
 
 public class DBConnection {
-
     static String CONNECTION_PATH = "jdbc:sqlite:test.db";
+    static DBConnection INSTANCE = null;
+    Connection connection;
 
-
-    public static Connection connectDb()
-    {
-        Connection connection = null;
+    // constructor is private because we only want our get() method calling it
+    private DBConnection(String connectionPath) {
         try {
-            // create a database connection
-            connection = DriverManager.getConnection(CONNECTION_PATH);
-            System.out.println("Connected");
-            return connection;
+            connection = DriverManager.getConnection(connectionPath);
         }
-        catch (SQLException e)
-        {
-            System.err.println(e.getMessage());
-            return null;
+        catch (SQLException e) {
+            System.out.println("error connecting to database: " + e);
         }
     }
 
-    public static ResultSet queryDatabase(Connection connection, String sql)
+    // get our DBConnection, creating an instance if none exists
+    // this method is synchronized so only one thread can run it at a time
+    public synchronized static DBConnection get()
     {
+        if (INSTANCE == null) {
+            INSTANCE = new DBConnection(CONNECTION_PATH);
+        }
+        return INSTANCE;
+    }
+
+    public ResultSet executeQuery(String sql) {
         try {
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
@@ -40,9 +43,19 @@ public class DBConnection {
         }
         catch(SQLException e)
         {
-            System.err.println(e.getMessage());
+            System.err.println("queryDatabase failed: " + e.getMessage());
             return null;
         }
+    }
+
+    public static ResultSet queryDatabase(String sql)
+    {
+        return DBConnection.get().executeQuery(sql);
+    }
+
+    // query the last inserted row id for a given table, used to set ID on various entities after they've been inserted to the database
+    public int getLatestItemId(String fromTable) throws SQLException {
+        return queryDatabase("SELECT LAST_INSERT_ROWID() FROM " + fromTable).getInt("last_insert_rowid()");
     }
 
     public static TableModel resultSetToTableModel(ResultSet rs) {
@@ -71,11 +84,10 @@ public class DBConnection {
 
             return new DefaultTableModel(rows, columnNames);
         } catch (Exception e) {
+            System.out.println("resultSetToTableModel failed");
             e.printStackTrace();
 
             return null;
         }
     }
-
-
 }
