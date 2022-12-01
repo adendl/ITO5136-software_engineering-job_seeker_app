@@ -80,7 +80,7 @@ public class Keyword {
 
     public void createJobCategory() {
         Connection conn = DBConnection.connectDb();
-        String sql = "INSERT INTO Keyword (keywordId, keywordType, keywordValue) VALUES (null, " + '"' + keywordType + '",' + '"' = keywordValue + '"' + ")";
+        String sql = "INSERT INTO Keyword (keywordId, keywordType, keywordValue) VALUES (null, " + '"' + keywordType + '"' + ',' + '"' + keywordValue + '"' + ")";
         System.out.println(sql);
         DBConnection.queryDatabase(DBConnection.connectDb(), sql);
         try {
