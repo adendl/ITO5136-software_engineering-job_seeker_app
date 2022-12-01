@@ -1,7 +1,9 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class Message {
@@ -27,6 +29,19 @@ public class Message {
         this.senderUserId = senderUserId;
         this.recipientUserId = recipientUserId;
     }
+
+    public Message(ResultSet rs) throws SQLException {
+        this.messageId = rs.getInt("messageId");
+        this.subject = rs.getString("subject");
+        this.contents = rs.getString("contents");
+        this.sendDate = Date.valueOf(rs.getString("sendDate")).toLocalDate();
+        this.jobId = rs.getInt("jobId");
+        this.messageType = rs.getString("messageType");
+        this.senderUserId = rs.getString("senderUserId");
+        this.recipientUserId = rs.getString("recipientUserId");
+    }
+
+
 
     public int getMessageId() {
         return messageId;
