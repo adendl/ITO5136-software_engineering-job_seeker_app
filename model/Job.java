@@ -9,14 +9,13 @@ import java.util.ArrayList;
 public class Job {
 
     private int jobId;
-    private int categoryId;
     private String company;
     private String description;
     private LocalDate expiryDate;
 
     private boolean isAdvertised;
 
-    private ArrayList<Keyword> keywords;
+    private ArrayList<Keyword> keyword;
     private int locationId;
     private int recruiterId;
     private int salaryMax;
@@ -29,14 +28,12 @@ public class Job {
     public Job() {
     }
 
-    public Job(int jobId, int categoryId, String company, String description, LocalDate expiryDate, boolean isAdvertised, ArrayList<Keyword> keywords, int locationId, int recruiterId, int salaryMax, int salaryMin, String status, String title) {
-        this.jobId = jobId;
-        this.categoryId = categoryId;
+    public Job(String company, String description, LocalDate expiryDate, boolean isAdvertised, ArrayList<Keyword> keyword, int locationId, int recruiterId, int salaryMax, int salaryMin, String status, String title) {
         this.company = company;
         this.description = description;
         this.expiryDate = expiryDate;
         this.isAdvertised = isAdvertised;
-        this.keywords = keywords;
+        this.keyword = keyword;
         this.locationId = locationId;
         this.recruiterId = recruiterId;
         this.salaryMax = salaryMax;
@@ -78,12 +75,12 @@ public class Job {
         this.jobId = jobId;
     }
 
-    public ArrayList<Keyword> getKeywords() {
-        return keywords;
+    public ArrayList<Keyword> getKeyword() {
+        return keyword;
     }
 
-    public void setKeywords(ArrayList<Keyword> keywords) {
-        this.keywords = keywords;
+    public void setKeyword(ArrayList<Keyword> keyword) {
+        this.keyword = keyword;
     }
 
     public int getLocationId() {
@@ -154,18 +151,63 @@ public class Job {
         return rs;
     }
 
-    public static ResultSet listJobs(String location)
+    public static ResultSet listJobsOneStringFilter(String key, String value)
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job");
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job where " + key + '=' + '"' + value + '"');
         return rs;
     }
+
+    public static ResultSet listJobsCategoriesFilter(ArrayList<Keyword> keywords)
+    {
+        String sql = "select * from Job where";
+        for (int i = 0; i < keywords.size(); i++) {
+            if (i == 0) {
+                sql += "(',' + RTRIM(keyword) + ',' ) LIKE '%,' + " + keywords.get(i).getKeywordId() + " + ',%'";
+            } else {
+                sql += " OR (',' + RTRIM(keyword) + ',' ) LIKE '%,' + " + keywords.get(i).getKeywordId() + " + ',%'";
+            }
+        }
+        System.out.println(sql);
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        return rs;
+    }
+
+    public static ResultSet listJobsCategoriesOneStringFilter(ArrayList<Keyword> keywords, String key, String value)
+    {
+        String sql = "select * from Job where " + key + '=' + '"' + value + '"' + " AND (";
+        for (int i = 0; i < keywords.size(); i++) {
+            if (i == 0) {
+                sql += "(',' + RTRIM(keyword) + ',' ) LIKE '%,' + " + keywords.get(i).getKeywordId() + " + ',%'";
+            } else {
+                sql += " OR (',' + RTRIM(keyword) + ',' ) LIKE '%,' + " + keywords.get(i).getKeywordId() + " + ',%'";
+            }
+        }
+        sql += ')';
+        System.out.println(sql);
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        return rs;
+    }
+
 
     public void createJob()
     {
         Connection conn = DBConnection.connectDb();
-        String sql = "INSERT INTO Job (keyword, title, dateCreated, status, salaryMin, salaryMax, locationId, recruiterId, expiryDate, description, company, categoryId, jobId) VALUES (" +
-               '"' + keywords + '"' + ", " +
-                '"' +    title + '"' + ", " +
+        String sql = "INSERT INTO Job (keyword, title, dateCreated, status, salaryMin, salaryMax, locationId, recruiterId, expiryDate, description, company, jobId) VALUES (" + '"';
+               for (int i = 0; i < keyword.size(); i++)
+               {
+                   if (i < (keyword.size() - 1))
+                   {
+                       sql+= (keyword.get(i).getKeywordId() + ",");
+                   }
+                   else
+                   {
+                       System.out.println(keyword.get(i).getKeywordId());
+                       sql+= (keyword.get(i).getKeywordId());
+                       System.out.println(sql);
+                   }
+               }
+               System.out.println(sql);
+               sql += '"' + "," + '"' + title + '"' + ", " +
                 '"' +  dateCreated + '"' + ", " +
                 '"' +   status + '"' + ", " +
                 salaryMin + ", " +
@@ -175,8 +217,7 @@ public class Job {
                 '"' +   expiryDate + '"' + ", " +
                 '"' +   description + '"' + ", " +
                 '"' +  company + '"' + ", " +
-                categoryId + ", " +
-                jobId + ")";
+                null + ")";
         System.out.println(sql);
        DBConnection.queryDatabase(conn, sql);
         try {
@@ -196,6 +237,20 @@ public class Job {
         String sql = "update Job \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere jobId=" + jobId;
         System.out.println(sql);
         DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+    }
+
+    public static void main(String[] args)
+    {
+        /** ArrayList<Keyword> al1 = new ArrayList<Keyword>();
+        Keyword kw1 = new Keyword(1, "category", "Accounting");
+        Keyword kw2 = new Keyword(2, "category", "Administration");
+        Keyword kw3 = new Keyword(3, "category", "Advertising");
+        al1.add(kw1);
+        al1.add(kw2);
+        al1.add(kw3);
+        Job job = new Job("ACME", "A really awesome job that you should apply for.", LocalDate.now(), true, al1, 1, 1, 80000, 100000, null, "Ass Kicker" );
+        job.createJob();
+        listJobsCategoriesOneStringFilter(al1, "locationId", "3"); **/
     }
 
 
