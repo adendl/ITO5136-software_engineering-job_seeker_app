@@ -16,7 +16,7 @@ public class HomeAdminController {
 
     public void showHub() {
         HomePageAdminView view = new HomePageAdminView(this);
-        navigationController.pushView(view);
+        navigationController.pushReplacementView(view);
     }
 
     public void showManageCategories() {
