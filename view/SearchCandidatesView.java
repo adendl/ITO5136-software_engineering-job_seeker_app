@@ -18,32 +18,20 @@ public class SearchCandidatesView implements UIView {
     private JLabel categoriesLabel;
     private JLabel locationLabel;
 
-
     public SearchCandidatesView() {
-        selectCategoriesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (scrollPane.isVisible())
-                {
-                    scrollPane.setVisible(false);
-                }
-                else
-                {
-                    scrollPane.setVisible(true);
-                }
+        selectCategoriesButton.addActionListener((e -> {
+            if (scrollPane.isVisible())
+            {
+                scrollPane.setVisible(false);
             }
-        });
-        searchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println(resultsList.getSelectedValuesList().toString());
+            else
+            {
+                scrollPane.setVisible(true);
             }
-        });
-    }
-
-
-    public JPanel getPanelMain() {
-        return panelMain;
+        }));
+        searchButton.addActionListener((e -> {
+            System.out.println(resultsList.getSelectedValuesList().toString());
+        }));
     }
 
     public JTextField getEnterKeywordsTextField() {

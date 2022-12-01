@@ -3,6 +3,8 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import controller.MailboxController;
 import view.UIView;
 import view.ViewHelper;
 
@@ -17,9 +19,16 @@ public class ReadMessageView implements UIView {
     private JButton deleteButton;
     private JTextField fromText;
     private JLabel titleLabel;
+    private MailboxController controller;
 
-    public ReadMessageView() {
+    public ReadMessageView(MailboxController controller) {
+        this.controller = controller;
+        replyButton.addActionListener((e -> {
 
+        }));
+        deleteButton.addActionListener((e -> {
+
+        }));
     }
 
     public JTextField getSubjectText() {
@@ -34,21 +43,13 @@ public class ReadMessageView implements UIView {
         return fromText;
     }
 
-    public void addDeleteButtonListener(ActionListener buttonListener) {
-        deleteButton.addActionListener(buttonListener);
-    }
-
-    public void addReplyButtonListener(ActionListener buttonListener) {
-        replyButton.addActionListener(buttonListener);
-    }
-
     @Override
     public JComponent getUIView() {
         return mainPanel;
     }
 
     public static void main(String[] args) {
-        ReadMessageView view = new ReadMessageView();
+        ReadMessageView view = new ReadMessageView(null);
         ViewHelper.showStandaloneFrame(view);
     }
 }

@@ -4,39 +4,20 @@ import model.JobApplication;
 import view.AppliedJobView;
 import view.JobApplicationView;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ApplyForJobController {
+    NavigationController navigationController;
     //takes in the jobDetailView, jobApplyView, confirmApplyView .
-    public ApplyForJobController(JobApplicationView jobApplicationView, AppliedJobView appliedJobView){
+    public ApplyForJobController(NavigationController navigationController){
+        this.navigationController = navigationController;
+    }
 
-        jobApplicationView.addSubmitButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //also need to get the resume and cover letter.
-                String firstName = jobApplicationView.getFirstNameTextField().getText();
-                String lastName = jobApplicationView.getLastNameTextField().getText();
-                String email = jobApplicationView.getEmailTextField().getText();
-                String phoneNumber = jobApplicationView.getPhoneTextField().getText();
-
-                //populate constructor
-                JobApplication newJobApplication = new JobApplication();
-            }
-        });
-        jobApplicationView.addBrowseCoverLetterButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //upload cover letter
-            }
-        });
-
-        jobApplicationView.addBrowseResumeButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //upload resume
-            }
-        });
-
+    //resume and cover letter path need to be added
+    public void submitApplication(String FirstName, String lastName, String email, String phone){
+        JobApplication jobApplication = new JobApplication();
+        //create in db.
+        //show appliedJobView
+        AppliedJobView appliedJobView = new AppliedJobView(this);
+        navigationController.pushView(appliedJobView);
     }
 }

@@ -19,7 +19,7 @@ public class ProfileView implements UIView {
     private JLabel candidateNameLabel;
 
     public ProfileView() {
-
+        
     }
 
     @Override

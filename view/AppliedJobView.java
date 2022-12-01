@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
+import controller.ApplyForJobController;
 import view.UIView;
 import view.ViewHelper;
 
@@ -27,33 +28,10 @@ public class AppliedJobView implements UIView {
     private JTextField basket_weaver_2022PdfText;
     private JTextField my_Resume_2022PdfText;
     private JPanel panelMain;
+    private ApplyForJobController controller;
 
-    public AppliedJobView() {
+    public AppliedJobView(ApplyForJobController controller) {
 
-    }
-
-    public JPanel getPanelMain() {
-        return panelMain;
-    }
-
-    public void setTitleLabel(JLabel titleLabel) {
-        this.titleLabel = titleLabel;
-    }
-
-    public void setFirstNameTextField(JTextField firstNameTextField) {
-        this.firstNameText = firstNameTextField;
-    }
-
-    public void setLastNameTextField(JTextField lastNameTextField) {
-        this.lastNameText = lastNameTextField;
-    }
-
-    public void setEmailTextField(JTextField emailTextField) {
-        this.emailText = emailTextField;
-    }
-
-    public void setPhoneTextField(JTextField phoneTextField) {
-        this.phoneText = phoneTextField;
     }
 
     @Override
@@ -62,12 +40,8 @@ public class AppliedJobView implements UIView {
     }
 
     public static void main(String[] args) {
-        AppliedJobView view = new AppliedJobView();
+        AppliedJobView view = new AppliedJobView(null);
         ViewHelper.showStandaloneFrame(view);
-    }
-
-    public void setJobDescriptionTextPane(JTextPane jobDescriptionTextPane) {
-        this.jobDescriptionTextPane = jobDescriptionTextPane;
     }
 
     public void addViewResumeButtonListener(ActionListener viewResumeButtonListener) {
