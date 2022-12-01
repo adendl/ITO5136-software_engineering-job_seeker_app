@@ -5,15 +5,9 @@ import java.sql.ResultSet;
 public class Location {
     private int locationId;
     private String state;
-    private String country;
 
+    private String city;
 
-    public Location(){
-    }
-
-    public Location(int locationId){
-        this.locationId = locationId;
-    }
 
     public int getLocationId() {
         return locationId;
@@ -31,12 +25,21 @@ public class Location {
         this.state = state;
     }
 
-    public String getCountry() {
-        return country;
+    public String getCity() {
+        return city;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Location(int locationId, String state, String city) {
+        this.locationId = locationId;
+        this.state = state;
+        this.city = city;
+    }
+
+    public Location() {
     }
 
     public static ResultSet getLocation(int locationId)

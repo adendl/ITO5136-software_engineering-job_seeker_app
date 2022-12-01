@@ -1,5 +1,6 @@
 package model;
 
+import java.security.Key;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.time.LocalDate;
@@ -15,7 +16,7 @@ public class Job {
 
     private boolean isAdvertised;
 
-    private ArrayList<String> keywords;
+    private ArrayList<Keyword> keywords;
     private int locationId;
     private int recruiterId;
     private int salaryMax;
@@ -28,7 +29,7 @@ public class Job {
     public Job() {
     }
 
-    public Job(int jobId, int categoryId, String company, String description, LocalDate expiryDate, boolean isAdvertised, ArrayList<String> keywords, int locationId, int recruiterId, int salaryMax, int salaryMin, String status, String title) {
+    public Job(int jobId, int categoryId, String company, String description, LocalDate expiryDate, boolean isAdvertised, ArrayList<Keyword> keywords, int locationId, int recruiterId, int salaryMax, int salaryMin, String status, String title) {
         this.jobId = jobId;
         this.categoryId = categoryId;
         this.company = company;
@@ -77,11 +78,11 @@ public class Job {
         this.jobId = jobId;
     }
 
-    public ArrayList<String> getKeywords() {
+    public ArrayList<Keyword> getKeywords() {
         return keywords;
     }
 
-    public void setKeywords(ArrayList<String> keywords) {
+    public void setKeywords(ArrayList<Keyword> keywords) {
         this.keywords = keywords;
     }
 
@@ -148,6 +149,12 @@ public class Job {
     }
 
     public static ResultSet listJobs()
+    {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job");
+        return rs;
+    }
+
+    public static ResultSet listJobs(String location)
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job");
         return rs;
