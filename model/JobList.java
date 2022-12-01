@@ -16,7 +16,7 @@ public class JobList {
 
     public JobList(){
         jobList = new ArrayList<Job>();
-        colHeader = new Vector<String>(List.of("Job Id", "Category Id", "Company", "Description", "Expiry Date", "Recruiter", "LocationId", "Max Salary", "Min Salary", "Status", "Date Created", "Job Title", "IsAdvertised", "JobObject"));
+        colHeader = new Vector<String>(List.of("Job Id", "Keywords", "Company", "Description", "Expiry Date", "Recruiter", "LocationId", "Max Salary", "Min Salary", "Status", "Date Created", "Job Title", "IsAdvertised", "JobObject"));
     }
 
     public JobList(ArrayList<Job> jobList){
