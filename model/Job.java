@@ -1,7 +1,9 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -44,6 +46,23 @@ public class Job {
         this.dateCreated = LocalDate.now();
         this.title = title;
     }
+
+    public Job(ResultSet rs) throws SQLException {
+        this.jobId = rs.getInt("jobId");
+        this.categoryId = rs.getInt("categoryId");
+        this.company = rs.getString("company");
+        this.description = rs.getString("description");
+        this.expiryDate = Date.valueOf(rs.getString("expiryDate")).toLocalDate();
+        this.isAdvertised = rs.getBoolean("isAdvertised");
+        this.locationId = rs.getInt("locationId");
+        this.recruiterId = rs.getInt("recruiterId");
+        this.salaryMax = rs.getInt("salaryMax");
+        this.salaryMin = rs.getInt("salaryMin");
+        this.status = rs.getString("status");
+        this.dateCreated = Date.valueOf(rs.getString("dateCreated")).toLocalDate();
+        this.title = rs.getString("title");
+    }
+
 
     public String getCompany() {
         return company;
@@ -190,6 +209,12 @@ public class Job {
         System.out.println(sql);
         DBConnection.queryDatabase(DBConnection.connectDb(), sql);
     }
+
+    public String getLocationFromDb(int locationId) throws SQLException {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select city, state from Location where locationId=" + locationId);
+        return rs.getString(1) + ", " + rs.getString(2);
+    }
+
 
 
 }
