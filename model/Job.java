@@ -160,6 +160,14 @@ public class Job {
         this.title = title;
     }
 
+    public boolean isAdvertised() {
+        return isAdvertised;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
     public static ResultSet getJob(int jobId)
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job where jobId=" + jobId);
