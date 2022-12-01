@@ -12,7 +12,6 @@ public class SearchResultsView implements UIView {
     private JTextField searchTextField;
     private JTable table1;
     private JButton searchButton;
-    private JButton sortByButton;
     private JButton nextButton;
     private JButton previousButton;
     private JLabel headingText;
