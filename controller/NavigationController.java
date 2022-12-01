@@ -3,8 +3,7 @@ package controller;
 import javax.swing.*;
 import java.util.ArrayDeque;
 
-import view.NavigationBar;
-import view.UIView;
+import view.*;
 
 public class NavigationController {
     JPanel contentArea;
@@ -112,6 +111,18 @@ public class NavigationController {
     }
 
     void updateNavBar() {
+        boolean loggingIn = navigationStack.getLast() instanceof LoginView;
+        UIView current = navigationStack.getFirst();
+        // is one of the home views showing?
+        boolean atHome = current instanceof HomePageAdminView
+                || current instanceof HomePageJobSeekerView
+                || current instanceof HomePageRecruiterView;
+
+        // enable home button if not logging in or already at the hub screen
+        navigationBar.setHomeButtonEnabled(!loggingIn && !atHome);
+        // enable logout button if we're not currently logging in
+        navigationBar.setLogoutButtonEnabled(!loggingIn);
+        // enable back button if there's something to go back to
         navigationBar.setBackButtonEnabled(navigationStack.size() > 1);
     }
 }

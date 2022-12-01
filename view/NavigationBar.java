@@ -34,4 +34,12 @@ public class NavigationBar {
     public void setBackButtonEnabled(boolean enable) {
         backButton.setEnabled(enable);
     }
+
+    public void setHomeButtonEnabled(boolean enable) {
+        homeButton.setEnabled(enable);
+    }
+
+    public void setLogoutButtonEnabled(boolean enable) {
+        logoutButton.setEnabled(enable);
+    }
 }
