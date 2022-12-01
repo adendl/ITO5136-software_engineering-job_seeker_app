@@ -33,12 +33,12 @@ public class JobCategory {
 
 
 
-    public ResultSet getJobCategory(int categoryId) {
+    public static ResultSet getJobCategory(int categoryId) {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobCategory where categoryId =" + categoryId);
         return rs;
     }
 
-    public ResultSet listJobCategories() {
+    public static ResultSet listJobCategories() {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobCategory");
         return rs;
     }

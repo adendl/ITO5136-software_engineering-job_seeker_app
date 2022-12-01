@@ -141,13 +141,13 @@ public class Job {
         this.title = title;
     }
 
-    public ResultSet getJob(int jobId)
+    public static ResultSet getJob(int jobId)
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job where jobId=" + jobId);
         return rs;
     }
 
-    public ResultSet listJobs()
+    public static ResultSet listJobs()
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job");
         return rs;

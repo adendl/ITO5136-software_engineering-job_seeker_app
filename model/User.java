@@ -84,12 +84,12 @@ public class User {
     public enum UserType {JOBSEEKER, RECRUITER, ADMIN}
 
 
-    public ResultSet getUser(String userId) {
+    public static ResultSet getUser(String userId) {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from User where userId='" + userId + "'");
         return rs;
     }
 
-    public ResultSet listUsers() {
+    public static ResultSet listUsers() {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from User");
         return rs;
     }
