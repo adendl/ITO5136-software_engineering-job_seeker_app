@@ -10,7 +10,6 @@ import controller.HomeJobSeekerController;
 public class InvitationsView implements UIView {
     private JPanel panelMain;
     private JTable table1;
-    private JButton sortByButton;
     private JButton nextButton;
     private JButton previousButton;
     private JLabel headingText;

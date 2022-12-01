@@ -10,7 +10,35 @@ public class JobApplication {
     private int applicantId;
     private LocalDate dateApplied;
     private int jobId;
-    private int resumeId;gi
+    private int resumeId;
+
+    private int messageId;
+
+    public JobApplication(int applicationId, int applicantId, LocalDate dateApplied, int jobId, int resumeId, int messageId) {
+        this.applicationId = applicationId;
+        this.applicantId = applicantId;
+        this.dateApplied = dateApplied;
+        this.jobId = jobId;
+        this.resumeId = resumeId;
+        this.messageId = messageId;
+    }
+
+    public JobApplication()
+    {
+
+    }
+
+    public int getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(int applicationId) {
+        this.applicationId = applicationId;
+    }
+
+    public int getApplicantId() {
+        return applicantId;
+    }
 
     public void setApplicantId(int applicantId) {
         this.applicantId = applicantId;
@@ -54,19 +82,19 @@ public class JobApplication {
         return rs;
     }
 
-    public ResultSet listJobApplicationsRecruiter(int jobId)
+    public static ResultSet listJobApplicationsRecruiter(int jobId)
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication where jobId =" + jobId);
         return rs;
     }
 
-    public ResultSet getJobApplication(int applicationId)
+    public static ResultSet getJobApplication(int applicationId)
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication where applicationId =" + applicationId);
         return rs;
     }
 
-    public ResultSet listJobApplications() {
+    public static ResultSet listJobApplications() {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication");
         return rs;
     }
@@ -99,5 +127,7 @@ public class JobApplication {
 
         }
     }
+
+
 }
 

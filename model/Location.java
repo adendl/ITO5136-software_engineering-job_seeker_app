@@ -39,13 +39,13 @@ public class Location {
         this.country = country;
     }
 
-    public ResultSet getJob(int locationId)
+    public static ResultSet getLocation(int locationId)
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Location where locationId=" + locationId);
         return rs;
     }
 
-    public ResultSet listLocations()
+    public static ResultSet listLocations()
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Location");
         return rs;

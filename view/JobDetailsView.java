@@ -2,12 +2,10 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
-import view.UIView;
-import view.ViewHelper;
 
 public class JobDetailsView implements UIView {
     public JPanel JobDetailsPanel;
-    private JLabel lbJobTitle;
+    private JLabel jobTitle;
     private JLabel lbJobDescription;
     private JTextArea txtDescription;
     private JButton btnApplyNow;
@@ -59,9 +57,9 @@ public class JobDetailsView implements UIView {
     private void $$$setupUI$$$() {
         JobDetailsPanel = new JPanel();
         JobDetailsPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(14, 2, new Insets(0, 0, 0, 0), -1, -1));
-        lbJobTitle = new JLabel();
-        lbJobTitle.setText("model.Job Title");
-        JobDetailsPanel.add(lbJobTitle, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 2, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        jobTitle = new JLabel();
+        jobTitle.setText("model.Job Title");
+        JobDetailsPanel.add(jobTitle, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 2, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         lbJobDescription = new JLabel();
         lbJobDescription.setText("model.Job Description");
         JobDetailsPanel.add(lbJobDescription, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));

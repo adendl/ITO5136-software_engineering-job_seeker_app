@@ -91,13 +91,13 @@ public class Message {
     public void setRecipientUserId(String recipientUserId) {
         this.recipientUserId = recipientUserId;
     }
-    public ResultSet getMessage(int messageId)
+    public static ResultSet getMessage(int messageId)
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Message where messageId=" + messageId);
         return rs;
     }
 
-    public ResultSet listMessages(String recipientUserId)
+    public static ResultSet listMessages(String recipientUserId)
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Message where recipientUserId='" + recipientUserId + "'" );
         return rs;
