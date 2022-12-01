@@ -24,8 +24,14 @@ public class NavigationController {
     }
 
     public void doLogout() {
-        // TODO: blow away the navigationStack and probably even the main window, return to login view
-        JOptionPane.showMessageDialog(null, "logout clicked");
+        boolean confirmLogout =  JOptionPane.showConfirmDialog(null, "Do you really want to logout?", "Confirm logout", JOptionPane.YES_NO_OPTION) == 0;
+        if (!confirmLogout) {
+            // user selected 'no'
+            return;
+        }
+
+        LoginController loginController = new LoginController(this);
+        loginController.showLogin();
     }
 
     public JPanel getContentArea() {
@@ -82,6 +88,20 @@ public class NavigationController {
         navigationStack.push(view);
         updateNavBar();
         contentArea.add(view.getUIView());
+
+        contentArea.revalidate();
+        contentArea.repaint();
+    }
+
+    // blow away the existing navigation stack and push a view to be the new base of the stack
+    // this is useful for switching between Login and Home views, for example
+    public void pushReplacementView(UIView view) {
+        navigationStack.clear();
+        navigationStack.push(view);
+        updateNavBar();
+
+        contentArea.removeAll();
+        contentArea.add(navigationStack.getFirst().getUIView());
 
         contentArea.revalidate();
         contentArea.repaint();
