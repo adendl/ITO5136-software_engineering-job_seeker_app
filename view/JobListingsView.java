@@ -44,8 +44,8 @@ public class JobListingsView implements UIView {
             job.getTxtCompany().setText(newJob.getCompany());
             job.getTxtJobTitle().setText(newJob.getTitle());
             job.getTxtJobDescription().setText(newJob.getDescription());
-            job.getTxtSalaryFrom().setText(String.valueOf(newJob.getSalaryMin()));
-            job.getTxtSalaryTo().setText(String.valueOf(newJob.getSalaryMax()));
+            job.getTxtSalaryRange().setText(String.valueOf(newJob.getSalaryMin()));
+            job.getTxtSalaryRange().setText(String.valueOf(newJob.getSalaryMax()));
             System.out.println(newJob.getLocationId());
             try {
                 job.getTxtLocation().setText(newJob.getLocationFromDb(newJob.getLocationId()));
