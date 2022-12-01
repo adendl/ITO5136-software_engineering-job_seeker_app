@@ -42,6 +42,15 @@ public class CreateJobView implements UIView {
         String salaryRange = salaryRangeText.getText();
         controller.doCreateJob(title, description, jobType, company, salaryRange);
     }
+
+    private void doCreateJob() {
+        String description = jobDescriptionText.getText();
+        String title = jobTitleText.getText();
+        String jobType = jobTypeText.getText();
+        String company = companyText.getText();
+        String salaryRange = salaryRangeText.getText();
+        controller.doCreateJob(title, description, jobType, company, salaryRange);
+    }
     @Override
     public JComponent getUIView() {
         return panelMain;

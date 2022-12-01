@@ -1,32 +1,36 @@
 package model;
 
-import java.sql.Timestamp;
+import java.sql.ResultSet;
+import java.time.LocalDate;
 
-public abstract class User {
-    public enum UserType {JOBSEEKER, RECRUITER, ADMIN};
-    protected int userID;
+public class User {
+    protected String userId;
     protected String firstName;
     protected String lastName;
-    protected String email;
-    protected String phoneNumber;
     protected String password;
-    protected UserType userType;
-    protected Timestamp dateCreated;
-    protected String address;
-    protected String loginStatus;
+    protected String userType;
+    protected LocalDate dateCreated;
+    protected String status;
 
-    public User(){}
-
-    public User(int userID){
-        this.userID = userID;
+    public User() {
     }
 
-    public int getUserID() {
-        return userID;
+    public User(String userId, String firstName, String lastName, String password, String userType, LocalDate dateCreated, String status) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.userType = userType;
+        this.dateCreated = dateCreated;
+        this.status = status;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -45,22 +49,6 @@ public abstract class User {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -69,35 +57,70 @@ public abstract class User {
         this.password = password;
     }
 
-    public Timestamp getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Timestamp dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getLoginStatus() {
-        return loginStatus;
-    }
-
-    public void setLoginStatus(String loginStatus) {
-        this.loginStatus = loginStatus;
-    }
-
-    public UserType getUserType(){
+    public String getUserType() {
         return userType;
     }
 
-    public void setUserType(UserType userType){
+    public void setUserType(String userType) {
         this.userType = userType;
     }
+
+    public LocalDate getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public enum UserType {JOBSEEKER, RECRUITER, ADMIN}
+
+
+    public static ResultSet getUser(String userId) {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from User where userId='" + userId + "'");
+        return rs;
+    }
+
+    public static ResultSet listUsers() {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from User");
+        return rs;
+    }
+
+    public void createUser() {
+        String sql = "INSERT INTO User (status, dateCreated, password, lastName, firstName, userType, userId) VALUES (" +
+                '"' + status + '"' + ", " +
+                '"' + dateCreated + '"' + ", " +
+                '"' + password + '"' + ", " +
+                '"' + lastName + '"' + ", " +
+                '"' + firstName + '"' + ", " +
+                '"' + userType + '"' + ", " +
+                '"' + userId + '"' + ")";
+        System.out.println(sql);
+        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+    }
+
+    public void deleteUser(String userId) {
+        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from User where userId='" + userId + "'");
+    }
+
+    public void updateUser(String userId, String fieldName, String value) {
+        String sql = "update User \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere userId='" + userId + "'";
+        System.out.println(sql);
+        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+    }
 }
+
+
+
+
+
+
+

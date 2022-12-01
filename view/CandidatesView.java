@@ -10,7 +10,7 @@ import view.ViewHelper;
 public class CandidatesView implements UIView {
     private JPanel panelMain;
     private JTable table1;
-    private JButton sortByButton;
+    private JButton searchButton;
     private JButton nextButton;
     private JButton previousButton;
     private JLabel headingText;

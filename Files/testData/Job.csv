@@ -1,6 +1,6 @@
-jobId,categoryId,company ,description,expiryDate ,locationId,recruiterId,salaryMax,salaryMin,status,timeCreated ,title,desiredSkills
-1,1,Amazon,"""manager position""",30/12/2022,1,1,100000,90000,listed ,12:00,"""manager""","1,7"
-2,2,KMPG,"""data entry position""",31/12/2022,2,3,50000,40000,listed ,13:00,"""data entry""","2,6"
-3,3,Auspost,"""postman position""",1/1/2023,3,2,60000,50000,listed ,14:00,"""postman""","3,4"
-4,4,Nike,"""logistics manager position""",2/1/2023,4,5,90000,80000,listed ,15:00,"""logistics manager""",5
-5,5,Nike,"""store assistant position""",3/1/2023,5,5,50000,40000,listed ,16:00,"""store assistant""",8
+jobId,categoryId,company,description,expiryDate ,locationId,recruiterId,salaryMax,salaryMin,status,timeCreated ,title,desiredSkills
+1,1,Amazon,manager position,30/12/2022,1,1,100000,90000,listed ,12:00,manager,"1,7"
+2,2,KMPG,data entry position,31/12/2022,2,3,50000,40000,listed ,13:00,data entry,"2,6"
+3,3,Auspost,postman position,1/1/2023,3,2,60000,50000,listed ,14:00,postman,"3,4"
+4,4,Nike,logistics manager position,2/1/2023,4,5,90000,80000,listed ,15:00,logistics manager,5
+5,5,Nike,store assistant position,3/1/2023,5,5,50000,40000,listed ,16:00,store assistant,8

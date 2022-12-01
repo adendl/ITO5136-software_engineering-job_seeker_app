@@ -1,23 +1,48 @@
 package model;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 public class Job {
+
+    private int jobId;
+    private int categoryId;
     private String company;
     private String description;
-    private LocalDateTime expiriyDate;
-    private int jobId;
+    private LocalDate expiryDate;
+
+    private boolean isAdvertised;
+
     private ArrayList<String> keywords;
     private int locationId;
     private int recruiterId;
     private int salaryMax;
     private int salaryMin;
     private String status;
-    private LocalDateTime timeCreated;
+    private LocalDate dateCreated;
     private String title;
 
+
     public Job() {
+    }
+
+    public Job(int jobId, int categoryId, String company, String description, LocalDate expiryDate, boolean isAdvertised, ArrayList<String> keywords, int locationId, int recruiterId, int salaryMax, int salaryMin, String status, String title) {
+        this.jobId = jobId;
+        this.categoryId = categoryId;
+        this.company = company;
+        this.description = description;
+        this.expiryDate = expiryDate;
+        this.isAdvertised = isAdvertised;
+        this.keywords = keywords;
+        this.locationId = locationId;
+        this.recruiterId = recruiterId;
+        this.salaryMax = salaryMax;
+        this.salaryMin = salaryMin;
+        this.status = status;
+        this.dateCreated = LocalDate.now();
+        this.title = title;
     }
 
     public String getCompany() {
@@ -36,12 +61,12 @@ public class Job {
         this.description = description;
     }
 
-    public LocalDateTime getExpiriyDate() {
-        return expiriyDate;
+    public LocalDate getExpiryDate() {
+        return expiryDate;
     }
 
-    public void setExpiriyDate(LocalDateTime expiriyDate) {
-        this.expiriyDate = expiriyDate;
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
     }
 
     public int getJobId() {
@@ -100,12 +125,12 @@ public class Job {
         this.status = status;
     }
 
-    public LocalDateTime getTimeCreated() {
-        return timeCreated;
+    public LocalDate getDateCreated() {
+        return dateCreated;
     }
 
-    public void setTimeCreated(LocalDateTime timeCreated) {
-        this.timeCreated = timeCreated;
+    public void setDateCreated(LocalDate timeCreated) {
+        this.dateCreated = dateCreated;
     }
 
     public String getTitle() {
@@ -115,5 +140,56 @@ public class Job {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public static ResultSet getJob(int jobId)
+    {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job where jobId=" + jobId);
+        return rs;
+    }
+
+    public static ResultSet listJobs()
+    {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job");
+        return rs;
+    }
+
+    public void createJob()
+    {
+        Connection conn = DBConnection.connectDb();
+        String sql = "INSERT INTO Job (keyword, title, dateCreated, status, salaryMin, salaryMax, locationId, recruiterId, expiryDate, description, company, categoryId, jobId) VALUES (" +
+               '"' + keywords + '"' + ", " +
+                '"' +    title + '"' + ", " +
+                '"' +  dateCreated + '"' + ", " +
+                '"' +   status + '"' + ", " +
+                salaryMin + ", " +
+                salaryMax + ", " +
+                locationId + ", " +
+                recruiterId + ", " +
+                '"' +   expiryDate + '"' + ", " +
+                '"' +   description + '"' + ", " +
+                '"' +  company + '"' + ", " +
+                categoryId + ", " +
+                jobId + ")";
+        System.out.println(sql);
+       DBConnection.queryDatabase(conn, sql);
+        try {
+            setJobId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM Job").getInt("last_insert_rowid()"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void deleteJob(int jobId)
+    {
+        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Job where jobId=" + jobId);
+    }
+
+    public void updateJob(int jobId, String fieldName, String value)
+    {
+        String sql = "update Job \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere jobId=" + jobId;
+        System.out.println(sql);
+        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+    }
+
 
 }

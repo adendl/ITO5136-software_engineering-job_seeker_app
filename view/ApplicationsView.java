@@ -40,6 +40,9 @@ public class ApplicationsView implements UIView {
         return table1;
     }
 
+    public void setTable1(JTable table1) {
+        this.table1 = table1;
+    }
 
     @Override
     public JComponent getUIView() {

@@ -1,8 +1,9 @@
 package model;
 
+import java.sql.ResultSet;
+
 public class Location {
-    private int locationID;
-    private String suburb;
+    private int locationId;
     private String state;
     private String country;
 
@@ -10,24 +11,16 @@ public class Location {
     public Location(){
     }
 
-    public Location(int locationID){
-        this.locationID = locationID;
+    public Location(int locationId){
+        this.locationId = locationId;
     }
 
-    public int getLocationID() {
-        return locationID;
+    public int getLocationId() {
+        return locationId;
     }
 
-    public void setLocationID(int locationID) {
-        this.locationID = locationID;
-    }
-
-    public String getSuburb() {
-        return suburb;
-    }
-
-    public void setSuburb(String suburb) {
-        this.suburb = suburb;
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
     }
 
     public String getState() {
@@ -45,5 +38,23 @@ public class Location {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    public static ResultSet getLocation(int locationId)
+    {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Location where locationId=" + locationId);
+        return rs;
+    }
+
+    public static ResultSet listLocations()
+    {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Location");
+        return rs;
+    }
+
+    public void deleteJob(int locationId)
+    {
+        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Location where locationId=" + locationId);
+    }
+
 
 }

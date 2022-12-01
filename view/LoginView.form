@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.LoginView">
-  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="7" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="50" left="50" bottom="50" right="50"/>
     <constraints>
       <xy x="20" y="20" width="800" height="600"/>
@@ -15,7 +15,7 @@
     <children>
       <component id="61817" class="javax.swing.JLabel" binding="titleLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font size="26"/>
@@ -24,7 +24,7 @@
       </component>
       <component id="9e3c6" class="javax.swing.JLabel" binding="loginInstructionLabel">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font size="16"/>
@@ -41,15 +41,74 @@
       </component>
       <component id="9a07f" class="javax.swing.JLabel" binding="passwordLabel">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Password"/>
         </properties>
       </component>
+      <component id="b7106" class="javax.swing.JButton" binding="loginButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14440720"/>
+          <font size="20"/>
+          <foreground color="-1"/>
+          <text value="Login"/>
+        </properties>
+      </component>
+      <component id="7fed" class="javax.swing.JLabel" binding="sloganLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="20"/>
+          <text value="Your  Future Starts Here"/>
+        </properties>
+      </component>
+      <component id="fcff1" class="javax.swing.JButton" binding="createNewAccountButton" default-binding="true">
+        <constraints>
+          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14440720"/>
+          <font size="20"/>
+          <foreground color="-1"/>
+          <text value="Create New Account"/>
+        </properties>
+      </component>
+      <component id="c5247" class="javax.swing.JButton" binding="forgotPasswordButton">
+        <constraints>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14440720"/>
+          <font size="20"/>
+          <foreground color="-1"/>
+          <text value="Forgot Passowrd"/>
+        </properties>
+      </component>
+      <component id="f4555" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Forgot your password?"/>
+        </properties>
+      </component>
+      <component id="43973" class="javax.swing.JLabel" binding="createNewAccountLabel">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="16"/>
+          <text value="Create a new account"/>
+        </properties>
+      </component>
       <component id="3e5e8" class="javax.swing.JTextField" binding="emailText">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="20"/>
           </grid>
         </constraints>
@@ -59,51 +118,12 @@
       </component>
       <component id="b4bc0" class="javax.swing.JPasswordField" binding="passwordText">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="4" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="20"/>
           </grid>
         </constraints>
         <properties>
           <margin top="2" left="6" bottom="2" right="6"/>
-        </properties>
-      </component>
-      <component id="43973" class="javax.swing.JLabel" binding="createNewAccountLabel">
-        <constraints>
-          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font size="16"/>
-          <text value="Or to create a new account click below"/>
-        </properties>
-      </component>
-      <component id="fcff1" class="javax.swing.JButton" binding="createNewAccountButton" default-binding="true">
-        <constraints>
-          <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-14440720"/>
-          <font size="20"/>
-          <foreground color="-1"/>
-          <text value="Create New Account"/>
-        </properties>
-      </component>
-      <component id="b7106" class="javax.swing.JButton" binding="loginButton" default-binding="true">
-        <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-14440720"/>
-          <foreground color="-1"/>
-          <text value="Login"/>
-        </properties>
-      </component>
-      <component id="7fed" class="javax.swing.JLabel" binding="sloganLabel">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font size="20"/>
-          <text value="Your  Future Starts Here"/>
         </properties>
       </component>
     </children>

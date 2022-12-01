@@ -19,7 +19,7 @@ public class LoginView implements UIView {
     private JLabel emailLabel;
     private JLabel passwordLabel;
     private JPanel panelMain;
-    private LoginController controller;
+    private JButton forgotPasswordButton;
 
     public LoginView(LoginController controller) {
         this.controller = controller;
