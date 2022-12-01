@@ -64,8 +64,8 @@ public class JobListingsView implements UIView {
         jobListingsTable.setRowSelectionAllowed(false);
 
         JTableButtonRenderer renderer = new JTableButtonRenderer();
-        jobListingsTable.getColumn(jobListingsTable.getColumnName(jobListingsTable.getColumnCount() - 1)).setCellRenderer(renderer);
-        jobListingsTable.getColumn(jobListingsTable.getColumnName(jobListingsTable.getColumnCount() - 1)).setCellEditor(renderer);
+        jobListingsTable.getColumn("Job Details").setCellRenderer(renderer);
+        jobListingsTable.getColumn("Job Details").setCellEditor(renderer);
     }
 
 

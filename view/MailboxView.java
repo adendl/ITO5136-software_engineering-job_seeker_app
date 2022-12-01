@@ -32,13 +32,38 @@ public class MailboxView implements UIView {
             ((DefaultTableModel)tblMessages.getModel()).removeRow(row);
         };
 
-        TableModelCreator.addActionColumn(dft, "Delete", "Delete", listener);
+        Icon trash = new ImageIcon("icon/trash.png");
+        TableModelCreator.addActionColumn(dft, "Delete", trash, listener);
+        int col = dft.findColumn("messageStatus");
+        Icon unread = new ImageIcon("icon/closed-envelope.png");
+        Icon read = new ImageIcon("icon/open-envelope.png");
+        for(int i = 0; i < dft.getRowCount(); i++){
+            JButton button = new JButton();
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int row = tblMessages.convertRowIndexToModel(tblMessages.getEditingRow());
+
+                }
+            });
+            if (dft.getValueAt(i, col).toString().equals("Read")){
+                button.setIcon(read);
+                dft.setValueAt(button, i, col);
+            }
+            else{
+                button.setIcon(unread);
+                dft.setValueAt(button, i, col);
+            }
+        }
         tblMessages.setModel(dft);
         tblMessages.setColumnSelectionAllowed(false);
         tblMessages.setRowSelectionAllowed(false);
         JTableButtonRenderer renderer = new JTableButtonRenderer();
-        tblMessages.getColumn(tblMessages.getColumnName(tblMessages.getColumnCount() - 1)).setCellRenderer(renderer);
-        tblMessages.getColumn(tblMessages.getColumnName(tblMessages.getColumnCount() - 1)).setCellEditor(renderer);
+        tblMessages.getColumn("messageStatus").setCellRenderer(renderer);
+        tblMessages.getColumn("messageStatus").setCellEditor(renderer);
+        tblMessages.getColumn("Delete").setCellRenderer(renderer);
+        tblMessages.getColumn("Delete").setCellEditor(renderer);
+        tblMessages.setRowHeight(50);
     }
 
     public JPanel getPanelMain() {
