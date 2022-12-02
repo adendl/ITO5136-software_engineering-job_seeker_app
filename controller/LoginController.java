@@ -9,6 +9,7 @@ import model.User;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 public class LoginController {
     NavigationController navigationController;
@@ -36,13 +37,13 @@ public class LoginController {
         switch (userType) {
             //job seeker selection
             case 0:
-                JobSeeker newJobSeeker = new JobSeeker();
-                //adds to db.
-                //set to logged in and sends to homepage
+                new User(email, firstName, lastName, password, "JOBSEEKER", LocalDate.now(), "Active").createUser();
+
                 showSeekerHub();
                 break;
             //recruiter selection
             case 1:
+                new User(email, firstName, lastName, password, "RECRUITER", LocalDate.now(), "Active").createUser();
                 Recruiter newRecruiter = new Recruiter();
                 //adds to db.
                 //set to logged in and sends to homepage
@@ -50,6 +51,7 @@ public class LoginController {
                 break;
             //admin selection
             case 2:
+                new User(email, firstName, lastName, password, "ADMIN", LocalDate.now(), "Active").createUser();
                 Administrator newAdmin = new Administrator();
                 //adds to db.
                 //set to logged in and sends to homepage

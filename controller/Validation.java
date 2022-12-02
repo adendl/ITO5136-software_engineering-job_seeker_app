@@ -27,6 +27,18 @@ public class Validation {
         }
     }
 
+    public static boolean betweenLength(String str, int min, int max)
+    {
+        if (str.length() > min && str.length() < max)
+        {
+            return true;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public static boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
