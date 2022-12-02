@@ -3,7 +3,6 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 import controller.HomeJobSeekerController;
 import view.UIView;
@@ -21,11 +20,7 @@ public class HomePageJobSeekerView implements UIView {
         this.controller = controller;
 
         searchJobsButton.addActionListener((e) -> {
-            try {
-                controller.showJobSearch();
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
+            controller.showJobSearch();
         });
         viewApplicationsButton.addActionListener((e) -> {
             controller.showJobApplications();

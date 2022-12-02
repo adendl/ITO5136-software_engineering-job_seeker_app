@@ -3,8 +3,6 @@ package controller;
 import view.*;
 import model.JobSeeker;
 
-import java.sql.SQLException;
-
 public class HomeJobSeekerController {
     NavigationController navigationController;
 
@@ -18,7 +16,7 @@ public class HomeJobSeekerController {
         navigationController.pushView(view);
     }
 
-    public void showJobSearch() throws SQLException {
+    public void showJobSearch() {
         JobSearchController jobSearchController = new JobSearchController(navigationController);
         jobSearchController.showSearch();
     }

@@ -169,11 +169,9 @@ public class Job {
 
     public static ResultSet listJobs()
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select jobId, dateCreated, title, company, Location.city from Job\nJoin Location on Job.locationId = Location.locationId");
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job");
         return rs;
     }
-
-
 
     public static ResultSet listJobsOneStringFilter(String key, String value)
     {
