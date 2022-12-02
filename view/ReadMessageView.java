@@ -48,6 +48,8 @@ public class ReadMessageView implements UIView {
         return mainPanel;
     }
 
+
+
     public static void main(String[] args) {
         ReadMessageView view = new ReadMessageView(null);
         ViewHelper.showStandaloneFrame(view);

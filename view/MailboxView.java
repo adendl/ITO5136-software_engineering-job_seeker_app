@@ -51,7 +51,6 @@ public class MailboxView implements UIView {
                    int objCol = tblMessages.getColumnModel().getColumnIndex("Message Object");
                    Message message = (Message) tblMessages.getModel().getValueAt(row, objCol);
                    controller.showMessage(message);
-
                }
            });
 
