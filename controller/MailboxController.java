@@ -37,6 +37,9 @@ public class MailboxController {
     public void showMessage(Message message) {
         ReadMessageView view = new ReadMessageView(this);
         navigationController.pushView(view);
+        view.getFromText().setText(message.getSenderUserId());
+        view.getSubjectText().setText(message.getSubject());
+        view.getInvitationMessageTextPane().setText(message.getContents());
     }
 
 
