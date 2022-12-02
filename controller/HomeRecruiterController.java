@@ -30,6 +30,8 @@ public class HomeRecruiterController {
 
     public void showEditProfile() {
         // TODO: create a view for this and show it here
+        RecruiterProfileController controller = new RecruiterProfileController(navigationController);
+        controller.showEditRecruiter();
     }
 
     public void showManageListedJobs() {
