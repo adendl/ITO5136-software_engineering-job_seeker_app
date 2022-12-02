@@ -4,6 +4,7 @@ public class CoverLetter {
     private int coverLetterId;
     private String name;
     private String path;
+    private int userId;
 
     public CoverLetter(){
     }
@@ -34,5 +35,11 @@ public class CoverLetter {
 
     public void setPath(String path) {
         this.path = path;
+    }
+    public int getUserId(){
+        return userId;
+    }
+    public void setUserId(int userId){
+        this.userId = userId;
     }
 }
