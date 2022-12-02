@@ -1,6 +1,8 @@
 package model;
 
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class User {
@@ -23,6 +25,14 @@ public class User {
         this.userType = userType;
         this.dateCreated = dateCreated;
         this.status = status;
+    }
+
+    public User(ResultSet result) throws SQLException {
+        this.userId = result.getString("userId");
+        this.firstName = result.getString("firstName");
+        this.lastName = result.getString("lastName");
+        this.userType = result.getString("userType");
+        this.status = result.getString("status");
     }
 
     public String getUserId() {

@@ -3,6 +3,8 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import view.UIView;
 import view.ViewHelper;
 import controller.LoginController;
@@ -13,7 +15,6 @@ public class LoginView implements UIView {
     private JPasswordField passwordText;
     private JButton createNewAccountButton;
     private JButton loginButton;
-    private JLabel createNewAccountLabel;
     private JLabel titleLabel;
     private JLabel sloganLabel;
     private JLabel loginInstructionLabel;
@@ -27,7 +28,11 @@ public class LoginView implements UIView {
         loginButton.addActionListener((e) -> {
             // note: getText() is deprecated on JPasswordField, getPassword() replaces it
             String password = String.valueOf(passwordText.getPassword());
-            controller.doLogin(emailText.getText(), password);
+            try {
+                controller.doLogin(emailText.getText(), password);
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
         });
         createNewAccountButton.addActionListener((e) -> {
             controller.showCreateAccount();
