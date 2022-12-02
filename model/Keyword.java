@@ -43,6 +43,18 @@ public class Keyword {
         this.keywordValue = keywordValue;
     }
 
+    @Override
+    public boolean equals(Object ob)
+    {
+        if (!(ob instanceof Keyword)) {
+            return false;
+        }
+
+        Keyword k = (Keyword)ob;
+
+        return k.keywordId == this.keywordId;
+    }
+
     public static ResultSet getKeyword(int keywordId) {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Keyword where keywordId=" + keywordId);
         return rs;
