@@ -13,4 +13,16 @@ public class ManageUsersController {
         ManageUsersView manageUsersView = new ManageUsersView(this);
         navigationController.pushView(manageUsersView);
     }
+
+    public void renderUsers(){
+        //TODO
+    }
+
+    public void doLockUser(String email){
+        //TODO
+    }
+
+    public void doUnlockUser(String email){
+        //TODO
+    }
 }
