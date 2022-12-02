@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.nio.channels.FileChannel;
 
 import controller.ApplyForJobController;
 import controller.HomeJobSeekerController;
@@ -47,30 +50,64 @@ public class JobApplicationView implements UIView {
         browseResumeButton.addActionListener((e -> {
             //upload resume
             JFileChooser fileChooser = new JFileChooser();
-            int i = fileChooser.showOpenDialog(this.getUIView());
-
-            if (i == JFileChooser.APPROVE_OPTION) {
-                //add file to files
-                File file = fileChooser.getSelectedFile();
-                String filePath = file.getPath();
+            int response = fileChooser.showSaveDialog(this.getUIView());
+            if(response == JFileChooser.APPROVE_OPTION) {
+                File upload = new File(fileChooser.getSelectedFile().getAbsolutePath());
+                System.out.println(upload);
+                if(upload != null){
+                    File newFile = new File("Files/resume/" + upload.getName());
+                    doUpload(upload, newFile);
+                    my_Resume_2022PdfText.setText(upload.getName());
+                    //create resume object and save in db.
+                    System.out.println("Resume uploaded in Files/resume");
+                } else {
+                    System.out.println("Error file not uploaded");
+                }
             }
         }));
         browseCoverLetterButton.addActionListener((e -> {
             //upload cover letter
             JFileChooser fileChooser = new JFileChooser();
-            int i = fileChooser.showOpenDialog(this.getUIView());
+            int response = fileChooser.showSaveDialog(this.getUIView());
+            if(response == JFileChooser.APPROVE_OPTION){
+                File upload = new File(fileChooser.getSelectedFile().getAbsolutePath());
 
-            if(i == JFileChooser.APPROVE_OPTION){
-                //add file to files
-                File file = fileChooser.getSelectedFile();
-                String filePath = file.getPath();
-
+                System.out.println(upload);
+                if(upload != null){
+                    File newFile =new File("Files/coverletter/" + upload.getName());
+                    doUpload(upload, newFile);
+                    basket_weaver_2022PdfText.setText(upload.getName());
+                    //create cover letter object and save in db.
+                    System.out.println("Cover letter uploaded in Files/coverletter");
+                } else {
+                    System.out.println("Error file not uploaded");
+                }
             }
         }));
     }
 
     public void doJobApply(){
         controller.doJobApply(getFirstName(), getLastName(), getEmail(), getPhone());
+    }
+
+    public void doUpload(File upload, File newFile){
+        FileChannel source = null;
+        FileChannel destination = null;
+        try {
+            source = new FileInputStream(upload).getChannel();
+            destination = new FileOutputStream(newFile).getChannel();
+            if (destination != null && source != null) {
+                destination.transferFrom(source, 0, source.size());
+            }
+            if (source != null) {
+                source.close();
+            }
+            if (destination != null) {
+                destination.close();
+            }
+        } catch(Exception error) {
+            System.out.println("Error file not uploaded");
+        }
     }
 
     public String getFirstName() {
