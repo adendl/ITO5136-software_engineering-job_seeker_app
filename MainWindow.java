@@ -2,11 +2,14 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 import controller.*;
+import model.User;
 import view.*;
 
 import java.awt.*;
 
 public class MainWindow {
+
+
     JFrame mainWindow;
     JPanel mainPanel;
     JPanel navPanel;

@@ -9,6 +9,11 @@ import controller.SearchAlgorithmController;
 
 public class SearchResultsView implements UIView {
     private JPanel panelMain;
+
+    public void setSearchTextField(JTextField searchTextField) {
+        this.searchTextField = searchTextField;
+    }
+
     private JTextField searchTextField;
     private JTable table1;
     private JButton searchButton;

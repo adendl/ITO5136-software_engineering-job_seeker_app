@@ -5,9 +5,28 @@ import view.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class JobSearchController {
+    public SearchJobView getSearchJobView() {
+        return searchJobView;
+    }
+
+    public void setSearchJobView(SearchJobView searchJobView) {
+        this.searchJobView = searchJobView;
+    }
+
+    public NavigationController getNavigationController() {
+        return navigationController;
+    }
+
+    public void setNavigationController(NavigationController navigationController) {
+        this.navigationController = navigationController;
+    }
+
+    private SearchJobView searchJobView;
     private NavigationController navigationController;
     public JobSearchController(NavigationController navigationController){
         this.navigationController = navigationController;
@@ -48,11 +67,11 @@ public class JobSearchController {
          */
     }
 
-    public void doSearch() {
+    public void doSearch(String searchString) {
         //get all field attributes and search term and run through matching algorithm
         // TODO: JobSearchView passes in parameters here, we have SearchAlgorithmController do the work, then call showResults
         SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController);
-        searchAlgorithmController.performSearch(/*search params go here*/);
+        searchAlgorithmController.performSearch(searchString);
     }
 
     public void doProfileSearch() {
@@ -60,11 +79,33 @@ public class JobSearchController {
         SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController);
         // not sure if we'd use the same performSearch or if we need something different for profile-based search
         // end result should be the same though, it's only the search inputs that change
-        searchAlgorithmController.performSearch(/*search params go here*/);
+        searchAlgorithmController.performSearch("INSERT STRING");
     }
 
-    public void showSearch() {
-        JobSearchView jobSearchView = new JobSearchView(this);
-        navigationController.pushView(jobSearchView);
+    public void showSearch() throws SQLException {
+        this.searchJobView = new SearchJobView(this);
+        navigationController.pushView(searchJobView);
+        loadCategories();
+        loadLocations();
+    }
+
+    public void loadCategories() throws SQLException {
+        ResultSet rs = Keyword.listCategories();
+        searchJobView.getCategoriesComboBox().addItem("");
+        while (rs.next())
+        {
+            searchJobView.getCategoriesComboBox().addItem(rs.getString("keywordValue"));
+        }
+
+    }
+
+    public void loadLocations() throws SQLException {
+        ResultSet rs = Location.listLocations();
+        searchJobView.getLocationComboBox().addItem("");
+        while (rs.next())
+        {
+            searchJobView.getLocationComboBox().addItem(rs.getString("city"));
+        }
+
     }
 }

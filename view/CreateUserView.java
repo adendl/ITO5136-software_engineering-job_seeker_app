@@ -32,29 +32,34 @@ public class CreateUserView implements UIView {
         });
     }
 
-    public static boolean validateUser(String email, String password, String passwordConfirm, String firstName, String lastName)
+    public LoginController getController()
+    {
+        return controller;
+    }
+
+    public boolean validateUser(String email, String password, String passwordConfirm, String firstName, String lastName)
     {
         if (!Validation.isEmail(email)) {
-            JOptionPane.showMessageDialog(null, "The email entered is not in the correct format of emailaddress@domain.com", "Invalid Email Address", JOptionPane.ERROR_MESSAGE);
+            this.getController().displayErrrorMessage("The email entered is not in the correct format of emailaddress@domain.com", "Invalid Email Address");
             return false;
         }
         if (!Validation.betweenLength(password, 8,255))
         {
-            JOptionPane.showMessageDialog(null, "Passwords need to be between 8-255 characters long", "Password too short", JOptionPane.ERROR_MESSAGE);
+            getController().displayErrrorMessage("Passwords need to be between 8-255 characters", "Invalid Password");
             return false;
         }
         if (!password.equals(passwordConfirm)) {
-            JOptionPane.showMessageDialog(null, "Passwords do not match!", "Password mismatch", JOptionPane.ERROR_MESSAGE);
+            getController().displayErrrorMessage("Passwords do not match", "Invalid Password");
             return false;
         }
         if (!Validation.betweenLength(firstName, 2,255))
         {
-            JOptionPane.showMessageDialog(null, "Names need to be between 2-255 characters long", "Name too short", JOptionPane.ERROR_MESSAGE);
+            getController().displayErrrorMessage("Names need to be between 8-255 characters", "Invalid Name");
             return false;
         }
         if (!Validation.betweenLength(lastName, 2,255))
         {
-            JOptionPane.showMessageDialog(null, "Names need to be between 2-255 characters long", "Name too short", JOptionPane.ERROR_MESSAGE);
+            getController().displayErrrorMessage("Names need to be between 8-255 characters", "Invalid Name");
             return false;
         }
         return true;

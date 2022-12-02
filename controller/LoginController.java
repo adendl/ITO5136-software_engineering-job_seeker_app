@@ -82,14 +82,20 @@ public class LoginController {
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "The entered username/password is not correct", "Invalid Login Details", JOptionPane.ERROR_MESSAGE);
+                displayErrrorMessage(" the entered username/password is not correct", "Invalid Login Details");
 
             }
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "The entered username/password is not correct", "Invalid Login Details", JOptionPane.ERROR_MESSAGE);
+            displayErrrorMessage(" the entered username/password is not correct", "Invalid Login Details");
         }
+    }
+
+    public void displayErrrorMessage(String message, String title)
+    {
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
+
     }
 
     public void showAdminHub() {
