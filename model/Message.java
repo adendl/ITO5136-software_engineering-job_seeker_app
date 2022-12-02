@@ -15,11 +15,12 @@ public class Message {
     private String messageType;
     private String senderUserId;
     private String recipientUserId;
+    private String messageStatus;
 
     public Message() {
     }
 
-    public Message(int messageId, String subject, String contents, LocalDate sendDate, int jobId, String messageType, String senderUserId, String recipientUserId) {
+    public Message(int messageId, String subject, String contents, LocalDate sendDate, int jobId, String messageType, String senderUserId, String recipientUserId, String messageStatus) {
         this.messageId = messageId;
         this.subject = subject;
         this.contents = contents;
@@ -28,6 +29,7 @@ public class Message {
         this.messageType = messageType;
         this.senderUserId = senderUserId;
         this.recipientUserId = recipientUserId;
+        this.messageStatus = messageStatus;
     }
 
     public Message(ResultSet rs) throws SQLException {
@@ -39,6 +41,7 @@ public class Message {
         this.messageType = rs.getString("messageType");
         this.senderUserId = rs.getString("senderUserId");
         this.recipientUserId = rs.getString("recipientUserId");
+        this.messageStatus = rs.getString("messageStatus");
     }
 
 
@@ -103,24 +106,19 @@ public class Message {
         return recipientUserId;
     }
 
+    public String getMessageStatus() { return messageStatus; }
+
     public void setRecipientUserId(String recipientUserId) {
         this.recipientUserId = recipientUserId;
     }
     public static ResultSet getMessage(int messageId)
     {
-        ResultSet rs = DBConnection.queryDatabase("select * from Message where messageId=" + messageId);
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Message where messageId=" + messageId);
         return rs;
     }
 
-    public static ResultSet listMessages(String recipientUserId)
-    {
-        ResultSet rs = DBConnection.queryDatabase("select * from Message where recipientUserId='" + recipientUserId + "'" );
-        return rs;
-    }
-
-    public void createMessage()
-    {
-        DBConnection conn = DBConnection.get();
+    public void createMessage() {
+        Connection conn = DBConnection.connectDb();
         String sql = "INSERT INTO Message (recipientUserId, senderUserId, messageType, jobId, sendDate, contents, subject, messageId) VALUES (" +
                 '"' + recipientUserId + '"' + ", " +
                 '"' + senderUserId + '"' + ", " +
@@ -131,17 +129,22 @@ public class Message {
                 '"' +  subject + '"' + ", " +
                 null + ")";
         System.out.println(sql);
-        conn.executeQuery(sql);
+        DBConnection.queryDatabase(conn, sql);
         try {
-            setJobId(conn.getLatestItemId("Message"));
+            setJobId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM Message").getInt("last_insert_rowid()"));
         } catch (Exception e) {
-            System.err.println("createMessage failed: " + e);
+            System.out.println(e);
         }
+    }
+
+    public void deleteMessage()
+    {
+        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Message where messageId=" + this.messageId);
     }
 
     public void deleteMessage(int messageId)
     {
-        DBConnection.queryDatabase("delete from Message where messageId=" + messageId);
+        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Message where messageId=" + messageId);
     }
 
 
