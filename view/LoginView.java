@@ -13,7 +13,6 @@ public class LoginView implements UIView {
     private JPasswordField passwordText;
     private JButton createNewAccountButton;
     private JButton loginButton;
-    private JLabel createNewAccountLabel;
     private JLabel titleLabel;
     private JLabel sloganLabel;
     private JLabel loginInstructionLabel;
