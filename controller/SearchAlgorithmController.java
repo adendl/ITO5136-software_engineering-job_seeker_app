@@ -1,10 +1,15 @@
 package controller;
 
+import model.DBConnection;
+import model.Job;
 import view.SearchJobView;
 import view.SearchResultsView;
 
+import java.sql.ResultSet;
+
 public class SearchAlgorithmController {
     private NavigationController navigationController;
+    private SearchResultsView searchResultsView;
     public SearchAlgorithmController(NavigationController navigationController) {
         this.navigationController = navigationController;
     }
@@ -22,8 +27,15 @@ public class SearchAlgorithmController {
     }
 
     public void showResults(String searchString) {
-        SearchResultsView searchResultsView = new SearchResultsView(this);
+        this.searchResultsView = new SearchResultsView(this);
         searchResultsView.getSearchTextField().setText(searchString);
+        loadTable();
         navigationController.pushView(searchResultsView);
+    }
+
+    public void loadTable()
+    {
+        ResultSet rs = Job.listJobs();
+        searchResultsView.getTable1().setModel(DBConnection.resultSetToTableModel(rs));
     }
 }
