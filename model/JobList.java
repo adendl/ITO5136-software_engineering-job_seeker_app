@@ -54,6 +54,11 @@ public class JobList {
         return new DefaultTableModel(rows, colHeader);
     }
 
+    public DefaultTableModel jobListDft() throws SQLException {
+        resultSetToJobList(listJobs());
+        return jobListToTableModel();
+    }
+
     public ResultSet listJobs()
     {
         return DBConnection.queryDatabase("select * from Job");

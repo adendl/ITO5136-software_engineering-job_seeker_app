@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -61,7 +62,12 @@ public class MailboxView implements UIView {
                 dft.setValueAt(button, i, statusCol);
             }
         }
+
+        TableColumnModel tcm = tblMessages.getColumnModel();
         tblMessages.setModel(dft);
+        tcm.removeColumn(tcm.getColumn(tcm.getColumnIndex("Message ID")));
+        tcm.removeColumn(tcm.getColumn(tcm.getColumnIndex("Message Object")));
+        tcm.removeColumn(tcm.getColumn(tcm.getColumnIndex("Recipient")));
         tblMessages.setColumnSelectionAllowed(false);
         tblMessages.setRowSelectionAllowed(false);
         JTableButtonRenderer renderer = new JTableButtonRenderer();

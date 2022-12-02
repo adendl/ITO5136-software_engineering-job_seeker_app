@@ -6,11 +6,14 @@ import model.Recruiter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class HomeRecruiterController {
     NavigationController navigationController;
-    public HomeRecruiterController(NavigationController navigationController){
+    User user;
+    public HomeRecruiterController(NavigationController navigationController, User user){
         this.navigationController = navigationController;
+        this.user = user;
     }
 
     public void showHub() {
@@ -34,8 +37,8 @@ public class HomeRecruiterController {
         controller.showEditRecruiter();
     }
 
-    public void showManageListedJobs() {
-        JobListingsView jobListingsView = new JobListingsView(this);
-        navigationController.pushView(jobListingsView);
+    public void showManageListedJobs() throws SQLException {
+        ListJobsController listJobsController = new ListJobsController(this.navigationController, this.user);
+        listJobsController.renderListedJobs();
     }
 }
