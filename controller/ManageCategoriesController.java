@@ -13,4 +13,16 @@ public class ManageCategoriesController {
         ManageCategoriesView manageCategoriesView = new ManageCategoriesView(this);
         navigationController.pushView(manageCategoriesView);
     }
+
+    public void renderCategories(){
+        //TODO
+    }
+
+    public void doCategoryAdd(){
+        //TODO
+    }
+
+    public void doCategoryDelete(String name){
+        //TODO
+    }
 }
