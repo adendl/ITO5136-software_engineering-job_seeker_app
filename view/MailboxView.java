@@ -4,12 +4,10 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import controller.MailboxController;
-import model.DBConnection;
-import model.MailBox;
+import model.Mailbox;
 import model.Message;
 import model.TableModelCreator;
 
@@ -26,7 +24,7 @@ public class MailboxView implements UIView {
 
     public MailboxView(MailboxController controller) throws SQLException {
         this.controller = controller;
-        MailBox mb = new MailBox();
+        Mailbox mb = new Mailbox();
         DefaultTableModel dft = mb.receivedMessageDft("test5@test.com");
 
         ActionListener deleteAction = e -> {

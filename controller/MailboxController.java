@@ -1,6 +1,6 @@
 package controller;
 
-import model.MailBox;
+import model.Mailbox;
 import model.Message;
 import model.User;
 import view.MailboxView;
@@ -12,12 +12,12 @@ import java.sql.SQLException;
 
 public class MailboxController {
     NavigationController navigationController;
-    private MailBox mailBox;
+    private Mailbox mailBox;
     private User user;
 
     public MailboxController(NavigationController navigationController, User user) {
         this.navigationController = navigationController;
-        mailBox = new MailBox();
+        mailBox = new Mailbox();
         this.user = user;
     }
 

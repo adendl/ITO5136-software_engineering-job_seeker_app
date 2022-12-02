@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-public class MailBox {
+public class Mailbox {
     private ArrayList<Message> mailBox;
 
-    public MailBox() {
+    public Mailbox() {
         mailBox = new ArrayList<Message>();
-
     }
 
     public ArrayList<Message> getMailBox() {
@@ -50,13 +49,13 @@ public class MailBox {
         return new DefaultTableModel(rows, colHeader);
     }
     public ResultSet listReceivedMessages(String recipientUserId) throws SQLException {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Message where recipientUserId='" + recipientUserId + "'" );
-        return rs;
+        DBConnection db = DBConnection.get();
+        return db.executeQuery("select * from Message where recipientUserId='" + recipientUserId + "'" );
     }
 
     public ResultSet listSentMessages(String senderUserId) {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Message where senderUserId='" + senderUserId + "'" );
-        return rs;
+        DBConnection db = DBConnection.get();
+        return db.executeQuery("select * from Message where senderUserId='" + senderUserId + "'" );
     }
 
     public void resultSetToMessageList(ResultSet rs) throws SQLException {
