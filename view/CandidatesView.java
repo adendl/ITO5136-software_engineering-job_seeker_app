@@ -20,7 +20,7 @@ public class CandidatesView implements UIView {
     private JLabel headingText;
 
     public CandidatesView() {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select userID, firstName, LastName, email, phoneNumber, city, state from JobSeeker\njoin Location");
+        ResultSet rs = DBConnection.queryDatabase("select userID, firstName, LastName, email, phoneNumber, city, state from JobSeeker\njoin Location");
         DefaultTableModel dft = TableModelCreator.resultSetToTableModel(rs);
         ActionListener listener = e -> {
             System.out.println("Button Clicked");

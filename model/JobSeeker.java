@@ -58,7 +58,7 @@ public class JobSeeker extends User {
     }
 
     public static ResultSet getJobSeeker(String userId) {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobSeeker where userId='" + userId + "'");
+        ResultSet rs = DBConnection.queryDatabase("select * from JobSeeker where userId='" + userId + "'");
         return rs;
     }
 
@@ -69,13 +69,13 @@ public class JobSeeker extends User {
                 locationId + ", " +
                 '"' + skillIds + '"' + ")";
         System.out.println(sql);
-        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        DBConnection.queryDatabase(sql);
     }
 
     public void updateJobSeeker(String userId, String fieldName, String value) {
         String sql = "update JobSeeker \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere userId='" + userId + "'";
         System.out.println(sql);
-        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        ResultSet rs = DBConnection.queryDatabase(sql);
     }
 }
 

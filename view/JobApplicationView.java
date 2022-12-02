@@ -39,8 +39,8 @@ public class JobApplicationView implements UIView {
     private JPanel panelMain;
     private JLabel phoneLabel;
     private ApplyForJobController controller;
-    private String resumeId;
-    private String coverLetterId;
+    private int resumeId;
+    private int coverLetterId;
 
     public JobApplicationView(ApplyForJobController controller) {
         this.controller = controller;
@@ -63,7 +63,7 @@ public class JobApplicationView implements UIView {
                     doUpload(upload, newFile);
                     my_Resume_2022PdfText.setText(upload.getName());
                     //create resume object and save in db.
-                    this.resumeId = controller.storeResume(newFile.getName(), newFile.getAbsolutePath());
+                   //resumeId is dynamically generated this.resumeId = controller.storeResume(newFile.getName(), newFile.getAbsolutePath());
                     System.out.println("Resume uploaded in Files/resume");
                 } else {
                     System.out.println("Error file not uploaded");
@@ -83,7 +83,7 @@ public class JobApplicationView implements UIView {
                     doUpload(upload, newFile);
                     basket_weaver_2022PdfText.setText(upload.getName());
                     //create cover letter object and save in db.
-                    this.coverLetterId = controller.storeCoverLetter(newFile.getName(), newFile.getAbsolutePath());
+            //cover letterId is uniquely generated        this.coverLetterId = controller.storeCoverLetter(newFile.getName(), newFile.getAbsolutePath());
                     System.out.println("Cover letter uploaded in Files/coverletter");
                 } else {
                     System.out.println("Error file not uploaded");

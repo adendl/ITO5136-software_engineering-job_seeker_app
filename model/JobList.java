@@ -56,7 +56,7 @@ public class JobList {
 
     public ResultSet listJobs()
     {
-        return DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Job");
+        return DBConnection.queryDatabase("select * from Job");
     }
 
     public void resultSetToJobList(ResultSet rs) throws SQLException {

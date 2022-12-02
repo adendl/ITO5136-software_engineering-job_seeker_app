@@ -40,10 +40,10 @@ public class ApplyForJobController {
     }
 
     //resume and cover letter path need to be added
-    public void doJobApply(String FirstName, String lastName, String email, String phone, String resumeId, String coverLetterId){
+    public void doJobApply(String FirstName, String lastName, String email, String phone, int resumeId, int coverLetterId){
         JobApplication jobApplication = new JobApplication();
         jobApplication.setApplicantId(user.getUserId());
-        jobApplication.setJobId(String.valueOf(job.getJobId()));
+        jobApplication.setJobId(job.getJobId());
         jobApplication.setResumeId(resumeId);
         //TODO: create in db.
         //show appliedJobView

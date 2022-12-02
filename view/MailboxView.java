@@ -23,12 +23,12 @@ public class MailboxView implements UIView {
     public MailboxView(MailboxController controller) {
         this.controller = controller;
 
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select messageID, subject, sendDate, title, firstName, lastName, messageType, messageStatus\nfrom Message\nINNER JOIN Job on Message.jobId=Job.jobId\nInner Join JobSeeker on Message.senderUserId=JobSeeker.userId");
+        ResultSet rs = DBConnection.queryDatabase("select messageID, subject, sendDate, title, firstName, lastName, messageType, messageStatus\nfrom Message\nINNER JOIN Job on Message.jobId=Job.jobId\nInner Join JobSeeker on Message.senderUserId=JobSeeker.userId");
         DefaultTableModel dft = TableModelCreator.resultSetToTableModel(rs);
         ActionListener listener = e -> {
             int row = tblMessages.convertRowIndexToModel(tblMessages.getEditingRow());
             int col = tblMessages.getColumn("messageId").getModelIndex();
-            DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Message where messageId=" + (Integer)tblMessages.getValueAt(row, col));
+            DBConnection.queryDatabase("delete from Message where messageId=" + (Integer)tblMessages.getValueAt(row, col));
             ((DefaultTableModel)tblMessages.getModel()).removeRow(row);
         };
 

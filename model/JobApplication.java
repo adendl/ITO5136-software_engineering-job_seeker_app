@@ -6,14 +6,14 @@ import java.sql.Connection;
 
 
 public class JobApplication {
-    private String applicationId;
+    private int applicationId;
     private String applicantId;
     private LocalDate dateApplied;
     private int jobId;
     private int resumeId;
     private int messageId;
 
-    public JobApplication(String applicationId, String applicantId, LocalDate dateApplied, int jobId, int resumeId, int messageId) {
+    public JobApplication(int applicationId, String applicantId, LocalDate dateApplied, int jobId, int resumeId, int messageId) {
         this.applicationId = applicationId;
         this.applicantId = applicantId;
         this.dateApplied = dateApplied;
@@ -27,11 +27,11 @@ public class JobApplication {
 
     }
 
-    public String getApplicationId() {
+    public int getApplicationId() {
         return applicationId;
     }
 
-    public void setApplicationId(String applicationId) {
+    public void setApplicationId(int applicationId) {
         this.applicationId = applicationId;
     }
 
@@ -51,27 +51,27 @@ public class JobApplication {
         this.dateApplied = dateApplied;
     }
 
-    public String getJobId() {
+    public int getJobId() {
         return jobId;
     }
 
-    public void setJobId(String jobId) {
+    public void setJobId(int jobId) {
         this.jobId = jobId;
     }
 
-    public String getResumeId() {
+    public int getResumeId() {
         return resumeId;
     }
 
-    public void setResumeId(String resumeId) {
+    public void setResumeId(int resumeId) {
         this.resumeId = resumeId;
     }
 
-    public String getMessageId() {
+    public int getMessageId() {
         return messageId;
     }
 
-    public void setMessageId(String messageId) {
+    public void setMessageId(int messageId) {
         this.messageId = messageId;
     }
 

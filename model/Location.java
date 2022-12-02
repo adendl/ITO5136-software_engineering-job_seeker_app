@@ -50,7 +50,7 @@ public class Location {
 
     public static ResultSet getLocationByCity(String city)
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Location where city='" + city + "'");
+        ResultSet rs = DBConnection.queryDatabase("select * from Location where city='" + city + "'");
         return rs;
     }
 

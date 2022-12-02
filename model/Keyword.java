@@ -56,22 +56,22 @@ public class Keyword {
     }
 
     public static ResultSet getKeyword(int keywordId) {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Keyword where keywordId=" + keywordId);
+        ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordId=" + keywordId);
         return rs;
     }
 
     public static ResultSet listKeywords() {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Keyword");
+        ResultSet rs = DBConnection.queryDatabase("select * from Keyword");
         return rs;
     }
 
     public static ResultSet listCategories() {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Keyword where keywordType='category'");
+        ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordType='category'");
         return rs;
     }
 
     public static ResultSet listSkills() {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Keyword where keywordType='skill'");
+        ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordType='skill'");
         return rs;
     }
 
@@ -86,23 +86,22 @@ public class Keyword {
         }
         sql += ")";
         System.out.println(sql);
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        ResultSet rs = DBConnection.queryDatabase(sql);
         return rs;
     }
 
     public void createJobCategory() {
-        Connection conn = DBConnection.connectDb();
         String sql = "INSERT INTO Keyword (keywordId, keywordType, keywordValue) VALUES (null, " + '"' + keywordType + '"' + ',' + '"' + keywordValue + '"' + ")";
         System.out.println(sql);
-        DBConnection.queryDatabase(DBConnection.connectDb(), sql);
+        DBConnection.queryDatabase(sql);
         try {
-            setKeywordId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM Keyword").getInt("last_insert_rowid()"));
+            setKeywordId(DBConnection.queryDatabase("SELECT LAST_INSERT_ROWID() FROM Keyword").getInt("last_insert_rowid()"));
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
     public void deleteKeyword(int categoryId) {
-        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Keyword where keywordId=" + keywordId);
+        DBConnection.queryDatabase("delete from Keyword where keywordId=" + keywordId);
     }
 }

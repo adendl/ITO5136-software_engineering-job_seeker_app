@@ -94,7 +94,7 @@ public class User {
     public enum UserType {JOBSEEKER, RECRUITER, ADMIN}
 
 
-    public ResultSet getUser(String userId) {
+    public static ResultSet getUser(String userId) {
         ResultSet rs = DBConnection.queryDatabase("select * from User where userId='" + userId + "'");
         return rs;
     }
