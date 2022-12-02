@@ -96,7 +96,6 @@ public class JobSearchController {
         {
             searchJobView.getCategoriesComboBox().addItem(rs.getString("keywordValue"));
         }
-
     }
 
     public void loadLocations() throws SQLException {
@@ -106,6 +105,5 @@ public class JobSearchController {
         {
             searchJobView.getLocationComboBox().addItem(rs.getString("city"));
         }
-
     }
 }

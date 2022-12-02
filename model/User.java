@@ -49,6 +49,7 @@ public class User {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+        updateUser(userId, "firstName", firstName);
     }
 
     public String getLastName() {
@@ -57,6 +58,7 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+        updateUser(userId, "lastName", lastName);
     }
 
     public String getPassword() {
@@ -65,6 +67,7 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+        updateUser(userId, "password", password);
     }
 
     public String getUserType() {
@@ -89,9 +92,9 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
+        updateUser(userId, "status", status);
     }
 
-    public enum UserType {JOBSEEKER, RECRUITER, ADMIN}
 
 
     public static ResultSet getUser(String userId) {

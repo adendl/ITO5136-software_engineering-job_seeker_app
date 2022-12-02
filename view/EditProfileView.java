@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import controller.JobSeekerProfileController;
 import model.JobSeeker;
+import model.Location;
 import model.User;
 
 public class EditProfileView implements UIView {
@@ -27,6 +28,8 @@ public class EditProfileView implements UIView {
     private JList list1;
     private JLabel addressLabel;
     private JLabel editProfileLabel;
+
+
     private JComboBox addressComboBox;
     private JobSeekerProfileController controller;
 
@@ -47,6 +50,15 @@ public class EditProfileView implements UIView {
             JOptionPane.showMessageDialog(null, "todo: resume upload");
         });
     }
+
+    public JComboBox getAddressComboBox() {
+        return addressComboBox;
+    }
+
+    public void setAddressComboBox(JComboBox addressComboBox) {
+        this.addressComboBox = addressComboBox;
+    }
+
 
     public JTextArea getSkillsText() {
         return skillsText;
@@ -81,22 +93,34 @@ public class EditProfileView implements UIView {
         return panelMain;
     }
 
+    public JList getList1() {
+        return list1;
+    }
+
+    public void setList1(JList list1) {
+        this.list1 = list1;
+    }
+
     public void submitUpdate() throws SQLException {
         // things like skills and location might need special handling (they should come from database)
         //need to add password and skills
         String firstName = firstNameText.getText();
+        String lastName = lastNameText.getText();
+        String phoneNumber = phoneNumberText.getText();
+        String city = addressComboBox.getSelectedItem().toString();
 
         // TODO: validate this data before calling controller.updateProfile
 
-        controller.updateProfile(firstName);
+        controller.updateProfile(firstName, lastName, phoneNumber, city);
     }
 
     // populate the UI fields with user data
-    public void populateForUser(User user, JobSeeker jobSeeker) {
+    public void populateForUser(User user, JobSeeker jobSeeker) throws SQLException {
         emailText.setText(user.getUserId());
         phoneNumberText.setText(jobSeeker.getPhoneNumber());
         firstNameText.setText(user.getFirstName());
         lastNameText.setText(user.getLastName());
+        addressComboBox.setSelectedIndex(jobSeeker.getLocationId());
     }
 
     public static void main(String[] args) {

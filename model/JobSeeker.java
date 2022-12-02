@@ -4,9 +4,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-public class JobSeeker extends User {
+public class JobSeeker extends User{
     private ArrayList<Integer> skillIds;
     private String phoneNumber;
+    private int locationId;
+    private String userId;
+
+    public JobSeeker(ArrayList<Integer> skillIds, String phoneNumber, int locationId, String userId) {
+        this.skillIds = skillIds;
+        this.phoneNumber = phoneNumber;
+        this.locationId = locationId;
+        this.userId = userId;
+    }
+
+    public JobSeeker(String userId) {
+        this.userId = userId;
+    }
 
     public JobSeeker() {
     }
@@ -33,8 +46,8 @@ public class JobSeeker extends User {
 
     public void setLocationId(String locationId) {
         updateJobSeeker(userId, "locationId", locationId);
+        updateJobSeeker(userId, "locationId", locationId);
     }
-    private int locationId;
 
 
 
@@ -51,11 +64,7 @@ public class JobSeeker extends User {
         this.skillIds = skillIds;
     }
 
-    public JobSeeker(String userId, String firstName, String lastName, String password, String userType, LocalDate dateCreated, String status, ArrayList<Integer> skillIds) {
-        super(userId, firstName, lastName, password, userType, dateCreated, status);
-        this.skillIds = skillIds;
 
-    }
 
     public static ResultSet getJobSeeker(String userId) {
         ResultSet rs = DBConnection.queryDatabase("select * from JobSeeker where userId='" + userId + "'");
