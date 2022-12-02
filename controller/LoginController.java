@@ -33,6 +33,11 @@ public class LoginController {
         navigationController.pushView(loginView);
     }
 
+    public void showForgotPassword(){
+        ForgotPasswordView forgotPasswordView = new ForgotPasswordView(this, navigationController);
+        navigationController.pushView(forgotPasswordView);
+    }
+
     // create a new account when the view's button is clicked
     public void doCreateAccount(String firstName, String lastName, String email, String password, int userType) {
         //create object, add to constructor and call method to add to db

@@ -38,6 +38,9 @@ public class LoginView implements UIView {
         createNewAccountButton.addActionListener((e) -> {
             controller.showCreateAccount();
         });
+        forgotPasswordButton.addActionListener((e -> {
+            controller.showForgotPassword();
+        }));
     }
 
     public JTextField getEmailText() {
