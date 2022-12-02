@@ -15,13 +15,15 @@ public class SearchAlgorithmController {
         // otherwise we can grab it from the navigation stack (it should always be the previous item) so we don't need to pass
     }
 
-    public void performSearch(/*params go here*/) {
+    public void performSearch(String searchString) {
         // TODO: actually run the search and collect some results to show
-        showResults(/*results*/);
+
+        showResults(searchString);
     }
 
-    public void showResults(/*results*/) {
+    public void showResults(String searchString) {
         SearchResultsView searchResultsView = new SearchResultsView(this);
+        searchResultsView.getSearchTextField().setText(searchString);
         navigationController.pushView(searchResultsView);
     }
 }
