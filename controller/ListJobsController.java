@@ -3,7 +3,10 @@ package controller;
 import view.JobListingsView;
 import model.User;
 
+import java.sql.Connection;
+
 public class ListJobsController {
+    private Connection connection;
     private NavigationController navigationController;
 
     User user;

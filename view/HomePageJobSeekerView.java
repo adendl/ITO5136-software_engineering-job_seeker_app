@@ -34,7 +34,11 @@ public class HomePageJobSeekerView implements UIView {
             controller.showInvitations();
         });
         editProfileButton.addActionListener((e) -> {
-            controller.showEditProfile();
+            try {
+                controller.showEditProfile();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
         });
     }
 

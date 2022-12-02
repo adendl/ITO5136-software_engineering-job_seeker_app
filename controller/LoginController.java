@@ -44,25 +44,28 @@ public class LoginController {
         switch (userType) {
             //job seeker selection
             case 0:
-                new User(email, firstName, lastName, password, "JOBSEEKER", LocalDate.now(), "Active").createUser();
-
-                showSeekerHub();
+                User jobseekerUser = new User(email, firstName, lastName, password, "JOBSEEKER", LocalDate.now(), "Active");
+                jobseekerUser.createUser();
+                new JobSeeker(email, firstName, lastName, password, "JOBSEEKER", LocalDate.now(), "Active", null).createUser();
+                showSeekerHub(jobseekerUser);
                 break;
             //recruiter selection
             case 1:
-                new User(email, firstName, lastName, password, "RECRUITER", LocalDate.now(), "Active").createUser();
+                User recruiterUser = new User(email, firstName, lastName, password, "RECRUITER", LocalDate.now(), "Active");
+                recruiterUser.createUser();
                 Recruiter newRecruiter = new Recruiter();
                 //adds to db.
                 //set to logged in and sends to homepage
-                showRecruiterHub();
+                showRecruiterHub(recruiterUser);
                 break;
             //admin selection
             case 2:
-                new User(email, firstName, lastName, password, "ADMIN", LocalDate.now(), "Active").createUser();
+                User adminUser = new User(email, firstName, lastName, password, "ADMIN", LocalDate.now(), "Active");
+                adminUser.createUser();
                 Administrator newAdmin = new Administrator();
                 //adds to db.
                 //set to logged in and sends to homepage
-                showAdminHub();
+                showAdminHub(adminUser);
                 break;
         }
     }
@@ -75,13 +78,13 @@ public class LoginController {
                 User user = new User(result);
                 switch (user.getUserType()) {
                     case "JOBSEEKER":
-                        showSeekerHub();
+                        showSeekerHub(user);
                         break;
                     case "RECRUITER":
-                        showRecruiterHub();
+                        showRecruiterHub(user);
                         break;
                     case "ADMIN":
-                        showAdminHub();
+                        showAdminHub(user);
                         break;
                 }
             }
@@ -103,18 +106,18 @@ public class LoginController {
 
     }
 
-    public void showAdminHub() {
+    public void showAdminHub(User user) {
         HomeAdminController controller = new HomeAdminController(navigationController);
         controller.showHub();
     }
 
-    public void showRecruiterHub() {
+    public void showRecruiterHub(User user) {
         HomeRecruiterController controller = new HomeRecruiterController(navigationController);
         controller.showHub();
     }
 
-    public void showSeekerHub() {
-        HomeJobSeekerController controller = new HomeJobSeekerController(navigationController);
+    public void showSeekerHub(User user) {
+        HomeJobSeekerController controller = new HomeJobSeekerController(navigationController, user);
         controller.showHub();
     }
 }

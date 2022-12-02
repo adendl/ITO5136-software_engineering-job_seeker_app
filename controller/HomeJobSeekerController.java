@@ -1,5 +1,6 @@
 package controller;
 
+import model.User;
 import view.*;
 import model.JobSeeker;
 
@@ -7,10 +8,12 @@ import java.sql.SQLException;
 
 public class HomeJobSeekerController {
     NavigationController navigationController;
+    User user;
 
     // TODO: we should probably have a User passed in here as well so we can pass it along as needed
-    public HomeJobSeekerController(NavigationController navigationController /*JobSeeker user*/) {
+    public HomeJobSeekerController(NavigationController navigationController, User user) {
         this.navigationController = navigationController;
+        this.user = user;
     }
 
     public void showHub() {
@@ -34,15 +37,9 @@ public class HomeJobSeekerController {
         navigationController.pushView(invitationsView);
     }
 
-    public void showEditProfile() {
+    public void showEditProfile() throws SQLException {
         // TODO: we should have a legit user object already, instead of this placeholder
         // this placeholder user just gives us something to fill the form fields
-        JobSeeker user = new JobSeeker();
-        user.setFirstName("Test");
-        user.setLastName("User");
-       // user.setPhoneNumber("123456789");
-        //user.setEmail("test@user.org");
-        //user.setAddress("somewhere");
 
         JobSeekerProfileController controller = new JobSeekerProfileController(navigationController, user);
         controller.showEditProfile();
