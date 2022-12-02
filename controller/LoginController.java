@@ -9,6 +9,8 @@ import model.User;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class LoginController {
@@ -60,28 +62,36 @@ public class LoginController {
         }
     }
 
-    public void doLogin(String email, String password) {
-        /*
-        //find out if the email entered matches the db. (findUserIDByEmail method in model) load into user object
-        JobSeeker jobSeeker = new JobSeeker();
-        //user = loginView.getEmailText().getText();
-        //check if the password matches the email. (verifyUser method in model)
-        //send to home page depending on the type of user.
-        switch(jobSeeker.getUserType()) {
-            case JOBSEEKER:
-            navigationController.pushView(homePageJobSeekerView);
-            break;
-            case RECRUITER:
-            navigationController.pushView(homePageRecruiterView);
-            break;
-            case ADMIN:
-            navigationController.pushView(homePageAdminView);
-            break;
+    public void doLogin(String email, String password) throws SQLException {
+        ResultSet result = User.getUser(email);
+
+        if (result.isBeforeFirst()) {
+            if (result.getString("password").equals(password)) {
+                User user = new User(result);
+                switch (user.getUserType()) {
+                    case "JOBSEEKER":
+                        showSeekerHub();
+                        break;
+                    case "RECRUITER":
+                        showRecruiterHub();
+                        break;
+                    case "ADMIN":
+                        showAdminHub();
+                        break;
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "The entered username/password is not correct", "Invalid Login Details", JOptionPane.ERROR_MESSAGE);
+
+            }
         }
-        */
-        //navigationController.pushView(homePageJobSeekerView);
-        showSeekerHub();
+        else
+        {
+            JOptionPane.showMessageDialog(null, "The entered username/password is not correct", "Invalid Login Details", JOptionPane.ERROR_MESSAGE);
+        }
     }
+
     public void showAdminHub() {
         HomeAdminController controller = new HomeAdminController(navigationController);
         controller.showHub();
