@@ -30,7 +30,7 @@ public class ApplyForJobController {
         return String.valueOf(coverLetter.getCoverLetterId());
     }
 
-    public String storeResume(String name, String path, ){
+    public String storeResume(String name, String path){
         Resume resume = new Resume();
         resume.setUserId(valueOf(user.getUserId()));
         resume.setName(name);
