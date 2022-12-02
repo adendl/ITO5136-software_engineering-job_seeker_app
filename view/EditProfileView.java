@@ -2,11 +2,10 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
-import view.UIView;
-import view.ViewHelper;
 import controller.JobSeekerProfileController;
+import model.JobSeeker;
 import model.User;
 
 public class EditProfileView implements UIView {
@@ -28,13 +27,18 @@ public class EditProfileView implements UIView {
     private JList list1;
     private JLabel addressLabel;
     private JLabel editProfileLabel;
+    private JComboBox addressComboBox;
     private JobSeekerProfileController controller;
 
     public EditProfileView(JobSeekerProfileController controller) {
         this.controller = controller;
 
         submitButton.addActionListener((e) -> {
-            submitUpdate();
+            try {
+                submitUpdate();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
         });
         uploadCoverLetterButton.addActionListener((e) -> {
             JOptionPane.showMessageDialog(null, "todo: cover letter upload");
@@ -77,25 +81,20 @@ public class EditProfileView implements UIView {
         return panelMain;
     }
 
-    public void submitUpdate() {
+    public void submitUpdate() throws SQLException {
         // things like skills and location might need special handling (they should come from database)
         //need to add password and skills
-        String address = addressText.getText();
-        String email = emailText.getText();
         String firstName = firstNameText.getText();
-        String lastName = lastNameText.getText();
-        String phoneNumber = phoneNumberText.getText();
 
         // TODO: validate this data before calling controller.updateProfile
 
-        controller.updateProfile(firstName, lastName, email, phoneNumber, address);
+        controller.updateProfile(firstName);
     }
 
     // populate the UI fields with user data
-    public void populateForUser(User user) {
-        //emailText.setText(user.getEmail());
-        //addressText.setText(user.getAddress());
-        //phoneNumberText.setText(user.getPhoneNumber());
+    public void populateForUser(User user, JobSeeker jobSeeker) {
+        emailText.setText(user.getUserId());
+        phoneNumberText.setText(jobSeeker.getPhoneNumber());
         firstNameText.setText(user.getFirstName());
         lastNameText.setText(user.getLastName());
     }

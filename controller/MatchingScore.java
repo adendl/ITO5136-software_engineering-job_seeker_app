@@ -2,9 +2,11 @@ package controller;
 
 import model.Keyword;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public class MatchingScore {
+    private Connection connection;
 
     public static double calculateMatchingScore(ArrayList<Keyword> keywordIds1, ArrayList<Keyword> keywordIds2)
     {//takes two keyword lists (in string form)

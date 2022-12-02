@@ -9,7 +9,6 @@ import java.awt.*;
 
 public class MainWindow {
 
-
     JFrame mainWindow;
     JPanel mainPanel;
     JPanel navPanel;

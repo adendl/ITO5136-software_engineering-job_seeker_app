@@ -48,6 +48,12 @@ public class Location {
         return rs;
     }
 
+    public static ResultSet getLocationByCity(String city)
+    {
+        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Location where city='" + city + "'");
+        return rs;
+    }
+
     public static ResultSet listLocations()
     {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Location");
