@@ -167,7 +167,7 @@
             </constraints>
             <properties>
               <background color="-14440720"/>
-              <foreground color="-1"/>
+              <foreground color="-15987700"/>
               <text value="View"/>
             </properties>
           </component>
@@ -179,7 +179,7 @@
             </constraints>
             <properties>
               <background color="-14440720"/>
-              <foreground color="-1"/>
+              <foreground color="-15987700"/>
               <text value="View"/>
             </properties>
           </component>

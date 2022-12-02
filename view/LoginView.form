@@ -54,7 +54,7 @@
         <properties>
           <background color="-14440720"/>
           <font size="20"/>
-          <foreground color="-1"/>
+          <foreground color="-15987700"/>
           <text value="Login"/>
         </properties>
       </component>
@@ -74,7 +74,7 @@
         <properties>
           <background color="-14440720"/>
           <font size="20"/>
-          <foreground color="-1"/>
+          <foreground color="-15987700"/>
           <text value="Create New Account"/>
         </properties>
       </component>
@@ -85,7 +85,7 @@
         <properties>
           <background color="-14440720"/>
           <font size="20"/>
-          <foreground color="-1"/>
+          <foreground color="-15987700"/>
           <text value="Forgot Passowrd"/>
         </properties>
       </component>
