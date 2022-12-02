@@ -26,8 +26,6 @@ public class ListJobsController {
         DefaultTableModel dft = jobList.jobListDft();
         JobListingsView view = new JobListingsView(this, dft);
         navigationController.pushView(view);
-
-        //TODO: render table of listed jobs for the user
     }
 
     public void showJobDetails(Job newJob){
