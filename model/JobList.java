@@ -37,7 +37,7 @@ public class JobList {
             Vector newRow = new Vector();
 
             newRow.addElement(j.getJobId());
-            newRow.addElement(j.getCategoryId());
+            //newRow.addElement(j.getCategoryId());
             newRow.addElement(j.getCompany());
             newRow.addElement(j.getDescription());
             newRow.addElement(j.getExpiryDate());

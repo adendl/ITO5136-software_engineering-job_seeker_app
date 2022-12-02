@@ -7,8 +7,16 @@ public class HomeJobSeekerController {
     NavigationController navigationController;
 
     // TODO: we should probably have a User passed in here as well so we can pass it along as needed
-    public HomeJobSeekerController(NavigationController navigationController) {
+    public HomeJobSeekerController(NavigationController navigationController /*JobSeeker user*/) {
         this.navigationController = navigationController;
+        //checkLoginStatus(navigationController, user);
+    }
+
+    public void checkLoginStatus(NavigationController controller, JobSeeker user){
+        if (user.getStatus() == "out")
+        {
+            controller.doLogout();
+        }
     }
 
     public void showHub() {
@@ -38,9 +46,9 @@ public class HomeJobSeekerController {
         JobSeeker user = new JobSeeker();
         user.setFirstName("Test");
         user.setLastName("User");
-        user.setPhoneNumber("123456789");
-        user.setEmail("test@user.org");
-        user.setAddress("somewhere");
+        //user.setPhoneNumber("123456789");
+        //user.setEmail("test@user.org");
+        //user.setAddress("somewhere");
 
         JobSeekerProfileController controller = new JobSeekerProfileController(navigationController, user);
         controller.showEditProfile();

@@ -22,11 +22,12 @@ public class JobSeekerProfileController {
     }
 
     public void updateProfile(String firstName, String lastName, String email, String phoneNumber, String address) {
-        user.setAddress(address);
-        user.setEmail(email);
+        //user.setAddress(address);
+        //user.setEmail(email);
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        user.setPhoneNumber(phoneNumber);
+        //user.setPhoneNumber(phoneNumber);
         // TODO: update the db
+
     }
 }

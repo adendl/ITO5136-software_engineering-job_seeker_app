@@ -30,18 +30,14 @@ public class CreateJobView implements UIView {
     public CreateJobView(CreateJobController controller) {
         this.controller = controller;
         createJobButton.addActionListener((e) -> {
-            doCreateJob();
+            String company = getCompanyText().toString();
+            String description = getJobDescriptionText().getText();
+            String jobType = getJobTypeText().getText();
+            String title = getJobTitleText().getText();
+            controller.doCreateJob(title, description, jobType, company);
         });
     }
 
-    private void doCreateJob() {
-        String description = jobDescriptionText.getText();
-        String title = jobTitleText.getText();
-        String jobType = jobTypeText.getText();
-        String company = companyText.getText();
-        String salaryRange = salaryRangeText.getText();
-        controller.doCreateJob(title, description, jobType, company, salaryRange);
-    }
     @Override
     public JComponent getUIView() {
         return panelMain;

@@ -28,6 +28,7 @@ public class EditProfileView implements UIView {
     private JLabel addressLabel;
     private JLabel editProfileLabel;
     private JobSeekerProfileController controller;
+    private JList list1;
 
     public EditProfileView(JobSeekerProfileController controller) {
         this.controller = controller;
@@ -92,9 +93,9 @@ public class EditProfileView implements UIView {
 
     // populate the UI fields with user data
     public void populateForUser(User user) {
-        emailText.setText(user.getEmail());
-        addressText.setText(user.getAddress());
-        phoneNumberText.setText(user.getPhoneNumber());
+        //emailText.setText(user.getEmail());
+        //addressText.setText(user.getAddress());
+        //phoneNumberText.setText(user.getPhoneNumber());
         firstNameText.setText(user.getFirstName());
         lastNameText.setText(user.getLastName());
     }

@@ -38,21 +38,27 @@ public class LoginController {
             case 0:
                 JobSeeker newJobSeeker = new JobSeeker();
                 //adds to db.
+                //call createJobSeeker
                 //set to logged in and sends to homepage
+                newJobSeeker.setStatus("in");
                 showSeekerHub();
                 break;
             //recruiter selection
             case 1:
                 Recruiter newRecruiter = new Recruiter();
                 //adds to db.
+                //call createRecruiter
                 //set to logged in and sends to homepage
+                newRecruiter.setStatus("in");
                 showRecruiterHub();
                 break;
             //admin selection
             case 2:
                 Administrator newAdmin = new Administrator();
                 //adds to db.
+                //call createAdmin
                 //set to logged in and sends to homepage
+                newAdmin.setStatus("in");
                 showAdminHub();
                 break;
         }
@@ -60,24 +66,24 @@ public class LoginController {
 
     public void doLogin(String email, String password) {
         /*
-        //find out if the email entered matches the db. (findUserIDByEmail method in model) load into user object
-        JobSeeker jobSeeker = new JobSeeker();
-        //user = loginView.getEmailText().getText();
-        //check if the password matches the email. (verifyUser method in model)
+        // verify user at login verifyLogin(), returns a user and takes and email and password
+        User user = verifyLogin(email, password);
+        //set to logged in
+        user.setStatus("in");
+
         //send to home page depending on the type of user.
-        switch(jobSeeker.getUserType()) {
-            case JOBSEEKER:
-            navigationController.pushView(homePageJobSeekerView);
-            break;
-            case RECRUITER:
-            navigationController.pushView(homePageRecruiterView);
-            break;
-            case ADMIN:
-            navigationController.pushView(homePageAdminView);
-            break;
+        switch(user.getUserType()) {
+            case "JobSeeker":
+                showSeekerHub();
+                break;
+            case "Recruiter":
+                showRecruiterHub();
+                break;
+            case "Administrator":
+                showAdminHub();
+                break;
         }
         */
-        //navigationController.pushView(homePageJobSeekerView);
         showSeekerHub();
     }
     public void showAdminHub() {

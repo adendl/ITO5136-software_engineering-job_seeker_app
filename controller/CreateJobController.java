@@ -17,8 +17,12 @@ public class CreateJobController {
         navigationController.pushView(createJobView);
     }
 
-    public void doCreateJob(String title, String description, String jobType, String company, String salaryRange) {
+    public void doCreateJob(String title, String description, String jobType, String company) {
         // TODO: change args to appropriate types and create a job with them
-        //Job newJob = new Job();
+        Job job = new Job();
+        job.setTitle(title);
+        job.setDescription(description);
+        job.setCompany(company);
+        job.createJob();
     }
 }

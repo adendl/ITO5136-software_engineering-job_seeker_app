@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controller.HomeAdminController;
+import controller.ManageSkillsController;
 import view.UIView;
 import view.ViewHelper;
 
@@ -19,11 +20,11 @@ public class ManageSkillsView implements UIView {
     private JTextField deleteText;
     private JScrollPane scrollPane;
     private JLabel titleLabel;
-    private HomeAdminController controller;
+    private ManageSkillsController controller;
 
     private DefaultListModel<String> dlm = new DefaultListModel<String>();
 
-    public ManageSkillsView(HomeAdminController controller) {
+    public ManageSkillsView(ManageSkillsController controller) {
         this.controller = controller;
 
         addButton.addActionListener((e) -> {

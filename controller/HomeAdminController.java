@@ -24,14 +24,15 @@ public class HomeAdminController {
         manageCategoriesController.showManageCategories();
     }
     public void showManageLocations() {
-        //
+        ManageLocationsController manageLocationsController = new ManageLocationsController(navigationController);
+        manageLocationsController.showManageLocations();
     }
     public void showManageSkills() {
-        ManageSkillsView manageSkillsView = new ManageSkillsView(this);
-        navigationController.pushView(manageSkillsView);
+        ManageSkillsController manageSkillsController = new ManageSkillsController(navigationController);
+        manageSkillsController.showManageSkills();
     }
     public void showManageUsers() {
-        ManageUsersView manageUsersView = new ManageUsersView(this);
-        navigationController.pushView(manageUsersView);
+        ManageUsersController manageUsersController = new ManageUsersController(navigationController);
+        manageUsersController.showManageUsers();
     }
 }
