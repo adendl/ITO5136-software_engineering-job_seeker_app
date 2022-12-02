@@ -1,6 +1,0 @@
-userID,firstName,lastName,email,phoneNumber,password ,userType,dateCreated ,location,loginStatus,company
-11,John,Smith,johnsmithy@gmail.com,61412345678,1234,Recuiter,10/10/2022,Melbourne,in,Amazon
-12,Lucy ,Johnson,lucy@gmail.com,61467123456,1234,Recuiter,11/10/2022,Sydney,out,Auspost
-13,Connor ,Jones,connor@gmail.com,61465856345,1234,Recuiter,12/10/2022,Canberra,in,KPMG
-14,Darcy ,Gage,darcy@gmail.com,61456345786,1234,Recuiter,13/10/2022,Perth,out,La La Land 
-15,Will,Peterson,will@gmail.com ,61432785035,1234,Recuiter,14/10/2022,Brisbane,in,Nike
