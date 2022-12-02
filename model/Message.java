@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.function.DoubleBinaryOperator;
 
 public class Message {
     private int messageId;
@@ -111,14 +112,21 @@ public class Message {
     public void setRecipientUserId(String recipientUserId) {
         this.recipientUserId = recipientUserId;
     }
+
+    public ResultSet getMessage()
+    {
+        ResultSet rs = DBConnection.queryDatabase("select * from Message where messageId=" + this.messageId);
+        return rs;
+    }
+
     public static ResultSet getMessage(int messageId)
     {
-        ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from Message where messageId=" + messageId);
+        ResultSet rs = DBConnection.queryDatabase("select * from Message where messageId=" + messageId);
         return rs;
     }
 
     public void createMessage() {
-        Connection conn = DBConnection.connectDb();
+        DBConnection conn = DBConnection.get();
         String sql = "INSERT INTO Message (recipientUserId, senderUserId, messageType, jobId, sendDate, contents, subject, messageId) VALUES (" +
                 '"' + recipientUserId + '"' + ", " +
                 '"' + senderUserId + '"' + ", " +
@@ -129,22 +137,22 @@ public class Message {
                 '"' +  subject + '"' + ", " +
                 null + ")";
         System.out.println(sql);
-        DBConnection.queryDatabase(conn, sql);
+        conn.executeQuery(sql);
         try {
-            setJobId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM Message").getInt("last_insert_rowid()"));
+            setJobId(conn.getLatestItemId("Message"));
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println("createMessage failed: " + e);
         }
     }
 
     public void deleteMessage()
     {
-        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Message where messageId=" + this.messageId);
+        DBConnection.queryDatabase("delete from Message where messageId=" + this.messageId);
     }
 
     public void deleteMessage(int messageId)
     {
-        DBConnection.queryDatabase(DBConnection.connectDb(), "delete from Message where messageId=" + messageId);
+        DBConnection.queryDatabase("delete from Message where messageId=" + messageId);
     }
 
 
