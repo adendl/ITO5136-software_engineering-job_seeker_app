@@ -1,5 +1,7 @@
 package controller;
 
+import view.ManageLocationsView;
+
 public class ManageLocationsController {
     NavigationController navigationController;
 
@@ -8,7 +10,8 @@ public class ManageLocationsController {
     }
 
     public void showManageLocations(){
-
+        ManageLocationsView manageLocationsView = new ManageLocationsView(this);
+        navigationController.pushView(manageLocationsView);
     }
 
     public void renderLocations(){
