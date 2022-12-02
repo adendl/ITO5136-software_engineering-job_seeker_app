@@ -47,11 +47,11 @@ public class JobListingsView implements UIView {
             job.getTxtSalaryRange().setText(String.valueOf(newJob.getSalaryMin()));
             job.getTxtSalaryRange().setText(String.valueOf(newJob.getSalaryMax()));
             System.out.println(newJob.getLocationId());
-            try {
-                job.getTxtLocation().setText(newJob.getLocationFromDb(newJob.getLocationId()));
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
+          //  try {
+               // job.getTxtLocation().setText(newJob.getLocationFromDb(newJob.getLocationId()));
+           // } catch (SQLException ex) {
+             //   throw new RuntimeException(ex);
+           // }
         };
 
         TableModelCreator.addActionColumn(dft, "Job Details", "More Details", listener);

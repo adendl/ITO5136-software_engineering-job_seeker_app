@@ -38,9 +38,9 @@ public class HomeJobSeekerController {
         JobSeeker user = new JobSeeker();
         user.setFirstName("Test");
         user.setLastName("User");
-        user.setPhoneNumber("123456789");
-        user.setEmail("test@user.org");
-        user.setAddress("somewhere");
+       // user.setPhoneNumber("123456789");
+        //user.setEmail("test@user.org");
+        //user.setAddress("somewhere");
 
         JobSeekerProfileController controller = new JobSeekerProfileController(navigationController, user);
         controller.showEditProfile();

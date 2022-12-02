@@ -9,6 +9,7 @@ import controller.LoginController;
 
 public class LoginView implements UIView {
     private JTextField emailText;
+    private JButton forgotPasswordButton;
     private JPasswordField passwordText;
     private JButton createNewAccountButton;
     private JButton loginButton;
