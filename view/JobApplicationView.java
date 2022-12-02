@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import controller.ApplyForJobController;
 import controller.HomeJobSeekerController;
@@ -18,7 +19,7 @@ public class JobApplicationView implements UIView {
     private JButton browseCoverLetterButton;
     private JLabel firstNameLabel;
     private JLabel lastNameLabel;
-    private JTextField emailTextLabel;
+    private JTextField emailText;
     private JTextField phoneText;
     private JLabel emailLabel;
     private JLabel attachResumeLabel;
@@ -37,18 +38,39 @@ public class JobApplicationView implements UIView {
     public JobApplicationView(ApplyForJobController controller) {
         this.controller = controller;
         submitButton.addActionListener((e -> {
-            doJobApply();
+            String firstName = firstNameText.getText();
+            String lastName = lastNameText.getText();
+            String email = emailText.getText();
+            String phone = phoneText.getText();
+            controller.doJobApply(firstName, lastName, email, phone);
         }));
         browseResumeButton.addActionListener((e -> {
             //upload resume
+            JFileChooser fileChooser = new JFileChooser();
+            int i = fileChooser.showOpenDialog(this.getUIView());
+
+            if (i == JFileChooser.APPROVE_OPTION) {
+                //add file to files
+                File file = fileChooser.getSelectedFile();
+                String filePath = file.getPath();
+            }
         }));
         browseCoverLetterButton.addActionListener((e -> {
             //upload cover letter
+            JFileChooser fileChooser = new JFileChooser();
+            int i = fileChooser.showOpenDialog(this.getUIView());
+
+            if(i == JFileChooser.APPROVE_OPTION){
+                //add file to files
+                File file = fileChooser.getSelectedFile();
+                String filePath = file.getPath();
+
+            }
         }));
     }
 
     public void doJobApply(){
-        controller.submitApplication(getFirstName(), getLastName(), getEmail(), getPhone());
+        controller.doJobApply(getFirstName(), getLastName(), getEmail(), getPhone());
     }
 
     public String getFirstName() {
@@ -60,7 +82,7 @@ public class JobApplicationView implements UIView {
     }
 
     public String getEmail() {
-        return emailTextLabel.getText();
+        return emailText.getText();
     }
 
     public String getPhone() {

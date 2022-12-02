@@ -9,7 +9,7 @@ public class HomeJobSeekerController {
     NavigationController navigationController;
 
     // TODO: we should probably have a User passed in here as well so we can pass it along as needed
-    public HomeJobSeekerController(NavigationController navigationController) {
+    public HomeJobSeekerController(NavigationController navigationController /*JobSeeker user*/) {
         this.navigationController = navigationController;
     }
 

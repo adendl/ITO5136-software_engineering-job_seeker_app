@@ -29,6 +29,7 @@ public class EditProfileView implements UIView {
     private JLabel addressLabel;
     private JLabel editProfileLabel;
     private JobSeekerProfileController controller;
+    private JList list1;
 
     public EditProfileView(JobSeekerProfileController controller) {
         this.controller = controller;

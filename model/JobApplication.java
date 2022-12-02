@@ -6,15 +6,14 @@ import java.sql.Connection;
 
 
 public class JobApplication {
-    private int applicationId;
-    private int applicantId;
+    private String applicationId;
+    private String applicantId;
     private LocalDate dateApplied;
-    private int jobId;
-    private int resumeId;
+    private String jobId;
+    private String resumeId;
+    private String messageId;
 
-    private int messageId;
-
-    public JobApplication(int applicationId, int applicantId, LocalDate dateApplied, int jobId, int resumeId, int messageId) {
+    public JobApplication(String applicationId, String applicantId, LocalDate dateApplied, String jobId, String resumeId, String messageId) {
         this.applicationId = applicationId;
         this.applicantId = applicantId;
         this.dateApplied = dateApplied;
@@ -28,19 +27,19 @@ public class JobApplication {
 
     }
 
-    public int getApplicationId() {
+    public String getApplicationId() {
         return applicationId;
     }
 
-    public void setApplicationId(int applicationId) {
+    public void setApplicationId(String applicationId) {
         this.applicationId = applicationId;
     }
 
-    public int getApplicantId() {
+    public String getApplicantId() {
         return applicantId;
     }
 
-    public void setApplicantId(int applicantId) {
+    public void setApplicantId(String applicantId) {
         this.applicantId = applicantId;
     }
 
@@ -52,30 +51,29 @@ public class JobApplication {
         this.dateApplied = dateApplied;
     }
 
-    public int getJobId() {
+    public String getJobId() {
         return jobId;
     }
 
-    public void setJobId(int jobId) {
+    public void setJobId(String jobId) {
         this.jobId = jobId;
     }
 
-    public int getResumeId() {
+    public String getResumeId() {
         return resumeId;
     }
 
-    public void setResumeId(int resumeId) {
+    public void setResumeId(String resumeId) {
         this.resumeId = resumeId;
     }
 
-    public int getMessageId() {
+    public String getMessageId() {
         return messageId;
     }
 
-    public void setMessageId(int messageId) {
+    public void setMessageId(String messageId) {
         this.messageId = messageId;
     }
-
 
     public ResultSet listJobApplicationsJobSeeker(int applicantId) {
         ResultSet rs = DBConnection.queryDatabase(DBConnection.connectDb(), "select * from JobApplication where applicantId =" + applicantId);
@@ -112,7 +110,7 @@ public class JobApplication {
 
     public void createJobApplication() {
         Connection conn = DBConnection.connectDb();
-        String sql = "INSERT INTO JobApplication (messageId, resumeId, jobId, dateApplied, applicantId, applicationId) VALUES (" + +
+        String sql = "INSERT INTO JobApplication (messageId, resumeId, jobId, dateApplied, applicantId, applicationId) VALUES (" +
                 messageId + ", " +
                 resumeId + ", " +
                 jobId + ", " +
@@ -122,7 +120,7 @@ public class JobApplication {
         System.out.println(sql);
         DBConnection.queryDatabase(conn, sql);
         try {
-            setApplicationId(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM JobApplication").getInt("last_insert_rowid()"));
+            setApplicationId(String.valueOf(DBConnection.queryDatabase(conn, "SELECT LAST_INSERT_ROWID() FROM JobApplication").getInt("last_insert_rowid()")));
         } catch (Exception e) {
 
         }

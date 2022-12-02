@@ -28,5 +28,6 @@ public class JobSeekerProfileController {
         user.setLastName(lastName);
         //user.setPhoneNumber(phoneNumber);
         // TODO: update the db
+
     }
 }

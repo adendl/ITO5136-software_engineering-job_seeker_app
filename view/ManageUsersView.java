@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controller.HomeAdminController;
+import controller.ManageUsersController;
 import view.UIView;
 import view.ViewHelper;
 
@@ -14,11 +15,11 @@ public class ManageUsersView implements UIView {
     private JTextField manageUsersBox;
     private JButton manageUsersButton;
     private JLabel manageUsersText;
-    private HomeAdminController controller;
+    private ManageUsersController controller;
 
     private DefaultListModel<String> dlm = new DefaultListModel<String>();
 
-    public ManageUsersView(HomeAdminController controller) {
+    public ManageUsersView(ManageUsersController controller) {
         this.controller = controller;
         manageUsersButton.addActionListener((e) -> {
             System.out.println(manageUsersBox.getText());
