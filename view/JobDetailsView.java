@@ -1,5 +1,9 @@
 package view;
 
+import controller.ListJobsController;
+import controller.NavigationController;
+import controller.SearchAlgorithmController;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -22,12 +26,19 @@ public class JobDetailsView implements UIView {
     private JTextArea txtJobTitle;
     private JLabel lbJobDetails;
 
+    SearchAlgorithmController searchAlgorithmControllercontroller;
+    ListJobsController listJobsController;
+
     public JPanel getJobDetailsPanel() {
         return JobDetailsPanel;
     }
 
-    public JobDetailsView() {
+    public JobDetailsView(SearchAlgorithmController controller) {
+        this.searchAlgorithmControllercontroller = controller;
+    }
 
+    public JobDetailsView(ListJobsController controller) {
+        this.listJobsController = controller;
     }
 
     public JLabel getJobTitle() {
@@ -101,8 +112,8 @@ public class JobDetailsView implements UIView {
     }
 
     public static void main(String[] args) {
-        JobDetailsView myJobDetailsView = new JobDetailsView();
-        ViewHelper.showStandaloneFrame(myJobDetailsView);
+        //JobDetailsView myJobDetailsView = new JobDetailsView();
+        //ViewHelper.showStandaloneFrame(myJobDetailsView);
     }
 
     {

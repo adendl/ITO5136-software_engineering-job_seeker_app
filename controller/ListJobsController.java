@@ -29,7 +29,7 @@ public class ListJobsController {
     }
 
     public void showJobDetails(Job newJob){
-        JobDetailsView job = new JobDetailsView();
+        JobDetailsView job = new JobDetailsView(this);
         job.getTxtCompany().setText(newJob.getCompany());
         job.getTxtJobTitle().setText(newJob.getTitle());
         job.getTxtJobDescription().setText(newJob.getDescription());

@@ -44,9 +44,9 @@ public class LoginController {
         switch (userType) {
             //job seeker selection
             case 0:
-                JobSeeker jobSeekerUser = new JobSeeker(email, firstName, lastName, password, "JOBSEEKER", LocalDate.now(), "Active");
+                User jobSeekerUser = new User (email, firstName, lastName, password, "JOBSEEKER", LocalDate.now(), "Active");
                 jobSeekerUser.createUser();
-                jobSeekerUser.createJobSeeker();
+                new JobSeeker(email).createJobSeeker();
                 showSeekerHub(jobSeekerUser);
                 break;
             //recruiter selection

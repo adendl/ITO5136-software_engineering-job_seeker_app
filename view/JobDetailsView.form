@@ -15,7 +15,7 @@
           <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="model.Job Title"/>
+          <text value="Job Title"/>
         </properties>
       </component>
       <component id="b5875" class="javax.swing.JLabel" binding="lbJobDescription">
@@ -23,7 +23,7 @@
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="model.Job Description"/>
+          <text value="Job Description"/>
         </properties>
       </component>
       <component id="e7151" class="javax.swing.JTextArea" binding="txtDescription">
@@ -39,7 +39,7 @@
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="model.Job Type"/>
+          <text value="Job Type"/>
         </properties>
       </component>
       <component id="1b81a" class="javax.swing.JLabel" binding="lbJobCategory">
@@ -47,7 +47,7 @@
           <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="model.Job Category"/>
+          <text value="Category"/>
         </properties>
       </component>
       <component id="6654d" class="javax.swing.JLabel" binding="lbCompany">
@@ -136,7 +136,7 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="model.Job Details"/>
+          <text value="Job Details"/>
         </properties>
       </component>
     </children>
