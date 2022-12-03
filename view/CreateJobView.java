@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 
 import controller.CreateJobController;
+import controller.Validation;
 
 import java.sql.SQLException;
 
@@ -29,6 +30,46 @@ public class CreateJobView implements UIView {
     private JTextArea salaryRangeText;
     private CreateJobController controller;
 
+    public boolean validateJob(String company, String description, String title, String city, String categories, String salary)
+    {
+        System.out.println(company);
+        System.out.println(description);
+        System.out.println(title);
+        System.out.println(city);
+        if (!Validation.betweenLength(company, 2, 50))
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid company name", "Invalid company name", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (!Validation.betweenLength(description, 1, 500))
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid description", "Invalid description", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (!Validation.betweenLength(title, 2, 50))
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid job title", "Invalid job title", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (!Validation.betweenLength(city, 2, 50))
+        {
+            JOptionPane.showMessageDialog(null, "Please select a city", "Invalid city", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (!Validation.betweenLength(salary, 2, 50))
+        {
+            JOptionPane.showMessageDialog(null, "Please select a salary range", "Invalid salary", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (!Validation.betweenLength(categories, 2, 50))
+        {
+            JOptionPane.showMessageDialog(null, "Please select a category", "Invalid category", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+
+    }
+
     public CreateJobView(CreateJobController controller) {
         this.controller = controller;
         createJobButton.addActionListener((e) -> {
@@ -38,11 +79,20 @@ public class CreateJobView implements UIView {
             String city = locationComboBox.getSelectedItem().toString();
             String categories = categoryComboBox.getSelectedItem().toString();
             String salary = salaryComboBox.getSelectedItem().toString();
-            try {
-                controller.doCreateJob(title, description, company, city, categories, salary);
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
+            if (validateJob(company, description, title, city, categories, salary)) {
+                System.out.println("PASSED");
+                try {
+                    controller.doCreateJob(title, description, company, city, categories, salary);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
+            else
+            {
+                System.out.println("Job creation failed");
+            }
+
+
         });
     }
 
