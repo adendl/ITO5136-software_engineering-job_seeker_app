@@ -15,14 +15,14 @@ public class ListJobsController {
     User user;
     private JobList jobList;
 
-    public ListJobsController(NavigationController navigationController, User user) throws SQLException {
+    public ListJobsController(NavigationController navigationController, User user) {
         this.navigationController = navigationController;
         this.user = user;
         jobList = new JobList();
         renderListedJobs();
     }
 
-    public void renderListedJobs() throws SQLException {
+    public void renderListedJobs() {
         DefaultTableModel dft = jobList.jobListDft();
         JobListingsView view = new JobListingsView(this, dft);
         navigationController.pushView(view);

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class HomeJobSeekerController {
     NavigationController navigationController;
-    User user;
+     JobSeeker user;
 
     // TODO: we should probably have a User passed in here as well so we can pass it along as needed
     public HomeJobSeekerController(NavigationController navigationController, User user) {
@@ -21,7 +21,7 @@ public class HomeJobSeekerController {
     }
 
     public void showJobSearch() throws SQLException {
-        JobSearchController jobSearchController = new JobSearchController(navigationController);
+        JobSearchController jobSearchController = new JobSearchController(navigationController, user);
         jobSearchController.showSearch();
     }
 

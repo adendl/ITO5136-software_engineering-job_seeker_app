@@ -54,7 +54,7 @@ public class JobList {
         return new DefaultTableModel(rows, colHeader);
     }
 
-    public DefaultTableModel jobListDft() throws SQLException {
+    public DefaultTableModel jobListDft() {
         resultSetToJobList(listJobs());
         return jobListToTableModel();
     }
@@ -64,11 +64,16 @@ public class JobList {
         return DBConnection.queryDatabase("select * from Job");
     }
 
-    public void resultSetToJobList(ResultSet rs) throws SQLException {
-        while (rs.next()) {
-            Job newJob = new Job(rs);
-            jobList.add(newJob);
+    public void resultSetToJobList(ResultSet rs) {
+        try{
+            while (rs.next()) {
+                Job newJob = new Job(rs);
+                jobList.add(newJob);
+            }
         }
+            catch(Exception e) {
+                System.err.println("Error with JobList: " + e);
+            }
     }
 }
 
