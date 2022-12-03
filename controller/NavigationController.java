@@ -9,6 +9,7 @@ public class NavigationController {
     JPanel contentArea;
     ArrayDeque<UIView> navigationStack;
     NavigationBar navigationBar;
+    UIView checkpoint;
 
     public NavigationController() {
         navigationStack = new ArrayDeque<>();
@@ -49,6 +50,10 @@ public class NavigationController {
         }
         UIView view = navigationStack.pop();
         System.out.println("popping view " + view.getClass().getCanonicalName());
+        if (view == checkpoint) {
+            checkpoint = null;
+            return;
+        }
         updateNavBar();
 
         contentArea.removeAll();
@@ -68,6 +73,9 @@ public class NavigationController {
         UIView view = navigationStack.pop();
         System.out.println("popping view " + view.getClass().getCanonicalName());
         while (navigationStack.size() > 1) {
+            if (view == checkpoint) {
+                checkpoint = null;
+            }
             view = navigationStack.pop();
             System.out.println("popping view " + view.getClass().getCanonicalName());
         }
@@ -95,8 +103,48 @@ public class NavigationController {
     // blow away the existing navigation stack and push a view to be the new base of the stack
     // this is useful for switching between Login and Home views, for example
     public void pushReplacementView(UIView view) {
+        checkpoint = null;
         navigationStack.clear();
         navigationStack.push(view);
+        updateNavBar();
+
+        contentArea.removeAll();
+        contentArea.add(navigationStack.getFirst().getUIView());
+
+        contentArea.revalidate();
+        contentArea.repaint();
+    }
+
+    // make the current view a 'checkpoint' that we can return to easily
+    public void setCheckpoint() {
+        this.checkpoint = navigationStack.getFirst();
+    }
+
+    public void popUntilCheckpoint() {
+        if (checkpoint == null) {
+            System.out.println("popUntilCheckpoint: no checkpoint to return to");
+            return;
+        }
+
+        if (navigationStack.size() == 1) {
+            System.out.println("popUntilCheckpoint: can't pop, only one item on stack");
+            return;
+        }
+
+        UIView view = navigationStack.getFirst();
+        if (view == checkpoint) {
+            checkpoint = null;
+            return;
+        }
+
+        while (navigationStack.size() > 1 && view != checkpoint) {
+            view = navigationStack.pop();
+            System.out.println("popping view " + view.getClass().getCanonicalName());
+            if (view == checkpoint) {
+                checkpoint = null;
+                break;
+            }
+        }
         updateNavBar();
 
         contentArea.removeAll();
