@@ -31,8 +31,6 @@ public class MailboxController {
         navigationController.pushView(view);
     }
 
-
-
     public void deleteMessageAction(Message message) {
         mailBox.removeMessage(message);
         message.deleteMessage();

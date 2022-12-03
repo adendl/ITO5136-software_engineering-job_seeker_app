@@ -31,12 +31,6 @@ public class HomeJobSeekerController {
         navigationController.pushView(applicationsView);
     }
 
-    public void showInvitations() {
-        // this could probably use MailboxController/View instead?
-        InvitationsView invitationsView = new InvitationsView(this);
-        navigationController.pushView(invitationsView);
-    }
-
     public void showMailbox() {
         MailboxController mailboxController = new MailboxController(this.navigationController, this.user);
         mailboxController.showMailbox();

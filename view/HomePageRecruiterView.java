@@ -6,9 +6,6 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import controller.HomeRecruiterController;
-import controller.NavigationController;
-import view.UIView;
-import view.CreateJobView;
 
 public class HomePageRecruiterView implements UIView {
     private JButton createNewJobButton;
@@ -16,6 +13,7 @@ public class HomePageRecruiterView implements UIView {
     private JButton manageListedJobsButton;
     private JButton editCategoriesButton;
     private JButton editProfileButton;
+    private JButton viewMailboxButton;
     private HomeRecruiterController controller;
 
     public HomePageRecruiterView(HomeRecruiterController controller) {
@@ -35,6 +33,9 @@ public class HomePageRecruiterView implements UIView {
         });
         editProfileButton.addActionListener((e) -> {
             controller.showEditProfile();
+        });
+        viewMailboxButton.addActionListener((e) -> {
+            controller.showMailbox();
         });
     }
 
