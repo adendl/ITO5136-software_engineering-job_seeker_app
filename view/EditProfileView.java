@@ -60,12 +60,6 @@ public class EditProfileView implements UIView {
                 throw new RuntimeException(ex);
             }
         });
-        uploadCoverLetterButton.addActionListener((e) -> {
-            JOptionPane.showMessageDialog(null, "todo: cover letter upload");
-        });
-        uploadResumeButton.addActionListener((e) -> {
-            JOptionPane.showMessageDialog(null, "todo: resume upload");
-        });
     }
 
     public JComboBox getAddressComboBox() {

@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import controller.JobSearchController;
 
@@ -25,7 +26,11 @@ public class SearchJobView implements UIView {
     public SearchJobView(JobSearchController jobSearchController) {
             this.controller = jobSearchController;
             searchButton.addActionListener((e) -> {
-                controller.doSearch(enterKeywordsText.getText());
+                try {
+                    controller.doSearch(enterKeywordsText.getText());
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             });
             searchProfileButton.addActionListener((e) -> {
                 controller.doProfileSearch();

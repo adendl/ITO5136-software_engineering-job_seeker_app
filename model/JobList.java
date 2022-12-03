@@ -42,8 +42,7 @@ public class JobList {
             newRow.addElement(j.getExpiryDate());
             newRow.addElement(j.getRecruiterId());
             newRow.addElement(j.getLocationId());
-            newRow.addElement(j.getSalaryMax());
-            newRow.addElement(j.getSalaryMin());
+            newRow.addElement(j.getSalary());
             newRow.addElement(j.getStatus());
             newRow.addElement(j.getDateCreated());
             newRow.addElement(j.getTitle());

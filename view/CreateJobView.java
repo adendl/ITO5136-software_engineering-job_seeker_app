@@ -1,9 +1,10 @@
 package view;
 
 import javax.swing.*;
-import java.awt.*;
 
 import controller.CreateJobController;
+
+import java.sql.SQLException;
 
 public class CreateJobView implements UIView {
     private JPanel panelMain;
@@ -20,9 +21,9 @@ public class CreateJobView implements UIView {
     private JComboBox salaryComboBox;
     private JComboBox categoryComboBox;
     private JComboBox locationComboBox;
-    private JTextPane textPane1;
+    private JTextField companyText;
     private JTextArea locationText;
-    private JTextArea companyText;
+    private JTextArea companyTextField;
     private JTextArea jobTypeText;
     private JTextArea jobCategoryText;
     private JTextArea salaryRangeText;
@@ -31,11 +32,17 @@ public class CreateJobView implements UIView {
     public CreateJobView(CreateJobController controller) {
         this.controller = controller;
         createJobButton.addActionListener((e) -> {
-            String company = getCompanyText().toString();
+            String company = companyText.getText();
             String description = getJobDescriptionText().getText();
-            String jobType = getJobTypeText().getText();
             String title = getJobTitleText().getText();
-            controller.doCreateJob(title, description, jobType, company);
+            String city = locationComboBox.getSelectedItem().toString();
+            String categories = categoryComboBox.getSelectedItem().toString();
+            String salary = salaryComboBox.getSelectedItem().toString();
+            try {
+                controller.doCreateJob(title, description, company, city, categories, salary);
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
         });
     }
 
@@ -81,7 +88,7 @@ public class CreateJobView implements UIView {
     }
 
     public JTextArea getCompanyText() {
-        return companyText;
+        return companyTextField;
     }
 
     public JTextArea getJobTypeText() {
