@@ -11,7 +11,6 @@ public class HomePageRecruiterView implements UIView {
     private JButton createNewJobButton;
     private JPanel panelMain;
     private JButton manageListedJobsButton;
-    private JButton editCategoriesButton;
     private JButton editProfileButton;
     private JButton viewMailboxButton;
     private HomeRecruiterController controller;
@@ -27,9 +26,6 @@ public class HomePageRecruiterView implements UIView {
         });
         manageListedJobsButton.addActionListener((e) -> {
             controller.showManageListedJobs();
-        });
-        editCategoriesButton.addActionListener((e) -> {
-            controller.showEditCategories();
         });
         editProfileButton.addActionListener((e) -> {
             controller.showEditProfile();
