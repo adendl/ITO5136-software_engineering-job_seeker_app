@@ -5,12 +5,16 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 public class JobSeeker extends User{
-    private String skillIds;
+    private ArrayList<Integer> skillIds;
     private String phoneNumber;
     private int locationId;
     private String userId;
 
-    public JobSeeker(String skillIds, String phoneNumber, int locationId, String userId) {
+    public JobSeeker(){
+
+    }
+
+    public JobSeeker(ArrayList<Integer> skillIds, String phoneNumber, int locationId, String userId) {
         this.skillIds = skillIds;
         this.phoneNumber = phoneNumber;
         this.locationId = locationId;
@@ -21,14 +25,20 @@ public class JobSeeker extends User{
         this.userId = userId;
     }
 
-    public JobSeeker() {
+    public JobSeeker(String userId, String firstName, String lastName, String password, String userType, LocalDate dateCreated, String status){
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this. userType = userType;
+        this.dateCreated = dateCreated;
+        this.status = status;
     }
 
     public JobSeeker(ResultSet rs) throws SQLException {
         this.userId = rs.getString("userId");
         this.phoneNumber = rs.getString("phoneNumber");
         this.locationId = rs.getInt("locationId");
-        this.skillIds = rs.getString("skillIds");
     }
 
     public String getPhoneNumber() {
@@ -52,13 +62,17 @@ public class JobSeeker extends User{
 
 
 
-    public String getSkillIds() {
+    public ArrayList<Integer> getSkillIds() {
         return skillIds;
     }
 
-    public void setSkillIds(String skillIds) {
+    public void setSkillIds(ArrayList<Integer> skillIds) {
         this.skillIds = skillIds;
-        updateJobSeeker(userId, "skillIds", skillIds);
+    }
+
+
+    public JobSeeker(ArrayList<Integer> skillIds) {
+        this.skillIds = skillIds;
     }
 
 

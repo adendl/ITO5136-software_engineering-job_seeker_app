@@ -33,6 +33,8 @@ public class JobSearchController {
     private JobSeeker user;
     public JobSearchController(NavigationController navigationController, JobSeeker user){
         this.navigationController = navigationController;
+        this.user = user;
+
         /*
         searchJobView.addSearchJobButtonListener(new ActionListener() {
             @Override
