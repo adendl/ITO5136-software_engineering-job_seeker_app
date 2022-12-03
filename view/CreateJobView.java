@@ -2,10 +2,8 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
 import controller.CreateJobController;
-import view.UIView;
 
 public class CreateJobView implements UIView {
     private JPanel panelMain;
@@ -14,12 +12,15 @@ public class CreateJobView implements UIView {
     private JLabel createJobLabel;
     private JLabel jobTitleLabel;
     private JLabel jobDescriptionLabel;
-    private JLabel jobTypeLabel;
     private JLabel locationLabel;
     private JLabel companyLabel;
     private JLabel jobCategoryLabel;
     private JLabel salaryRangeLabel;
     private JTextArea jobTitleText;
+    private JComboBox salaryComboBox;
+    private JComboBox categoryComboBox;
+    private JComboBox locationComboBox;
+    private JTextPane textPane1;
     private JTextArea locationText;
     private JTextArea companyText;
     private JTextArea jobTypeText;
