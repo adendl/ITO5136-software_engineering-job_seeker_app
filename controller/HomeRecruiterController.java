@@ -37,7 +37,7 @@ public class HomeRecruiterController {
         controller.showEditRecruiter();
     }
 
-    public void showManageListedJobs() throws SQLException {
+    public void showManageListedJobs() {
         ListJobsController listJobsController = new ListJobsController(this.navigationController, this.user);
         listJobsController.renderListedJobs();
     }
