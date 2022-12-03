@@ -1,16 +1,13 @@
 package view;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import controller.MailboxController;
-import view.UIView;
-import view.ViewHelper;
+import model.Message;
 
 public class ReadMessageView implements UIView {
     private JTextField subjectText;
-    private JTextPane invitationMessageTextPane;
+    private JTextPane messageTextPane;
     private JPanel mainPanel;
     private JLabel fromLabel;
     private JLabel subjectLabel;
@@ -19,15 +16,21 @@ public class ReadMessageView implements UIView {
     private JButton deleteButton;
     private JTextField fromText;
     private JLabel titleLabel;
+    private JLabel jobLabel;
+    private JTextField jobTextField;
     private MailboxController controller;
+    private Message message;
 
-    public ReadMessageView(MailboxController controller) {
+    public ReadMessageView(MailboxController controller, Message message) {
         this.controller = controller;
+        this.message = message;
         replyButton.addActionListener((e -> {
+            controller.replyMessage(message);
 
         }));
         deleteButton.addActionListener((e -> {
-
+            controller.deleteMessageAction(message);
+            controller.showMailbox();
         }));
     }
 
@@ -35,8 +38,8 @@ public class ReadMessageView implements UIView {
         return subjectText;
     }
 
-    public JTextPane getInvitationMessageTextPane() {
-        return invitationMessageTextPane;
+    public JTextPane getMessageTextPane() {
+        return messageTextPane;
     }
 
     public JTextField getFromText() {
@@ -48,10 +51,12 @@ public class ReadMessageView implements UIView {
         return mainPanel;
     }
 
-
+    public JTextField getJobTextField() {
+        return jobTextField;
+    }
 
     public static void main(String[] args) {
-        ReadMessageView view = new ReadMessageView(null);
-        ViewHelper.showStandaloneFrame(view);
+       // ReadMessageView view = new ReadMessageView(null);
+        //ViewHelper.showStandaloneFrame(view);
     }
 }

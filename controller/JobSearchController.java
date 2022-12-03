@@ -33,6 +33,8 @@ public class JobSearchController {
     private JobSeeker user;
     public JobSearchController(NavigationController navigationController, JobSeeker user){
         this.navigationController = navigationController;
+        this.user = user;
+
         /*
         searchJobView.addSearchJobButtonListener(new ActionListener() {
             @Override
@@ -76,6 +78,7 @@ public class JobSearchController {
         createSearchQuery(searchString);
         // TODO: JobSearchView passes in parameters here, we have SearchAlgorithmController do the work, then call showResults
         SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, user);
+        searchAlgorithmController.showResults(searchString);
         //searchAlgorithmController.performSearch(searchString);
     }
 

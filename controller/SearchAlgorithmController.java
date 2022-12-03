@@ -7,6 +7,7 @@ import view.SearchJobView;
 import view.SearchResultsView;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -33,20 +34,31 @@ public class SearchAlgorithmController {
         showResults(searchString);
     }
 
-    public void showResults(String searchString) throws SQLException {
+    public void showResults(String searchString) {
         this.searchResultsView = new SearchResultsView(this);
         searchResultsView.getSearchTextField().setText(searchString);
         loadTable();
         navigationController.pushView(searchResultsView);
     }
 
-    public void loadTable() throws SQLException {
+    public void loadTable() {
         DefaultTableModel dft = jobList.jobListDft();
         searchResultsView.getTable1().setModel(dft);
+        searchResultsView.renderTable();
     }
 
     public void showJobDetails(Job newJob){
-        ApplyForJobController applyForJobController = new ApplyForJobController(navigationController, user, newJob);
+        JobDetailsView jobDetailsView = new JobDetailsView(this);
+        jobDetailsView.getTxtJobTitle().setText(newJob.getTitle());
+        jobDetailsView.getTxtCompany().setText(newJob.getCompany());
+        System.out.println(newJob.getLocationId());
+        try {
+            jobDetailsView.getTxtLocation().setText(newJob.getLocationFromDb());
+        }
+        catch(SQLException e) {
+            System.err.println("Unable to retrieve Job Location from DB: " + e);
+        }
+        navigationController.pushView(jobDetailsView);
     }
 
 }

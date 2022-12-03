@@ -41,4 +41,9 @@ public class HomeRecruiterController {
         ListJobsController listJobsController = new ListJobsController(this.navigationController, this.user);
         listJobsController.renderListedJobs();
     }
+
+    public void showMailbox() {
+        MailboxController mailboxController = new MailboxController(this.navigationController, this.user);
+        mailboxController.showMailbox();
+    }
 }

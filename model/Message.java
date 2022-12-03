@@ -109,6 +109,10 @@ public class Message {
 
     public String getMessageStatus() { return messageStatus; }
 
+    public void setMessageStatus(String messageStatus) {
+        this.messageStatus = messageStatus;
+    }
+
     public void setRecipientUserId(String recipientUserId) {
         this.recipientUserId = recipientUserId;
     }
@@ -148,12 +152,17 @@ public class Message {
 
     public void deleteMessage()
     {
-        DBConnection.queryDatabase("delete from Message where messageId=" + this.messageId);
+        DBConnection.queryDatabase("delete from Message where messageId=" + "\"" + this.messageId + "\"");
     }
 
     public void deleteMessage(int messageId)
     {
-        DBConnection.queryDatabase("delete from Message where messageId=" + messageId);
+        DBConnection.queryDatabase("delete from Message where messageId=" + "\"" + messageId + "\"");
+    }
+
+    public void changeMessageToRead() {
+        setMessageStatus("read");
+        DBConnection.queryDatabase("update Message set messageStatus = \"read\" where messageId=" + "\"" + this.messageId + "\"");
     }
 
 
