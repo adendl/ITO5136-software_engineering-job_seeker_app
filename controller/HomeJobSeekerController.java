@@ -18,7 +18,7 @@ public class HomeJobSeekerController {
 
     public void showHub() {
         HomePageJobSeekerView view = new HomePageJobSeekerView(this);
-        navigationController.pushView(view);
+        navigationController.pushReplacementView(view);
     }
 
     public void showJobSearch() throws SQLException {

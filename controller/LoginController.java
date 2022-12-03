@@ -30,7 +30,7 @@ public class LoginController {
     // show the login view
     public void showLogin() {
         LoginView loginView = new LoginView(this);
-        navigationController.pushView(loginView);
+        navigationController.pushReplacementView(loginView);
     }
 
     public void showForgotPassword(){
