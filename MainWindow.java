@@ -25,7 +25,7 @@ public class MainWindow {
         mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainWindow.setContentPane(mainPanel);
-        mainWindow.setTitle("title goes here");
+        mainWindow.setTitle("Monash Job Seeker Service");
 
         navPanel = new JPanel();
         navPanel.setLayout(new BoxLayout(navPanel, BoxLayout.X_AXIS));
