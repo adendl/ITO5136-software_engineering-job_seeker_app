@@ -20,8 +20,18 @@ public class Job {
     private ArrayList<Keyword> keyword;
     private int locationId;
     private String recruiterId;
+
+    private String skillIds;
     private String salary;
     private String status;
+
+    public String getSkillIds() {
+        return skillIds;
+    }
+
+    public void setSkillIds(String skillIds) {
+        this.skillIds = skillIds;
+    }
 
     public void setAdvertised(boolean advertised) {
         isAdvertised = advertised;
@@ -255,6 +265,7 @@ public class Job {
         }
         updateJob(jobId, "keyword", (Job.getJob(jobId).getString("keyword") + Keyword.getKeywordByValue(title).getString("keywordId")));
         updateJob(jobId, "keyword", (Job.getJob(jobId).getString("keyword") + "," + Keyword.getKeywordByValue(salary).getString("keywordId")));
+        updateJob(jobId, "keyword", (Job.getJob(jobId).getString("keyword") + "," + skillIds));
         System.out.println("job ID = " + jobId);
     }
 

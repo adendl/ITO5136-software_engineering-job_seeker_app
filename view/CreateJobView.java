@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import controller.CreateJobController;
 import controller.Validation;
+import model.Keyword;
 
 import java.sql.SQLException;
 
@@ -23,6 +24,7 @@ public class CreateJobView implements UIView {
     private JComboBox categoryComboBox;
     private JComboBox locationComboBox;
     private JTextField companyText;
+    private JList skillsList;
     private JTextArea locationText;
     private JTextArea companyTextField;
     private JTextArea jobTypeText;
@@ -70,6 +72,14 @@ public class CreateJobView implements UIView {
 
     }
 
+    public JList getSkillsList() {
+        return skillsList;
+    }
+
+    public void setSkillsList(JList skillsList) {
+        this.skillsList = skillsList;
+    }
+
     public CreateJobView(CreateJobController controller) {
         this.controller = controller;
         createJobButton.addActionListener((e) -> {
@@ -79,10 +89,21 @@ public class CreateJobView implements UIView {
             String city = locationComboBox.getSelectedItem().toString();
             String categories = categoryComboBox.getSelectedItem().toString();
             String salary = salaryComboBox.getSelectedItem().toString();
+            java.util.List skillValueList = skillsList.getSelectedValuesList();
+            String skillIds = "";
+            for (int i = 0; i < skillValueList.size(); i++)
+            {
+                try {
+                    skillIds += (Keyword.getKeywordByValue(skillValueList.get(i).toString()).getString("keywordId") + ",");
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+
             if (validateJob(company, description, title, city, categories, salary)) {
                 System.out.println("PASSED");
                 try {
-                    controller.doCreateJob(title, description, company, city, categories, salary);
+                    controller.doCreateJob(title, description, company, city, categories, salary, skillIds);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
