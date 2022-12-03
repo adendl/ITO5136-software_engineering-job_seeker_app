@@ -26,7 +26,7 @@ public class JobDetailsView implements UIView {
     private JTextArea txtJobTitle;
     private JLabel lbJobDetails;
 
-    SearchAlgorithmController searchAlgorithmControllercontroller;
+    SearchAlgorithmController searchAlgorithmController;
     ListJobsController listJobsController;
 
     public JPanel getJobDetailsPanel() {
@@ -34,7 +34,7 @@ public class JobDetailsView implements UIView {
     }
 
     public JobDetailsView(SearchAlgorithmController controller) {
-        this.searchAlgorithmControllercontroller = controller;
+        this.searchAlgorithmController = controller;
     }
 
     public JobDetailsView(ListJobsController controller) {

@@ -23,22 +23,24 @@ public class JobListingsView implements UIView {
     private JLabel headingText;
     private ListJobsController controller;
 
-    public JobListingsView(ListJobsController controller, DefaultTableModel dft) {
+    public JobListingsView(ListJobsController controller) {
         this.controller = controller;
+    }
 
+    public void renderTable(){
         ActionListener listener = e1 -> {
             int row = jobListingsTable.convertRowIndexToModel(jobListingsTable.getEditingRow());
-            int col = jobListingsTable.getColumn("JobObject").getModelIndex();
-            controller.showJobDetails((Job)jobListingsTable.getValueAt(row, col));
+            int col = (jobListingsTable.getModel().getColumnCount() - 2);
+            controller.showJobDetails((Job)table1.getModel().getValueAt(row, col));
+            System.out.println("Go to Job View");
         };
 
-        TableModelCreator.addActionColumn(dft, "Job Details", "More Details", listener);
-        jobListingsTable.setModel(dft);
-        TableColumnModel tcm = jobListingsTable.getColumnModel();
+        TableModelCreator.addActionColumn((DefaultTableModel) table1.getModel(), "Job Details", "More Details", listener);
+        TableColumnModel tcm = table1.getColumnModel();
 
-        tcm.removeColumn(tcm.getColumn(tcm.getColumnIndex("JobObject")));
-        tcm.removeColumn(tcm.getColumn(tcm.getColumnIndex("Category Id")));
-        tcm.removeColumn(tcm.getColumn(tcm.getColumnIndex("IsAdvertised")));
+        jobListingsTable.removeColumn(jobListingsTable.getColumn("IsAdvertised"));
+        jobListingsTable.removeColumn(jobListingsTable.getColumn("JobObject"));
+
         jobListingsTable.setFocusable(true);
         jobListingsTable.setColumnSelectionAllowed(false);
         jobListingsTable.setRowSelectionAllowed(false);
@@ -56,6 +58,10 @@ public class JobListingsView implements UIView {
     @Override
     public JComponent getUIView() {
         return panelMain;
+    }
+
+    public JTable getJobListingsTable() {
+        return jobListingsTable;
     }
 
     public static void main(String[] args) {

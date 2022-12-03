@@ -24,7 +24,9 @@ public class ListJobsController {
 
     public void renderListedJobs() {
         DefaultTableModel dft = jobList.jobListDft();
-        JobListingsView view = new JobListingsView(this, dft);
+        JobListingsView view = new JobListingsView(this);
+        view.getJobListingsTable().setModel(dft);
+        view.renderTable();
         navigationController.pushView(view);
     }
 
@@ -35,12 +37,13 @@ public class ListJobsController {
         job.getTxtJobDescription().setText(newJob.getDescription());
         job.getTxtSalaryRange().setText(newJob.getSalary());
         System.out.println(newJob.getLocationId());
-//            try {
-//                job.getTxtLocation().setText(newJob.getLocationFromDb(newJob.getLocationId()));
-//            } catch (SQLException ex) {
-//                throw new RuntimeException(ex);
-//            }
-
+        try {
+            jobDetailsView.getTxtLocation().setText(newJob.getLocationFromDb());
+        }
+        catch(SQLException e) {
+            System.err.println("Unable to retrieve Job Location from DB: " + e);
+        }
+        navigationController.pushView(jobDetailsView);
     }
 
 

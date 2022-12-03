@@ -38,13 +38,13 @@ public class SearchAlgorithmController {
         this.searchResultsView = new SearchResultsView(this);
         searchResultsView.getSearchTextField().setText(searchString);
         loadTable();
-        searchResultsView.renderTable();
         navigationController.pushView(searchResultsView);
     }
 
     public void loadTable() {
         DefaultTableModel dft = jobList.jobListDft();
         searchResultsView.getTable1().setModel(dft);
+        searchResultsView.renderTable();
     }
 
     public void showJobDetails(Job newJob){
