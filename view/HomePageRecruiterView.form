@@ -30,26 +30,6 @@
           <text value="Manage Listed Jobs"/>
         </properties>
       </component>
-      <component id="d89f5" class="javax.swing.JButton" binding="editCategoriesButton">
-        <constraints>
-          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-14114329"/>
-          <foreground color="-1"/>
-          <text value="Edit Categories"/>
-        </properties>
-      </component>
-      <component id="10db5" class="javax.swing.JButton" binding="editProfileButton" default-binding="true">
-        <constraints>
-          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-14114329"/>
-          <foreground color="-1"/>
-          <text value="Edit Profile"/>
-        </properties>
-      </component>
       <component id="851c8" class="javax.swing.JLabel">
         <constraints>
           <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -57,25 +37,6 @@
         <properties>
           <foreground color="-15856114"/>
           <text value="View and edit your currently listed jobs and get recommendations for candidates"/>
-        </properties>
-      </component>
-      <component id="b236f" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <foreground color="-15856114"/>
-          <text value="View and edit your job categories"/>
-        </properties>
-      </component>
-      <component id="3203b" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <foreground color="-15856114"/>
-          <horizontalTextPosition value="10"/>
-          <text value="View and edit your recruiter profile"/>
         </properties>
       </component>
       <component id="66255" class="javax.swing.JLabel">
@@ -115,6 +76,46 @@
         <properties>
           <foreground color="-15856114"/>
           <text value="Create a new job"/>
+        </properties>
+      </component>
+      <component id="10db5" class="javax.swing.JButton" binding="editProfileButton" default-binding="true">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14114329"/>
+          <foreground color="-1"/>
+          <text value="Edit Profile"/>
+        </properties>
+      </component>
+      <component id="3203b" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-15856114"/>
+          <horizontalTextPosition value="10"/>
+          <text value="View and edit your recruiter profile"/>
+        </properties>
+      </component>
+      <component id="f1921" class="javax.swing.JButton" binding="viewMailboxButton">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14440720"/>
+          <foreground color="-1"/>
+          <text value="View Mailbox"/>
+        </properties>
+      </component>
+      <component id="69da9" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-2500135"/>
+          <foreground color="-16777216"/>
+          <text value="View your mailbox to see messages from candidates"/>
         </properties>
       </component>
     </children>

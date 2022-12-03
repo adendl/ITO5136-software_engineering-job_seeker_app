@@ -16,7 +16,7 @@ public class JobList {
 
     public JobList(){
         jobList = new ArrayList<Job>();
-        colHeader = new Vector<String>(List.of("Job Id", "Keywords", "Company", "Description", "Expiry Date", "Recruiter", "LocationId", "Max Salary", "Min Salary", "Status", "Date Created", "Job Title", "IsAdvertised", "JobObject"));
+        colHeader = new Vector<String>(List.of("Job Id", "Company", "Description", "Expiry Date", "Recruiter", "LocationId", "Max Salary", "Min Salary", "Status", "Date Created", "JobTitle", "IsAdvertised", "JobObject"));
     }
 
     public JobList(ArrayList<Job> jobList){
@@ -42,8 +42,7 @@ public class JobList {
             newRow.addElement(j.getExpiryDate());
             newRow.addElement(j.getRecruiterId());
             newRow.addElement(j.getLocationId());
-            newRow.addElement(j.getSalaryMax());
-            newRow.addElement(j.getSalaryMin());
+            newRow.addElement(j.getSalary());
             newRow.addElement(j.getStatus());
             newRow.addElement(j.getDateCreated());
             newRow.addElement(j.getTitle());
@@ -54,15 +53,18 @@ public class JobList {
         return new DefaultTableModel(rows, colHeader);
     }
 
-    public DefaultTableModel jobListDft() {
-        resultSetToJobList(listJobs());
+    public DefaultTableModel jobListDft(ArrayList<Keyword> keywords) {
+        System.out.println("jobListDFT");
+        resultSetToJobList(listJobsKeywordFilter(keywords));
         return jobListToTableModel();
     }
 
     public ResultSet listJobs()
     {
-        return DBConnection.queryDatabase("select * from Job");
+        return Job.listJobs();
     }
+
+    public ResultSet listJobsKeywordFilter(ArrayList<Keyword> keywords) { return Job.listJobsCategoriesFilter(keywords);}
 
     public void resultSetToJobList(ResultSet rs) {
         try{

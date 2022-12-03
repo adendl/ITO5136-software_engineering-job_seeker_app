@@ -44,16 +44,16 @@ public class LoginController {
         switch (userType) {
             //job seeker selection
             case 0:
-                User jobseekerUser = new User(email, firstName, lastName, password, "JOBSEEKER", LocalDate.now(), "Active");
-                jobseekerUser.createUser();
+                User jobSeekerUser = new User (email, firstName, lastName, password, "JOBSEEKER", LocalDate.now(), "Active");
+                jobSeekerUser.createUser();
                 new JobSeeker(email).createJobSeeker();
-                showSeekerHub(jobseekerUser);
+                showSeekerHub(jobSeekerUser);
                 break;
             //recruiter selection
             case 1:
                 User recruiterUser = new User(email, firstName, lastName, password, "RECRUITER", LocalDate.now(), "Active");
                 recruiterUser.createUser();
-                Recruiter newRecruiter = new Recruiter();
+                Recruiter newRecruiter = new Recruiter(email);
                 //adds to db.
                 //set to logged in and sends to homepage
                 showRecruiterHub(recruiterUser);

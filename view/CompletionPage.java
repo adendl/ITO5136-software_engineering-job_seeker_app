@@ -4,14 +4,17 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import controller.NavigationController;
 import view.UIView;
 import view.ViewHelper;
 
 public class CompletionPage implements UIView {
     private JButton continueButton;
     private JPanel panelMain;
+    NavigationController navigationController;
 
-    public CompletionPage() {
+    public CompletionPage(NavigationController navigationController) {
+        this.navigationController = navigationController;
         continueButton.addActionListener((e -> {
 
         }));
@@ -21,7 +24,9 @@ public class CompletionPage implements UIView {
         return panelMain;
     }
 
-
+    public JButton getContinueButton() {
+        return continueButton;
+    }
 
     @Override
     public JComponent getUIView() {
@@ -30,7 +35,7 @@ public class CompletionPage implements UIView {
 
     public static void  main(String[] args)
     {
-        CompletionPage c = new CompletionPage();
-        ViewHelper.showStandaloneFrame(c);
+        //CompletionPage c = new CompletionPage();
+        //ViewHelper.showStandaloneFrame(c);
     }
 }

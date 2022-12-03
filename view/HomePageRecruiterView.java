@@ -4,18 +4,17 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import controller.HomeRecruiterController;
-import controller.NavigationController;
-import view.UIView;
-import view.CreateJobView;
+import model.Keyword;
 
 public class HomePageRecruiterView implements UIView {
     private JButton createNewJobButton;
     private JPanel panelMain;
     private JButton manageListedJobsButton;
-    private JButton editCategoriesButton;
     private JButton editProfileButton;
+    private JButton viewMailboxButton;
     private HomeRecruiterController controller;
 
     public HomePageRecruiterView(HomeRecruiterController controller) {
@@ -28,13 +27,13 @@ public class HomePageRecruiterView implements UIView {
             }
         });
         manageListedJobsButton.addActionListener((e) -> {
-            controller.showManageListedJobs();
-        });
-        editCategoriesButton.addActionListener((e) -> {
-            controller.showEditCategories();
+            controller.showManageListedJobs(new ArrayList<Keyword>());
         });
         editProfileButton.addActionListener((e) -> {
             controller.showEditProfile();
+        });
+        viewMailboxButton.addActionListener((e) -> {
+            controller.showMailbox();
         });
     }
 

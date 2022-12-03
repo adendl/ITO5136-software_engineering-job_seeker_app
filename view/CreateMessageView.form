@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.CreateMessageView">
-  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="50" left="50" bottom="50" right="50"/>
     <constraints>
       <xy x="20" y="20" width="800" height="600"/>
@@ -13,13 +13,13 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="2f692" class="javax.swing.JLabel" binding="newInvitationMessageLabel">
+      <component id="2f692" class="javax.swing.JLabel" binding="newMessageLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font size="26"/>
-          <text value="New Invitation Message"/>
+          <text value="New Message"/>
         </properties>
       </component>
       <component id="f4a43" class="javax.swing.JLabel" binding="toLabel">
@@ -46,17 +46,21 @@
         </constraints>
         <properties/>
       </component>
-      <component id="62571" class="javax.swing.JTextPane" binding="invitationMessageTextPane">
+      <component id="62571" class="javax.swing.JTextPane" binding="messageTextPane">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-1"/>
+          <disabledTextColor color="-16777216"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="2b9dc" class="javax.swing.JButton" binding="sendMessageButton">
         <constraints>
-          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-14440720"/>
@@ -80,7 +84,33 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-1"/>
+          <disabledTextColor color="-16777216"/>
           <editable value="false"/>
+          <foreground color="-16777216"/>
+          <selectedTextColor color="-1"/>
+        </properties>
+      </component>
+      <component id="31bec" class="javax.swing.JLabel" binding="jobLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Job ID"/>
+        </properties>
+      </component>
+      <component id="eff55" class="javax.swing.JTextField" binding="jobTextField">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <disabledTextColor color="-16777216"/>
+          <editable value="false"/>
+          <foreground color="-16777216"/>
+          <selectedTextColor color="-1"/>
         </properties>
       </component>
     </children>

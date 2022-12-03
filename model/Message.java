@@ -109,6 +109,10 @@ public class Message {
 
     public String getMessageStatus() { return messageStatus; }
 
+    public void setMessageStatus(String messageStatus) {
+        this.messageStatus = messageStatus;
+    }
+
     public void setRecipientUserId(String recipientUserId) {
         this.recipientUserId = recipientUserId;
     }
@@ -127,7 +131,7 @@ public class Message {
 
     public void createMessage() {
         DBConnection conn = DBConnection.get();
-        String sql = "INSERT INTO Message (recipientUserId, senderUserId, messageType, jobId, sendDate, contents, subject, messageId) VALUES (" +
+        String sql = "INSERT INTO Message (recipientUserId, senderUserId, messageType, jobId, sendDate, contents, subject, messageStatus, messageId) VALUES (" +
                 '"' + recipientUserId + '"' + ", " +
                 '"' + senderUserId + '"' + ", " +
                 '"' +  messageType + '"' + ", " +
@@ -135,6 +139,7 @@ public class Message {
                 '"' +   LocalDate.now() + '"' + ", " +
                 '"' +   contents + '"' + ", " +
                 '"' +  subject + '"' + ", " +
+                '"' +  messageStatus + '"' + ", " +
                 null + ")";
         System.out.println(sql);
         conn.executeQuery(sql);
@@ -147,12 +152,17 @@ public class Message {
 
     public void deleteMessage()
     {
-        DBConnection.queryDatabase("delete from Message where messageId=" + this.messageId);
+        DBConnection.queryDatabase("delete from Message where messageId=" + "\"" + this.messageId + "\"");
     }
 
     public void deleteMessage(int messageId)
     {
-        DBConnection.queryDatabase("delete from Message where messageId=" + messageId);
+        DBConnection.queryDatabase("delete from Message where messageId=" + "\"" + messageId + "\"");
+    }
+
+    public void changeMessageToRead() {
+        setMessageStatus("read");
+        DBConnection.queryDatabase("update Message set messageStatus = \"read\" where messageId=" + "\"" + this.messageId + "\"");
     }
 
 

@@ -7,6 +7,7 @@ import view.ManageUsersView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class HomeAdminController {
     NavigationController navigationController;
@@ -31,7 +32,7 @@ public class HomeAdminController {
         ManageSkillsController manageSkillsController = new ManageSkillsController(navigationController);
         manageSkillsController.showManageSkills();
     }
-    public void showManageUsers() {
+    public void showManageUsers() throws SQLException {
         ManageUsersController manageUsersController = new ManageUsersController(navigationController);
         manageUsersController.showManageUsers();
     }

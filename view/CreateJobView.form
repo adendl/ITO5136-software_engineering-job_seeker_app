@@ -25,7 +25,7 @@
         </constraints>
         <properties>
           <foreground color="-15987700"/>
-          <text value="JobDescription"/>
+          <text value="Job Description"/>
         </properties>
       </component>
       <component id="7148" class="javax.swing.JTextArea" binding="jobDescriptionText">
@@ -120,15 +120,13 @@
         </constraints>
         <properties/>
       </component>
-      <component id="2cd64" class="javax.swing.JTextPane" binding="textPane1" default-binding="true">
+      <component id="1da26" class="javax.swing.JTextField" binding="companyText">
         <constraints>
-          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="30"/>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties>
-          <editable value="false"/>
-        </properties>
+        <properties/>
       </component>
     </children>
   </grid>

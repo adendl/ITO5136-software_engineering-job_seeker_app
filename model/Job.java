@@ -20,9 +20,21 @@ public class Job {
     private ArrayList<Keyword> keyword;
     private int locationId;
     private int recruiterId;
-    private int salaryMax;
-    private int salaryMin;
+    private String salary;
     private String status;
+
+    public void setAdvertised(boolean advertised) {
+        isAdvertised = advertised;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
     private LocalDate dateCreated;
     private String title;
 
@@ -30,7 +42,7 @@ public class Job {
     public Job() {
     }
 
-    public Job(String company, String description, LocalDate expiryDate, boolean isAdvertised, ArrayList<Keyword> keyword, int locationId, int recruiterId, int salaryMax, int salaryMin, String status, String title) {
+    public Job(String company, String description, LocalDate expiryDate, boolean isAdvertised, ArrayList<Keyword> keyword, int locationId, int recruiterId, String status, String title) {
         this.company = company;
         this.description = description;
         this.expiryDate = expiryDate;
@@ -38,8 +50,6 @@ public class Job {
         this.keyword = keyword;
         this.locationId = locationId;
         this.recruiterId = recruiterId;
-        this.salaryMax = salaryMax;
-        this.salaryMin = salaryMin;
         this.status = status;
         this.dateCreated = LocalDate.now();
         this.title = title;
@@ -53,8 +63,7 @@ public class Job {
         this.isAdvertised = rs.getBoolean("isAdvertised");
         this.locationId = rs.getInt("locationId");
         this.recruiterId = rs.getInt("recruiterId");
-        this.salaryMax = rs.getInt("salaryMax");
-        this.salaryMin = rs.getInt("salaryMin");
+        this.salary = rs.getString("salary");
         this.status = rs.getString("status");
         this.dateCreated = Date.valueOf(rs.getString("dateCreated")).toLocalDate();
         this.title = rs.getString("title");
@@ -115,22 +124,6 @@ public class Job {
 
     public void setRecruiterId(int recruiterId) {
         this.recruiterId = recruiterId;
-    }
-
-    public int getSalaryMax() {
-        return salaryMax;
-    }
-
-    public void setSalaryMax(int salaryMax) {
-        this.salaryMax = salaryMax;
-    }
-
-    public int getSalaryMin() {
-        return salaryMin;
-    }
-
-    public void setSalaryMin(int salaryMin) {
-        this.salaryMin = salaryMin;
     }
 
     public String getStatus() {
@@ -217,26 +210,28 @@ public class Job {
     public void createJob()
     {
         DBConnection db = DBConnection.get();
-        String sql = "INSERT INTO Job (keyword, title, dateCreated, status, salaryMin, salaryMax, locationId, recruiterId, expiryDate, description, company, jobId) VALUES (" + '"';
-               for (int i = 0; i < keyword.size(); i++)
-               {
-                   if (i < (keyword.size() - 1))
-                   {
-                       sql+= (keyword.get(i).getKeywordId() + ",");
-                   }
-                   else
-                   {
-                       System.out.println(keyword.get(i).getKeywordId());
-                       sql+= (keyword.get(i).getKeywordId());
-                       System.out.println(sql);
-                   }
-               }
-               System.out.println(sql);
+        String sql = "INSERT INTO Job (keyword, title, dateCreated, status, salary, locationId, recruiterId, expiryDate, description, company, jobId) VALUES (" + '"';
+                if (!keyword.isEmpty())
+                {
+                    for (int i = 0; i < keyword.size(); i++)
+                    {
+                        if (i < (keyword.size() - 1))
+                        {
+                            sql+= (keyword.get(i).getKeywordId() + ",");
+                        }
+                        else
+                        {
+                            System.out.println(keyword.get(i).getKeywordId());
+                            sql+= (keyword.get(i).getKeywordId());
+                            System.out.println(sql);
+                        }
+                    }
+                    System.out.println(sql);
+                }
                sql += '"' + "," + '"' + title + '"' + ", " +
                 '"' +  dateCreated + '"' + ", " +
                 '"' +   status + '"' + ", " +
-                salaryMin + ", " +
-                salaryMax + ", " +
+                '"' +   salary + '"' + ", " +
                 locationId + ", " +
                 recruiterId + ", " +
                 '"' +   expiryDate + '"' + ", " +
@@ -245,6 +240,7 @@ public class Job {
                 null + ")";
         System.out.println(sql);
         db.executeQuery(sql);
+        new Keyword("jobTitle", title).createKeyword();
         try {
             setJobId(db.getLatestItemId("Job"));
         } catch (Exception e) {
@@ -266,10 +262,11 @@ public class Job {
         db.executeQuery(sql);
     }
 
-    public String getLocationFromDb(int locationId) throws SQLException {
-        ResultSet rs = DBConnection.queryDatabase("select city, state from Location where locationId=" + locationId);
-        return rs.getString(1) + ", " + rs.getString(2);
+    public String getLocationFromDb() throws SQLException {
+            ResultSet rs = DBConnection.queryDatabase("select city, state from Location where locationId=" + "\"" +this.locationId +"\"");
+            String location = (rs.getString(1) + ", " + rs.getString(2));
+            System.out.println(location);
+            System.out.println(this.locationId);
+            return location;
     }
-
-
 }

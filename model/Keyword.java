@@ -46,6 +46,15 @@ public class Keyword {
         this.keywordValue = keywordValue;
     }
 
+    public Keyword(String keywordType, String keywordValue) {
+        this.keywordType = keywordType;
+        this.keywordValue = keywordValue;
+    }
+
+    public Keyword(String keywordValue) {
+        this.keywordValue = keywordValue;
+    }
+
     @Override
     public boolean equals(Object ob)
     {
@@ -64,6 +73,11 @@ public class Keyword {
     }
     public static ResultSet getKeywordByValue(String keywordValue) {
         ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordValue='" + keywordValue + "'");
+        return rs;
+    }
+
+    public static ResultSet getKeywordByValueLike(String keywordValue) {
+        ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordValue like'%" + keywordValue + "%'");
         return rs;
     }
 
@@ -90,6 +104,11 @@ public class Keyword {
         return rs;
     }
 
+    public static ResultSet listSalary() {
+        ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordType='salary'");
+        return rs;
+    }
+
     public static ResultSet listSkills() {
         ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordType='skill'");
         return rs;
@@ -110,7 +129,7 @@ public class Keyword {
         return rs;
     }
 
-    public void createJobCategory() {
+    public void createKeyword() {
         String sql = "INSERT INTO Keyword (keywordId, keywordType, keywordValue) VALUES (null, " + '"' + keywordType + '"' + ',' + '"' + keywordValue + '"' + ")";
         System.out.println(sql);
         DBConnection.queryDatabase(sql);
