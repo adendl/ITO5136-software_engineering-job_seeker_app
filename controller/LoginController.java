@@ -53,7 +53,7 @@ public class LoginController {
             case 1:
                 User recruiterUser = new User(email, firstName, lastName, password, "RECRUITER", LocalDate.now(), "Active");
                 recruiterUser.createUser();
-                Recruiter newRecruiter = new Recruiter();
+                Recruiter newRecruiter = new Recruiter(email);
                 //adds to db.
                 //set to logged in and sends to homepage
                 showRecruiterHub(recruiterUser);
