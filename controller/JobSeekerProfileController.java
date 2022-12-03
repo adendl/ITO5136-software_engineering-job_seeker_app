@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.User;
 
@@ -37,20 +38,24 @@ public class JobSeekerProfileController {
         this.editProfileView = new EditProfileView(this);
         loadLocations();
         loadSkills();
-        editProfileView.populateForUser(user, jobSeeker);
+        editProfileView.populateForUser(user, new JobSeeker(JobSeeker.getJobSeeker(user.getUserId())));
         navigationController.pushView(editProfileView);
     }
 
-    public void updateProfile(String firstName, String lastName, String phoneNumber, String city) throws SQLException {
+    public void updateProfile(String firstName, String lastName, String phoneNumber, String city, String keywordIds) throws SQLException {
 
         user.setFirstName(firstName);
         user.setLastName(lastName);
         jobSeeker.setPhoneNumber(phoneNumber);
         jobSeeker.setLocationId(Location.getLocationByCity(city).getString("locationId"));
+        if (!keywordIds.isEmpty())
+        {
+            jobSeeker.setSkillIds(keywordIds);
+            System.out.println("Update profile" + keywordIds);
+            loadCurrentSkillList(Keyword.getKeywordListByIds(keywordIds));
+        }
 
-        //jobSeeker.setLocationId(Location.getLocationByCity(location).getString("locationId"));
         // TODO: update the db
-
     }
 
     public void loadLocations() throws SQLException {
@@ -60,6 +65,16 @@ public class JobSeekerProfileController {
         {
             editProfileView.getAddressComboBox().addItem(rs.getString("city"));
         }
+    }
+
+    public void loadCurrentSkillList(ArrayList<Keyword> keywords)
+    {
+        DefaultListModel dlm = new DefaultListModel();
+        for (int i = 0; i < keywords.size(); i++)
+        {
+            dlm.addElement(keywords.get(i).getKeywordValue());
+        }
+        editProfileView.getCurrentSkillsList().setModel(dlm);
     }
 
     public void loadSkills() throws SQLException {

@@ -2,7 +2,10 @@ package model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Keyword {
 
@@ -58,6 +61,23 @@ public class Keyword {
     public static ResultSet getKeyword(int keywordId) {
         ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordId=" + keywordId);
         return rs;
+    }
+    public static ResultSet getKeywordByValue(String keywordValue) {
+        ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordValue='" + keywordValue + "'");
+        return rs;
+    }
+
+
+    public static ArrayList<Keyword> getKeywordListByIds(String keywordIds) throws SQLException
+    {
+        ArrayList<Keyword> keywordList = new ArrayList<Keyword>();
+        List<String> keywords = Arrays.asList(keywordIds.split("\\s*,\\s*"));
+        for (int i = 0; i < keywords.size(); i++)
+        {
+            ResultSet kw = Keyword.getKeyword(Integer.parseInt(keywords.get(i)));
+            keywordList.add(new Keyword(kw.getInt("keywordId"), kw.getString("keywordType"), kw.getString("keywordValue")));
+        }
+        return keywordList;
     }
 
     public static ResultSet listKeywords() {

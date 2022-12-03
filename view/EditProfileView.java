@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import controller.JobSeekerProfileController;
 import model.JobSeeker;
-import model.Location;
+import model.Keyword;
 import model.User;
 
 public class EditProfileView implements UIView {
@@ -29,8 +29,25 @@ public class EditProfileView implements UIView {
     private JLabel addressLabel;
     private JLabel editProfileLabel;
 
+    public JList getCurrentSkillsList() {
+        return currentSkillsList;
+    }
+
+    public void setCurrentSkillsList(JList currentSkillsList) {
+        this.currentSkillsList = currentSkillsList;
+    }
+
+    public JTextPane getSkillsTextPane() {
+        return skillsTextPane;
+    }
+
+    public void setSkillsTextPane(JTextPane skillsTextPane) {
+        this.skillsTextPane = skillsTextPane;
+    }
 
     private JComboBox addressComboBox;
+    private JList currentSkillsList;
+    private JTextPane skillsTextPane;
     private JobSeekerProfileController controller;
 
     public EditProfileView(JobSeekerProfileController controller) {
@@ -108,10 +125,16 @@ public class EditProfileView implements UIView {
         String lastName = lastNameText.getText();
         String phoneNumber = phoneNumberText.getText();
         String city = addressComboBox.getSelectedItem().toString();
-
+        java.util.List skillValueList = list1.getSelectedValuesList();
+        System.out.println(skillValueList);
+        String skillIds = "";
+        for (int i = 0; i < skillValueList.size(); i++)
+        {
+            skillIds += (Keyword.getKeywordByValue(skillValueList.get(i).toString()).getString("keywordId") + ",");
+        }
+        System.out.println(skillIds);
         // TODO: validate this data before calling controller.updateProfile
-
-        controller.updateProfile(firstName, lastName, phoneNumber, city);
+        controller.updateProfile(firstName, lastName, phoneNumber, city, skillIds);
     }
 
     // populate the UI fields with user data
@@ -121,6 +144,12 @@ public class EditProfileView implements UIView {
         firstNameText.setText(user.getFirstName());
         lastNameText.setText(user.getLastName());
         addressComboBox.setSelectedIndex(jobSeeker.getLocationId());
+        if (!jobSeeker.getSkillIds().isEmpty())
+        {
+            controller.loadCurrentSkillList(Keyword.getKeywordListByIds(jobSeeker.getSkillIds()));
+
+        }
+        System.out.println("populate for user" + jobSeeker.getSkillIds());
     }
 
     public static void main(String[] args) {
