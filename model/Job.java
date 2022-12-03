@@ -207,10 +207,9 @@ public class Job {
         return db.executeQuery(sql);
     }
 
-    public void createJob()
-    {
+    public void createJob() throws SQLException {
         DBConnection db = DBConnection.get();
-        String sql = "INSERT INTO Job (keyword, title, dateCreated, status, salary, locationId, recruiterId, expiryDate, description, company, jobId) VALUES (" + '"';
+        String sql = "INSERT INTO Job (keyword, title, dateCreated, status, salary, locationId, recruiterId, expiryDate, description, isAdvertised, company, jobId) VALUES (" + '"';
                 if (!keyword.isEmpty())
                 {
                     for (int i = 0; i < keyword.size(); i++)
@@ -229,23 +228,31 @@ public class Job {
                     System.out.println(sql);
                 }
                sql += '"' + "," + '"' + title + '"' + ", " +
-                '"' +  dateCreated + '"' + ", " +
+                '"' +  LocalDate.now() + '"' + ", " +
                 '"' +   status + '"' + ", " +
                 '"' +   salary + '"' + ", " +
                 locationId + ", " +
                 recruiterId + ", " +
-                '"' +   expiryDate + '"' + ", " +
+                '"' +   LocalDate.now().plusMonths(1) + '"' + ", " +
                 '"' +   description + '"' + ", " +
+                       "'False'," +
                 '"' +  company + '"' + ", " +
                 null + ")";
         System.out.println(sql);
         db.executeQuery(sql);
-        new Keyword("jobTitle", title).createKeyword();
+
         try {
             setJobId(db.getLatestItemId("Job"));
         } catch (Exception e) {
             System.err.println("createJob failed:" + e);
         }
+
+        if (Keyword.getKeywordByValue(title).getString("keywordId") == null)
+        {
+            new Keyword("jobTitle", title).createKeyword();
+        }
+        updateJob(jobId, "keyword", (Job.getJob(jobId).getString("keyword") + Keyword.getKeywordByValue(title).getString("keywordId")));
+        System.out.println("job ID = " + jobId);
     }
 
     public void deleteJob(int jobId)
