@@ -269,11 +269,16 @@ public class Job {
         db.executeQuery(sql);
     }
 
-    public String getLocationFromDb() throws SQLException {
-            ResultSet rs = DBConnection.queryDatabase("select city, state from Location where locationId=" + "\"" +this.locationId +"\"");
-            String location = (rs.getString(1) + ", " + rs.getString(2));
-            System.out.println(location);
-            System.out.println(this.locationId);
+    public String getLocationFromDb() {
+        String location;
+        try {
+            ResultSet rs = DBConnection.queryDatabase("select city, state from Location where locationId=" + "\"" + this.locationId + "\"");
+            location = (rs.getString(1) + ", " + rs.getString(2));
+            return location;
+        }  catch(SQLException e) {
+            System.err.println("Error Retrieving Location Id " + this.locationId + " from DB: 0" + e);
+            location = "";
+        }
             return location;
     }
 }
