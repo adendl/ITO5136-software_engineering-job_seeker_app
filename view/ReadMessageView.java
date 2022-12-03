@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controller.MailboxController;
+import model.Message;
 import view.UIView;
 import view.ViewHelper;
 
@@ -20,14 +21,17 @@ public class ReadMessageView implements UIView {
     private JTextField fromText;
     private JLabel titleLabel;
     private MailboxController controller;
+    private Message message;
 
-    public ReadMessageView(MailboxController controller) {
+    public ReadMessageView(MailboxController controller, Message message) {
         this.controller = controller;
+        this.message = message;
         replyButton.addActionListener((e -> {
 
         }));
         deleteButton.addActionListener((e -> {
-
+            controller.deleteMessageAction(message);
+            controller.showMailbox();
         }));
     }
 
@@ -51,7 +55,7 @@ public class ReadMessageView implements UIView {
 
 
     public static void main(String[] args) {
-        ReadMessageView view = new ReadMessageView(null);
-        ViewHelper.showStandaloneFrame(view);
+       // ReadMessageView view = new ReadMessageView(null);
+        //ViewHelper.showStandaloneFrame(view);
     }
 }

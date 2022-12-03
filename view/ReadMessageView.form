@@ -44,7 +44,9 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <editable value="false"/>
+        </properties>
       </component>
       <component id="62571" class="javax.swing.JTextPane" binding="invitationMessageTextPane">
         <constraints>
@@ -52,7 +54,9 @@
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <editable value="false"/>
+        </properties>
       </component>
       <vspacer id="a0850">
         <constraints>

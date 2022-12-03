@@ -23,17 +23,19 @@ public class MailboxView implements UIView {
     private MailboxController controller;
     //private DefaultTableModel dft;
 
-    public MailboxView(MailboxController controller) throws SQLException {
+    public MailboxView(MailboxController controller) {
         this.controller = controller;
-        Mailbox mb = new Mailbox();
-        DefaultTableModel dft = mb.receivedMessageDft("test5@test.com");
 
+    }
+
+    public void renderTable() {
         ActionListener deleteAction = e -> {
             int deleteRow = tblMessages.convertRowIndexToModel(tblMessages.getEditingRow());
             int deleteCol = tblMessages.getColumnModel().getColumnIndex("Delete");
             controller.deleteMessageAction((Message)tblMessages.getValueAt(deleteRow, deleteCol));
             ((DefaultTableModel)tblMessages.getModel()).removeRow(deleteRow);
         };
+        DefaultTableModel dft = (DefaultTableModel)tblMessages.getModel();
 
         Icon trash = new ImageIcon("icon/trash.png");
         TableModelCreator.addActionColumn(dft, "Delete", trash, deleteAction);
@@ -41,17 +43,20 @@ public class MailboxView implements UIView {
         Icon unread = new ImageIcon("icon/closed-envelope.png");
         Icon read = new ImageIcon("icon/open-envelope.png");
 
-       for(int i = 0; i < dft.getRowCount(); i++){
-           JButton button = new JButton();
-           button.addActionListener(new ActionListener() {
-               @Override
-               public void actionPerformed(ActionEvent e) {
-                   int row = tblMessages.convertRowIndexToModel(tblMessages.getEditingRow());
-                   int objCol = tblMessages.getColumnModel().getColumnIndex("Message Object");
-                   Message message = (Message) tblMessages.getModel().getValueAt(row, objCol);
-                   controller.showMessage(message);
-               }
-           });
+        for(int i = 0; i < dft.getRowCount(); i++){
+            JButton button = new JButton();
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int row = tblMessages.convertRowIndexToModel(tblMessages.getEditingRow());
+                    int col = tblMessages.convertColumnIndexToModel(tblMessages.getEditingColumn());
+                    int objCol = (tblMessages.getModel().getColumnCount()-2);
+                    Message message = (Message) tblMessages.getModel().getValueAt(row, objCol);
+                    controller.showMessage(message);
+                    JButton button = (JButton)dft.getValueAt(row, col);
+                    button.setIcon(read);
+                }
+            });
 
             if (dft.getValueAt(i, statusCol).toString().equals("read")){
                 button.setIcon(read);
@@ -63,11 +68,9 @@ public class MailboxView implements UIView {
             }
         }
 
-        TableColumnModel tcm = tblMessages.getColumnModel();
-        tblMessages.setModel(dft);
-        tcm.removeColumn(tcm.getColumn(tcm.getColumnIndex("Message ID")));
-        tcm.removeColumn(tcm.getColumn(tcm.getColumnIndex("Message Object")));
-        tcm.removeColumn(tcm.getColumn(tcm.getColumnIndex("Recipient")));
+        tblMessages.removeColumn(tblMessages.getColumn("Message ID"));
+        tblMessages.removeColumn(tblMessages.getColumn("Message Object"));
+        tblMessages.removeColumn(tblMessages.getColumn("Recipient"));
         tblMessages.setColumnSelectionAllowed(false);
         tblMessages.setRowSelectionAllowed(false);
         JTableButtonRenderer renderer = new JTableButtonRenderer();
@@ -76,6 +79,7 @@ public class MailboxView implements UIView {
         tblMessages.getColumn("Delete").setCellRenderer(renderer);
         tblMessages.getColumn("Delete").setCellEditor(renderer);
         tblMessages.setRowHeight(50);
+
     }
 
     public JPanel getPanelMain() {
@@ -95,6 +99,10 @@ public class MailboxView implements UIView {
     }
     public void addPreviousButtonListener(ActionListener buttonListener) {
         previousButton.addActionListener(buttonListener);
+    }
+
+    public JTable getTblMessages() {
+        return tblMessages;
     }
 
     @Override

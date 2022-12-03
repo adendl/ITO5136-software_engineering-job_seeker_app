@@ -18,12 +18,12 @@ public class Mailbox {
         return mailBox;
     }
 
-    public DefaultTableModel receivedMessageDft(String recipientId) throws SQLException {
+    public DefaultTableModel receivedMessageDft(String recipientId) {
      resultSetToMessageList(listReceivedMessages(recipientId));
      return messageListToTableModel();
     }
 
-    public DefaultTableModel sentMessageDft(String senderId) throws SQLException {
+    public DefaultTableModel sentMessageDft(String senderId) {
         resultSetToMessageList(listReceivedMessages(senderId));
         return messageListToTableModel();
     }
@@ -48,25 +48,30 @@ public class Mailbox {
         }
         return new DefaultTableModel(rows, colHeader);
     }
-    public ResultSet listReceivedMessages(String recipientUserId) throws SQLException {
+    public ResultSet listReceivedMessages(String recipientUserId) {
         DBConnection db = DBConnection.get();
         return db.executeQuery("select * from Message where recipientUserId='" + recipientUserId + "'" );
     }
 
-    public ResultSet listSentMessages(String senderUserId) throws SQLException {
+    public ResultSet listSentMessages(String senderUserId) {
         DBConnection db = DBConnection.get();
         return db.executeQuery("select * from Message where senderUserId='" + senderUserId + "'" );
     }
 
-    public void resultSetToMessageList(ResultSet rs) throws SQLException {
-        while (rs.next()) {
-            Message newMessage = new Message(rs);
-            mailBox.add(newMessage);
+    public void resultSetToMessageList(ResultSet rs) {
+        try{
+            while (rs.next()) {
+                Message newMessage = new Message(rs);
+                mailBox.add(newMessage);
+            }
+        }
+        catch(SQLException e){
+            System.err.println("Error accessing message DB: " + e);
         }
     }
 
     public void removeMessage(Message message) {
-        message.deleteMessage();
+        //message.deleteMessage();
         mailBox.remove(message);
     }
 }

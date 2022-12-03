@@ -39,6 +39,7 @@ public class HomeJobSeekerController {
 
     public void showMailbox() {
         MailboxController mailboxController = new MailboxController(this.navigationController, this.user);
+        mailboxController.showMailbox();
     }
 
     public void showEditProfile() throws SQLException {

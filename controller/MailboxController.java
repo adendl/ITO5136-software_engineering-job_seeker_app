@@ -23,29 +23,30 @@ public class MailboxController {
 
 
     public void showMailbox() {
-        try {
             DefaultTableModel dft = mailBox.receivedMessageDft(user.getUserId());
             MailboxView view = new MailboxView(this);
+            view.getTblMessages().setModel(dft);
+            view.renderTable();
             navigationController.pushView(view);
-        }
-        catch (SQLException e) {
-            System.err.println("Error retrieving messages from DB: " + e);
-        }
     }
 
 
 
     public void deleteMessageAction(Message message) {
         mailBox.removeMessage(message);
+        message.deleteMessage();
     }
 
     public void showMessage(Message message) {
-        ReadMessageView view = new ReadMessageView(this);
+        message.changeMessageToRead();
+        ReadMessageView view = new ReadMessageView(this, message);
         navigationController.pushView(view);
         view.getFromText().setText(message.getSenderUserId());
         view.getSubjectText().setText(message.getSubject());
         view.getInvitationMessageTextPane().setText(message.getContents());
     }
+
+
 
 
 
