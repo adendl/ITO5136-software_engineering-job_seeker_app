@@ -192,9 +192,9 @@ public class Job {
         String sql = "select * from Job where ";
         for (int i = 0; i < keywords.size(); i++) {
             if (i == 0) {
-                sql += "(',' + RTRIM(keyword) + ',' ) LIKE '%,' + " + keywords.get(i).getKeywordId() + " + ',%'";
+                sql += "keyword LIKE '%" + keywords.get(i).getKeywordId() + "%'";
             } else {
-                sql += " OR (',' + RTRIM(keyword) + ',' ) LIKE '%,' + " + keywords.get(i).getKeywordId() + " + ',%'";
+                sql += " OR keyword LIKE '%" + keywords.get(i).getKeywordId() + "%'";
             }
         }
         System.out.println(sql);
