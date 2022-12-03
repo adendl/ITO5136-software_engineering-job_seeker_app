@@ -38,6 +38,7 @@ public class SearchAlgorithmController {
         this.searchResultsView = new SearchResultsView(this);
         searchResultsView.getSearchTextField().setText(searchString);
         loadTable();
+        searchResultsView.renderTable();
         navigationController.pushView(searchResultsView);
     }
 
