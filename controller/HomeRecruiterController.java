@@ -24,7 +24,7 @@ public class HomeRecruiterController {
     }
 
     public void showCreateJob() throws SQLException {
-        CreateJobController createJobController = new CreateJobController(navigationController);
+        CreateJobController createJobController = new CreateJobController(navigationController, user);
         createJobController.showCreateJob();
     }
 

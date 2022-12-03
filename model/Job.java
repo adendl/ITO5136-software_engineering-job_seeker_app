@@ -19,7 +19,7 @@ public class Job {
 
     private ArrayList<Keyword> keyword;
     private int locationId;
-    private int recruiterId;
+    private String recruiterId;
     private String salary;
     private String status;
 
@@ -42,7 +42,7 @@ public class Job {
     public Job() {
     }
 
-    public Job(String company, String description, LocalDate expiryDate, boolean isAdvertised, ArrayList<Keyword> keyword, int locationId, int recruiterId, String status, String title) {
+    public Job(String company, String description, LocalDate expiryDate, boolean isAdvertised, ArrayList<Keyword> keyword, int locationId, String recruiterId, String status, String title) {
         this.company = company;
         this.description = description;
         this.expiryDate = expiryDate;
@@ -62,7 +62,7 @@ public class Job {
         this.expiryDate = Date.valueOf(rs.getString("expiryDate")).toLocalDate();
         this.isAdvertised = rs.getBoolean("isAdvertised");
         this.locationId = rs.getInt("locationId");
-        this.recruiterId = rs.getInt("recruiterId");
+        this.recruiterId = rs.getString("recruiterId");
         this.salary = rs.getString("salary");
         this.status = rs.getString("status");
         this.keyword = Keyword.getKeywordListByIds(rs.getString("keyword"));
@@ -119,11 +119,11 @@ public class Job {
         this.locationId = locationId;
     }
 
-    public int getRecruiterId() {
+    public String getRecruiterId() {
         return recruiterId;
     }
 
-    public void setRecruiterId(int recruiterId) {
+    public void setRecruiterId(String recruiterId) {
         this.recruiterId = recruiterId;
     }
 
@@ -180,7 +180,7 @@ public class Job {
     public static ResultSet listJobsCategoriesFilter(ArrayList<Keyword> keywords)
     {
         DBConnection db = DBConnection.get();
-        String sql = "select * from Job where";
+        String sql = "select * from Job where ";
         for (int i = 0; i < keywords.size(); i++) {
             if (i == 0) {
                 sql += "(',' + RTRIM(keyword) + ',' ) LIKE '%,' + " + keywords.get(i).getKeywordId() + " + ',%'";
@@ -233,7 +233,7 @@ public class Job {
                 '"' +   status + '"' + ", " +
                 '"' +   salary + '"' + ", " +
                 locationId + ", " +
-                recruiterId + ", " +
+                '"' +   recruiterId + '"' + ", " +
                 '"' +   LocalDate.now().plusMonths(1) + '"' + ", " +
                 '"' +   description + '"' + ", " +
                        "'False'," +
@@ -250,9 +250,11 @@ public class Job {
 
         if (Keyword.getKeywordByValue(title).getString("keywordId") == null)
         {
+            System.out.println("KEYWORD CREATED");
             new Keyword("jobTitle", title).createKeyword();
         }
         updateJob(jobId, "keyword", (Job.getJob(jobId).getString("keyword") + Keyword.getKeywordByValue(title).getString("keywordId")));
+        updateJob(jobId, "keyword", (Job.getJob(jobId).getString("keyword") + "," + Keyword.getKeywordByValue(salary).getString("keywordId")));
         System.out.println("job ID = " + jobId);
     }
 
