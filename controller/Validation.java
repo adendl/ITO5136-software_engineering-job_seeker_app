@@ -50,4 +50,8 @@ public class Validation {
         }
         return true;
     }
+
+    public static boolean notEmpty (String str) {
+        return !str.trim().equals("");
+    }
 }
