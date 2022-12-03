@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class JobSearchController {
     public SearchJobView getSearchJobView() {
@@ -68,11 +70,37 @@ public class JobSearchController {
          */
     }
 
-    public void doSearch(String searchString) {
+    public void doSearch(String searchString) throws SQLException {
+
         //get all field attributes and search term and run through matching algorithm
+        createSearchQuery(searchString);
         // TODO: JobSearchView passes in parameters here, we have SearchAlgorithmController do the work, then call showResults
         SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, user);
         //searchAlgorithmController.performSearch(searchString);
+    }
+
+    public ArrayList<Keyword> createSearchQuery(String searchString) throws SQLException {
+        ArrayList<Keyword> keywords = new ArrayList<Keyword>();
+        List<String> items = Arrays.asList(searchString.split("\\s+"));
+        for (int i = 0; i < items.size(); i++)
+        {
+            keywords.add(new Keyword(items.get(i)));
+        }
+        for (int i = 0; i < keywords.size(); i++)
+        {
+            ResultSet rs = Keyword.getKeywordByValueLike(keywords.get(i).getKeywordValue());
+            keywords.get(i).setKeywordId(rs.getInt("keywordId"));
+            keywords.get(i).setKeywordType(rs.getString("keywordType"));
+        }
+
+        //print keyword list
+        for (int i = 0; i < keywords.size(); i++)
+        {
+            System.out.println(keywords.get(i).getKeywordId());
+        }
+        return keywords;
+
+
     }
 
     public void doProfileSearch() {

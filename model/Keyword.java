@@ -51,6 +51,10 @@ public class Keyword {
         this.keywordValue = keywordValue;
     }
 
+    public Keyword(String keywordValue) {
+        this.keywordValue = keywordValue;
+    }
+
     @Override
     public boolean equals(Object ob)
     {
@@ -69,6 +73,11 @@ public class Keyword {
     }
     public static ResultSet getKeywordByValue(String keywordValue) {
         ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordValue='" + keywordValue + "'");
+        return rs;
+    }
+
+    public static ResultSet getKeywordByValueLike(String keywordValue) {
+        ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordValue like'%" + keywordValue + "%'");
         return rs;
     }
 
