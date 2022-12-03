@@ -45,8 +45,4 @@ public class ListJobsController {
         }
         navigationController.pushView(job);
     }
-
-
-
-
 }
