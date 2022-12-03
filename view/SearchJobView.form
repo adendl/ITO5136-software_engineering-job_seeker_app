@@ -56,15 +56,7 @@
         </constraints>
         <properties>
           <editable value="false"/>
-          <model>
-            <item value=""/>
-            <item value="0-20k"/>
-            <item value="20-40k"/>
-            <item value="40-80k"/>
-            <item value="80-120k"/>
-            <item value="120-150k"/>
-            <item value="150k+"/>
-          </model>
+          <model/>
         </properties>
       </component>
       <component id="e9a6e" class="javax.swing.JLabel" binding="salaryRangeLabel">
