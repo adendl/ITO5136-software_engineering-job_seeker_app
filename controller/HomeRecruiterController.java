@@ -21,7 +21,7 @@ public class HomeRecruiterController {
         navigationController.pushView(view);
     }
 
-    public void showCreateJob() {
+    public void showCreateJob() throws SQLException {
         CreateJobController createJobController = new CreateJobController(navigationController);
         createJobController.showCreateJob();
     }

@@ -1,19 +1,27 @@
 package controller;
 
+import model.Keyword;
+import model.Location;
 import view.CreateJobView;
 import model.Job;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class CreateJobController {
     NavigationController navigationController;
+    CreateJobView createJobView;
     public CreateJobController(NavigationController navigationController){
         this.navigationController = navigationController;
     }
 
-    public void showCreateJob() {
-        CreateJobView createJobView = new CreateJobView(this);
+    public void showCreateJob() throws SQLException {
+        this.createJobView = new CreateJobView(this);
+        loadCities();
+        loadCategories();
         navigationController.pushView(createJobView);
     }
 
@@ -25,4 +33,23 @@ public class CreateJobController {
         job.setCompany(company);
         job.createJob();
     }
+
+    public void loadCategories() throws SQLException {
+        ResultSet rs = Keyword.listCategories();
+        createJobView.getCategoryComboBox().addItem("");
+        while (rs.next())
+        {
+            createJobView.getCategoryComboBox().addItem(rs.getString("keywordValue"));
+        }
+    }
+
+    public void loadCities() throws SQLException {
+        ResultSet rs = Location.listLocations();
+        createJobView.getLocationComboBox().addItem("");
+        while (rs.next())
+        {
+            createJobView.getLocationComboBox().addItem(rs.getString("city"));
+        }
+    }
+
 }
