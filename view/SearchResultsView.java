@@ -45,6 +45,9 @@ public class SearchResultsView implements UIView {
 
         TableModelCreator.addActionColumn((DefaultTableModel) table1.getModel(), "Job Details", "More Details", listener);
 
+        table1.removeColumn(table1.getColumn("LocationId"));
+        table1.removeColumn(table1.getColumn("Recruiter"));
+        table1.removeColumn(table1.getColumn("Status"));
         table1.removeColumn(table1.getColumn("IsAdvertised"));
         table1.removeColumn(table1.getColumn("JobObject"));
 
