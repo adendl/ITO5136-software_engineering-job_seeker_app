@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import controller.HomeRecruiterController;
+import controller.ListJobsController;
 import model.Job;
 import model.JobList;
 import model.TableModelCreator;
@@ -20,36 +21,15 @@ public class JobListingsView implements UIView {
     private JTable jobListingsTable;
     private JButton populateTable;
     private JLabel headingText;
-    private HomeRecruiterController controller;
+    private ListJobsController controller;
 
-    public JobListingsView(HomeRecruiterController controller) {
+    public JobListingsView(ListJobsController controller, DefaultTableModel dft) {
         this.controller = controller;
 
-        JobList jobList = new JobList();
-        ResultSet rs = jobList.listJobs();
-        try {
-            jobList.resultSetToJobList(rs);
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
-        DefaultTableModel dft = jobList.jobListToTableModel();
         ActionListener listener = e1 -> {
             int row = jobListingsTable.convertRowIndexToModel(jobListingsTable.getEditingRow());
             int col = jobListingsTable.getColumn("JobObject").getModelIndex();
-
-            JobDetailsView job = new JobDetailsView();
-            Job newJob = (Job) jobListingsTable.getModel().getValueAt(row, col);
-            job.getTxtCompany().setText(newJob.getCompany());
-            job.getTxtJobTitle().setText(newJob.getTitle());
-            job.getTxtJobDescription().setText(newJob.getDescription());
-            job.getTxtSalaryRange().setText(String.valueOf(newJob.getSalaryMin()));
-            job.getTxtSalaryRange().setText(String.valueOf(newJob.getSalaryMax()));
-            System.out.println(newJob.getLocationId());
-//            try {
-//                job.getTxtLocation().setText(newJob.getLocationFromDb(newJob.getLocationId()));
-//            } catch (SQLException ex) {
-//                throw new RuntimeException(ex);
-//            }
+            controller.showJobDetails((Job)jobListingsTable.getValueAt(row, col));
         };
 
         TableModelCreator.addActionColumn(dft, "Job Details", "More Details", listener);
@@ -64,17 +44,13 @@ public class JobListingsView implements UIView {
         jobListingsTable.setRowSelectionAllowed(false);
 
         JTableButtonRenderer renderer = new JTableButtonRenderer();
-        jobListingsTable.getColumn(jobListingsTable.getColumnName(jobListingsTable.getColumnCount() - 1)).setCellRenderer(renderer);
-        jobListingsTable.getColumn(jobListingsTable.getColumnName(jobListingsTable.getColumnCount() - 1)).setCellEditor(renderer);
+        jobListingsTable.getColumn("Job Details").setCellRenderer(renderer);
+        jobListingsTable.getColumn("Job Details").setCellEditor(renderer);
     }
 
 
     public JPanel getPanelMain() {
         return panelMain;
-    }
-
-    public void setJobListingsTable(JTable jobListingsTable) {
-        this.jobListingsTable = jobListingsTable;
     }
 
     @Override
@@ -83,7 +59,7 @@ public class JobListingsView implements UIView {
     }
 
     public static void main(String[] args) {
-        JobListingsView view = new JobListingsView(null);
+        JobListingsView view = new JobListingsView(null, null);
         ViewHelper.showStandaloneFrame(view);
     }
 }

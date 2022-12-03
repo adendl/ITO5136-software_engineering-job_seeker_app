@@ -1,17 +1,24 @@
 package controller;
 
-import model.DBConnection;
-import model.Job;
+import model.*;
+import view.JobDetailsView;
+import view.JobListingsView;
 import view.SearchJobView;
 import view.SearchResultsView;
 
+import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SearchAlgorithmController {
     private NavigationController navigationController;
     private SearchResultsView searchResultsView;
-    public SearchAlgorithmController(NavigationController navigationController) {
+    private JobSeeker user;
+    private JobList jobList;
+    public SearchAlgorithmController(NavigationController navigationController, JobSeeker user) {
         this.navigationController = navigationController;
+        this.user = user;
+        jobList = new JobList();
     }
 
     public void backToSearch(String newSearchText) {
@@ -20,22 +27,26 @@ public class SearchAlgorithmController {
         // otherwise we can grab it from the navigation stack (it should always be the previous item) so we don't need to pass
     }
 
-    public void performSearch(String searchString) {
+    public void performSearch(String searchString) throws SQLException {
         // TODO: actually run the search and collect some results to show
 
         showResults(searchString);
     }
 
-    public void showResults(String searchString) {
+    public void showResults(String searchString) throws SQLException {
         this.searchResultsView = new SearchResultsView(this);
         searchResultsView.getSearchTextField().setText(searchString);
         loadTable();
         navigationController.pushView(searchResultsView);
     }
 
-    public void loadTable()
-    {
-        ResultSet rs = Job.listJobs();
-        searchResultsView.getTable1().setModel(DBConnection.resultSetToTableModel(rs));
+    public void loadTable() throws SQLException {
+        DefaultTableModel dft = jobList.jobListDft();
+        searchResultsView.getTable1().setModel(dft);
     }
+
+    public void showJobDetails(Job newJob){
+        ApplyForJobController applyForJobController = new ApplyForJobController(navigationController, user, newJob);
+    }
+
 }

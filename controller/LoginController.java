@@ -112,7 +112,7 @@ public class LoginController {
     }
 
     public void showRecruiterHub(User user) {
-        HomeRecruiterController controller = new HomeRecruiterController(navigationController);
+        HomeRecruiterController controller = new HomeRecruiterController(navigationController, user);
         controller.showHub();
     }
 

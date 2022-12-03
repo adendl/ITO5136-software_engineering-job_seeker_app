@@ -28,7 +28,8 @@ public class JobSearchController {
 
     private SearchJobView searchJobView;
     private NavigationController navigationController;
-    public JobSearchController(NavigationController navigationController){
+    private JobSeeker user;
+    public JobSearchController(NavigationController navigationController, JobSeeker user){
         this.navigationController = navigationController;
         /*
         searchJobView.addSearchJobButtonListener(new ActionListener() {
@@ -70,16 +71,16 @@ public class JobSearchController {
     public void doSearch(String searchString) {
         //get all field attributes and search term and run through matching algorithm
         // TODO: JobSearchView passes in parameters here, we have SearchAlgorithmController do the work, then call showResults
-        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController);
-        searchAlgorithmController.performSearch(searchString);
+        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, user);
+        //searchAlgorithmController.performSearch(searchString);
     }
 
     public void doProfileSearch() {
         // TODO: similar to the above, but we're just using the user profile data?
-        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController);
+        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, user);
         // not sure if we'd use the same performSearch or if we need something different for profile-based search
         // end result should be the same though, it's only the search inputs that change
-        searchAlgorithmController.performSearch("INSERT STRING");
+       // searchAlgorithmController.performSearch("INSERT STRING");
     }
 
     public void showSearch() throws SQLException {

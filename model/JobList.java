@@ -16,7 +16,7 @@ public class JobList {
 
     public JobList(){
         jobList = new ArrayList<Job>();
-        colHeader = new Vector<String>(List.of("Job Id", "Category Id", "Company", "Description", "Expiry Date", "Recruiter", "LocationId", "Max Salary", "Min Salary", "Status", "Date Created", "Job Title", "IsAdvertised", "JobObject"));
+        colHeader = new Vector<String>(List.of("Job Id", "Keywords", "Company", "Description", "Expiry Date", "Recruiter", "LocationId", "Max Salary", "Min Salary", "Status", "Date Created", "Job Title", "IsAdvertised", "JobObject"));
     }
 
     public JobList(ArrayList<Job> jobList){
@@ -54,16 +54,26 @@ public class JobList {
         return new DefaultTableModel(rows, colHeader);
     }
 
+    public DefaultTableModel jobListDft() {
+        resultSetToJobList(listJobs());
+        return jobListToTableModel();
+    }
+
     public ResultSet listJobs()
     {
         return DBConnection.queryDatabase("select * from Job");
     }
 
-    public void resultSetToJobList(ResultSet rs) throws SQLException {
-        while (rs.next()) {
-            Job newJob = new Job(rs);
-            jobList.add(newJob);
+    public void resultSetToJobList(ResultSet rs) {
+        try{
+            while (rs.next()) {
+                Job newJob = new Job(rs);
+                jobList.add(newJob);
+            }
         }
+            catch(Exception e) {
+                System.err.println("Error with JobList: " + e);
+            }
     }
 }
 

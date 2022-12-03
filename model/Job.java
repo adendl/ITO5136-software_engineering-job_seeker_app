@@ -266,5 +266,10 @@ public class Job {
         db.executeQuery(sql);
     }
 
+    public String getLocationFromDb(int locationId) throws SQLException {
+        ResultSet rs = DBConnection.queryDatabase("select city, state from Location where locationId=" + locationId);
+        return rs.getString(1) + ", " + rs.getString(2);
+    }
+
 
 }

@@ -8,12 +8,11 @@ import java.sql.SQLException;
 
 public class HomeJobSeekerController {
     NavigationController navigationController;
-    User user;
+     JobSeeker user;
 
     // TODO: we should probably have a User passed in here as well so we can pass it along as needed
     public HomeJobSeekerController(NavigationController navigationController, User user) {
         this.navigationController = navigationController;
-        this.user = user;
     }
 
     public void showHub() {
@@ -22,7 +21,7 @@ public class HomeJobSeekerController {
     }
 
     public void showJobSearch() throws SQLException {
-        JobSearchController jobSearchController = new JobSearchController(navigationController);
+        JobSearchController jobSearchController = new JobSearchController(navigationController, user);
         jobSearchController.showSearch();
     }
 
@@ -37,9 +36,17 @@ public class HomeJobSeekerController {
         navigationController.pushView(invitationsView);
     }
 
+    public void showMailbox() {
+        MailboxController mailboxController = new MailboxController(this.navigationController, this.user);
+    }
+
     public void showEditProfile() throws SQLException {
         // TODO: we should have a legit user object already, instead of this placeholder
         // this placeholder user just gives us something to fill the form fields
+        JobSeeker user = new JobSeeker();
+        user.setFirstName("Test");
+        user.setLastName("User");
+
 
         JobSeekerProfileController controller = new JobSeekerProfileController(navigationController, user);
         controller.showEditProfile();

@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.function.DoubleBinaryOperator;
 
 public class Message {
     private int messageId;
@@ -15,11 +16,12 @@ public class Message {
     private String messageType;
     private String senderUserId;
     private String recipientUserId;
+    private String messageStatus;
 
     public Message() {
     }
 
-    public Message(int messageId, String subject, String contents, LocalDate sendDate, int jobId, String messageType, String senderUserId, String recipientUserId) {
+    public Message(int messageId, String subject, String contents, LocalDate sendDate, int jobId, String messageType, String senderUserId, String recipientUserId, String messageStatus) {
         this.messageId = messageId;
         this.subject = subject;
         this.contents = contents;
@@ -28,6 +30,7 @@ public class Message {
         this.messageType = messageType;
         this.senderUserId = senderUserId;
         this.recipientUserId = recipientUserId;
+        this.messageStatus = messageStatus;
     }
 
     public Message(ResultSet rs) throws SQLException {
@@ -39,6 +42,7 @@ public class Message {
         this.messageType = rs.getString("messageType");
         this.senderUserId = rs.getString("senderUserId");
         this.recipientUserId = rs.getString("recipientUserId");
+        this.messageStatus = rs.getString("messageStatus");
     }
 
 
@@ -103,23 +107,25 @@ public class Message {
         return recipientUserId;
     }
 
+    public String getMessageStatus() { return messageStatus; }
+
     public void setRecipientUserId(String recipientUserId) {
         this.recipientUserId = recipientUserId;
     }
+
+    public ResultSet getMessage()
+    {
+        ResultSet rs = DBConnection.queryDatabase("select * from Message where messageId=" + this.messageId);
+        return rs;
+    }
+
     public static ResultSet getMessage(int messageId)
     {
         ResultSet rs = DBConnection.queryDatabase("select * from Message where messageId=" + messageId);
         return rs;
     }
 
-    public static ResultSet listMessages(String recipientUserId)
-    {
-        ResultSet rs = DBConnection.queryDatabase("select * from Message where recipientUserId='" + recipientUserId + "'" );
-        return rs;
-    }
-
-    public void createMessage()
-    {
+    public void createMessage() {
         DBConnection conn = DBConnection.get();
         String sql = "INSERT INTO Message (recipientUserId, senderUserId, messageType, jobId, sendDate, contents, subject, messageId) VALUES (" +
                 '"' + recipientUserId + '"' + ", " +
@@ -137,6 +143,11 @@ public class Message {
         } catch (Exception e) {
             System.err.println("createMessage failed: " + e);
         }
+    }
+
+    public void deleteMessage()
+    {
+        DBConnection.queryDatabase("delete from Message where messageId=" + this.messageId);
     }
 
     public void deleteMessage(int messageId)
