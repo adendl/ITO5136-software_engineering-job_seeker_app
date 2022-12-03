@@ -29,7 +29,7 @@ public class Validation {
 
     public static boolean betweenLength(String str, int min, int max)
     {
-        if (str.length() > min && str.length() < max)
+        if (str.length() >= min && str.length() <= max)
         {
             return true;
         }
