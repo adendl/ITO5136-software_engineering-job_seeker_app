@@ -53,7 +53,7 @@ public class Mailbox {
         return db.executeQuery("select * from Message where recipientUserId='" + recipientUserId + "'" );
     }
 
-    public ResultSet listSentMessages(String senderUserId) throws SQLException {
+    public ResultSet listSentMessages(String senderUserId) {
         DBConnection db = DBConnection.get();
         return db.executeQuery("select * from Message where senderUserId='" + senderUserId + "'" );
     }
