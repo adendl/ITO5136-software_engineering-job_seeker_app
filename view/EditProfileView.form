@@ -108,27 +108,9 @@
         </constraints>
         <properties/>
       </component>
-      <component id="7f2fc" class="javax.swing.JButton" binding="uploadCoverLetterButton" default-binding="true">
-        <constraints>
-          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-14114329"/>
-          <text value="Upload Cover Letter"/>
-        </properties>
-      </component>
-      <component id="4a7fe" class="javax.swing.JButton" binding="uploadResumeButton" default-binding="true">
-        <constraints>
-          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-14114329"/>
-          <text value="Upload Resume"/>
-        </properties>
-      </component>
       <scrollpane id="99093">
         <constraints>
-          <grid row="5" column="1" row-span="7" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="1" row-span="6" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
