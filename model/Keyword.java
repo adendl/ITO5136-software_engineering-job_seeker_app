@@ -46,6 +46,11 @@ public class Keyword {
         this.keywordValue = keywordValue;
     }
 
+    public Keyword(String keywordType, String keywordValue) {
+        this.keywordType = keywordType;
+        this.keywordValue = keywordValue;
+    }
+
     @Override
     public boolean equals(Object ob)
     {
@@ -110,7 +115,7 @@ public class Keyword {
         return rs;
     }
 
-    public void createJobCategory() {
+    public void createKeyword() {
         String sql = "INSERT INTO Keyword (keywordId, keywordType, keywordValue) VALUES (null, " + '"' + keywordType + '"' + ',' + '"' + keywordValue + '"' + ")";
         System.out.println(sql);
         DBConnection.queryDatabase(sql);

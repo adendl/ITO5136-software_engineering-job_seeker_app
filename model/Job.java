@@ -245,6 +245,7 @@ public class Job {
                 null + ")";
         System.out.println(sql);
         db.executeQuery(sql);
+        new Keyword("jobTitle", title).createKeyword();
         try {
             setJobId(db.getLatestItemId("Job"));
         } catch (Exception e) {
