@@ -91,6 +91,10 @@ public class JobSearchController {
             ResultSet rs = Keyword.getKeywordByValueLike(keywords.get(i).getKeywordValue());
             keywords.get(i).setKeywordId(rs.getInt("keywordId"));
             keywords.get(i).setKeywordType(rs.getString("keywordType"));
+            if (keywords.get(i).getKeywordId() == 0)
+            {
+                keywords.remove(i);
+            }
         }
 
         //print keyword list
