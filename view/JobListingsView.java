@@ -31,12 +31,11 @@ public class JobListingsView implements UIView {
         ActionListener listener = e1 -> {
             int row = jobListingsTable.convertRowIndexToModel(jobListingsTable.getEditingRow());
             int col = (jobListingsTable.getModel().getColumnCount() - 2);
-            controller.showJobDetails((Job)table1.getModel().getValueAt(row, col));
+            controller.showJobDetails((Job)jobListingsTable.getModel().getValueAt(row, col));
             System.out.println("Go to Job View");
         };
 
-        TableModelCreator.addActionColumn((DefaultTableModel) table1.getModel(), "Job Details", "More Details", listener);
-        TableColumnModel tcm = table1.getColumnModel();
+        TableModelCreator.addActionColumn((DefaultTableModel) jobListingsTable.getModel(), "Job Details", "More Details", listener);
 
         jobListingsTable.removeColumn(jobListingsTable.getColumn("IsAdvertised"));
         jobListingsTable.removeColumn(jobListingsTable.getColumn("JobObject"));
@@ -65,7 +64,7 @@ public class JobListingsView implements UIView {
     }
 
     public static void main(String[] args) {
-        JobListingsView view = new JobListingsView(null, null);
-        ViewHelper.showStandaloneFrame(view);
+        //JobListingsView view = new JobListingsView(null, null);
+       // ViewHelper.showStandaloneFrame(view);
     }
 }
