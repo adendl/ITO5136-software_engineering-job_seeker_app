@@ -31,7 +31,7 @@ public class HomePageJobSeekerView implements UIView {
             controller.showJobApplications();
         });
         viewInvitationsButton.addActionListener((e) -> {
-            controller.showInvitations();
+            controller.showMailbox();
         });
         editProfileButton.addActionListener((e) -> {
             try {
