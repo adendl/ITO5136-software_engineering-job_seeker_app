@@ -22,10 +22,15 @@ public class MailboxController {
     }
 
 
-    public void showMailbox() throws SQLException {
-        DefaultTableModel dft = mailBox.receivedMessageDft(user.getUserId());
-        MailboxView view = new MailboxView(this);
-        navigationController.pushView(view);
+    public void showMailbox() {
+        try {
+            DefaultTableModel dft = mailBox.receivedMessageDft(user.getUserId());
+            MailboxView view = new MailboxView(this);
+            navigationController.pushView(view);
+        }
+        catch (SQLException e) {
+            System.err.println("Error retrieving messages from DB: " + e);
+        }
     }
 
 
