@@ -38,7 +38,7 @@ public class ListJobsController {
         job.getTxtSalaryRange().setText(newJob.getSalary());
         System.out.println(newJob.getLocationId());
         try {
-            jobDetailsView.getTxtLocation().setText(newJob.getLocationFromDb());
+            job.getTxtLocation().setText(newJob.getLocationFromDb());
         }
         catch(SQLException e) {
             System.err.println("Unable to retrieve Job Location from DB: " + e);
