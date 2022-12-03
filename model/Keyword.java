@@ -94,6 +94,23 @@ public class Keyword {
         return keywordList;
     }
 
+    public static Keyword getKeywordObjectByName(String keywordName) throws SQLException {
+        ResultSet rs = listKeywords();
+        while(rs.next()){
+            String result = rs.getString("keywordValue");
+            System.out.println(result);
+            System.out.println(keywordName);
+            if (result.equals(keywordName)){
+                Keyword keyword = new Keyword();
+                keyword.setKeywordId(rs.getInt("keywordId"));
+                keyword.setKeywordValue(keywordName);
+                keyword.setKeywordType(rs.getString("keywordType"));
+                return keyword;
+            }
+        }
+        return null;
+    }
+
     public static ResultSet listKeywords() {
         ResultSet rs = DBConnection.queryDatabase("select * from Keyword");
         return rs;

@@ -3,20 +3,30 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import controller.NavigationController;
+import controller.CreateJobController;
 import view.UIView;
 import view.ViewHelper;
+import model.Job;
 
 public class ConfirmPage implements UIView {
     private JButton yesButton;
     private JButton noButton;
     private JPanel panelMain;
+    private JLabel Confrim;
+    private CreateJobController createJobControllercontroller;
     private NavigationController navigationController;
 
-    public ConfirmPage(NavigationController navigationController) {
-        this.navigationController = navigationController;
-
+    public ConfirmPage(NavigationController navigationController,CreateJobController createJobController, Job job) {
+        this.createJobControllercontroller = createJobController;
+        yesButton.addActionListener((e -> {
+            job.createJob();
+            JOptionPane.showMessageDialog(null, "Your Job has been listed", "InfoBox: Job Listed", JOptionPane.INFORMATION_MESSAGE);
+            navigationController.doBack();
+        }));
+        noButton.addActionListener((e -> {
+            navigationController.doBack();
+        }));
     }
     public JButton getYesButton() {
         return yesButton;
@@ -30,14 +40,6 @@ public class ConfirmPage implements UIView {
         return panelMain;
     }
 
-    public void addYesButtonListener(ActionListener yesButtonListener) {
-        yesButton.addActionListener(yesButtonListener);
-    }
-
-    public void addNoButtonListener(ActionListener noButtonListener) {
-        noButton.addActionListener(noButtonListener);
-    }
-
     @Override
     public JComponent getUIView() {
         return panelMain;
@@ -45,7 +47,7 @@ public class ConfirmPage implements UIView {
 
     public static void main(String[] args)
     {
-       // ConfirmPage c = new ConfirmPage();
-       // ViewHelper.showStandaloneFrame(c);
+        //ConfirmPage c = new ConfirmPage();
+        //ViewHelper.showStandaloneFrame(c);
     }
 }

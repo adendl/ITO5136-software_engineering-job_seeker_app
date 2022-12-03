@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import controller.Validation;
 import view.UIView;
@@ -28,7 +29,11 @@ public class CreateUserView implements UIView {
     public CreateUserView(LoginController controller) {
         this.controller = controller;
         createAccountButton.addActionListener((e) -> {
-            createAccount();
+            try {
+                createAccount();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
         });
     }
 
@@ -65,7 +70,7 @@ public class CreateUserView implements UIView {
         return true;
     }
 
-    private void createAccount() {
+    private void createAccount() throws SQLException {
         String email  = emailText.getText();
         String password = String.valueOf(enterPasswordText.getPassword());
         String passwordConfirm = String.valueOf(confirmPasswordText.getPassword());

@@ -46,6 +46,7 @@ public class ApplyForJobController {
         jobApplication.setJobId(job.getJobId());
         jobApplication.setResumeId(resumeId);
         //TODO: create in db.
+        jobApplication.createJobApplication();
         //show appliedJobView
         AppliedJobView appliedJobView = new AppliedJobView(this);
         //populate applied job view.

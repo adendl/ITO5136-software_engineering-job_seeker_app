@@ -17,7 +17,7 @@ public class HomePageRecruiterView implements UIView {
     private JButton viewMailboxButton;
     private HomeRecruiterController controller;
 
-    public HomePageRecruiterView(HomeRecruiterController controller) {
+    public HomePageRecruiterView(HomeRecruiterController controller){
         this.controller = controller;
         createNewJobButton.addActionListener((e) -> {
             try {

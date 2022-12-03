@@ -2,23 +2,24 @@ package controller;
 
 import model.Keyword;
 import view.*;
-import model.User;
 import model.Recruiter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class HomeRecruiterController {
     NavigationController navigationController;
-    User user;
-    public HomeRecruiterController(NavigationController navigationController, User user){
+    Recruiter user;
+    public HomeRecruiterController(NavigationController navigationController, Recruiter user){
         this.navigationController = navigationController;
         this.user = user;
     }
 
-    public void showHub() {
+    public Recruiter getUser(){
+        return user;
+    }
+
+    public void showHub() throws SQLException {
         HomePageRecruiterView view = new HomePageRecruiterView(this);
         navigationController.pushView(view);
     }
@@ -35,7 +36,7 @@ public class HomeRecruiterController {
 
     public void showEditProfile() {
         // TODO: create a view for this and show it here
-        RecruiterProfileController controller = new RecruiterProfileController(navigationController);
+        RecruiterProfileController controller = new RecruiterProfileController(navigationController, user);
         controller.showEditRecruiter();
     }
 

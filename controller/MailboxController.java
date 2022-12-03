@@ -66,7 +66,7 @@ public class MailboxController {
     }
 
        public void confirmSend(Message message){
-        ConfirmPage confirmPage = new ConfirmPage(navigationController);
+        ConfirmPage confirmPage = new ConfirmPage(navigationController, null, null);
         confirmPage.getYesButton().addActionListener(e -> {
             message.createMessage();
             CompletionPage completionPage = new CompletionPage(navigationController);

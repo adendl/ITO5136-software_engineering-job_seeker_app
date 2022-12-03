@@ -49,7 +49,9 @@ public class JobApplicationView implements UIView {
             String lastName = lastNameText.getText();
             String email = emailText.getText();
             String phone = phoneText.getText();
-            controller.doJobApply(firstName, lastName, email, phone, resumeId, coverLetterId);
+            String resumeId = "1";
+            String coverLetterId = "1";
+            controller.doJobApply(firstName, lastName, email, phone, Integer.valueOf(resumeId), Integer.valueOf(coverLetterId));
         }));
         browseResumeButton.addActionListener((e -> {
             //upload resume
@@ -139,7 +141,9 @@ public class JobApplicationView implements UIView {
     }
 
     public static void main(String[] args) {
-        JobApplicationView view = new JobApplicationView(null);
+        NavigationController navigationController = new NavigationController();
+        ApplyForJobController applyForJobController = new ApplyForJobController(navigationController, null, null);
+        JobApplicationView view = new JobApplicationView(applyForJobController);
         ViewHelper.showStandaloneFrame(view);
     }
 }

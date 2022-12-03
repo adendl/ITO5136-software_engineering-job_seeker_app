@@ -15,6 +15,7 @@ import java.time.LocalDate;
 
 public class LoginController {
     NavigationController navigationController;
+    User user;
 
     public LoginController(NavigationController navigationController) {
         this.navigationController = navigationController;
@@ -39,7 +40,7 @@ public class LoginController {
     }
 
     // create a new account when the view's button is clicked
-    public void doCreateAccount(String firstName, String lastName, String email, String password, int userType) {
+    public void doCreateAccount(String firstName, String lastName, String email, String password, int userType) throws SQLException {
         //create object, add to constructor and call method to add to db
         switch (userType) {
             //job seeker selection
@@ -54,9 +55,11 @@ public class LoginController {
                 User recruiterUser = new User(email, firstName, lastName, password, "RECRUITER", LocalDate.now(), "Active");
                 recruiterUser.createUser();
                 Recruiter newRecruiter = new Recruiter(email);
-                //adds to db.
-                //set to logged in and sends to homepage
-                showRecruiterHub(recruiterUser);
+                newRecruiter.setFirstName(firstName);
+                newRecruiter.setLastName(lastName);
+                newRecruiter.setUserId(email);
+                newRecruiter.createRecruiter();
+                showRecruiterHub(newRecruiter);
                 break;
             //admin selection
             case 2:
@@ -81,7 +84,8 @@ public class LoginController {
                         showSeekerHub(user);
                         break;
                     case "RECRUITER":
-                        showRecruiterHub(user);
+                        Recruiter recruiter = Recruiter.getRecruiterObjectByUserId(email);
+                        showRecruiterHub(recruiter);
                         break;
                     case "ADMIN":
                         showAdminHub(user);
@@ -111,7 +115,7 @@ public class LoginController {
         controller.showHub();
     }
 
-    public void showRecruiterHub(User user) {
+    public void showRecruiterHub(Recruiter user) throws SQLException {
         HomeRecruiterController controller = new HomeRecruiterController(navigationController, user);
         controller.showHub();
     }

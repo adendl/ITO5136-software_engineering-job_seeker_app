@@ -14,9 +14,7 @@ public class Job {
     private String company;
     private String description;
     private LocalDate expiryDate;
-
     private boolean isAdvertised;
-
     private ArrayList<Keyword> keyword;
     private int locationId;
     private int recruiterId;

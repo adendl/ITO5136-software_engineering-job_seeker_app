@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Location {
     private int locationId;
@@ -52,6 +53,15 @@ public class Location {
     {
         ResultSet rs = DBConnection.queryDatabase("select * from Location where city='" + city + "'");
         return rs;
+    }
+
+    public static Location getLocationObjectByName(String city) throws SQLException {
+        ResultSet rs = DBConnection.queryDatabase("select * from Location where city='" + city + "'");
+        Location location = new Location();
+        location.setLocationId(rs.getInt("locationId"));
+        location.setCity(city);
+        location.setState(rs.getString("state"));
+        return location;
     }
 
     public static ResultSet listLocations()

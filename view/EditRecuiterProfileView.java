@@ -15,37 +15,32 @@ public class EditRecuiterProfileView implements UIView {
     private JTextField lastNameText;
     private JLabel emailLabel;
     private JTextField emailText;
-    private JLabel phoneNumberLabel;
     private JLabel lastNameLabel;
-    private JTextField phoneNumberText;
     private JLabel companyLabel;
     private JTextField companyText;
     private JButton submitButton;
     private RecruiterProfileController controller;
 
-    public EditRecuiterProfileView(RecruiterProfileController controller){
+    public EditRecuiterProfileView(RecruiterProfileController controller, Recruiter user){
         this.controller = controller;
+        setRecruiterDetails(user);
         submitButton.addActionListener((e -> {
                 submitUpdate();
         }));
     }
 
+    public void setRecruiterDetails(Recruiter user){
+        firstNameText.setText(user.getFirstName());
+        lastNameText.setText(user.getLastName());
+        emailText.setText(user.getUserId());
+        companyText.setText(user.getCompany());
+    }
     public void submitUpdate(){
         String firstName = firstNameText.getText();
         String lastName = lastNameText.getText();
         String email = emailText.getText();
-        String phone = phoneNumberText.getText();
         String company = companyText.getText();
-
-        controller.updateProfile(firstName, lastName, email, phone, company);
-    }
-
-    public void populateForUser(Recruiter user){
-        firstNameText.setText(user.getFirstName());
-        lastNameText.setText(user.getLastName());
-        emailText.setText("");
-        phoneNumberText.setText("");
-        companyText.setText(user.getCompany());
+        controller.updateProfile(firstName, lastName, email, company);
     }
 
     @Override
