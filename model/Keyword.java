@@ -95,6 +95,11 @@ public class Keyword {
         return rs;
     }
 
+    public static ResultSet listSalary() {
+        ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordType='salary'");
+        return rs;
+    }
+
     public static ResultSet listSkills() {
         ResultSet rs = DBConnection.queryDatabase("select * from Keyword where keywordType='skill'");
         return rs;

@@ -33,8 +33,7 @@ public class ListJobsController {
         job.getTxtCompany().setText(newJob.getCompany());
         job.getTxtJobTitle().setText(newJob.getTitle());
         job.getTxtJobDescription().setText(newJob.getDescription());
-        job.getTxtSalaryRange().setText(String.valueOf(newJob.getSalaryMin()));
-        job.getTxtSalaryRange().setText(String.valueOf(newJob.getSalaryMax()));
+        job.getTxtSalaryRange().setText(newJob.getSalary());
         System.out.println(newJob.getLocationId());
 //            try {
 //                job.getTxtLocation().setText(newJob.getLocationFromDb(newJob.getLocationId()));

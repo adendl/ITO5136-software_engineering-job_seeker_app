@@ -88,6 +88,7 @@ public class JobSearchController {
         navigationController.pushView(searchJobView);
         loadCategories();
         loadLocations();
+        loadSalary();
     }
 
     public void loadCategories() throws SQLException {
@@ -105,6 +106,15 @@ public class JobSearchController {
         while (rs.next())
         {
             searchJobView.getLocationComboBox().addItem(rs.getString("city"));
+        }
+    }
+
+    public void loadSalary() throws SQLException {
+        ResultSet rs = Keyword.listSalary();
+        searchJobView.getSalaryComboBox().addItem("");
+        while (rs.next())
+        {
+            searchJobView.getSalaryComboBox().addItem(rs.getString("keywordValue"));
         }
     }
 }
