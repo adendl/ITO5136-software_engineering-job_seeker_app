@@ -75,6 +75,7 @@ public class Job {
         this.recruiterId = rs.getString("recruiterId");
         this.salary = rs.getString("salary");
         this.status = rs.getString("status");
+        this.keyword = Keyword.getKeywordListByIds(rs.getString("keyword"));
         this.dateCreated = Date.valueOf(rs.getString("dateCreated")).toLocalDate();
         this.title = rs.getString("title");
     }
@@ -293,5 +294,35 @@ public class Job {
             location = "";
         }
             return location;
+    }
+
+    public String categoriesToString(){
+        StringBuilder categories = new StringBuilder();
+        for (int i = 0; i < keyword.size(); i++){
+            Keyword key = keyword.get(i);
+            if(i < keyword.size() -1 && key.getKeywordType().equals("category")){
+                categories.append(key.getKeywordValue());
+                categories.append(", ");
+            }
+            else if(key.getKeywordType().equals("category")){
+                categories.append(key.getKeywordValue());
+            }
+        }
+        return categories.toString();
+    }
+
+    public String skillsToString(){
+        StringBuilder skills = new StringBuilder();
+        for (int i = 0; i < keyword.size(); i++){
+            Keyword key = keyword.get(i);
+            if(i < keyword.size() -1 && key.getKeywordType().equals("skill")){
+                skills.append(key.getKeywordValue());
+                skills.append(", ");
+            }
+            else if(key.getKeywordType().equals("skill")){
+                skills.append(key.getKeywordValue());
+            }
+        }
+        return skills.toString();
     }
 }

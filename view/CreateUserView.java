@@ -54,12 +54,12 @@ public class CreateUserView implements UIView {
         }
         if (!Validation.betweenLength(firstName, 2,255))
         {
-            getController().displayErrrorMessage("Names need to be between 8-255 characters", "Invalid Name");
+            getController().displayErrrorMessage("Names need to be between 2-255 characters", "Invalid Name");
             return false;
         }
         if (!Validation.betweenLength(lastName, 2,255))
         {
-            getController().displayErrrorMessage("Names need to be between 8-255 characters", "Invalid Name");
+            getController().displayErrrorMessage("Names need to be between 2-255 characters", "Invalid Name");
             return false;
         }
         return true;

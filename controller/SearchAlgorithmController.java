@@ -48,6 +48,10 @@ public class SearchAlgorithmController {
         jobDetailsView.getTxtJobTitle().setText(newJob.getTitle());
         jobDetailsView.getTxtCompany().setText(newJob.getCompany());
         jobDetailsView.getTxtLocation().setText(newJob.getLocationFromDb());
+        jobDetailsView.getTxtJobDescription().setText(newJob.getDescription());
+        jobDetailsView.getTxtSalaryRange().setText(newJob.getSalary());
+        jobDetailsView.getTxtJobCategory().setText(newJob.categoriesToString());
+
 
         navigationController.pushView(jobDetailsView);
     }
