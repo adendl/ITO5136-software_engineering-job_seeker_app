@@ -43,7 +43,7 @@ public class ListJobsController {
         catch(SQLException e) {
             System.err.println("Unable to retrieve Job Location from DB: " + e);
         }
-        navigationController.pushView(jobDetailsView);
+        navigationController.pushView(job);
     }
 
 
