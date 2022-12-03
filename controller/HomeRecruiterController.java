@@ -1,5 +1,6 @@
 package controller;
 
+import model.Keyword;
 import view.*;
 import model.User;
 import model.Recruiter;
@@ -7,6 +8,7 @@ import model.Recruiter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class HomeRecruiterController {
     NavigationController navigationController;
@@ -37,9 +39,9 @@ public class HomeRecruiterController {
         controller.showEditRecruiter();
     }
 
-    public void showManageListedJobs() {
+    public void showManageListedJobs(ArrayList<Keyword> keywords) {
         ListJobsController listJobsController = new ListJobsController(this.navigationController, this.user);
-        listJobsController.renderListedJobs();
+        listJobsController.renderListedJobs(keywords);
     }
 
     public void showMailbox() {

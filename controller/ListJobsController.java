@@ -2,6 +2,7 @@ package controller;
 
 import model.Job;
 import model.JobList;
+import model.Keyword;
 import view.JobDetailsView;
 import view.JobListingsView;
 import model.User;
@@ -9,6 +10,7 @@ import model.User;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ListJobsController {
     private NavigationController navigationController;
@@ -19,11 +21,11 @@ public class ListJobsController {
         this.navigationController = navigationController;
         this.user = user;
         jobList = new JobList();
-        renderListedJobs();
+        renderListedJobs(new ArrayList<Keyword>());
     }
 
-    public void renderListedJobs() {
-        DefaultTableModel dft = jobList.jobListDft();
+    public void renderListedJobs(ArrayList<Keyword> keywords) {
+        DefaultTableModel dft = jobList.jobListDft(keywords);
         JobListingsView view = new JobListingsView(this);
         view.getJobListingsTable().setModel(dft);
         view.renderTable();

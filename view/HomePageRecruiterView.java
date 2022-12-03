@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import controller.HomeRecruiterController;
+import model.Keyword;
 
 public class HomePageRecruiterView implements UIView {
     private JButton createNewJobButton;
@@ -25,7 +27,7 @@ public class HomePageRecruiterView implements UIView {
             }
         });
         manageListedJobsButton.addActionListener((e) -> {
-            controller.showManageListedJobs();
+            controller.showManageListedJobs(new ArrayList<Keyword>());
         });
         editProfileButton.addActionListener((e) -> {
             controller.showEditProfile();

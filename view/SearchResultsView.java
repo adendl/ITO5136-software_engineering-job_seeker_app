@@ -30,7 +30,7 @@ public class SearchResultsView implements UIView {
     public SearchResultsView(SearchAlgorithmController controller) {
         this.controller = controller;
         searchButton.addActionListener((e) -> {
-            controller.backToSearch(searchTextField.getText());
+            controller.backToSearch();
         });
         // TODO: more button listeners? table can sort and scroll so the buttons for sorting and pagination are probably useless
     }

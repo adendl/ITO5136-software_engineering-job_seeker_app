@@ -54,15 +54,18 @@ public class JobList {
         return new DefaultTableModel(rows, colHeader);
     }
 
-    public DefaultTableModel jobListDft() {
-        resultSetToJobList(listJobs());
+    public DefaultTableModel jobListDft(ArrayList<Keyword> keywords) {
+        System.out.println("jobListDFT");
+        resultSetToJobList(listJobsKeywordFilter(keywords));
         return jobListToTableModel();
     }
 
     public ResultSet listJobs()
     {
-        return DBConnection.queryDatabase("select * from Job");
+        return Job.listJobs();
     }
+
+    public ResultSet listJobsKeywordFilter(ArrayList<Keyword> keywords) { return Job.listJobsCategoriesFilter(keywords);}
 
     public void resultSetToJobList(ResultSet rs) {
         try{
