@@ -75,11 +75,10 @@ public class JobSearchController {
     public void doSearch(String searchString) throws SQLException {
 
         //get all field attributes and search term and run through matching algorithm
-        createSearchQuery(searchString);
+        ArrayList<Keyword> keywords = createSearchQuery(searchString);
         // TODO: JobSearchView passes in parameters here, we have SearchAlgorithmController do the work, then call showResults
         SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, user);
-        searchAlgorithmController.showResults(searchString);
-        //searchAlgorithmController.performSearch(searchString);
+        searchAlgorithmController.showResults(keywords);
     }
 
     public ArrayList<Keyword> createSearchQuery(String searchString) throws SQLException {
