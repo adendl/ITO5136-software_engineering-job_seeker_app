@@ -81,11 +81,15 @@ public class JobSearchController {
 
     public ArrayList<Keyword> createSearchQuery(String searchString) throws SQLException {
         ArrayList<Keyword> keywords = new ArrayList<Keyword>();
+        ArrayList<Keyword> removeDuplicateKeyword = new ArrayList<Keyword>();
         List<String> items = Arrays.asList(searchString.split("\\s+"));
         for (int i = 0; i < items.size(); i++)
         {
             keywords.add(new Keyword(items.get(i)));
         }
+        keywords.add(new Keyword((String) searchJobView.getSalaryComboBox().getSelectedItem()));
+        keywords.add(new Keyword((String) searchJobView.getCategoriesComboBox().getSelectedItem()));
+
         for (int i = 0; i < keywords.size(); i++)
         {
             ResultSet rs = Keyword.getKeywordByValueLike(keywords.get(i).getKeywordValue());
@@ -96,14 +100,15 @@ public class JobSearchController {
                 keywords.remove(i);
             }
         }
-
-        //print keyword list
         for (int i = 0; i < keywords.size(); i++)
         {
-            System.out.println(keywords.get(i).getKeywordId());
+            if (!removeDuplicateKeyword.contains(keywords.get(i)))
+            {
+                removeDuplicateKeyword.add(keywords.get(i));
+                System.out.println(keywords.get(i).getKeywordValue());
+            }
         }
-        return keywords;
-
+        return removeDuplicateKeyword;
 
     }
 

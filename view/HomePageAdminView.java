@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import controller.HomeAdminController;
 import view.UIView;
@@ -19,7 +20,11 @@ public class HomePageAdminView implements UIView {
     public HomePageAdminView(HomeAdminController controller) {
         this.controller = controller;
         manageUsersButton.addActionListener((e) -> {
-            controller.showManageUsers();
+            try {
+                controller.showManageUsers();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
         });
         manageCategoriesButton.addActionListener((e) -> {
             controller.showManageCategories();

@@ -9,8 +9,8 @@ public class Recruiter extends User {
     public Recruiter() {
     }
 
-    public Recruiter(String company) {
-        this.company = company;
+    public Recruiter(String userId) {
+        this.userId = userId;
     }
 
     public Recruiter(String userId, String firstName, String lastName, String password, String userType, LocalDate dateCreated, String status, String company, ArrayList<Integer> categoryIdList) {

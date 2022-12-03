@@ -1,13 +1,9 @@
 package view;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
-import controller.HomeAdminController;
 import controller.ManageUsersController;
-import view.UIView;
-import view.ViewHelper;
 
 public class ManageUsersView implements UIView {
     private JPanel panelMain;
@@ -19,21 +15,19 @@ public class ManageUsersView implements UIView {
 
     private DefaultListModel<String> dlm = new DefaultListModel<String>();
 
-    public ManageUsersView(ManageUsersController controller) {
+    public ManageUsersView(ManageUsersController manageUsersController) {
+        this.controller = manageUsersController;
+    }
+
+    public void ManageUsersView(ManageUsersController controller) {
         this.controller = controller;
         manageUsersButton.addActionListener((e) -> {
-            System.out.println(manageUsersBox.getText());
-            if (dlm.contains(manageUsersBox.getText()))
-            {
-                System.out.println("NOT ALLOWED");
+            try {
+                controller.doLockUser(manageUsersBox.getText());
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
             }
-            else
-            {
-                dlm.addElement(manageUsersBox.getText());
-                userList.setModel(dlm);
-            }
-        });
-    }
+        });}
 
     public JPanel getPanelMain() {
         return panelMain;
