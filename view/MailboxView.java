@@ -31,8 +31,8 @@ public class MailboxView implements UIView {
     public void renderTable() {
         ActionListener deleteAction = e -> {
             int deleteRow = tblMessages.convertRowIndexToModel(tblMessages.getEditingRow());
-            int deleteCol = tblMessages.getColumnModel().getColumnIndex("Delete");
-            controller.deleteMessageAction((Message)tblMessages.getValueAt(deleteRow, deleteCol));
+            int objCol = (tblMessages.getModel().getColumnCount()-2);
+            controller.deleteMessageAction((Message)tblMessages.getValueAt(deleteRow, objCol));
             ((DefaultTableModel)tblMessages.getModel()).removeRow(deleteRow);
         };
         DefaultTableModel dft = (DefaultTableModel)tblMessages.getModel();

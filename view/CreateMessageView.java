@@ -1,24 +1,27 @@
 package view;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import view.UIView;
-import view.ViewHelper;
+
+import controller.MailboxController;
 
 
 public class CreateMessageView implements UIView {
     private JTextField subjectText;
-    private JTextPane invitationMessageTextPane;
+    private JTextPane messageTextPane;
     private JButton sendMessageButton;
     private JPanel panelMain;
     private JLabel toLabel;
     private JLabel subjectLabel;
     private JTextField toText;
-    private JLabel newInvitationMessageLabel;
+    private JLabel newMessageLabel;
+    private JLabel jobLabel;
+    private JTextField jobTextField;
+    private MailboxController mailboxController;
 
-    public CreateMessageView() {
+    public CreateMessageView(MailboxController mailboxController) {
+        this.mailboxController = mailboxController;
         sendMessageButton.addActionListener((e -> {
-
+            mailboxController.sendMessage(this);
         }));
     }
 
@@ -26,8 +29,8 @@ public class CreateMessageView implements UIView {
         return subjectText;
     }
 
-    public JTextPane getInvitationMessageTextPane() {
-        return invitationMessageTextPane;
+    public JTextPane getMessageTextPane() {
+        return messageTextPane;
     }
 
     public JPanel getMainPanel() {
@@ -38,6 +41,7 @@ public class CreateMessageView implements UIView {
         return toText;
     }
 
+    public JTextField getJobTextField() { return jobTextField; }
 
     @Override
     public JComponent getUIView() {
@@ -49,7 +53,7 @@ public class CreateMessageView implements UIView {
     }
 
     public static void main(String[] args) {
-        CreateMessageView view = new CreateMessageView();
-        ViewHelper.showStandaloneFrame(view);
+        //CreateMessageView view = new CreateMessageView();
+        //ViewHelper.showStandaloneFrame(view);
     }
 }

@@ -1,17 +1,13 @@
 package view;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import controller.MailboxController;
 import model.Message;
-import view.UIView;
-import view.ViewHelper;
 
 public class ReadMessageView implements UIView {
     private JTextField subjectText;
-    private JTextPane invitationMessageTextPane;
+    private JTextPane messageTextPane;
     private JPanel mainPanel;
     private JLabel fromLabel;
     private JLabel subjectLabel;
@@ -20,6 +16,8 @@ public class ReadMessageView implements UIView {
     private JButton deleteButton;
     private JTextField fromText;
     private JLabel titleLabel;
+    private JLabel jobLabel;
+    private JTextField jobTextField;
     private MailboxController controller;
     private Message message;
 
@@ -27,6 +25,7 @@ public class ReadMessageView implements UIView {
         this.controller = controller;
         this.message = message;
         replyButton.addActionListener((e -> {
+            controller.replyMessage(message);
 
         }));
         deleteButton.addActionListener((e -> {
@@ -39,8 +38,8 @@ public class ReadMessageView implements UIView {
         return subjectText;
     }
 
-    public JTextPane getInvitationMessageTextPane() {
-        return invitationMessageTextPane;
+    public JTextPane getMessageTextPane() {
+        return messageTextPane;
     }
 
     public JTextField getFromText() {
@@ -52,7 +51,9 @@ public class ReadMessageView implements UIView {
         return mainPanel;
     }
 
-
+    public JTextField getJobTextField() {
+        return jobTextField;
+    }
 
     public static void main(String[] args) {
        // ReadMessageView view = new ReadMessageView(null);

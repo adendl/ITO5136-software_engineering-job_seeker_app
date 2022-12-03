@@ -1,19 +1,15 @@
 package view;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import controller.HomeJobSeekerController;
-import view.UIView;
-import view.ViewHelper;
 
 public class HomePageJobSeekerView implements UIView {
     private JButton searchJobsButton;
     private JPanel panelMain;
     private JButton viewApplicationsButton;
-    private JButton viewInvitationsButton;
+    private JButton viewMailboxButton;
     private JButton editProfileButton;
     private HomeJobSeekerController controller;
 
@@ -30,7 +26,7 @@ public class HomePageJobSeekerView implements UIView {
         viewApplicationsButton.addActionListener((e) -> {
             controller.showJobApplications();
         });
-        viewInvitationsButton.addActionListener((e) -> {
+        viewMailboxButton.addActionListener((e) -> {
             controller.showMailbox();
         });
         editProfileButton.addActionListener((e) -> {
