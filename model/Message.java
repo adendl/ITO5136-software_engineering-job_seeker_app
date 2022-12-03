@@ -127,7 +127,7 @@ public class Message {
 
     public void createMessage() {
         DBConnection conn = DBConnection.get();
-        String sql = "INSERT INTO Message (recipientUserId, senderUserId, messageType, jobId, sendDate, contents, subject, messageId) VALUES (" +
+        String sql = "INSERT INTO Message (recipientUserId, senderUserId, messageType, jobId, sendDate, contents, subject, messageStatus, messageId) VALUES (" +
                 '"' + recipientUserId + '"' + ", " +
                 '"' + senderUserId + '"' + ", " +
                 '"' +  messageType + '"' + ", " +
@@ -135,6 +135,7 @@ public class Message {
                 '"' +   LocalDate.now() + '"' + ", " +
                 '"' +   contents + '"' + ", " +
                 '"' +  subject + '"' + ", " +
+                '"' +  messageStatus + '"' + ", " +
                 null + ")";
         System.out.println(sql);
         conn.executeQuery(sql);

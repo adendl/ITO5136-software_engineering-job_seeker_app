@@ -102,7 +102,7 @@ public class User {
         return rs;
     }
 
-    public ResultSet listUsers() {
+    public static ResultSet listUsers() {
         ResultSet rs = DBConnection.queryDatabase("select * from User");
         return rs;
     }
@@ -124,7 +124,7 @@ public class User {
         DBConnection.queryDatabase("delete from User where userId='" + userId + "'");
     }
 
-    public void updateUser(String userId, String fieldName, String value) {
+    public static void updateUser(String userId, String fieldName, String value) {
         String sql = "update User \nset " + fieldName + " = " + '"' + value + '"' + "\nwhere userId='" + userId + "'";
         System.out.println(sql);
         DBConnection.queryDatabase(sql);
