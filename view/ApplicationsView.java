@@ -18,20 +18,23 @@ public class ApplicationsView implements UIView {
     private JTable table1;
 
     private JLabel headingText;
-    private HomeJobSeekerController controller;
+    private HomeJobSeekerController homeJobSeekerController;
+    private ListApplicationsController listApplicationsController;
 
     public ApplicationsView(HomeJobSeekerController controller) {
+        this.homeJobSeekerController = controller;
     }
 
     public ApplicationsView(ListApplicationsController controller) {
+        this.listApplicationsController = controller;
     }
 
     public void renderTableForRecruiter(){
         ActionListener listener = e1 -> {
             int row = table1.convertRowIndexToModel(table1.getEditingRow());
             int col = (table1.getModel().getColumnCount() - 2);
-           // controller.showApplicationDetails((JobApplication)table1.getModel().getValueAt(row, col));
             System.out.println("Go Application View");
+            listApplicationsController.viewApplication((JobApplication)table1.getModel().getValueAt(row, col));
         };
 
         TableModelCreator.addActionColumn((DefaultTableModel) table1.getModel(), "Details", "More Details", listener);

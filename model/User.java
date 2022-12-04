@@ -35,6 +35,15 @@ public class User {
         this.status = result.getString("status");
     }
 
+    public User(String userId) throws SQLException {
+        ResultSet rs = getUser(userId);
+        this.userId = rs.getString("userId");
+        this.firstName = rs.getString("firstName");
+        this.lastName = rs.getString("lastName");
+        this.userType = rs.getString("userType");
+        this.status = rs.getString("status");
+    }
+
     public String getUserId() {
         return userId;
     }

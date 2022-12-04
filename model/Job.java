@@ -67,6 +67,21 @@ public class Job {
         this.dateCreated = LocalDate.now();
         this.title = title;
     }
+    public Job(int jobId) throws SQLException {
+        ResultSet rs = getJob(jobId);
+        this.jobId = rs.getInt("jobId");
+        this.company = rs.getString("company");
+        this.description = rs.getString("description");
+        this.expiryDate = Date.valueOf(rs.getString("expiryDate")).toLocalDate();
+        this.isAdvertised = rs.getBoolean("isAdvertised");
+        this.locationId = rs.getInt("locationId");
+        this.recruiterId = rs.getString("recruiterId");
+        this.salary = rs.getString("salary");
+        this.status = rs.getString("status");
+        this.keyword = Keyword.getKeywordListByIds(rs.getString("keyword"));
+        this.dateCreated = Date.valueOf(rs.getString("dateCreated")).toLocalDate();
+        this.title = rs.getString("title");
+    }
 
     public Job(ResultSet rs) throws SQLException {
         this.jobId = rs.getInt("jobId");

@@ -100,4 +100,15 @@ public class MailboxController {
 
         sendMessage(createMessageView);
     }
+
+    public void sendInvitationMessage(Job job, User applicant) {
+        CreateMessageView createMessageView = new CreateMessageView(this);
+        createMessageView.getToText().setText(user.getUserId());
+        createMessageView.getToText().setEnabled(false);
+        createMessageView.getSubjectText().setText("Interview Invitation for " + job.getTitle());
+        createMessageView.getJobTextField().setText(String.valueOf(job.getJobId()));
+        createMessageView.getMessageTextPane().setText("Hello,\n I would like to Invite you for an interview for the role of " + job.getTitle() + ".\nKind Regards");
+
+        sendMessage(createMessageView);
+    }
 }
