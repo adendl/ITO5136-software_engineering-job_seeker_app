@@ -7,7 +7,7 @@ import view.UIView;
  * Helper class for developing views
  */
 public class ViewHelper {
-    public final static int CONTENT_WIDTH = 1024;
+    public final static int CONTENT_WIDTH = 1200;
     public final static int CONTENT_HEIGHT = 768;
 
     /**
