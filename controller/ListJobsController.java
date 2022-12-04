@@ -77,4 +77,9 @@ public class ListJobsController {
 
     }
 
+    public void seeApplications(int jobId){
+        ListApplicationsController listApplicationsController= new ListApplicationsController(this.navigationController, this.user, jobId);
+        listApplicationsController.renderListedApplications();
+    }
+
 }

@@ -96,7 +96,6 @@ public class User {
     }
 
 
-
     public static ResultSet getUser(String userId) {
         ResultSet rs = DBConnection.queryDatabase("select * from User where userId='" + userId + "'");
         return rs;
@@ -105,6 +104,19 @@ public class User {
     public static ResultSet listUsers() {
         ResultSet rs = DBConnection.queryDatabase("select * from User");
         return rs;
+    }
+
+    public String getUserNameFromDB (String userId){
+        String userName;
+        try {
+            ResultSet rs = DBConnection.queryDatabase("select firstName, lastName from User where userId=" + "\"" + this.userId + "\"");
+            userName = (rs.getString("firstName") + " " + rs.getString("lastName"));
+            return userName;
+        }  catch(SQLException e) {
+            System.err.println("Error Retrieving User ID " + this.userId + " from DB: " + e);
+            userName = "";
+        }
+        return userName;
     }
 
     public void createUser() {

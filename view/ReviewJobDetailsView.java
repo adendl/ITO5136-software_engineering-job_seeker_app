@@ -40,7 +40,7 @@ public class ReviewJobDetailsView implements UIView {
         });
 
         btnViewApplications.addActionListener(e -> {
-            //controller
+            controller.seeApplications(Integer.parseInt(getTxtJobId().getText()));
         });
     }
 

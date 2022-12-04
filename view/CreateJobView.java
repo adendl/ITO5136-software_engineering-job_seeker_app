@@ -82,6 +82,8 @@ public class CreateJobView implements UIView {
 
     public CreateJobView(CreateJobController controller) {
         this.controller = controller;
+
+
     }
 
     public void setBtnToCreate(){
