@@ -12,6 +12,15 @@ public class JobApplication {
     private int jobId;
     private int resumeId;
     private int messageId;
+    private double matchScore;
+
+    public double getMatchScore() {
+        return matchScore;
+    }
+
+    public void setMatchScore(double matchScore) {
+        this.matchScore = matchScore;
+    }
 
     public JobApplication(int applicationId, String applicantId, LocalDate dateApplied, int jobId, int resumeId, int messageId) {
         this.applicationId = applicationId;
@@ -109,14 +118,16 @@ public class JobApplication {
 
     public void createJobApplication() {
         DBConnection conn = DBConnection.get();
-        String sql = "INSERT INTO JobApplication (messageId, resumeId, jobId, dateApplied, applicantId, applicationId) VALUES (" +
+        String sql = "INSERT INTO JobApplication (messageId, resumeId, jobId, dateApplied, applicantId, applicationId, matchScore) VALUES (" +
                 messageId + ", " +
                 resumeId + ", " +
                 jobId + ", " +
                 '"' + LocalDate.now() + '"' + ", " +
-                applicantId + ", " +
-                null + ")";
-        System.out.println(sql);
+                '"' + applicantId + '"' + ", " +
+                null + "," +
+                matchScore + ")";
+
+                System.out.println(sql);
         conn.executeQuery(sql);
         try {
             setApplicationId(conn.getLatestItemId("JobApplication"));

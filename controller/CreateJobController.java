@@ -14,6 +14,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CreateJobController {
+    public NavigationController getNavigationController() {
+        return navigationController;
+    }
+
+    public void setNavigationController(NavigationController navigationController) {
+        this.navigationController = navigationController;
+    }
+
     NavigationController navigationController;
     CreateJobView createJobView;
     User user;
@@ -43,6 +51,7 @@ public class CreateJobController {
         job.setRecruiterId(user.getUserId());
         job.setSkillIds(skillIds);
         job.createJob();
+        navigationController.doHome();
     }
 
     public void loadCategories() throws SQLException {

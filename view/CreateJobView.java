@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 
 import controller.CreateJobController;
+import controller.NavigationController;
 import controller.Validation;
 import model.Keyword;
 
@@ -112,8 +113,6 @@ public class CreateJobView implements UIView {
             {
                 System.out.println("Job creation failed");
             }
-
-
         });
     }
 
