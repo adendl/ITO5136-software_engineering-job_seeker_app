@@ -1,5 +1,7 @@
 package model;
 
+import controller.MatchingScore;
+
 import java.security.Key;
 import java.sql.Connection;
 import java.sql.Date;
@@ -24,6 +26,7 @@ public class Job {
     private String skillIds;
     private String salary;
     private String status;
+    private double matchScore;
 
     public String getSkillIds() {
         return skillIds;
@@ -167,6 +170,14 @@ public class Job {
 
     public boolean isAdvertised() {
         return isAdvertised;
+    }
+
+    public double getMatchScore() {
+        return matchScore;
+    }
+
+    public void calculateMatch(ArrayList<Keyword> searchKeywords) {
+        matchScore = MatchingScore.calculateMatchingScore(searchKeywords, keyword);
     }
 
     public static ResultSet getJob(int jobId)
