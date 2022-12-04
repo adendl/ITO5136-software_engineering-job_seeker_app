@@ -57,7 +57,7 @@ public class JobList {
 
     public DefaultTableModel jobListDft(ArrayList<Keyword> keywords) {
         System.out.println("jobListDFT");
-        resultSetToJobList(listJobsKeywordFilter(keywords));
+        resultSetToJobList(listJobsKeywordFilter(keywords), keywords);
         return jobListToTableModel();
     }
 
@@ -80,10 +80,12 @@ public class JobList {
 
     public ResultSet listJobsKeywordFilter(ArrayList<Keyword> keywords) { return Job.listJobsCategoriesFilter(keywords);}
 
-    public void resultSetToJobList(ResultSet rs) {
+    public void resultSetToJobList(ResultSet rs, ArrayList<Keyword> searchKeywords) {
         try{
             while (rs.next()) {
                 Job newJob = new Job(rs);
+                newJob.calculateMatch(searchKeywords);
+                System.out.println("job: " + newJob.getTitle() + " match score: " + newJob.getMatchScore());
                 jobList.add(newJob);
             }
         }
