@@ -20,7 +20,7 @@ public class HomeRecruiterController {
 
     public void showHub() {
         HomePageRecruiterView view = new HomePageRecruiterView(this);
-        navigationController.pushView(view);
+        navigationController.pushReplacementView(view);
     }
 
     public void showCreateJob() throws SQLException {
