@@ -16,7 +16,7 @@ public class JobList {
 
     public JobList(){
         jobList = new ArrayList<Job>();
-        colHeader = new Vector<String>(List.of("Job Id", "Job Title", "Company", "LocationId", "Location", "Description", "Salary Range", "Expiry Date", "Recruiter", "Status", "Date Created", "Keywords", "IsAdvertised", "JobObject"));
+        colHeader = new Vector<String>(List.of("Job Id", "Job Title", "Company", "LocationId", "Location", "Description", "Salary Range", "Expiry Date", "Match Score", "Recruiter", "Status", "Date Created", "Keywords", "IsAdvertised", "JobObject"));
     }
 
     public JobList(ArrayList<Job> jobList){
@@ -44,6 +44,7 @@ public class JobList {
             newRow.addElement(j.getDescription());
             newRow.addElement(j.getSalary());
             newRow.addElement(j.getExpiryDate());
+            newRow.addElement(String.format("%.2f%%", j.getMatchScore() * 100));
             newRow.addElement(j.getRecruiterId());
             newRow.addElement(j.getStatus());
             newRow.addElement(j.getDateCreated());
