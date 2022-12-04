@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import model.*;
 import view.AppliedJobView;
@@ -57,15 +58,18 @@ public class ApplyForJobController {
     }
 
     //resume and cover letter path need to be added
-    public void doJobApply(String FirstName, String lastName, String email, String phone, int resumeId, int coverLetterId){
+    public void doJobApply(String FirstName, String lastName, String email, int resumeId, int coverLetterId){
         JobApplication jobApplication = new JobApplication();
         jobApplication.setApplicantId(user.getUserId());
         jobApplication.setJobId(job.getJobId());
         jobApplication.setResumeId(resumeId);
-        //TODO: create in db.
+        jobApplication.setDateApplied(LocalDate.now());
+        jobApplication.setMessageId(0);
+        jobApplication.createJobApplication();
+        navigationController.doHome();
         //show appliedJobView
-        AppliedJobView appliedJobView = new AppliedJobView(this);
+        //AppliedJobView appliedJobView = new AppliedJobView(this);
         //populate applied job view.
-        navigationController.pushView(appliedJobView);
+        //navigationController.pushView(appliedJobView);
     }
 }
