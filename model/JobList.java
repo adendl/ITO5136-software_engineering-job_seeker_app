@@ -61,9 +61,21 @@ public class JobList {
         return jobListToTableModel();
     }
 
+    public DefaultTableModel jobListDft(User user) {
+        System.out.println("jobListDFT");
+        resultSetToJobList(listJobsByRecruiter(user));
+        return jobListToTableModel();
+    }
+
     public ResultSet listJobs()
     {
         return Job.listJobs();
+    }
+
+    public ResultSet listJobsByRecruiter(User user){
+        DBConnection db = DBConnection.get();
+        System.out.print("getting jobs for recruiter");
+        return db.executeQuery("select * from Job where recruiterId = " + "\"" + user.getUserId() + "\"");
     }
 
     public ResultSet listJobsKeywordFilter(ArrayList<Keyword> keywords) { return Job.listJobsCategoriesFilter(keywords);}

@@ -2,7 +2,6 @@ package view;
 
 import javax.swing.*;
 import controller.ListJobsController;
-import controller.SearchAlgorithmController;
 
 public class ReviewJobDetailsView implements UIView {
     public JPanel JobDetailsPanel;
@@ -24,21 +23,18 @@ public class ReviewJobDetailsView implements UIView {
     private JLabel lbJobDetails;
     private JButton btnEditJob;
     private JButton btnViewApplications;
-    private JButton seachForCandidatesButton;
-
-    SearchAlgorithmController searchAlgorithmController;
+    private JButton searchForCandidatesButton;
     ListJobsController listJobsController;
 
     public JPanel getJobDetailsPanel() {
         return JobDetailsPanel;
     }
 
-    public ReviewJobDetailsView(SearchAlgorithmController controller) {
-        this.searchAlgorithmController = controller;
-    }
-
     public ReviewJobDetailsView(ListJobsController controller) {
         this.listJobsController = controller;
+        btnAdvertise.addActionListener(e -> {
+
+        });
     }
 
     public JLabel getJobTitle() {
@@ -104,7 +100,6 @@ public class ReviewJobDetailsView implements UIView {
     public JLabel getLbJobDetails() {
         return lbJobDetails;
     }
-
 
     @Override
     public JComponent getUIView() {

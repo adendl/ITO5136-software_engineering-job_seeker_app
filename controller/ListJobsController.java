@@ -6,6 +6,7 @@ import model.Keyword;
 import view.JobDetailsView;
 import view.JobListingsView;
 import model.User;
+import view.ReviewJobDetailsView;
 
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
@@ -21,7 +22,6 @@ public class ListJobsController {
         this.navigationController = navigationController;
         this.user = user;
         jobList = new JobList();
-        renderListedJobs(new ArrayList<Keyword>());
     }
 
     public void renderListedJobs(ArrayList<Keyword> keywords) {
@@ -32,14 +32,25 @@ public class ListJobsController {
         navigationController.pushView(view);
     }
 
-    public void showJobDetails(Job newJob){
-        JobDetailsView job = new JobDetailsView(this);
-        job.getTxtCompany().setText(newJob.getCompany());
-        job.getTxtJobTitle().setText(newJob.getTitle());
-        job.getTxtJobDescription().setText(newJob.getDescription());
-        job.getTxtSalaryRange().setText(newJob.getSalary());
-        System.out.println(newJob.getLocationId());
-        job.getTxtLocation().setText(newJob.getLocationFromDb());
-        navigationController.pushView(job);
+    public void renderListedJobs() {
+        DefaultTableModel dft = jobList.jobListDft(this.user);
+        JobListingsView view = new JobListingsView(this);
+        view.getJobListingsTable().setModel(dft);
+        view.renderTable();
+        navigationController.pushView(view);
     }
+
+    public void showJobDetails(Job newJob){
+        ReviewJobDetailsView reviewJobDetailsView = new ReviewJobDetailsView(this);
+        reviewJobDetailsView.getTxtJobTitle().setText(newJob.getTitle());
+        reviewJobDetailsView.getTxtCompany().setText(newJob.getCompany());
+        reviewJobDetailsView.getTxtLocation().setText(newJob.getLocationFromDb());
+        reviewJobDetailsView.getTxtJobDescription().setText(newJob.getDescription());
+        reviewJobDetailsView.getTxtSalaryRange().setText(newJob.getSalary());
+        reviewJobDetailsView.getTxtJobCategory().setText(newJob.categoriesToString());
+
+
+        navigationController.pushView(reviewJobDetailsView);
+    }
+
 }

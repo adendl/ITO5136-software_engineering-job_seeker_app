@@ -27,7 +27,7 @@ public class HomePageRecruiterView implements UIView {
             }
         });
         manageListedJobsButton.addActionListener((e) -> {
-            controller.showManageListedJobs(new ArrayList<Keyword>());
+            controller.showManageListedJobs();
         });
         editProfileButton.addActionListener((e) -> {
             controller.showEditProfile();

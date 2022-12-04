@@ -37,6 +37,10 @@ public class JobListingsView implements UIView {
 
         TableModelCreator.addActionColumn((DefaultTableModel) jobListingsTable.getModel(), "Job Details", "More Details", listener);
 
+        jobListingsTable.removeColumn(jobListingsTable.getColumn("LocationId"));
+        jobListingsTable.removeColumn(jobListingsTable.getColumn("Recruiter"));
+        jobListingsTable.removeColumn(jobListingsTable.getColumn("Status"));
+        jobListingsTable.removeColumn(jobListingsTable.getColumn("Keywords"));
         jobListingsTable.removeColumn(jobListingsTable.getColumn("IsAdvertised"));
         jobListingsTable.removeColumn(jobListingsTable.getColumn("JobObject"));
 

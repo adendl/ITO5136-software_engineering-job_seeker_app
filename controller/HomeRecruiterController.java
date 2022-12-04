@@ -37,9 +37,9 @@ public class HomeRecruiterController {
         controller.showEditRecruiter();
     }
 
-    public void showManageListedJobs(ArrayList<Keyword> keywords) {
+    public void showManageListedJobs() {
         ListJobsController listJobsController = new ListJobsController(this.navigationController, this.user);
-        listJobsController.renderListedJobs(keywords);
+        listJobsController.renderListedJobs();
     }
 
     public void showMailbox() {
