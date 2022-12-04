@@ -96,14 +96,19 @@ public class CreateJobView implements UIView {
             String salary = salaryComboBox.getSelectedItem().toString();
             java.util.List skillValueList = skillsList.getSelectedValuesList();
             String skillIds = "";
+            StringBuilder skills = new StringBuilder();
             for (int i = 0; i < skillValueList.size(); i++)
             {
                 try {
-                    skillIds += (Keyword.getKeywordByValue(skillValueList.get(i).toString()).getString("keywordId") + ",");
+                    skills.append(Keyword.getKeywordByValue(skillValueList.get(i).toString()).getString("keywordId"));
+                    if (i < (skillValueList.size() - 1)) {
+                        skills.append(',');
+                    }
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
             }
+            skillIds = skills.toString();
 
             if (validateJob(company, description, title, city, categories, salary)) {
                 System.out.println("PASSED");
@@ -117,8 +122,6 @@ public class CreateJobView implements UIView {
             {
                 System.out.println("Job creation failed");
             }
-
-
         });
     }
 
