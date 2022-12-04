@@ -64,7 +64,7 @@ public class JobList {
 
     public DefaultTableModel jobListDft(User user) {
         System.out.println("jobListDFT");
-        resultSetToJobList(listJobsByRecruiter(user));
+        resultSetToJobList(listJobsByRecruiter(user), null);
         return jobListToTableModel();
     }
 
@@ -85,8 +85,10 @@ public class JobList {
         try{
             while (rs.next()) {
                 Job newJob = new Job(rs);
-                newJob.calculateMatch(searchKeywords);
-                System.out.println("job: " + newJob.getTitle() + " match score: " + newJob.getMatchScore());
+                if (searchKeywords != null) {
+                    newJob.calculateMatch(searchKeywords);
+                    System.out.println("job: " + newJob.getTitle() + " match score: " + newJob.getMatchScore());
+                }
                 jobList.add(newJob);
             }
         }
