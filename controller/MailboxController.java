@@ -14,16 +14,25 @@ public class MailboxController {
     NavigationController navigationController;
     private Mailbox mailBox;
     private User user;
+    boolean showingUnreadOnly;
 
     public MailboxController(NavigationController navigationController, User user) {
         this.navigationController = navigationController;
         this.user = user;
+        showingUnreadOnly = false;
     }
 
 
-    public void showMailbox() {
+    public void showMailbox(boolean unreadOnly) {
         mailBox = new Mailbox();
-        DefaultTableModel dft = mailBox.receivedMessageDft(user.getUserId());
+        DefaultTableModel dft;
+        if (unreadOnly) {
+            dft = mailBox.unreadMessageDft(user.getUserId());
+        } else {
+            dft = mailBox.receivedMessageDft(user.getUserId());
+        }
+
+        showingUnreadOnly = unreadOnly;
         MailboxView view = new MailboxView(this);
         view.getTblMessages().setModel(dft);
         view.renderTable();
@@ -71,7 +80,7 @@ public class MailboxController {
             message.createMessage();
             CompletionPage completionPage = new CompletionPage(navigationController);
             completionPage.getContinueButton().addActionListener(e1 -> {
-                this.showMailbox();
+                this.showMailbox(showingUnreadOnly);
             });
             navigationController.pushView(completionPage);
         });

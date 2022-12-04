@@ -18,6 +18,7 @@ public class HomeJobSeekerController {
 
     public void showHub() {
         HomePageJobSeekerView view = new HomePageJobSeekerView(this);
+        navigationController.getNotificationController().setUser(user);
         navigationController.pushReplacementView(view);
     }
 
@@ -33,7 +34,7 @@ public class HomeJobSeekerController {
 
     public void showMailbox() {
         MailboxController mailboxController = new MailboxController(this.navigationController, this.user);
-        mailboxController.showMailbox();
+        mailboxController.showMailbox(false);
     }
 
     public void showEditProfile() throws SQLException {

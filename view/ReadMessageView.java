@@ -30,7 +30,8 @@ public class ReadMessageView implements UIView {
         }));
         deleteButton.addActionListener((e -> {
             controller.deleteMessageAction(message);
-            controller.showMailbox();
+            // TODO: this should refresh the existing view rather than pushing a brand new one
+            controller.showMailbox(false);
         }));
     }
 

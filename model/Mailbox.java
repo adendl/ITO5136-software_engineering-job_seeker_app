@@ -19,12 +19,18 @@ public class Mailbox {
     }
 
     public DefaultTableModel receivedMessageDft(String recipientId) {
-     resultSetToMessageList(listReceivedMessages(recipientId));
-     return messageListToTableModel();
+        resultSetToMessageList(listReceivedMessages(recipientId));
+        return messageListToTableModel();
     }
 
     public DefaultTableModel sentMessageDft(String senderId) {
         resultSetToMessageList(listReceivedMessages(senderId));
+        return messageListToTableModel();
+    }
+
+    // construct a table model for unread messages
+    public DefaultTableModel unreadMessageDft(String recipientId) {
+        resultSetToMessageList(listUnreadMessages(recipientId));
         return messageListToTableModel();
     }
 
@@ -56,6 +62,23 @@ public class Mailbox {
     public ResultSet listSentMessages(String senderUserId) {
         DBConnection db = DBConnection.get();
         return db.executeQuery("select * from Message where senderUserId='" + senderUserId + "'" );
+    }
+
+    // list unread messages for the given recipient
+    public ResultSet listUnreadMessages(String recipientUserId) {
+        DBConnection db = DBConnection.get();
+        return db.executeQuery(String.format("select * from Message where (recipientUserId='%s') and (messageStatus = 'unread')", recipientUserId));
+    }
+
+    public int getUnreadMessageCount(String recipientUserId) {
+        try {
+            ResultSet rs = DBConnection.queryDatabase(String.format("select count(*) from Message where (recipientUserId='%s') and (messageStatus = 'unread')", recipientUserId));
+            return rs.getInt("count(*)");
+        }
+        catch (SQLException e) {
+            System.err.println("getUnreadMessageCount SQL exception: " + e);
+            return 0;
+        }
     }
 
     public void resultSetToMessageList(ResultSet rs) {
