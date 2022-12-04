@@ -35,6 +35,7 @@ public class SearchAlgorithmController {
         this.searchResultsView = new SearchResultsView(this);
         loadTable(keywords);
         navigationController.pushView(searchResultsView);
+        navigationController.setCheckpoint();
     }
 
     public void loadTable(ArrayList<Keyword> keywords) {
