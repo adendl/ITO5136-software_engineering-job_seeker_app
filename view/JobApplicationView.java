@@ -88,8 +88,7 @@ public class JobApplicationView implements UIView {
             String firstName = firstNameText.getText();
             String lastName = lastNameText.getText();
             String email = emailText.getText();
-            String phone = phoneText.getText();
-            controller.doJobApply(firstName, lastName, email, phone, resumeId, coverLetterId);
+            controller.doJobApply(firstName, lastName, email, resumeId, coverLetterId);
         }));
         browseResumeButton.addActionListener((e -> {
             //upload resume
@@ -135,7 +134,7 @@ public class JobApplicationView implements UIView {
 
     public void doJobApply(){
         //todo: check for null resumeId and coverLetterId.
-        controller.doJobApply(getFirstName(), getLastName(), getEmail(), getPhone(), resumeId, coverLetterId);
+        controller.doJobApply(getFirstName(), getLastName(), getEmail(), resumeId, coverLetterId);
     }
 
     public void doUpload(File upload, File newFile){
