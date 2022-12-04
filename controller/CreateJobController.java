@@ -56,8 +56,8 @@ public class CreateJobController {
         navigationController.pushView(createJobView);
     }
 
+    // create a job with the given parameters then return home
     public void doCreateJob(String title, String description, String company, String city, String category, String salary, String skillIds) throws SQLException {
-        // TODO: change args to appropriate types and create a job with them
         this.job = new Job();
         job.setTitle(title);
         job.setDescription(description);
@@ -67,11 +67,14 @@ public class CreateJobController {
         job.setKeyword(new ArrayList<Keyword>());
         job.setRecruiterId(user.getUserId());
         job.setSkillIds(skillIds);
+        // post it to the db
         job.createJob();
+        // return home
+        navigationController.popUntilLast();
     }
 
+    // update a job with new parameters
     public void doUpdateJob(String title, String description, String company, String city, String category, String salary, String skillIds) throws SQLException {
-        // TODO: change args to appropriate types and create a job with them
         job.setTitle(title);
         job.setDescription(description);
         job.setCompany(company);
@@ -80,7 +83,10 @@ public class CreateJobController {
         job.setKeyword(new ArrayList<Keyword>());
         job.setRecruiterId(user.getUserId());
         job.setSkillIds(skillIds);
+        // post it to the db
         job.editJob();
+        // return home
+        navigationController.popUntilLast();
     }
 
     public void loadCategories() throws SQLException {
