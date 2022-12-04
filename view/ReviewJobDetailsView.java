@@ -2,17 +2,14 @@ package view;
 
 import javax.swing.*;
 import controller.ListJobsController;
-import controller.NavigationController;
 import controller.SearchAlgorithmController;
 
-import javax.swing.*;
-import java.awt.*;
 public class ReviewJobDetailsView implements UIView {
     public JPanel JobDetailsPanel;
     private JLabel jobTitle;
     private JLabel lbJobDescription;
     private JTextArea txtDescription;
-    private JButton btnApplyNow;
+    private JButton btnAdvertise;
     private JLabel lbJobType;
     private JLabel lbLocation;
     private JLabel lbCompany;
@@ -25,6 +22,9 @@ public class ReviewJobDetailsView implements UIView {
     private JTextArea txtLocation;
     private JTextArea txtJobTitle;
     private JLabel lbJobDetails;
+    private JButton btnEditJob;
+    private JButton btnViewApplications;
+    private JButton seachForCandidatesButton;
 
     SearchAlgorithmController searchAlgorithmController;
     ListJobsController listJobsController;
@@ -54,7 +54,7 @@ public class ReviewJobDetailsView implements UIView {
     }
 
     public JButton getBtnApplyNow() {
-        return btnApplyNow;
+        return btnAdvertise;
     }
 
     public JLabel getLbJobType() {
