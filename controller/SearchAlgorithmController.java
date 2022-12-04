@@ -11,9 +11,9 @@ import java.util.ArrayList;
 public class SearchAlgorithmController {
     private NavigationController navigationController;
     private SearchResultsView searchResultsView;
-    private User user;
+    private JobSeeker user;
     private JobList jobList;
-    public SearchAlgorithmController(NavigationController navigationController, User user) {
+    public SearchAlgorithmController(NavigationController navigationController, JobSeeker user) {
         this.navigationController = navigationController;
         this.user = user;
         jobList = new JobList();

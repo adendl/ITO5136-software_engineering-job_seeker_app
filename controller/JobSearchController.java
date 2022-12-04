@@ -77,14 +77,50 @@ public class JobSearchController {
 
         //get all field attributes and search term and run through matching algorithm
         ArrayList<Keyword> keywords = createSearchQuery(searchString);
+        for (int i = 0; i < keywords.size(); i++)
+        {
+            System.out.println(i);
+            System.out.println(keywords.get(i).getKeywordValue());
+        }
         // TODO: JobSearchView passes in parameters here, we have SearchAlgorithmController do the work, then call showResults
         SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, new JobSeeker(JobSeeker.getJobSeeker(user.getUserId())));
         searchAlgorithmController.showResults(keywords);
     }
 
+    public ArrayList<Keyword> createSearchQueryProfile(String searchString) throws SQLException {
+        ArrayList<Keyword> keywords = new ArrayList<Keyword>();
+        List<String> items = Arrays.asList(searchString.split("\\s*,\\s*"));
+        System.out.println("ABC");
+        for (int i = 0; i < items.size(); i++)
+        {
+            System.out.println(i);
+            System.out.println(items.get(i));
+            keywords.add(new Keyword(items.get(i)));
+        }
+        for (int i = 0; i < keywords.size(); i++)
+        {
+            try
+            {
+                ResultSet rs = Keyword.getKeyword(Integer.parseInt(keywords.get(i).getKeywordValue()));
+            }
+            catch (Exception e)
+            {
+                System.out.println(e);
+            }
+            keywords.get(i).setKeywordId(rs.getInt("keywordId"));
+            keywords.get(i).setKeywordValue(rs.getString("keywordValue"));
+            keywords.get(i).setKeywordType(rs.getString("keywordType"));
+            if (keywords.get(i).getKeywordId() == 0)
+            {
+                keywords.remove(i);
+            }
+        }
+        return keywords;
+
+    }
+
     public ArrayList<Keyword> createSearchQuery(String searchString) throws SQLException {
         ArrayList<Keyword> keywords = new ArrayList<Keyword>();
-        ArrayList<Keyword> removeDuplicateKeyword = new ArrayList<Keyword>();
         List<String> items = Arrays.asList(searchString.split("\\s+"));
         for (int i = 0; i < items.size(); i++)
         {
@@ -97,28 +133,22 @@ public class JobSearchController {
         {
             ResultSet rs = Keyword.getKeywordByValueLike(keywords.get(i).getKeywordValue());
             keywords.get(i).setKeywordId(rs.getInt("keywordId"));
+            keywords.get(i).setKeywordValue(rs.getString("keywordValue"));
             keywords.get(i).setKeywordType(rs.getString("keywordType"));
             if (keywords.get(i).getKeywordId() == 0)
             {
                 keywords.remove(i);
             }
         }
-        for (int i = 0; i < keywords.size(); i++)
-        {
-            if (!removeDuplicateKeyword.contains(keywords.get(i)))
-            {
-                removeDuplicateKeyword.add(keywords.get(i));
-                System.out.println(keywords.get(i).getKeywordValue());
-            }
-        }
-        return removeDuplicateKeyword;
+        return keywords;
 
     }
 
     public void doProfileSearch() throws SQLException {
         // TODO: similar to the above, but we're just using the user profile data?
-        System.out.println(user.getUserId());
-        ArrayList<Keyword> keywords = createSearchQuery(JobSeeker.getJobSeeker(user.getUserId()).getString("skillIds"));
+        System.out.println("doProfileSearch" + user.getUserId());
+        String searchString = JobSeeker.getJobSeeker(user.getUserId()).getString("skillIds");
+        ArrayList<Keyword> keywords = createSearchQueryProfile(searchString);
         SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, new JobSeeker(JobSeeker.getJobSeeker(user.getUserId())));
         searchAlgorithmController.showResults(keywords);
 
