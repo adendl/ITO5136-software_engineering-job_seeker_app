@@ -10,9 +10,11 @@ public class NavigationController {
     ArrayDeque<UIView> navigationStack;
     NavigationBar navigationBar;
     UIView checkpoint;
+    NotificationController notificationController;
 
     public NavigationController() {
         navigationStack = new ArrayDeque<>();
+        notificationController = new NotificationController(this);
     }
 
     public void doBack() {
@@ -30,6 +32,7 @@ public class NavigationController {
             return;
         }
 
+        notificationController.clearUser();
         LoginController loginController = new LoginController(this);
         loginController.showLogin();
     }
@@ -178,5 +181,25 @@ public class NavigationController {
         navigationBar.setLogoutButtonEnabled(!loggingIn);
         // enable back button if there's something to go back to
         navigationBar.setBackButtonEnabled(navigationStack.size() > 1);
+    }
+
+    // get the notification controller, for things like setting the user or telling it to update
+    public NotificationController getNotificationController() {
+        return notificationController;
+    }
+
+    // helper method to update unread messages on the notification controller
+    // call this when a message has been sent or removed in other controllers
+    public void updateNotifications() {
+        notificationController.update();
+    }
+
+    // update the unread message count, called by notificationController
+    public void updateUnreadMessageCount(int unreadCount) {
+        navigationBar.setUnreadMessageCount(unreadCount);
+    }
+
+    public void showMailbox() {
+        notificationController.showMailbox();
     }
 }

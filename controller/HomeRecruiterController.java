@@ -20,6 +20,7 @@ public class HomeRecruiterController {
 
     public void showHub() {
         HomePageRecruiterView view = new HomePageRecruiterView(this);
+        navigationController.getNotificationController().setUser(user);
         navigationController.pushReplacementView(view);
     }
 
@@ -46,6 +47,6 @@ public class HomeRecruiterController {
 
     public void showMailbox() {
         MailboxController mailboxController = new MailboxController(this.navigationController, this.user);
-        mailboxController.showMailbox();
+        mailboxController.showMailbox(false);
     }
 }
