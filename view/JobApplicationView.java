@@ -131,6 +131,13 @@ public class JobApplicationView implements UIView {
         }));
     }
 
+    public JTextPane getJobDescriptionTextPane() {
+        return jobDescriptionTextPane;
+    }
+
+    public void setJobDescriptionTextPane(JTextPane jobDescriptionTextPane) {
+        this.jobDescriptionTextPane = jobDescriptionTextPane;
+    }
 
     public void doJobApply(){
         //todo: check for null resumeId and coverLetterId.
