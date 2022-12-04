@@ -60,6 +60,7 @@ public class ApplyForJobController {
     //resume and cover letter path need to be added
     public void doJobApply(String FirstName, String lastName, String email, int resumeId, int coverLetterId){
         JobApplication jobApplication = new JobApplication();
+        System.out.println(user.getUserId());
         jobApplication.setApplicantId(user.getUserId());
         jobApplication.setJobId(job.getJobId());
         jobApplication.setResumeId(resumeId);
@@ -67,9 +68,5 @@ public class ApplyForJobController {
         jobApplication.setMessageId(0);
         jobApplication.createJobApplication();
         navigationController.doHome();
-        //show appliedJobView
-        //AppliedJobView appliedJobView = new AppliedJobView(this);
-        //populate applied job view.
-        //navigationController.pushView(appliedJobView);
     }
 }

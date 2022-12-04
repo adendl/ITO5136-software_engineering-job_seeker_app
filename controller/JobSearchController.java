@@ -83,7 +83,7 @@ public class JobSearchController {
             System.out.println(keywords.get(i).getKeywordValue());
         }
         // TODO: JobSearchView passes in parameters here, we have SearchAlgorithmController do the work, then call showResults
-        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, new JobSeeker(JobSeeker.getJobSeeker(user.getUserId())));
+        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, user);
         searchAlgorithmController.showResults(keywords);
     }
 
@@ -143,7 +143,7 @@ public class JobSearchController {
         System.out.println("doProfileSearch" + user.getUserId());
         String searchString = JobSeeker.getJobSeeker(user.getUserId()).getString("skillIds");
         ArrayList<Keyword> keywords = createSearchQueryProfile(searchString);
-        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, new JobSeeker(JobSeeker.getJobSeeker(user.getUserId())));
+        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, user);
         searchAlgorithmController.showResults(keywords);
 
 
