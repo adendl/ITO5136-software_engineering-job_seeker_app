@@ -63,9 +63,6 @@ public class JobDetailsView implements UIView {
         });
     }
 
-    public JobDetailsView(ListJobsController controller) {
-        this.listJobsController = controller;
-    }
 
     public JLabel getJobTitle() {
         return jobTitle;

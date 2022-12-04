@@ -17,13 +17,38 @@ public class CreateJobController {
     NavigationController navigationController;
     CreateJobView createJobView;
     User user;
+
+    Job job;
     public CreateJobController(NavigationController navigationController, User user){
         this.user = user;
         this.navigationController = navigationController;
     }
 
+    public void setEditMode(Job job) {
+        this.job = job;
+        this.createJobView = new CreateJobView(this);
+        try{
+            loadCities();
+            loadCategories();
+            loadSalary();
+            loadSkills();}
+        catch(SQLException e) {
+            System.err.println("Unable to load keywords to combo-box: " + e);
+        }
+        createJobView.getCreateJobLabel().setText("Edit Job Listing");
+        createJobView.getJobTitleText().setText(job.getTitle());
+        createJobView.getLocationComboBox().setSelectedIndex(job.getLocationId());
+        createJobView.getCompanyText().setText(job.getCompany());
+        createJobView.getSalaryComboBox().setSelectedItem(job.getSalary());
+        createJobView.getJobDescriptionText().setText(job.getDescription());
+        createJobView.setBtnToEdit();
+        navigationController.pushView(createJobView);
+    }
+
+
     public void showCreateJob() throws SQLException {
         this.createJobView = new CreateJobView(this);
+        this.createJobView.setBtnToCreate();
         loadCities();
         loadCategories();
         loadSalary();
@@ -33,7 +58,7 @@ public class CreateJobController {
 
     public void doCreateJob(String title, String description, String company, String city, String category, String salary, String skillIds) throws SQLException {
         // TODO: change args to appropriate types and create a job with them
-        Job job = new Job();
+        this.job = new Job();
         job.setTitle(title);
         job.setDescription(description);
         job.setCompany(company);
@@ -43,6 +68,19 @@ public class CreateJobController {
         job.setRecruiterId(user.getUserId());
         job.setSkillIds(skillIds);
         job.createJob();
+    }
+
+    public void doUpdateJob(String title, String description, String company, String city, String category, String salary, String skillIds) throws SQLException {
+        // TODO: change args to appropriate types and create a job with them
+        job.setTitle(title);
+        job.setDescription(description);
+        job.setCompany(company);
+        job.setLocationId(Location.getLocationByCity(city).getInt("locationId"));
+        job.setSalary(salary);
+        job.setKeyword(new ArrayList<Keyword>());
+        job.setRecruiterId(user.getUserId());
+        job.setSkillIds(skillIds);
+        job.editJob();
     }
 
     public void loadCategories() throws SQLException {
@@ -83,7 +121,4 @@ public class CreateJobController {
         }
         createJobView.getSkillsList().setModel(dlm);
     }
-
-
-
 }

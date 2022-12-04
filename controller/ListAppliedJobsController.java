@@ -1,5 +1,6 @@
 package controller;
 
+import model.JobApplication;
 import model.User;
 public class ListAppliedJobsController {
     private NavigationController navigationController;
@@ -11,7 +12,7 @@ public class ListAppliedJobsController {
         this.user = user;
     }
 
-    public void renderAppliedJobs(){
-        //TODO: render table of applied jobs for the user
+    public void renderAppliedJobs(int jobId){
+        //ResultSet JobApplication.listJobApplicationsRecruiter(jobId);
     }
 }

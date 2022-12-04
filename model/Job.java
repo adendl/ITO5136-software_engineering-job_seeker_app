@@ -145,6 +145,10 @@ public class Job {
         this.status = status;
     }
 
+    public void setAsAdvertised(){
+        this.isAdvertised = true;
+    }
+
     public LocalDate getDateCreated() {
         return dateCreated;
     }
@@ -267,6 +271,41 @@ public class Job {
         updateJob(jobId, "keyword", (Job.getJob(jobId).getString("keyword") + "," + Keyword.getKeywordByValue(salary).getString("keywordId")));
         updateJob(jobId, "keyword", (Job.getJob(jobId).getString("keyword") + "," + skillIds));
         System.out.println("job ID = " + jobId);
+    }
+
+    public void editJob(){
+        DBConnection db = DBConnection.get();
+        String sql = "UPDATE Job SET ";
+        if (!keyword.isEmpty())
+        {
+            sql += "keyword = \"";
+            for (int i = 0; i < keyword.size(); i++)
+            {
+                if (i < (keyword.size() - 1))
+                {
+                    sql+= (keyword.get(i).getKeywordId() + ",");
+                }
+                else
+                {
+                    System.out.println(keyword.get(i).getKeywordId());
+                    sql+= (keyword.get(i).getKeywordId()) + "\", ";
+                    System.out.println(sql);
+                }
+            }
+            System.out.println(sql);
+        }
+        sql += "title = " + '"' + title + '"' + ", dateCreated = " +
+                '"' +  LocalDate.now() + '"' + ", status = " +
+                '"' +   status + '"' + ", salary = " +
+                '"' +   salary + '"' + ", locationId = " +
+                locationId + ", recruiterId = " +
+                '"' +   recruiterId + '"' + ", expiryDate = " +
+                '"' +   LocalDate.now().plusMonths(1) + '"' + ", description = " +
+                '"' +   description + '"' + ", company = " +
+                '"' +  company + '"' + ", isAdvertised = " +
+                null + " WHERE jobId = " + "\"" + jobId + "\"";
+        System.out.println(sql);
+        db.executeQuery(sql);
     }
 
     public void deleteJob(int jobId)

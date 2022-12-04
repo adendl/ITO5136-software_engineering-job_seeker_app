@@ -1,8 +1,11 @@
 package model;
 
+import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.sql.ResultSet;
 import java.sql.Connection;
+
 
 
 public class JobApplication {
@@ -22,10 +25,15 @@ public class JobApplication {
         this.messageId = messageId;
     }
 
-    public JobApplication()
-    {
-
+    public JobApplication(ResultSet rs) throws SQLException {
+        this.jobId = rs.getInt("jobId");
+        this.applicationId = rs.getInt("applicationId");
+        this.dateApplied = Date.valueOf(rs.getString("dateApplied")).toLocalDate();
+        this.resumeId = rs.getInt("resumeId");
+        this.messageId = rs.getInt("messageId");
     }
+
+    public JobApplication() { }
 
     public int getApplicationId() {
         return applicationId;
@@ -122,6 +130,29 @@ public class JobApplication {
             setApplicationId(conn.getLatestItemId("JobApplication"));
         } catch (Exception e) {
             System.err.println("createJobApplication failed:" + e);
+        }
+    }
+
+    public String getApplicantNameFromDB (){
+        String userName;
+        try {
+            ResultSet rs = DBConnection.queryDatabase("select firstName, lastName from User where userId=" + "\"" + this.applicantId + "\"");
+            userName = (rs.getString("firstName") + " " + rs.getString("lastName"));
+            return userName;
+        }  catch(SQLException e) {
+            System.err.println("Error Retrieving User ID " + this.applicantId + " from DB: " + e);
+            userName = "";
+        }
+        return userName;
+    }
+
+    public String getJobTitleFromDB (){
+        try {
+            ResultSet rs = DBConnection.queryDatabase("select title from Job where jobId=" + "\"" + this.jobId + "\"");
+            return rs.getString("title");
+        }  catch(SQLException e) {
+            System.err.println("Error Retrieving User ID " + this.jobId + " from DB: " + e);
+            return "";
         }
     }
 }
