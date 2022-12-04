@@ -33,7 +33,11 @@ public class SearchJobView implements UIView {
                 }
             });
             searchProfileButton.addActionListener((e) -> {
-                controller.doProfileSearch();
+                try {
+                    controller.doProfileSearch();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             });
         }
 
