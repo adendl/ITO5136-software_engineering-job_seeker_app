@@ -15,11 +15,7 @@ public class ManageUsersView implements UIView {
 
     private DefaultListModel<String> dlm = new DefaultListModel<String>();
 
-    public ManageUsersView(ManageUsersController manageUsersController) {
-        this.controller = manageUsersController;
-    }
-
-    public void ManageUsersView(ManageUsersController controller) {
+    public ManageUsersView(ManageUsersController controller) {
         this.controller = controller;
         manageUsersButton.addActionListener((e) -> {
             try {

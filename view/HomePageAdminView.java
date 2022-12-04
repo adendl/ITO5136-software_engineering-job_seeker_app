@@ -1,18 +1,14 @@
 package view;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import controller.HomeAdminController;
-import view.UIView;
-import view.ViewHelper;
 
 public class HomePageAdminView implements UIView {
     private JButton manageUsersButton;
     private JPanel panelMain;
-    private JButton manageCategoriesButton;
+    private JButton manageKeywordsButton;
     private JButton manageSkillsButton;
     private JButton manageLocationsButton;
     private HomeAdminController controller;
@@ -26,15 +22,14 @@ public class HomePageAdminView implements UIView {
                 throw new RuntimeException(ex);
             }
         });
-        manageCategoriesButton.addActionListener((e) -> {
-            controller.showManageCategories();
+        manageKeywordsButton.addActionListener((e) -> {
+            try {
+                controller.showManageKeywords();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
         });
-        manageSkillsButton.addActionListener((e) -> {
-            controller.showManageSkills();
-        });
-        manageLocationsButton.addActionListener((e) -> {
-            controller.showManageLocations();
-        });
+
     }
 
     public JPanel getPanelMain() {

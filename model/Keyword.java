@@ -140,7 +140,7 @@ public class Keyword {
         }
     }
 
-    public void deleteKeyword(int categoryId) {
+    public static void deleteKeyword(int keywordId) {
         DBConnection.queryDatabase("delete from Keyword where keywordId=" + keywordId);
     }
 }

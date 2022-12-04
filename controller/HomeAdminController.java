@@ -1,12 +1,7 @@
 package controller;
 
 import view.HomePageAdminView;
-import view.ManageCategoriesView;
-import view.ManageSkillsView;
-import view.ManageUsersView;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 public class HomeAdminController {
@@ -20,17 +15,9 @@ public class HomeAdminController {
         navigationController.pushReplacementView(view);
     }
 
-    public void showManageCategories() {
-        ManageCategoriesController manageCategoriesController = new ManageCategoriesController(navigationController);
-        manageCategoriesController.showManageCategories();
-    }
-    public void showManageLocations() {
-        ManageLocationsController manageLocationsController = new ManageLocationsController(navigationController);
-        manageLocationsController.showManageLocations();
-    }
-    public void showManageSkills() {
-        ManageSkillsController manageSkillsController = new ManageSkillsController(navigationController);
-        manageSkillsController.showManageSkills();
+    public void showManageKeywords() throws SQLException {
+        ManageKeywordController manageKeywordController = new ManageKeywordController(navigationController);
+        manageKeywordController.showManageKeywords();
     }
     public void showManageUsers() throws SQLException {
         ManageUsersController manageUsersController = new ManageUsersController(navigationController);

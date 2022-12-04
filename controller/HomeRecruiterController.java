@@ -3,10 +3,7 @@ package controller;
 import model.Keyword;
 import view.*;
 import model.User;
-import model.Recruiter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -29,9 +26,9 @@ public class HomeRecruiterController {
         createJobController.showCreateJob();
     }
 
-    public void showEditCategories() {
-        ManageCategoriesController manageCategoriesController = new ManageCategoriesController(navigationController);
-        manageCategoriesController.showManageCategories();
+    public void shoeManageKeywords() throws SQLException {
+        ManageKeywordController manageKeywordController = new ManageKeywordController(navigationController);
+        manageKeywordController.showManageKeywords();
     }
 
     public void showEditProfile() {
