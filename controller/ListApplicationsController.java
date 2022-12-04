@@ -30,12 +30,4 @@ public class ListApplicationsController {
         view.renderTableForRecruiter();
         navigationController.pushView(view);
     }
-
-
-
-
-
-
-
-
 }

@@ -74,7 +74,7 @@ public class JobList {
 
     public ResultSet listJobsByRecruiter(User user){
         DBConnection db = DBConnection.get();
-        System.out.print("getting jobs for recruiter");
+        System.out.print("select * from Job where recruiterId = " + "\"" + user.getUserId() + "\"");
         return db.executeQuery("select * from Job where recruiterId = " + "\"" + user.getUserId() + "\"");
     }
 
