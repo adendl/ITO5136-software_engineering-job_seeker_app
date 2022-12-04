@@ -99,14 +99,8 @@ public class JobSearchController {
         }
         for (int i = 0; i < keywords.size(); i++)
         {
-            try
-            {
-                ResultSet rs = Keyword.getKeyword(Integer.parseInt(keywords.get(i).getKeywordValue()));
-            }
-            catch (Exception e)
-            {
-                System.out.println(e);
-            }
+
+            ResultSet rs = Keyword.getKeyword(Integer.parseInt(keywords.get(i).getKeywordValue()));
             keywords.get(i).setKeywordId(rs.getInt("keywordId"));
             keywords.get(i).setKeywordValue(rs.getString("keywordValue"));
             keywords.get(i).setKeywordType(rs.getString("keywordType"));
