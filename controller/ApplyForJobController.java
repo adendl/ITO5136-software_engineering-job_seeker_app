@@ -68,9 +68,5 @@ public class ApplyForJobController {
         jobApplication.setMessageId(0);
         jobApplication.createJobApplication();
         navigationController.doHome();
-        //show appliedJobView
-        //AppliedJobView appliedJobView = new AppliedJobView(this);
-        //populate applied job view.
-        //navigationController.pushView(appliedJobView);
     }
 }
