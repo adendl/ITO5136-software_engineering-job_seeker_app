@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.File;
+import java.sql.SQLException;
 
 import model.*;
 import view.AppliedJobView;
@@ -11,14 +12,30 @@ import static java.lang.Integer.valueOf;
 
 public class ApplyForJobController {
     //TODO: take in a Job and Job seeker in the constructor
-    JobSeeker user;
+    User user;
     Job job;
     NavigationController navigationController;
+
+    JobApplicationView jobApplicationView;
     //takes in the jobDetailView, jobApplyView, confirmApplyView .
-    public ApplyForJobController(NavigationController navigationController, JobSeeker user, Job job){
+    public ApplyForJobController(NavigationController navigationController, User user, Job job){
         this.navigationController = navigationController;
         this.job = job;
         this.user = user;
+    }
+
+    public void doStartApplyProcess(Job job) throws SQLException {
+         this.jobApplicationView = new JobApplicationView(this);
+         loadPage(job, user);
+         navigationController.pushView(jobApplicationView);
+         System.out.println("dostartapplyprocess" + user.getUserId());
+
+    }
+
+    public void loadPage(Job job, User user) throws SQLException {
+        jobApplicationView.getEmailText().setText(user.getUserId());
+        jobApplicationView.getFirstNameText().setText(user.getFirstName());
+        jobApplicationView.getLastNameText().setText(user.getLastName());
     }
 
     public String storeCoverLetter(String name, String path){

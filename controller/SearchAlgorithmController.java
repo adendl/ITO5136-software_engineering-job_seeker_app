@@ -11,9 +11,9 @@ import java.util.ArrayList;
 public class SearchAlgorithmController {
     private NavigationController navigationController;
     private SearchResultsView searchResultsView;
-    private JobSeeker user;
+    private User user;
     private JobList jobList;
-    public SearchAlgorithmController(NavigationController navigationController, JobSeeker user) {
+    public SearchAlgorithmController(NavigationController navigationController, User user) {
         this.navigationController = navigationController;
         this.user = user;
         jobList = new JobList();
@@ -45,7 +45,8 @@ public class SearchAlgorithmController {
     }
 
     public void showJobDetails(Job newJob){
-        JobDetailsView jobDetailsView = new JobDetailsView(this);
+        System.out.println("showjobDetails" + user.getUserId());
+        JobDetailsView jobDetailsView = new JobDetailsView(this, new ApplyForJobController(navigationController, user, newJob), newJob);
         jobDetailsView.getTxtJobTitle().setText(newJob.getTitle());
         jobDetailsView.getTxtCompany().setText(newJob.getCompany());
         jobDetailsView.getTxtLocation().setText(newJob.getLocationFromDb());
