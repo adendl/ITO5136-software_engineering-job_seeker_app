@@ -35,11 +35,13 @@ public class ManageUsersController {
     public void doLockUser(String email) throws SQLException {
         if (User.getUser(email).getString("status").equals("locked"))
         {
+            System.out.println("LOCKED");
             User.updateUser(email, "status", "unlocked");
-            JOptionPane.showMessageDialog(null,"The user has been unlcoked", "User unlocked", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"The user has been unlocked", "User unlocked", JOptionPane.INFORMATION_MESSAGE);
         }
         else
         {
+            System.out.println("unlocked");
             User.updateUser(email, "status", "locked");
             JOptionPane.showMessageDialog(null,"The user has been locked", "User locked", JOptionPane.INFORMATION_MESSAGE);
 
