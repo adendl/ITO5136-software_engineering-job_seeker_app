@@ -1,11 +1,15 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicOptionPaneUI;
 
 import controller.CreateJobController;
 import controller.Validation;
 import model.Keyword;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
 
 public class CreateJobView implements UIView {
@@ -78,6 +82,9 @@ public class CreateJobView implements UIView {
 
     public CreateJobView(CreateJobController controller) {
         this.controller = controller;
+    }
+
+    public void setBtnToCreate(){
         createJobButton.addActionListener((e) -> {
             String company = companyText.getText();
             String description = getJobDescriptionText().getText();
@@ -110,6 +117,41 @@ public class CreateJobView implements UIView {
             }
 
 
+        });
+    }
+
+    public void setBtnToEdit(){
+        createJobButton.setText("Edit");
+        createJobButton.addActionListener(e -> {
+            String company = companyText.getText();
+            String description = getJobDescriptionText().getText();
+            String title = getJobTitleText().getText();
+            String city = locationComboBox.getSelectedItem().toString();
+            String categories = categoryComboBox.getSelectedItem().toString();
+            String salary = salaryComboBox.getSelectedItem().toString();
+            java.util.List skillValueList = skillsList.getSelectedValuesList();
+            String skillIds = "";
+            for (int i = 0; i < skillValueList.size(); i++)
+            {
+                try {
+                    skillIds += (Keyword.getKeywordByValue(skillValueList.get(i).toString()).getString("keywordId") + ",");
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+
+            if (validateJob(company, description, title, city, categories, salary)) {
+                System.out.println("PASSED");
+                try {
+                    controller.doUpdateJob(title, description, company, city, categories, salary, skillIds);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+            else
+            {
+                System.out.println("Job creation failed");
+            }
         });
     }
 

@@ -37,16 +37,18 @@ public class CreateJobController {
         }
         createJobView.getCreateJobLabel().setText("Edit Job Listing");
         createJobView.getJobTitleText().setText(job.getTitle());
-        createJobView.getLocationComboBox().setSelectedIndex(job.getLocationId()+1);
+        createJobView.getLocationComboBox().setSelectedIndex(job.getLocationId());
         createJobView.getCompanyText().setText(job.getCompany());
         createJobView.getSalaryComboBox().setSelectedItem(job.getSalary());
         createJobView.getJobDescriptionText().setText(job.getDescription());
+        createJobView.setBtnToEdit();
         navigationController.pushView(createJobView);
     }
 
 
     public void showCreateJob() throws SQLException {
         this.createJobView = new CreateJobView(this);
+        this.createJobView.setBtnToCreate();
         loadCities();
         loadCategories();
         loadSalary();
@@ -66,6 +68,19 @@ public class CreateJobController {
         job.setRecruiterId(user.getUserId());
         job.setSkillIds(skillIds);
         job.createJob();
+    }
+
+    public void doUpdateJob(String title, String description, String company, String city, String category, String salary, String skillIds) throws SQLException {
+        // TODO: change args to appropriate types and create a job with them
+        job.setTitle(title);
+        job.setDescription(description);
+        job.setCompany(company);
+        job.setLocationId(Location.getLocationByCity(city).getInt("locationId"));
+        job.setSalary(salary);
+        job.setKeyword(new ArrayList<Keyword>());
+        job.setRecruiterId(user.getUserId());
+        job.setSkillIds(skillIds);
+        job.editJob();
     }
 
     public void loadCategories() throws SQLException {
