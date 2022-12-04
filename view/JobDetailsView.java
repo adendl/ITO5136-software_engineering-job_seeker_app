@@ -37,9 +37,6 @@ public class JobDetailsView implements UIView {
     ApplyForJobController applyForJobController;
     Job job;
 
-    public JPanel getJobDetailsPanel() {
-        return JobDetailsPanel;
-    }
 
     public JobDetailsView(SearchAlgorithmController controller, ApplyForJobController applyForJobController, Job job) {
         this.searchAlgorithmController = controller;
@@ -64,6 +61,9 @@ public class JobDetailsView implements UIView {
     }
 
 
+    public JPanel getJobDetailsPanel() {
+        return JobDetailsPanel;
+    }
     public JLabel getJobTitle() {
         return jobTitle;
     }

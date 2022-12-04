@@ -147,12 +147,52 @@ public class JobApplication {
         return userName;
     }
 
+    public String getApplicantFirstNameFromDB (){
+        try {
+            ResultSet rs = DBConnection.queryDatabase("select firstName from User where userId=" + "\"" + this.applicantId + "\"");
+            return rs.getString("firstName");
+        }  catch(SQLException e) {
+            System.err.println("Error Retrieving User ID " + this.applicantId + " from DB: " + e);
+            return "";
+        }
+    }
+
+    public String getApplicantLastNameFromDB (){
+        try {
+            ResultSet rs = DBConnection.queryDatabase("select lastName from User where userId=" + "\"" + this.applicantId + "\"");
+            return rs.getString("lastName");
+        }  catch(SQLException e) {
+            System.err.println("Error Retrieving User ID " + this.applicantId + " from DB: " + e);
+            return "";
+        }
+    }
+
     public String getJobTitleFromDB (){
         try {
             ResultSet rs = DBConnection.queryDatabase("select title from Job where jobId=" + "\"" + this.jobId + "\"");
             return rs.getString("title");
         }  catch(SQLException e) {
             System.err.println("Error Retrieving User ID " + this.jobId + " from DB: " + e);
+            return "";
+        }
+    }
+
+    public String getJobDescriptionFromDB (){
+        try {
+            ResultSet rs = DBConnection.queryDatabase("select description from Job where jobId=" + "\"" + this.jobId + "\"");
+            return rs.getString("description");
+        }  catch(SQLException e) {
+            System.err.println("Error Retrieving User ID " + this.jobId + " from DB: " + e);
+            return "";
+        }
+    }
+
+    public String getApplicantResumeNameFromDB (){
+        try {
+            ResultSet rs = DBConnection.queryDatabase("select name from Resume where resumeId=" + "\"" + this.resumeId + "\"");
+            return rs.getString("name");
+        }  catch(SQLException e) {
+            System.err.println("Error Retrieving User ID " + this.resumeId + " from DB: " + e);
             return "";
         }
     }
