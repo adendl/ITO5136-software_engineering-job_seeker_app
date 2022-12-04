@@ -60,6 +60,7 @@ public class ApplyForJobController {
     //resume and cover letter path need to be added
     public void doJobApply(String FirstName, String lastName, String email, int resumeId, int coverLetterId){
         JobApplication jobApplication = new JobApplication();
+        System.out.println(user.getUserId());
         jobApplication.setApplicantId(user.getUserId());
         jobApplication.setJobId(job.getJobId());
         jobApplication.setResumeId(resumeId);

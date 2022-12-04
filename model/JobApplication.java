@@ -28,6 +28,7 @@ public class JobApplication {
     public JobApplication(ResultSet rs) throws SQLException {
         this.jobId = rs.getInt("jobId");
         this.applicationId = rs.getInt("applicationId");
+        this.applicantId = rs.getString("applicantId");
         this.dateApplied = Date.valueOf(rs.getString("dateApplied")).toLocalDate();
         this.resumeId = rs.getInt("resumeId");
         this.messageId = rs.getInt("messageId");
