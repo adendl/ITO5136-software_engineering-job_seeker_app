@@ -8,6 +8,8 @@ import model.*;
 import view.AppliedJobView;
 import view.JobApplicationView;
 
+import javax.swing.*;
+
 import static java.lang.Integer.valueOf;
 
 
@@ -37,6 +39,7 @@ public class ApplyForJobController {
         jobApplicationView.getEmailText().setText(user.getUserId());
         jobApplicationView.getFirstNameText().setText(user.getFirstName());
         jobApplicationView.getLastNameText().setText(user.getLastName());
+        jobApplicationView.getJobDescriptionTextPane().setText(job.getDescription());
     }
 
     public String storeCoverLetter(String name, String path){
@@ -67,6 +70,7 @@ public class ApplyForJobController {
         jobApplication.setDateApplied(LocalDate.now());
         jobApplication.setMessageId(0);
         jobApplication.createJobApplication();
+        JOptionPane.showMessageDialog(null, ("You have successfully applied for the job: " + job.getTitle()), "Job Application Successful", JOptionPane.PLAIN_MESSAGE);
         navigationController.doHome();
     }
 }
