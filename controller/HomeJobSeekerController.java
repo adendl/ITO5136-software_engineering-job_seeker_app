@@ -22,7 +22,7 @@ public class HomeJobSeekerController {
     }
 
     public void showJobSearch() throws SQLException {
-        JobSearchController jobSearchController = new JobSearchController(navigationController, new JobSeeker(JobSeeker.getJobSeeker(user.getUserId())));
+        JobSearchController jobSearchController = new JobSearchController(navigationController, user);
         jobSearchController.showSearch();
     }
 

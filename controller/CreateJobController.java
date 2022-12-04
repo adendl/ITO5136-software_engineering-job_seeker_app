@@ -2,6 +2,7 @@ package controller;
 
 import model.Keyword;
 import model.Location;
+import model.User;
 import view.CreateJobView;
 import model.Job;
 
@@ -15,7 +16,9 @@ import java.util.ArrayList;
 public class CreateJobController {
     NavigationController navigationController;
     CreateJobView createJobView;
-    public CreateJobController(NavigationController navigationController){
+    User user;
+    public CreateJobController(NavigationController navigationController, User user){
+        this.user = user;
         this.navigationController = navigationController;
     }
 
@@ -24,10 +27,11 @@ public class CreateJobController {
         loadCities();
         loadCategories();
         loadSalary();
+        loadSkills();
         navigationController.pushView(createJobView);
     }
 
-    public void doCreateJob(String title, String description, String company, String city, String category, String salary) throws SQLException {
+    public void doCreateJob(String title, String description, String company, String city, String category, String salary, String skillIds) throws SQLException {
         // TODO: change args to appropriate types and create a job with them
         Job job = new Job();
         job.setTitle(title);
@@ -36,6 +40,8 @@ public class CreateJobController {
         job.setLocationId(Location.getLocationByCity(city).getInt("locationId"));
         job.setSalary(salary);
         job.setKeyword(new ArrayList<Keyword>());
+        job.setRecruiterId(user.getUserId());
+        job.setSkillIds(skillIds);
         job.createJob();
     }
 
@@ -66,6 +72,16 @@ public class CreateJobController {
             System.out.println("TEST" + rs.getString("keywordValue"));
             createJobView.getSalaryComboBox().addItem(rs.getString("keywordValue"));
         }
+    }
+
+    public void loadSkills() throws SQLException {
+        DefaultListModel dlm = new DefaultListModel();
+        ResultSet rs = Keyword.listSkills();
+        while (rs.next())
+        {
+            dlm.addElement(rs.getString("keywordValue"));
+        }
+        createJobView.getSkillsList().setModel(dlm);
     }
 
 
