@@ -13,11 +13,11 @@ public class MatchingScore {
         double matchingScore = 0;
         for (int i = 0; i < keywordIds1.size(); i++)
         { // for each item in  list1, it checks if this exists in list2
-            System.out.println("time is " + i);
+            //System.out.println("time is " + i);
             if (keywordIds2.contains(keywordIds1.get(i)))
             {
                 matchingScore++; //if yes, the matching score is incremented
-                System.out.println(matchingScore);
+                //System.out.println(matchingScore);
             }
         }
         return matchingScore / keywordIds1.size(); //finally, the matching score is normalised against the size of the list
