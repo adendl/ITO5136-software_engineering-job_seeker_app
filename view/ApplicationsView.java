@@ -19,17 +19,8 @@ public class ApplicationsView implements UIView {
     private HomeJobSeekerController controller;
 
     public ApplicationsView(HomeJobSeekerController controller) {
-        this.controller = controller;
-        // TODO: we might not need these buttons? the table can probably handle everything
-        previousButton.addActionListener((e) -> {
-            // only display if not on first page
-        });
-        nextButton.addActionListener((e) -> {
-            // only display if there are more results to paginate through
-        });
-        sortByButton.addActionListener((e) -> {
-            // sort the list, if there's items in it
-        });
+
+
     }
 
     public JPanel getPanelMain() {

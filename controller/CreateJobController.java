@@ -122,6 +122,10 @@ public class CreateJobController {
         createJobView.getSkillsList().setModel(dlm);
     }
 
+    public void seeApplications(Job job){
+        ListApplicationsController listApplicationsController= new ListApplicationsController(this.navigationController, this.user, job);
+    }
+
 
 
 }
