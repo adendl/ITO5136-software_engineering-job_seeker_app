@@ -29,9 +29,10 @@ public class JobSearchController {
     }
 
     private SearchJobView searchJobView;
+
     private NavigationController navigationController;
-    private JobSeeker user;
-    public JobSearchController(NavigationController navigationController, JobSeeker user){
+    private User user;
+    public JobSearchController(NavigationController navigationController, User user){
         this.navigationController = navigationController;
         this.user = user;
 
@@ -77,7 +78,7 @@ public class JobSearchController {
         //get all field attributes and search term and run through matching algorithm
         ArrayList<Keyword> keywords = createSearchQuery(searchString);
         // TODO: JobSearchView passes in parameters here, we have SearchAlgorithmController do the work, then call showResults
-        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, user);
+        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, new JobSeeker(JobSeeker.getJobSeeker(user.getUserId())));
         searchAlgorithmController.showResults(keywords);
     }
 
@@ -114,12 +115,14 @@ public class JobSearchController {
 
     }
 
-    public void doProfileSearch() {
+    public void doProfileSearch() throws SQLException {
         // TODO: similar to the above, but we're just using the user profile data?
-        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, user);
-        // not sure if we'd use the same performSearch or if we need something different for profile-based search
-        // end result should be the same though, it's only the search inputs that change
-       // searchAlgorithmController.performSearch("INSERT STRING");
+        System.out.println(user.getUserId());
+        ArrayList<Keyword> keywords = createSearchQuery(JobSeeker.getJobSeeker(user.getUserId()).getString("skillIds"));
+        SearchAlgorithmController searchAlgorithmController = new SearchAlgorithmController(navigationController, new JobSeeker(JobSeeker.getJobSeeker(user.getUserId())));
+        searchAlgorithmController.showResults(keywords);
+
+
     }
 
     public void showSearch() throws SQLException {
