@@ -47,13 +47,12 @@ public class SearchAlgorithmController {
         JobDetailsView jobDetailsView = new JobDetailsView(this);
         jobDetailsView.getTxtJobTitle().setText(newJob.getTitle());
         jobDetailsView.getTxtCompany().setText(newJob.getCompany());
-        System.out.println(newJob.getLocationId());
-        try {
-            jobDetailsView.getTxtLocation().setText(newJob.getLocationFromDb());
-        }
-        catch(SQLException e) {
-            System.err.println("Unable to retrieve Job Location from DB: " + e);
-        }
+        jobDetailsView.getTxtLocation().setText(newJob.getLocationFromDb());
+        jobDetailsView.getTxtJobDescription().setText(newJob.getDescription());
+        jobDetailsView.getTxtSalaryRange().setText(newJob.getSalary());
+        jobDetailsView.getTxtJobCategory().setText(newJob.categoriesToString());
+
+
         navigationController.pushView(jobDetailsView);
     }
 
