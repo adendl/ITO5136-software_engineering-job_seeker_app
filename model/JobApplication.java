@@ -123,7 +123,7 @@ public class JobApplication {
                 resumeId + ", " +
                 jobId + ", " +
                 '"' + LocalDate.now() + '"' + ", " +
-                applicantId + ", " +
+                '"' + applicantId + '"' + ", " +
                 null + ")";
         System.out.println(sql);
         conn.executeQuery(sql);
