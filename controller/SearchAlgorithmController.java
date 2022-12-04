@@ -45,7 +45,8 @@ public class SearchAlgorithmController {
     }
 
     public void showJobDetails(Job newJob){
-        JobDetailsView jobDetailsView = new JobDetailsView(this);
+        System.out.println("showjobDetails" + user.getUserId());
+        JobDetailsView jobDetailsView = new JobDetailsView(this, new ApplyForJobController(navigationController, user, newJob), newJob);
         jobDetailsView.getTxtJobTitle().setText(newJob.getTitle());
         jobDetailsView.getTxtCompany().setText(newJob.getCompany());
         jobDetailsView.getTxtLocation().setText(newJob.getLocationFromDb());

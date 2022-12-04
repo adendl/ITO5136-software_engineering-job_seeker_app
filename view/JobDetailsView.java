@@ -1,11 +1,16 @@
 package view;
 
+import controller.ApplyForJobController;
 import controller.ListJobsController;
 import controller.NavigationController;
 import controller.SearchAlgorithmController;
+import model.Job;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class JobDetailsView implements UIView {
     public JPanel JobDetailsPanel;
@@ -29,12 +34,33 @@ public class JobDetailsView implements UIView {
     SearchAlgorithmController searchAlgorithmController;
     ListJobsController listJobsController;
 
+    ApplyForJobController applyForJobController;
+    Job job;
+
     public JPanel getJobDetailsPanel() {
         return JobDetailsPanel;
     }
 
-    public JobDetailsView(SearchAlgorithmController controller) {
+    public JobDetailsView(SearchAlgorithmController controller, ApplyForJobController applyForJobController, Job job) {
         this.searchAlgorithmController = controller;
+        this.applyForJobController = applyForJobController;
+        this.job = job;
+        btnApplyNow.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    applyForJobController.doStartApplyProcess(job);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            }
+        });
     }
 
     public JobDetailsView(ListJobsController controller) {

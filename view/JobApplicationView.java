@@ -42,6 +42,46 @@ public class JobApplicationView implements UIView {
     private int resumeId;
     private int coverLetterId;
 
+    public JLabel getTitleLabel() {
+        return titleLabel;
+    }
+
+    public void setTitleLabel(JLabel titleLabel) {
+        this.titleLabel = titleLabel;
+    }
+
+    public JTextField getFirstNameText() {
+        return firstNameText;
+    }
+
+    public void setFirstNameText(JTextField firstNameText) {
+        this.firstNameText = firstNameText;
+    }
+
+    public JTextField getLastNameText() {
+        return lastNameText;
+    }
+
+    public void setLastNameText(JTextField lastNameText) {
+        this.lastNameText = lastNameText;
+    }
+
+    public JTextField getEmailText() {
+        return emailText;
+    }
+
+    public void setEmailText(JTextField emailText) {
+        this.emailText = emailText;
+    }
+
+    public JTextField getPhoneText() {
+        return phoneText;
+    }
+
+    public void setPhoneText(JTextField phoneText) {
+        this.phoneText = phoneText;
+    }
+
     public JobApplicationView(ApplyForJobController controller) {
         this.controller = controller;
         submitButton.addActionListener((e -> {
@@ -91,6 +131,7 @@ public class JobApplicationView implements UIView {
             }
         }));
     }
+
 
     public void doJobApply(){
         //todo: check for null resumeId and coverLetterId.
