@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static model.Job.getJob;
+
 public class ListJobsController {
     private NavigationController navigationController;
     User user;
@@ -48,9 +50,31 @@ public class ListJobsController {
         reviewJobDetailsView.getTxtJobDescription().setText(newJob.getDescription());
         reviewJobDetailsView.getTxtSalaryRange().setText(newJob.getSalary());
         reviewJobDetailsView.getTxtJobCategory().setText(newJob.categoriesToString());
+        reviewJobDetailsView.getTxtJobId().setText(String.valueOf(newJob.getJobId()));
 
 
         navigationController.pushView(reviewJobDetailsView);
+    }
+
+    public void setJobToAdvertised (int jobId){
+        Job job = new Job();
+        job.updateJob(jobId, "isAdvertised", "TRUE");
+
+    }
+
+    public void editJob (int jobId) {
+        Job job;
+        try {
+            job = new Job(getJob(jobId));
+        }
+        catch(SQLException e) {
+            System.err.println("Unable to find job in DB: " + e);
+            job = new Job();
+        }
+
+        CreateJobController createJobController = new CreateJobController(navigationController, this.user);
+        createJobController.setEditMode(job);
+
     }
 
 }

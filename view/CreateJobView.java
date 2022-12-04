@@ -25,11 +25,7 @@ public class CreateJobView implements UIView {
     private JComboBox locationComboBox;
     private JTextField companyText;
     private JList skillsList;
-    private JTextArea locationText;
-    private JTextArea companyTextField;
-    private JTextArea jobTypeText;
-    private JTextArea jobCategoryText;
-    private JTextArea salaryRangeText;
+
     private CreateJobController controller;
 
     public boolean validateJob(String company, String description, String title, String city, String categories, String salary)
@@ -121,6 +117,10 @@ public class CreateJobView implements UIView {
         return salaryComboBox;
     }
 
+    public JLabel getCreateJobLabel() {
+        return createJobLabel;
+    }
+
     public void setSalaryComboBox(JComboBox salaryComboBox) {
         this.salaryComboBox = salaryComboBox;
     }
@@ -154,25 +154,10 @@ public class CreateJobView implements UIView {
         return jobTitleText;
     }
 
-    public JTextArea getLocationText() {
-        return locationText;
+    public JTextField getCompanyText() {
+        return companyText;
     }
 
-    public JTextArea getCompanyText() {
-        return companyTextField;
-    }
-
-    public JTextArea getJobTypeText() {
-        return jobTypeText;
-    }
-
-    public JTextArea getJobCategoryText() {
-        return jobCategoryText;
-    }
-
-    public JTextArea getSalaryRangeText() {
-        return salaryRangeText;
-    }
 
     public static void main(String[] args) {
         CreateJobView myCreateJobView = new CreateJobView(null);

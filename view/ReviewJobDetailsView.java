@@ -24,17 +24,28 @@ public class ReviewJobDetailsView implements UIView {
     private JButton btnEditJob;
     private JButton btnViewApplications;
     private JButton searchForCandidatesButton;
+    private JLabel lblJobId;
+    private JTextArea txtJobId;
     ListJobsController listJobsController;
-
-    public JPanel getJobDetailsPanel() {
-        return JobDetailsPanel;
-    }
 
     public ReviewJobDetailsView(ListJobsController controller) {
         this.listJobsController = controller;
         btnAdvertise.addActionListener(e -> {
+            controller.setJobToAdvertised(Integer.parseInt(txtJobId.getText()));
 
         });
+
+        btnEditJob.addActionListener(e -> {
+            controller.editJob(Integer.parseInt(getTxtJobId().getText()));
+        });
+
+        btnViewApplications.addActionListener(e -> {
+            //controller
+        });
+    }
+
+    public JPanel getJobDetailsPanel() {
+        return JobDetailsPanel;
     }
 
     public JLabel getJobTitle() {
@@ -49,9 +60,9 @@ public class ReviewJobDetailsView implements UIView {
         return txtDescription;
     }
 
-    public JButton getBtnApplyNow() {
-        return btnAdvertise;
-    }
+    public JTextArea getTxtJobId() { return txtJobId; }
+
+    public JButton getBtnAdvertise() { return btnAdvertise; }
 
     public JLabel getLbJobType() {
         return lbJobType;

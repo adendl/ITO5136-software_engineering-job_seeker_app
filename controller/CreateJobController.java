@@ -17,10 +17,33 @@ public class CreateJobController {
     NavigationController navigationController;
     CreateJobView createJobView;
     User user;
+
+    Job job;
     public CreateJobController(NavigationController navigationController, User user){
         this.user = user;
         this.navigationController = navigationController;
     }
+
+    public void setEditMode(Job job) {
+        this.job = job;
+        this.createJobView = new CreateJobView(this);
+        try{
+            loadCities();
+            loadCategories();
+            loadSalary();
+            loadSkills();}
+        catch(SQLException e) {
+            System.err.println("Unable to load keywords to combo-box: " + e);
+        }
+        createJobView.getCreateJobLabel().setText("Edit Job Listing");
+        createJobView.getJobTitleText().setText(job.getTitle());
+        createJobView.getLocationComboBox().setSelectedIndex(job.getLocationId()+1);
+        createJobView.getCompanyText().setText(job.getCompany());
+        createJobView.getSalaryComboBox().setSelectedItem(job.getSalary());
+        createJobView.getJobDescriptionText().setText(job.getDescription());
+        navigationController.pushView(createJobView);
+    }
+
 
     public void showCreateJob() throws SQLException {
         this.createJobView = new CreateJobView(this);
@@ -33,7 +56,7 @@ public class CreateJobController {
 
     public void doCreateJob(String title, String description, String company, String city, String category, String salary, String skillIds) throws SQLException {
         // TODO: change args to appropriate types and create a job with them
-        Job job = new Job();
+        this.job = new Job();
         job.setTitle(title);
         job.setDescription(description);
         job.setCompany(company);

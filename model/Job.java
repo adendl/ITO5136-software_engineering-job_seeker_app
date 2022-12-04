@@ -145,6 +145,10 @@ public class Job {
         this.status = status;
     }
 
+    public void setAsAdvertised(){
+        this.isAdvertised = true;
+    }
+
     public LocalDate getDateCreated() {
         return dateCreated;
     }
