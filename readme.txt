@@ -1,1 +1,1 @@
-ITO5136 Readme for oaca0001
+Over the course of a few weeks, our team worked tirelessly to build a good old fashioned Java Swing desktop application. The project essentially follows an MVC model with the data stored persistently using sqlite.
